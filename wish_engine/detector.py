@@ -165,6 +165,43 @@ def _classify_wish_type(text: str) -> WishType | None:
     return None
 
 
+# ── Local fallback scorer (replaces Haiku for ambiguous cases) ───────────────
+
+# Broad category keywords — less specific, used when desire marker is present
+# but _classify_wish_type found no match. Scored by relevance.
+_FALLBACK_KEYWORDS: list[tuple[WishType, list[str], float]] = [
+    # (type, keyword patterns, base confidence)
+    (WishType.SELF_UNDERSTANDING, [r"myself|自己|نفسي", r"why|为什么|لماذا", r"understand|明白|أفهم"], 0.65),
+    (WishType.EMOTIONAL_PROCESSING, [r"feel|emotion|mood|感受|情绪|心情|شعور", r"angry|sad|anxious|scared|害怕|难过|生气"], 0.65),
+    (WishType.RELATIONSHIP_INSIGHT, [r"relation|partner|friend|他|她|朋友|伴侣|صديق", r"fight|argue|吵|争"], 0.60),
+    (WishType.SELF_EXPRESSION, [r"write|letter|journal|diary|写|日记|信|أكتب", r"express|tell|说|表达"], 0.60),
+    (WishType.LIFE_REFLECTION, [r"life|past|future|growth|人生|过去|未来|成长|حياة"], 0.55),
+    (WishType.HEALTH_WELLNESS, [r"health|wellness|relax|calm|peace|放松|平静|健康|هدوء"], 0.55),
+    (WishType.FIND_COMPANION, [r"someone|people|somebody|人|谁|شخص"], 0.50),
+]
+
+
+def _local_fallback_classify(text: str) -> tuple[WishType | None, float]:
+    """Attempt local classification for ambiguous intentions.
+
+    Uses broad keyword scoring instead of LLM.
+    Returns (wish_type, confidence) or (None, 0.0) if no match.
+    """
+    lower = text.lower()
+    best_type: WishType | None = None
+    best_score: float = 0.0
+
+    for wish_type, keyword_patterns, base_conf in _FALLBACK_KEYWORDS:
+        matches = sum(1 for p in keyword_patterns if re.search(p, lower))
+        if matches >= 1:
+            score = base_conf + (matches - 1) * 0.10
+            if score > best_score:
+                best_score = score
+                best_type = wish_type
+
+    return best_type, min(best_score, 0.80)
+
+
 def _build_haiku_prompt(intention_text: str) -> str:
     """Build a minimal prompt for Haiku fallback."""
     return (
@@ -261,9 +298,25 @@ def detect_wishes(
                 ambiguous.append(intent)
         # No desire marker → not a wish, skip
 
-    # Pass 2: Haiku fallback for ambiguous intentions
-    if ambiguous and key:
-        for intent in ambiguous:
+    # Pass 2: Local fallback for ambiguous intentions (zero LLM)
+    still_ambiguous: list[Intention] = []
+    for intent in ambiguous:
+        fallback_type, fallback_conf = _local_fallback_classify(intent.text)
+        if fallback_type is not None and fallback_conf >= 0.50:
+            results.append(
+                DetectedWish(
+                    wish_text=intent.text,
+                    wish_type=fallback_type,
+                    confidence=fallback_conf,
+                    source_intention_id=intent.id,
+                )
+            )
+        else:
+            still_ambiguous.append(intent)
+
+    # Pass 3: Haiku fallback for still-ambiguous intentions (rare)
+    if still_ambiguous and key:
+        for intent in still_ambiguous:
             try:
                 prompt = _build_haiku_prompt(intent.text)
                 resp = _call_haiku(prompt, key)

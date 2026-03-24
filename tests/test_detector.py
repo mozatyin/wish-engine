@@ -14,6 +14,7 @@ from wish_engine.detector import (
     _detect_language,
     _has_desire_marker,
     _classify_wish_type,
+    _local_fallback_classify,
 )
 
 
@@ -277,6 +278,57 @@ class TestV10Examples:
         results = detect_wishes(intentions)
         assert len(results) == 1
         assert results[0].wish_type == WishType.FIND_COMPANION
+
+
+# ── Local fallback scorer ────────────────────────────────────────────────────
+
+
+class TestLocalFallback:
+    """Tests for the local fallback classifier (zero LLM)."""
+
+    def test_self_understanding_fallback(self):
+        wtype, conf = _local_fallback_classify("I want to understand why I feel this way about myself")
+        assert wtype == WishType.SELF_UNDERSTANDING
+        assert conf >= 0.50
+
+    def test_emotional_processing_fallback(self):
+        wtype, conf = _local_fallback_classify("I want to deal with this feeling of sadness")
+        assert wtype == WishType.EMOTIONAL_PROCESSING
+        assert conf >= 0.50
+
+    def test_relationship_fallback(self):
+        wtype, conf = _local_fallback_classify("I want to fix things with my partner")
+        assert wtype == WishType.RELATIONSHIP_INSIGHT
+        assert conf >= 0.50
+
+    def test_find_companion_fallback(self):
+        wtype, conf = _local_fallback_classify("I want someone to talk to")
+        assert wtype == WishType.FIND_COMPANION
+        assert conf >= 0.50
+
+    def test_no_match(self):
+        wtype, conf = _local_fallback_classify("the random gibberish text xyz")
+        assert wtype is None
+        assert conf == 0.0
+
+    def test_confidence_capped(self):
+        """Even with many keyword matches, confidence doesn't exceed 0.80."""
+        wtype, conf = _local_fallback_classify("I want to understand myself and why I feel this way")
+        assert conf <= 0.80
+
+    def test_chinese_fallback(self):
+        wtype, conf = _local_fallback_classify("想处理这种愤怒的情绪")
+        assert wtype == WishType.EMOTIONAL_PROCESSING
+        assert conf >= 0.50
+
+    def test_ambiguous_detected_locally(self):
+        """An intention with desire marker but unclear type should be caught by fallback."""
+        intentions = [
+            Intention(id="fb1", text="I want to do something about this situation with myself"),
+        ]
+        results = detect_wishes(intentions, api_key="")
+        # Should be caught by local fallback (has "myself" keyword)
+        assert len(results) >= 1
 
 
 # ── Edge cases ───────────────────────────────────────────────────────────────
