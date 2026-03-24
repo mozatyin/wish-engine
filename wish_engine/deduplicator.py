@@ -16,9 +16,31 @@ import re
 from wish_engine.models import DetectedWish, WishType
 
 
+# Semantic category expansion — adds category tags to boost cross-phrasing overlap
+_SEMANTIC_CATEGORIES: list[tuple[str, list[str]]] = [
+    ("_cat:avoidance", ["avoid", "retreat", "withdraw", "walk away", "hide", "run",
+                        "回避", "退缩", "逃避", "躲", "闪"]),
+    ("_cat:conflict", ["conflict", "fight", "argue", "clash", "disagree",
+                       "冲突", "吵", "争", "矛盾", "对抗"]),
+    ("_cat:fear", ["fear", "afraid", "scared", "terrified", "anxious", "worry",
+                   "害怕", "恐惧", "焦虑", "担心", "紧张"]),
+    ("_cat:relationship", ["relationship", "partner", "love", "together", "between us",
+                           "关系", "感情", "他", "她", "伴侣"]),
+    ("_cat:self", ["myself", "who i am", "identity", "understand me",
+                   "自己", "我自己", "认识", "了解"]),
+    ("_cat:expression", ["express", "write", "say", "tell", "share", "letter",
+                         "表达", "写", "说出", "倾诉"]),
+    ("_cat:anger", ["anger", "angry", "rage", "furious", "frustrat",
+                    "愤怒", "生气", "暴躁"]),
+    ("_cat:sadness", ["sad", "grief", "loss", "mourn", "miss",
+                      "悲伤", "难过", "失去", "想念"]),
+    ("_cat:commitment", ["commit", "promise", "settle", "long-term",
+                         "承诺", "承担", "长期", "稳定"]),
+]
+
+
 def _extract_keywords(text: str) -> set[str]:
-    """Extract meaningful keywords from text for overlap calculation."""
-    # Remove common stop words
+    """Extract meaningful keywords + semantic categories from text."""
     stop_en = {"i", "a", "an", "the", "to", "of", "and", "is", "it", "my", "me",
                "want", "wish", "need", "hope", "would", "could", "like", "just",
                "really", "also", "about", "that", "this", "what", "why", "how",
@@ -50,22 +72,48 @@ def _extract_keywords(text: str) -> set[str]:
     # Arabic
     ar_words = set(re.findall(r"[\u0600-\u06ff]+", lower))
 
-    return zh_words | en_words | ar_words
+    # Semantic category expansion
+    all_words = zh_words | en_words | ar_words
+    for cat_name, keywords in _SEMANTIC_CATEGORIES:
+        if any(kw in lower for kw in keywords):
+            all_words.add(cat_name)
+
+    return all_words
 
 
 def _keyword_overlap(a: set[str], b: set[str]) -> float:
-    """Jaccard-like overlap between keyword sets."""
+    """Weighted overlap: semantic categories count 3x more than raw keywords.
+
+    This handles paraphrases where users express the same wish with different
+    words but the same semantic meaning.
+    """
     if not a or not b:
         return 0.0
-    intersection = len(a & b)
-    union = len(a | b)
-    return intersection / union if union else 0.0
+
+    # Separate categories from raw keywords
+    a_cats = {x for x in a if x.startswith("_cat:")}
+    b_cats = {x for x in b if x.startswith("_cat:")}
+    a_raw = a - a_cats
+    b_raw = b - b_cats
+
+    # Category overlap (weighted 3x)
+    cat_shared = len(a_cats & b_cats)
+    cat_total = max(len(a_cats | b_cats), 1)
+
+    # Raw keyword overlap
+    raw_shared = len(a_raw & b_raw)
+    raw_total = max(len(a_raw | b_raw), 1)
+
+    # Combined score: categories get 3x weight
+    if cat_total > 0 and cat_shared > 0:
+        return (3 * cat_shared / cat_total + raw_shared / raw_total) / 4
+    return raw_shared / raw_total
 
 
 def deduplicate(
     wishes: list[DetectedWish],
     type_weight: float = 0.5,
-    keyword_threshold: float = 0.25,
+    keyword_threshold: float = 0.18,
 ) -> list[DetectedWish]:
     """Deduplicate wishes by merging similar ones.
 
