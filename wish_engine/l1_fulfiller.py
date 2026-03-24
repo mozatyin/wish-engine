@@ -117,48 +117,117 @@ def _extract_profile_summary(
     return "\n".join(parts) if parts else "No profile data available"
 
 
+# Banned therapy-speak phrases — these make insights feel generic
+_BANNED_PHRASES = [
+    "It's important to remember",
+    "This is perfectly normal",
+    "You might want to consider",
+    "journey of self-discovery",
+    "safe space",
+    "validate your feelings",
+    "processing your emotions",
+    "emotional regulation",
+    "coping mechanism",
+    "mental health professional",
+    "therapeutic",
+    "self-care routine",
+]
+
+_TONE_CALIBRATION = """TONE: Write like a perceptive friend, NOT a therapist.
+BAD: "Your avoidant conflict style suggests you may benefit from exploring healthier communication patterns."
+GOOD: "You'd rather walk away from a fight than win one. That's not weakness — it's a bet that silence costs less than drama."
+BAD: "Your high emotional intelligence score indicates strong empathetic capabilities."
+GOOD: "You read rooms like other people read text messages — fast and without trying."
+"""
+
+_ANTI_HOROSCOPE = "ANTI-HOROSCOPE: Before writing, check — would this be true if the profile scores were reversed? If yes, delete it. Only keep insights that are TRUE for THIS specific profile and FALSE for the opposite profile."
+
+
+def _find_profile_tensions(profile: str) -> str:
+    """Find contradictions/tensions in the profile that make the best insights."""
+    tensions = []
+    lower = profile.lower()
+
+    # High EQ + avoidant
+    if "avoiding" in lower and ("eq:" in lower or "eq :" in lower):
+        tensions.append("high EQ + conflict-avoiding (sees fights coming but walks away)")
+    # Anxious attachment + accommodating
+    if "anxious" in lower and "accommodating" in lower:
+        tensions.append("anxious attachment + accommodating (craves closeness but gives too much)")
+    # High fragility + competing
+    if ("defensive" in lower or "approval" in lower) and "competing" in lower:
+        tensions.append("fragile yet combative (armored vulnerability)")
+    # Values belonging + avoidant
+    if "belonging" in lower and ("avoiding" in lower or "avoidant" in lower):
+        tensions.append("values belonging but avoids the conflicts that deepen bonds")
+    # Secure attachment + high distress
+    if "secure" in lower and "distress" in lower:
+        tensions.append("secure foundation under acute stress (resilient but hurting)")
+
+    return "Tensions: " + "; ".join(tensions) if tensions else ""
+
+
 def _build_fulfillment_prompt(
     wish: ClassifiedWish,
     card_type: CardType,
     profile: str,
     patterns: list[CrossDetectorPattern],
 ) -> str:
-    """Build a minimal Sonnet prompt for generating the personalized content."""
+    """Build a Sonnet prompt using research-backed personalization techniques."""
     pattern_str = ""
     if patterns:
         pattern_str = "\nPatterns: " + ", ".join(p.pattern_name for p in patterns[:3])
 
+    tensions = _find_profile_tensions(profile)
+    tension_str = f"\n{tensions}" if tensions else ""
+
     card_instruction = {
-        CardType.INSIGHT: "Write a personalized insight (150-250 words). Reference their specific traits from the profile (e.g. conflict style, attachment, values). Explain WHY this pattern exists for THIS person. End with a reflection question.",
-        CardType.RELATIONSHIP_ANALYSIS: "Analyze the relationship dynamic (150-250 words). Reference their specific conflict style, attachment, love language from profile. Explain the friction pattern. End with one suggestion.",
-        CardType.EMOTION_TRACE: "Trace the emotional origin (150-250 words). Reference their specific distress level, fragility pattern, attachment style from profile. Connect current feeling to their underlying patterns. End with a grounding thought.",
-        CardType.SOUL_PORTRAIT: "Write a soul self-portrait (200-300 words). YOU MUST weave their specific MBTI, conflict style, values, EQ, and soul type from the profile into the narrative. Name these traits explicitly. Warm, poetic, personal.",
-        CardType.SELF_DIALOGUE: "Write the opening of a letter to self (100-200 words). Reference their specific fragility pattern, attachment style, or values from the profile. Warm, reflective tone. Leave space for the user to continue.",
+        CardType.INSIGHT: "Write a personalized insight (150-250 words). Ground EVERY sentence in a specific profile data point. Find the tension/contradiction in their profile — that's where the real insight lives. End with a reflection question.",
+        CardType.RELATIONSHIP_ANALYSIS: "Analyze the relationship dynamic (150-250 words). Name their specific conflict style and attachment pattern. Show how these create the friction they're experiencing. End with one concrete suggestion.",
+        CardType.EMOTION_TRACE: "Trace where this emotion comes from (150-250 words). Connect their current distress to their fragility pattern and attachment style. Show the chain: trigger → pattern → feeling. End with a grounding thought.",
+        CardType.SOUL_PORTRAIT: "Write a soul self-portrait (200-300 words). Weave their MBTI, conflict style, values, EQ, and soul type into a vivid narrative. Name each trait as you weave it in. Warm, poetic, deeply personal.",
+        CardType.SELF_DIALOGUE: "Write the opening of a letter from them to themselves (100-200 words). Reference their fragility pattern or attachment style by name. Warm, honest, slightly vulnerable. Leave the letter unfinished for them to continue.",
     }
 
     return (
         f"Wish: \"{wish.wish_text}\"\n"
-        f"Profile:\n{profile}{pattern_str}\n\n"
+        f"Profile:\n{profile}{pattern_str}{tension_str}\n\n"
         f"{card_instruction[card_type]}\n"
-        "No clinical terms. Use 'you'. Warm tone.\n"
+        f"{_TONE_CALIBRATION}"
+        f"{_ANTI_HOROSCOPE}\n"
+        f"BANNED phrases: {', '.join(_BANNED_PHRASES[:6])}\n"
         'JSON: {"text": str, "related_dimensions": [str]}'
     )
 
 
-def _call_sonnet(prompt: str, api_key: str) -> dict[str, Any]:
-    """Call Sonnet via Anthropic SDK. Returns parsed JSON dict."""
+def _call_sonnet(prompt: str, api_key: str, prefill: str = "") -> dict[str, Any]:
+    """Call Sonnet via Anthropic SDK. Returns parsed JSON dict.
+
+    Uses prefill technique: start the assistant response with grounded text
+    to force personalization from the first sentence.
+    """
     import anthropic
 
     client = anthropic.Anthropic(
         api_key=api_key,
         base_url="https://openrouter.ai/api",
     )
+
+    messages = [{"role": "user", "content": prompt}]
+    # Prefill forces Claude to continue from a grounded starting point
+    if prefill:
+        messages.append({"role": "assistant", "content": prefill})
+
     response = client.messages.create(
         model="anthropic/claude-sonnet-4",
         max_tokens=512,
-        messages=[{"role": "user", "content": prompt}],
+        messages=messages,
     )
     raw = response.content[0].text.strip()
+    # If prefilled, prepend the prefill to the response
+    if prefill:
+        raw = prefill + raw
+
     start = raw.find("{")
     end = raw.rfind("}") + 1
     if start >= 0 and end > start:
@@ -240,8 +309,11 @@ def fulfill(
     profile = _extract_profile_summary(detector_results, soul, chapter)
     prompt = _build_fulfillment_prompt(wish, card_type, profile, patterns)
 
+    # Build prefill to force grounding (Claude-specific technique)
+    prefill = '{"text": "'
+
     # Call Sonnet
-    resp = _call_sonnet(prompt, key)
+    resp = _call_sonnet(prompt, key, prefill=prefill)
     text = resp.get("text", "")
     related_dims = resp.get("related_dimensions", [])
 

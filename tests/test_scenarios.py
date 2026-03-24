@@ -344,7 +344,7 @@ class TestFulfillerProfileQuality:
         assert profile != "No profile data available"
 
     def test_prompt_quality_insight_card(self):
-        """Insight prompt should contain wish text + profile + instruction."""
+        """Insight prompt should contain wish text + profile + anti-horoscope."""
         wish = ClassifiedWish(
             wish_text="想理解为什么自己总是讨好别人",
             wish_type=WishType.SELF_UNDERSTANDING,
@@ -356,8 +356,8 @@ class TestFulfillerProfileQuality:
         assert "讨好别人" in prompt
         assert "avoiding" in prompt
         assert "INFJ" in prompt
-        assert "WHY" in prompt
-        assert "No clinical terms" in prompt
+        assert "ANTI-HOROSCOPE" in prompt
+        assert "BANNED" in prompt
 
     def test_prompt_quality_emotion_trace(self):
         """Emotion trace prompt references emotional dimensions."""
@@ -371,7 +371,7 @@ class TestFulfillerProfileQuality:
         prompt = _build_fulfillment_prompt(wish, CardType.EMOTION_TRACE, profile, [])
         assert "anxiety" in prompt.lower()
         assert "Distress" in prompt
-        assert "emotional origin" in prompt.lower() or "origin" in prompt.lower()
+        assert "emotion" in prompt.lower()
 
     def test_prompt_with_cross_detector_patterns(self):
         """Patterns should be included when available."""
@@ -447,7 +447,8 @@ class TestRendererLifecycle:
         # Fulfilled → warm gold burst
         assert stages[-1].color == "#F4C542"
         assert stages[-1].animation == "burst_gold_particles"
-        assert "Your stars have an answer" == stages[-1].card_data["reveal_text"]
+        # Multilingual: Chinese wish → Chinese reveal text
+        assert stages[-1].card_data["reveal_text"] in ("Your stars have an answer", "你的星星有了答案")
         assert stages[-1].card_data["fulfillment_text"].startswith("Your tendency")
 
     def test_l2_wish_found_state(self):

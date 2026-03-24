@@ -183,10 +183,11 @@ class TestPromptBuilding:
         prompt = _build_fulfillment_prompt(wish, CardType.INSIGHT, "profile", patterns)
         assert "safe_silence" in prompt
 
-    def test_prompt_no_clinical_terms(self):
+    def test_prompt_bans_clinical_terms(self):
         wish = self._make_wish()
         prompt = _build_fulfillment_prompt(wish, CardType.INSIGHT, "profile", [])
-        assert "No clinical terms" in prompt
+        assert "BANNED" in prompt
+        assert "therapist" in prompt.lower()  # Tone calibration mentions "not a therapist"
 
     def test_each_card_type_has_instruction(self):
         wish = self._make_wish()

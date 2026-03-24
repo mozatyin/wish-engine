@@ -213,3 +213,108 @@ class TestComputeDelay:
     def test_low_six_hours(self):
         q = WishQueue()
         assert q.compute_delay(WishPriority.LOW) == 21600
+
+
+class TestStateValidation:
+    """State transitions must follow valid paths."""
+
+    def test_valid_born_to_searching(self):
+        q = WishQueue()
+        qw = q.enqueue(_make_wish(), user_id="u1")
+        q.mark_searching(qw.wish_id)  # Should not raise
+
+    def test_invalid_born_to_fulfilled(self):
+        q = WishQueue()
+        qw = q.enqueue(_make_wish(), user_id="u1")
+        with pytest.raises(ValueError, match="Invalid transition"):
+            q.mark_fulfilled(qw.wish_id)
+
+    def test_invalid_fulfilled_to_searching(self):
+        q = WishQueue()
+        qw = q.enqueue(_make_wish(), user_id="u1")
+        q.mark_searching(qw.wish_id)
+        q.mark_found(qw.wish_id, _make_fulfillment(), delay_seconds=0)
+        q.mark_recommended(qw.wish_id)
+        q.mark_confirmed(qw.wish_id)
+        q.mark_fulfilled(qw.wish_id)
+        with pytest.raises(ValueError, match="Invalid transition"):
+            q.mark_searching(qw.wish_id)
+
+    def test_cancel_from_born(self):
+        q = WishQueue()
+        qw = q.enqueue(_make_wish(), user_id="u1")
+        q.cancel(qw.wish_id)
+        assert q.get_by_id(qw.wish_id).state == WishState.ARCHIVED
+
+    def test_cancel_from_searching(self):
+        q = WishQueue()
+        qw = q.enqueue(_make_wish(), user_id="u1")
+        q.mark_searching(qw.wish_id)
+        q.cancel(qw.wish_id)
+        assert q.get_by_id(qw.wish_id).state == WishState.ARCHIVED
+
+    def test_cancel_from_recommended(self):
+        """User dismisses a recommendation."""
+        q = WishQueue()
+        qw = q.enqueue(_make_wish(), user_id="u1")
+        q.mark_searching(qw.wish_id)
+        q.mark_found(qw.wish_id, _make_fulfillment(), delay_seconds=0)
+        q.mark_recommended(qw.wish_id)
+        q.cancel(qw.wish_id)
+        assert q.get_by_id(qw.wish_id).state == WishState.ARCHIVED
+
+
+class TestMaxWishes:
+    def test_max_wishes_enforced(self):
+        q = WishQueue()
+        for i in range(q.MAX_ACTIVE_WISHES_PER_USER):
+            q.enqueue(_make_wish(), user_id="u1")
+        with pytest.raises(ValueError, match="active wishes"):
+            q.enqueue(_make_wish(), user_id="u1")
+
+    def test_archived_dont_count(self):
+        q = WishQueue()
+        for i in range(q.MAX_ACTIVE_WISHES_PER_USER):
+            qw = q.enqueue(_make_wish(), user_id="u1")
+        # Archive one
+        first_id = list(q._wishes.keys())[0]
+        q.cancel(first_id)
+        # Now can add one more
+        q.enqueue(_make_wish(), user_id="u1")  # Should not raise
+
+    def test_different_users_independent(self):
+        q = WishQueue()
+        for i in range(q.MAX_ACTIVE_WISHES_PER_USER):
+            q.enqueue(_make_wish(), user_id="u1")
+        # u2 is unaffected
+        q.enqueue(_make_wish(), user_id="u2")  # Should not raise
+
+
+class TestExpiry:
+    def test_expire_stale(self):
+        q = WishQueue()
+        qw = q.enqueue(_make_wish(), user_id="u1")
+        # Manually backdate creation
+        q._wishes[qw.wish_id].created_at = time.time() - q.WISH_EXPIRY_SECONDS - 1
+        expired = q.expire_stale()
+        assert qw.wish_id in expired
+        assert q.get_by_id(qw.wish_id).state == WishState.ARCHIVED
+
+    def test_recent_not_expired(self):
+        q = WishQueue()
+        qw = q.enqueue(_make_wish(), user_id="u1")
+        expired = q.expire_stale()
+        assert len(expired) == 0
+
+    def test_fulfilled_not_expired(self):
+        q = WishQueue()
+        qw = q.enqueue(_make_wish(), user_id="u1")
+        q.mark_searching(qw.wish_id)
+        q.mark_found(qw.wish_id, _make_fulfillment(), delay_seconds=0)
+        q.mark_recommended(qw.wish_id)
+        q.mark_confirmed(qw.wish_id)
+        q.mark_fulfilled(qw.wish_id)
+        # Backdate
+        q._wishes[qw.wish_id].created_at = time.time() - q.WISH_EXPIRY_SECONDS - 1
+        expired = q.expire_stale()
+        assert len(expired) == 0  # Already fulfilled, don't expire

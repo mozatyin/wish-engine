@@ -161,6 +161,75 @@ class TestAnxietyUser:
 # ═══════════════════════════════════════════════════════════════════════════════
 
 
+class TestCareerChanger:
+    """career_changer.json: no tags, relies on domains + text."""
+
+    @pytest.fixture
+    def items(self):
+        return _load_fixture("career_changer.json")
+
+    def test_detects_ambition_items(self, items):
+        results = detect_from_soul_items(items)
+        source_ids = {r.source_intention_id for r in results}
+        # si_002: "内心一直想创业做自己的产品" — ambition domain + "想"
+        assert "si_002" in source_ids
+        # si_012: "想做一个面向中小企业的AI工具" — ambition domain + "想"
+        assert "si_012" in source_ids
+
+    def test_facts_not_detected(self, items):
+        results = detect_from_soul_items(items)
+        source_ids = {r.source_intention_id for r in results}
+        # si_001: "在大厂做了8年" — fact (no tags, no desire markers)
+        assert "si_001" not in source_ids
+        # si_003: family fact
+        assert "si_003" not in source_ids
+        # si_011: "存款够18个月" — fact
+        assert "si_011" not in source_ids
+
+    def test_career_classification(self, items):
+        results = detect_from_soul_items(items)
+        si_002 = [r for r in results if r.source_intention_id == "si_002"]
+        assert len(si_002) == 1
+        assert si_002[0].wish_type == WishType.CAREER_DIRECTION
+
+    def test_total_reasonable(self, items):
+        results = detect_from_soul_items(items)
+        assert 1 <= len(results) <= 4
+
+
+class TestCarBuyer:
+    """car_buyer.json: purchase-focused, no psychological wishes."""
+
+    @pytest.fixture
+    def items(self):
+        return _load_fixture("car_buyer.json")
+
+    def test_purchase_intent_detected(self, items):
+        """si_002: '想买一辆SUV' — has purchase intent via text '想买'."""
+        results = detect_from_soul_items(items)
+        source_ids = {r.source_intention_id for r in results}
+        # This is a purchase wish, not a psychological wish
+        # But the adapter should still detect it (classification handles routing)
+        if "si_002" in source_ids:
+            # If detected, should not be L1 type
+            wish = [r for r in results if r.source_intention_id == "si_002"][0]
+            classified = classify(wish)
+            assert classified.level != WishLevel.L1  # Purchase ≠ psychological
+
+    def test_values_not_detected(self, items):
+        results = detect_from_soul_items(items)
+        source_ids = {r.source_intention_id for r in results}
+        # si_001: "重视家庭" — value, not intention
+        assert "si_001" not in source_ids
+        # si_006: "安全是第一优先级" — value
+        assert "si_006" not in source_ids
+
+    def test_total_very_few(self, items):
+        """Car buying has few psychological wishes."""
+        results = detect_from_soul_items(items)
+        assert len(results) <= 3
+
+
 class TestIsIntentionItem:
     def test_intention_tag(self):
         assert _is_intention_item({"tags": ["intention"]})

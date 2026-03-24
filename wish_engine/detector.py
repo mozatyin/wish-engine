@@ -51,6 +51,46 @@ _DESIRE_MARKERS: dict[str, list[str]] = {
         r"لو\s+أستطيع",
         r"أود\s+أن",
     ],
+    "hi": [
+        r"(?:मैं|मुझे)\s+(?:चाहता|चाहती)\s+(?:हूँ|हूं|हैं)",
+        r"मुझे\s+(?:ज़रूरत|जरूरत)\s+है",
+        r"काश",
+        r"(?:मैं|मुझे)\s+(?:चाहिए|चाहिये)",
+        r"अगर\s+(?:मैं|मुझे)\s+(?:मिल|कर)\s+(?:सकता|सकती|पाता|पाती)",
+        r"मेरी\s+(?:इच्छा|तमन्ना|ख़्वाहिश|ख्वाहिश)\s+है",
+    ],
+    "tr": [
+        r"\b(?:i|İ)stiyorum\b",
+        r"\bkeşke\b",
+        r"\bihtiyacım\s+var\b",
+        r"\bumuyorum\b",
+        r"\b(?:i|İ)sterim\b",
+        r"\barzu\s+ediyorum\b",
+    ],
+    "ru": [
+        r"\bя\s+хочу\b",
+        r"\bмне\s+нужно\b",
+        r"\bнадеюсь\b",
+        r"\bя\s+мечтаю\b",
+        r"\bесли\s+бы\s+(?:я\s+)?(?:мог|могла|мог(?:ла)?)\b",
+        r"\bхотел(?:а|ось)?\s+бы\b",
+    ],
+    "fr": [
+        r"\bje\s+veux\b",
+        r"\bj'aimerais\b",
+        r"\bj'espère\b",
+        r"\bje\s+souhaite\b",
+        r"\bsi\s+(?:seulement|je\s+pouvais)\b",
+        r"\bj'ai\s+besoin\s+de\b",
+    ],
+    "es": [
+        r"\bquiero\b",
+        r"\bdeseo\b",
+        r"\bnecesito\b",
+        r"\bojalá\b",
+        r"\bme\s+gustaría\b",
+        r"\bespero\b",
+    ],
 }
 
 # Type classification keywords (checked AFTER desire is confirmed)
@@ -150,11 +190,35 @@ _TYPE_KEYWORDS: dict[WishType, list[str]] = {
 
 
 def _detect_language(text: str) -> str:
-    """Simple language detection based on character ranges."""
+    """Simple language detection based on character ranges.
+
+    Unicode ranges used:
+      zh: \\u4e00-\\u9fff  (CJK Unified Ideographs)
+      ar: \\u0600-\\u06ff  (Arabic)
+      hi: \\u0900-\\u097f  (Devanagari)
+      ru: \\u0400-\\u04ff  (Cyrillic)
+      tr: Turkish-specific characters (\\u011e-\\u011f, \\u0130-\\u0131, etc.)
+      fr/es: Latin with diacritics — detected via keyword heuristics after others
+    """
     if re.search(r"[\u4e00-\u9fff]", text):
         return "zh"
+    if re.search(r"[\u0900-\u097f]", text):
+        return "hi"
     if re.search(r"[\u0600-\u06ff]", text):
         return "ar"
+    if re.search(r"[\u0400-\u04ff]", text):
+        return "ru"
+    # Turkish: check for Turkish-specific characters or common Turkish words
+    if re.search(r"[\u011e\u011f\u0130\u0131\u015e\u015f\u00d6\u00f6\u00dc\u00fc\u00c7\u00e7]", text):
+        return "tr"
+    if re.search(r"\b(?:istiyorum|keşke|ihtiyacım|umuyorum|isterim)\b", text, re.IGNORECASE):
+        return "tr"
+    # French: check for characteristic patterns
+    if re.search(r"\b(?:je|j'|qu'|c'est|d'|l'|n'|s'|avoir|être)\b", text, re.IGNORECASE):
+        return "fr"
+    # Spanish: check for characteristic patterns
+    if re.search(r"\b(?:quiero|necesito|deseo|ojalá|estoy|tengo|puedo|también|está|más)\b", text, re.IGNORECASE):
+        return "es"
     return "en"
 
 
@@ -171,6 +235,26 @@ _NEGATION_PATTERNS: dict[str, list[str]] = {
     "ar": [
         r"لا\s+(?:أريد|أتمنى|أحتاج)",
         r"ما\s+(?:أريد|أبغى)",
+    ],
+    "hi": [
+        r"(?:मैं|मुझे)\s+(?:नहीं)\s+(?:चाहता|चाहती|चाहिए)",
+        r"(?:ज़रूरत|जरूरत)\s+नहीं",
+    ],
+    "tr": [
+        r"\b(?:i|İ)stemiyorum\b",
+        r"\bihtiyacım\s+yok\b",
+    ],
+    "ru": [
+        r"\bя\s+не\s+хочу\b",
+        r"\bмне\s+не\s+нужно\b",
+    ],
+    "fr": [
+        r"\bje\s+ne\s+veux\s+(?:pas|plus)\b",
+        r"\bje\s+n'ai\s+pas\s+besoin\b",
+    ],
+    "es": [
+        r"\bno\s+(?:quiero|necesito|deseo)\b",
+        r"\bno\s+me\s+gustaría\b",
     ],
 }
 
@@ -196,6 +280,26 @@ _CASUAL_WANT_PATTERNS: dict[str, list[str]] = {
     ],
     "ar": [
         r"أريد\s+أن\s+(?:آكل|أنام|أذهب|أشرب|أرتاح)",
+    ],
+    "hi": [
+        r"(?:खाना|सोना|पीना|जाना|नहाना|आराम)\s+(?:चाहता|चाहती|चाहिए)",
+        r"(?:मैं|मुझे)\s+(?:खाना|सोना|पीना|जाना|नहाना)\s+(?:है|हैं)",
+    ],
+    "tr": [
+        r"\b(?:i|İ)stiyorum\s+(?:yemek|uyumak|gitmek|içmek|dinlenmek|yürümek|oturmak)\b",
+        r"\bihtiyacım\s+var\s+(?:yemek|uyumak|gitmek|dinlenmek)\b",
+    ],
+    "ru": [
+        r"\bхочу\s+(?:есть|спать|пить|идти|гулять|отдохнуть|сесть|встать|уйти)\b",
+        r"\bнужно\s+(?:поесть|поспать|попить|уйти|отдохнуть|помыться)\b",
+    ],
+    "fr": [
+        r"\bveux\s+(?:manger|dormir|boire|partir|aller|rester|marcher|m'asseoir)\b",
+        r"\bbesoin\s+de\s+(?:manger|dormir|boire|partir|me\s+reposer|me\s+doucher)\b",
+    ],
+    "es": [
+        r"\bquiero\s+(?:comer|dormir|beber|ir|irme|salir|caminar|sentarme|descansar)\b",
+        r"\bnecesito\s+(?:comer|dormir|beber|irme|descansar|ducharme)\b",
     ],
 }
 
@@ -341,7 +445,7 @@ def detect_wishes(
         lang = _detect_language(intent.text)
 
         # Skip very short texts (language-aware minimum)
-        min_len = 4 if lang in ("zh", "ar") else 10
+        min_len = 4 if lang in ("zh", "ar", "hi") else 10
         if len(intent.text.strip()) < min_len:
             continue
         has_desire = _has_desire_marker(intent.text, lang)

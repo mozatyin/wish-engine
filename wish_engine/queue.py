@@ -60,6 +60,18 @@ class QueuedWish(BaseModel):
     user_id: str = ""
 
 
+# Valid state transitions
+_VALID_TRANSITIONS: dict[WishState, set[WishState]] = {
+    WishState.BORN: {WishState.SEARCHING, WishState.ARCHIVED},  # can cancel from born
+    WishState.SEARCHING: {WishState.FOUND, WishState.ARCHIVED},  # can cancel from searching
+    WishState.FOUND: {WishState.RECOMMENDED, WishState.ARCHIVED},
+    WishState.RECOMMENDED: {WishState.CONFIRMED, WishState.ARCHIVED},  # user can dismiss
+    WishState.CONFIRMED: {WishState.FULFILLED},
+    WishState.FULFILLED: {WishState.ARCHIVED},
+    WishState.ARCHIVED: set(),  # terminal state
+}
+
+
 class WishQueue:
     """Manages wish lifecycle transitions.
 
@@ -72,6 +84,9 @@ class WishQueue:
         ready = queue.get_ready_to_reveal(user_id="u1")
         queue.mark_recommended(ready[0].wish_id)
     """
+
+    MAX_ACTIVE_WISHES_PER_USER = 10  # Prevent star map clutter
+    WISH_EXPIRY_SECONDS = 7 * 86400  # 7 days — unfulfilled wishes expire
 
     def __init__(self):
         self._wishes: dict[str, QueuedWish] = {}
@@ -88,7 +103,16 @@ class WishQueue:
         user_id: str = "",
         distress: float = 0.0,
     ) -> QueuedWish:
-        """Add a new wish to the queue. Returns QueuedWish in BORN state."""
+        """Add a new wish to the queue. Returns QueuedWish in BORN state.
+
+        Raises:
+            ValueError: If user already has MAX_ACTIVE_WISHES_PER_USER active wishes.
+        """
+        if user_id and self.get_active_count(user_id) >= self.MAX_ACTIVE_WISHES_PER_USER:
+            raise ValueError(
+                f"User {user_id} has {self.MAX_ACTIVE_WISHES_PER_USER} active wishes. "
+                "Archive or cancel some before adding more."
+            )
         wish_id = self._next_id()
 
         # Determine priority based on distress and wish type
@@ -118,10 +142,21 @@ class WishQueue:
             return WishPriority.LOW
         return WishPriority.NORMAL
 
+    def _transition(self, wish_id: str, new_state: WishState) -> QueuedWish:
+        """Validate and execute state transition."""
+        qw = self._wishes[wish_id]
+        valid = _VALID_TRANSITIONS.get(qw.state, set())
+        if new_state not in valid:
+            raise ValueError(
+                f"Invalid transition: {qw.state.value} → {new_state.value}. "
+                f"Valid: {[s.value for s in valid]}"
+            )
+        qw.state = new_state
+        return qw
+
     def mark_searching(self, wish_id: str) -> QueuedWish:
         """Transition wish to SEARCHING state (agent working on it)."""
-        qw = self._wishes[wish_id]
-        qw.state = WishState.SEARCHING
+        qw = self._transition(wish_id, WishState.SEARCHING)
         qw.searching_at = time.time()
         return qw
 
@@ -141,8 +176,7 @@ class WishQueue:
                           3600 = reveal after 1 hour.
                           86400 = reveal next day.
         """
-        qw = self._wishes[wish_id]
-        qw.state = WishState.FOUND
+        qw = self._transition(wish_id, WishState.FOUND)
         qw.found_at = time.time()
         qw.fulfillment = fulfillment
         qw.reveal_after = time.time() + delay_seconds
@@ -150,31 +184,55 @@ class WishQueue:
 
     def mark_recommended(self, wish_id: str) -> QueuedWish:
         """Transition to RECOMMENDED (shown to user, awaiting confirmation)."""
-        qw = self._wishes[wish_id]
-        qw.state = WishState.RECOMMENDED
+        qw = self._transition(wish_id, WishState.RECOMMENDED)
         qw.recommended_at = time.time()
         return qw
 
     def mark_confirmed(self, wish_id: str) -> QueuedWish:
         """User confirmed they want to see the fulfillment."""
-        qw = self._wishes[wish_id]
-        qw.state = WishState.CONFIRMED
+        qw = self._transition(wish_id, WishState.CONFIRMED)
         qw.confirmed_at = time.time()
         return qw
 
     def mark_fulfilled(self, wish_id: str) -> QueuedWish:
         """Wish fully delivered to user."""
-        qw = self._wishes[wish_id]
-        qw.state = WishState.FULFILLED
+        qw = self._transition(wish_id, WishState.FULFILLED)
         qw.fulfilled_at = time.time()
         return qw
 
     def mark_archived(self, wish_id: str) -> QueuedWish:
         """Archive completed wish (moves to Life Chapter)."""
-        qw = self._wishes[wish_id]
-        qw.state = WishState.ARCHIVED
+        qw = self._transition(wish_id, WishState.ARCHIVED)
         qw.archived_at = time.time()
         return qw
+
+    def cancel(self, wish_id: str) -> QueuedWish:
+        """Cancel a wish (user dismisses or wish becomes irrelevant).
+
+        Can cancel from any non-terminal state.
+        """
+        qw = self._transition(wish_id, WishState.ARCHIVED)
+        qw.archived_at = time.time()
+        return qw
+
+    def expire_stale(self, user_id: str | None = None) -> list[str]:
+        """Expire wishes that have been unfulfilled for too long.
+
+        Returns list of expired wish IDs.
+        """
+        now = time.time()
+        expired: list[str] = []
+        for qw in list(self._wishes.values()):
+            if user_id and qw.user_id != user_id:
+                continue
+            if qw.state in (WishState.FULFILLED, WishState.ARCHIVED):
+                continue
+            age = now - qw.created_at
+            if age > self.WISH_EXPIRY_SECONDS:
+                qw.state = WishState.ARCHIVED
+                qw.archived_at = now
+                expired.append(qw.wish_id)
+        return expired
 
     def get_ready_to_reveal(self, user_id: str) -> list[QueuedWish]:
         """Get wishes ready to reveal to a user (FOUND + past reveal_after time).

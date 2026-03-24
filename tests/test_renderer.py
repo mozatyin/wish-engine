@@ -212,3 +212,44 @@ class TestZeroAILanguage:
         banned = ["AI", "algorithm", "model", "detect", "compute", "analyze", "score"]
         for word in banned:
             assert word.lower() not in text.lower()
+
+
+class TestMultilingualRevealText:
+    """Reveal text should match wish language."""
+
+    def test_chinese_wish_chinese_reveal(self):
+        wish = ClassifiedWish(
+            wish_text="想理解自己", wish_type=WishType.SELF_UNDERSTANDING,
+            level=WishLevel.L1, fulfillment_strategy="test",
+        )
+        out = render(WishState.FOUND, wish=wish)
+        assert "愿望" in out.card_data["reveal_text"]  # Chinese text
+
+    def test_arabic_wish_arabic_reveal(self):
+        wish = ClassifiedWish(
+            wish_text="أريد أن أفهم نفسي", wish_type=WishType.SELF_UNDERSTANDING,
+            level=WishLevel.L1, fulfillment_strategy="test",
+        )
+        out = render(WishState.FOUND, wish=wish)
+        assert "أمنية" in out.card_data["reveal_text"]  # Arabic text
+
+    def test_english_wish_english_reveal(self):
+        wish = _make_wish()
+        out = render(WishState.FOUND, wish=wish)
+        assert "wish" in out.card_data["reveal_text"].lower()
+
+
+class TestAnimationTiming:
+    """Frontend needs duration and easing for animations."""
+
+    def test_born_has_duration(self):
+        out = render(WishState.BORN)
+        assert out.card_data["animation_duration_ms"] == 2000
+
+    def test_fulfilled_has_easing(self):
+        out = render(WishState.FULFILLED)
+        assert out.card_data["animation_easing"] == "ease-out"
+
+    def test_searching_has_duration(self):
+        out = render(WishState.SEARCHING)
+        assert out.card_data["animation_duration_ms"] == 3000

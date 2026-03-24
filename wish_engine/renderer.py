@@ -96,13 +96,52 @@ def _build_card_data(
         card["card_type"] = fulfillment.card_type.value
         card["related_stars"] = fulfillment.related_stars
 
-    # Chocolate moment text (Zero-AI language)
-    if state == WishState.FOUND:
-        card["reveal_text"] = "A wish is coming true..."
-    elif state == WishState.FULFILLED:
-        card["reveal_text"] = "Your stars have an answer"
+    # Chocolate moment text — multilingual, Zero-AI language (V10 §7.2)
+    lang = wish.wish_text[:1] if wish else ""
+    # Detect language from wish text for reveal text
+    import re
+    if wish and re.search(r"[\u4e00-\u9fff]", wish.wish_text):
+        reveal_lang = "zh"
+    elif wish and re.search(r"[\u0600-\u06ff]", wish.wish_text):
+        reveal_lang = "ar"
+    else:
+        reveal_lang = "en"
+
+    _REVEAL_TEXT = {
+        WishState.FOUND: {
+            "en": "A wish is coming true...",
+            "zh": "一个愿望正在实现...",
+            "ar": "...أمنية على وشك التحقق",
+        },
+        WishState.FULFILLED: {
+            "en": "Your stars have an answer",
+            "zh": "你的星星有了答案",
+            "ar": "نجومك وجدت إجابة",
+        },
+        WishState.RECOMMENDED: {
+            "en": "Something appeared for your wish",
+            "zh": "你的愿望有了回应",
+            "ar": "ظهر شيء لأمنيتك",
+        },
+    }
+
+    if state in _REVEAL_TEXT:
+        card["reveal_text"] = _REVEAL_TEXT[state].get(reveal_lang, _REVEAL_TEXT[state]["en"])
     elif state == WishState.BORN:
-        card["reveal_text"] = None  # no text for born stars
+        card["reveal_text"] = None
+
+    # Animation timing (ms) — frontend uses these for sequencing
+    _ANIMATION_DURATION = {
+        WishState.BORN: 2000,
+        WishState.SEARCHING: 3000,
+        WishState.FOUND: 1500,
+        WishState.RECOMMENDED: 1000,
+        WishState.CONFIRMED: 800,
+        WishState.FULFILLED: 2500,
+        WishState.ARCHIVED: 1000,
+    }
+    card["animation_duration_ms"] = _ANIMATION_DURATION.get(state, 1000)
+    card["animation_easing"] = "ease-in-out" if state != WishState.FULFILLED else "ease-out"
 
     return card
 

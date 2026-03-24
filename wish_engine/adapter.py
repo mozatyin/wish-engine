@@ -15,33 +15,62 @@ from wish_engine.models import DetectedWish, WishType
 # ── Intention recognition from SoulItem metadata ────────────────────────────
 
 _INTENTION_TAGS = {"intention", "desire", "need", "aspiration", "goal"}
-_INTENTION_DOMAINS = {"intention"}  # Some fixtures put "intention" in domains
+_INTENTION_DOMAINS = {"intention", "ambition"}  # "ambition" also signals desire
+_NON_INTENTION_TAGS = {"fact", "symptom", "preference", "behavior", "story", "trait", "belief", "value"}
+
+# Text-based desire markers (for items without tags)
+_TEXT_DESIRE_MARKERS = [
+    r"想(?:要|做|创|找|学|去|试|培|证|买|成|改|了解|理解|知道|弄|搞)",
+    r"希望", r"渴望", r"内心.*想",
+    r"\bwant\s+to\b", r"\bwish\b", r"\bhope\s+to\b", r"\bneed\s+to\b",
+    r"أريد", r"أتمنى",
+]
+
+import re as _re
 
 
 def _is_intention_item(item: dict[str, Any]) -> bool:
     """Check if a SoulItem represents an intention (vs fact/emotion/value).
 
     An item is an intention if:
-    1. tags contain "intention"/"desire"/"need", OR
-    2. domains contain "intention", OR
-    3. item_type is "action" or "cognitive" with supporting tags
+    1. tags contain "intention"/"desire"/"need"/"goal", OR
+    2. domains contain "intention"/"ambition", OR
+    3. item_type is "action" or "cognitive" with supporting context, OR
+    4. Text contains explicit desire markers (for items without tags)
+
+    NOT an intention if:
+    - tags explicitly mark it as fact/symptom/preference/behavior/story/trait
     """
     tags = set(item.get("tags", []))
     domains = set(item.get("domains", []))
+    text = item.get("text", "")
+
+    # Explicit non-intention tags → skip (even if text has "想")
+    if tags and tags <= _NON_INTENTION_TAGS:
+        return False
 
     # Direct tag match
     if tags & _INTENTION_TAGS:
         return True
 
-    # Domain match (some fixtures use domains to flag intentions)
+    # Domain match
     if domains & _INTENTION_DOMAINS:
         return True
 
-    # Action items with reasonable confidence are often intentions
+    # Action items with reasonable confidence
     item_type = item.get("item_type", "")
     confidence = item.get("confidence", 0.0)
     if item_type == "action" and confidence >= 0.5:
         return True
+
+    # Text-based desire marker (for items WITHOUT tags — common in some fixtures)
+    if not tags:
+        lower = text.lower()
+        # Filter: purchase/physical actions are not psychological wishes
+        if _re.search(r"想买|想吃|想喝|想去(?!理解|了解)|want\s+to\s+buy|purchase", lower):
+            return False
+        if any(_re.search(p, lower) for p in _TEXT_DESIRE_MARKERS):
+            return True
 
     return False
 
@@ -51,8 +80,10 @@ def _is_intention_item(item: dict[str, Any]) -> bool:
 # Priority-ordered: first match wins
 _DOMAIN_TO_TYPE: list[tuple[set[str], WishType]] = [
     # L2 types FIRST (more specific, concrete actions — before L1 catch-alls)
-    ({"career", "ambition"}, WishType.CAREER_DIRECTION),
-    ({"career", "identity"}, WishType.CAREER_DIRECTION),  # "想创业" = career, not self-understanding
+    ({"ambition", "career"}, WishType.CAREER_DIRECTION),
+    ({"ambition", "technology"}, WishType.CAREER_DIRECTION),
+    ({"ambition"}, WishType.CAREER_DIRECTION),
+    ({"career", "identity"}, WishType.CAREER_DIRECTION),
     ({"career"}, WishType.CAREER_DIRECTION),
     ({"wellness"}, WishType.HEALTH_WELLNESS),
     ({"health"}, WishType.HEALTH_WELLNESS),
