@@ -61,13 +61,11 @@ class TestZhangWei:
         assert "si_026" not in source_ids  # 追求自由 (value)
         assert "si_045" not in source_ids  # 喜欢骑自行车 (preference)
 
-    def test_fear_intention_detected(self, items):
-        """'害怕创业失败养不了家' has tags: [intention, fear] — should detect."""
+    def test_fear_intention_filtered(self, items):
+        """'害怕创业失败养不了家' has tags: [intention, fear] but no desire marker → NOT a wish."""
         results = detect_from_soul_items(items)
-        fear_wish = [r for r in results if r.source_intention_id == "si_010"]
-        assert len(fear_wish) == 1
-        # Fear tag should boost confidence
-        assert fear_wish[0].confidence > 0.85
+        fear_items = [r for r in results if r.source_intention_id == "si_010"]
+        assert len(fear_items) == 0  # Pure fear without "想/want" → filtered
 
     def test_career_wishes_classified(self, items):
         """Career-domain intentions should classify to CAREER_DIRECTION."""
@@ -133,13 +131,14 @@ class TestAnxietyUser:
         assert "si_012" in source_ids
 
     def test_non_intentions_filtered(self, items):
-        """Facts and background items should not be detected."""
+        """Facts, background, and observation items should not be detected."""
         results = detect_from_soul_items(items)
         source_ids = {r.source_intention_id for r in results}
 
         assert "si_001" not in source_ids  # 说不清焦虑什么 (cognitive, no intention tag/domain)
         assert "si_002" not in source_ids  # 工作压力大 (background)
         assert "si_006" not in source_ids  # 小时候父母严格 (background)
+        assert "si_010" not in source_ids  # 运动轻松 (action observation, no desire marker)
         assert "si_011" not in source_ids  # 失眠严重 (background)
 
     def test_wellness_wishes(self, items):
@@ -240,8 +239,12 @@ class TestIsIntentionItem:
     def test_intention_domain(self):
         assert _is_intention_item({"domains": ["intention", "wellness"]})
 
-    def test_action_type_with_confidence(self):
-        assert _is_intention_item({"item_type": "action", "confidence": 0.7})
+    def test_action_type_with_desire_marker(self):
+        assert _is_intention_item({"item_type": "action", "confidence": 0.7, "text": "想试试冥想"})
+
+    def test_action_type_without_desire_marker(self):
+        """Action without desire marker (observation) → not intention."""
+        assert not _is_intention_item({"item_type": "action", "confidence": 0.8, "text": "运动的时候很轻松"})
 
     def test_action_type_low_confidence(self):
         assert not _is_intention_item({"item_type": "action", "confidence": 0.3})

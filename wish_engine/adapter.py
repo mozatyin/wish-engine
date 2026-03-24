@@ -49,19 +49,27 @@ def _is_intention_item(item: dict[str, Any]) -> bool:
     if tags and tags <= _NON_INTENTION_TAGS:
         return False
 
-    # Direct tag match
+    # Direct tag match — but fear-only intentions are not wishes
     if tags & _INTENTION_TAGS:
+        # "intention" + "fear" without desire marker → fear, not wish
+        if "fear" in tags:
+            lower = text.lower()
+            if not any(_re.search(p, lower) for p in _TEXT_DESIRE_MARKERS):
+                return False  # Pure fear like "害怕创业失败" — not a wish
         return True
 
     # Domain match
     if domains & _INTENTION_DOMAINS:
         return True
 
-    # Action items with reasonable confidence
+    # Action items with intention domain or desire markers in text
     item_type = item.get("item_type", "")
     confidence = item.get("confidence", 0.0)
     if item_type == "action" and confidence >= 0.5:
-        return True
+        # Only if text also has a desire marker (prevents "运动的时候很轻松" FP)
+        lower = text.lower()
+        if any(_re.search(p, lower) for p in _TEXT_DESIRE_MARKERS):
+            return True
 
     # Text-based desire marker (for items WITHOUT tags — common in some fixtures)
     if not tags:
