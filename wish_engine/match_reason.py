@@ -16,7 +16,7 @@ from wish_engine.marketplace import Match
 # Zero-LLM templates for common match patterns (avoids Haiku for simple cases)
 _TEMPLATES: dict[str, list[str]] = {
     "en": [
-        "You both know what it feels like to {shared}",
+        "You both know what it means — {shared}",
         "Your stars share something rare — {shared}",
         "A resonance was discovered: {shared}",
     ],

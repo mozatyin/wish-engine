@@ -225,8 +225,10 @@ def _detect_language(text: str) -> str:
 # Negation patterns — if these appear BEFORE the desire marker, reject
 _NEGATION_PATTERNS: dict[str, list[str]] = {
     "en": [
-        r"\b(?:don't|doesn't|didn't|do\s+not|never|no\s+i\s+don't)\b.*\b(?:want|wish|need|wanna)\b",
-        r"\b(?:i\s+(?:don't|never|didn't))\b.*\b(?:want|wish|need|wanna)\b",
+        # Only negate when "I" is the subject who doesn't want
+        r"\bi\s+(?:don't|never|didn't)\s+(?:want|wish|need|wanna)\b",
+        r"\bno\s+i\s+don't\s+(?:want|need)\b",
+        r"\bi\s+do\s+not\s+(?:want|wish|need)\b",
     ],
     "zh": [
         r"(?:不想|不需要|不要|别想|不用)",
