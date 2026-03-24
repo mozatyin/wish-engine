@@ -26,15 +26,17 @@ from wish_engine.models import (
 # Desire markers: words that signal "I want/wish/need/hope to..."
 _DESIRE_MARKERS: dict[str, list[str]] = {
     "en": [
-        r"\bi\s+(?:want|wish|hope|need|long|yearn|desire)\s+to\b",
-        r"\bi\s+(?:wish|want|need)\s+i?\s*(?:could|would|can)\b",
+        r"\bi\s+(?:want|wish|hope|need|long|yearn|desire|wanna)\s+(?:to\s+)?\b",
+        r"\bi\s+just\s+wanna\b",
+        r"\bi\s+(?:also\s+)?(?:wish|want|need)\s+i?\s*(?:could|would|can|knew|know)\b",
         r"\bi(?:'d| would)\s+(?:love|like)\s+to\b",
         r"\bif\s+(?:only|i could)\b",
         r"\bi\s+(?:want|need)\s+(?:a|an|some|the|to)\b",
+        r"\bi\s+(?:want|need)\s+to\s+(?:figure|work|sort)\s+out\b",
         r"\bi\s+dream\s+of\b",
     ],
     "zh": [
-        r"我?想(?:要|了解|知道|理解|学|找|做|写|看|去|有|成为|变得|给)",
+        r"我?想(?:要|了解|知道|理解|学|找|做|写|看|去|有|成为|变得|给|弄|搞|把)",
         r"希望(?:能|可以|自己|我)",
         r"渴望",
         r"如果(?:能|可以)",
@@ -55,35 +57,42 @@ _DESIRE_MARKERS: dict[str, list[str]] = {
 _TYPE_KEYWORDS: dict[WishType, list[str]] = {
     WishType.SELF_UNDERSTANDING: [
         r"understand\s+(?:myself|why\s+i|who\s+i)",
-        r"why\s+(?:am\s+i|do\s+i|i\s+always)",
-        r"理解自己", r"为什么我(?:总是|会|老是|一直)",
+        r"(?:figure|work|sort)\s+out\s+(?:why|who|what|how)\s+i\b",
+        r"why\s+(?:am\s+i|do\s+i|i\s+always|i\s+keep)",
+        r"(?:knew|know)\s+why\s+i\b",
+        r"理解自己", r"为什么(?:我|自己)(?:总是|会|老是|一直)?",
         r"了解自己", r"认识自己",
+        r"弄清楚.*(?:自己|为什么)", r"搞懂.*(?:自己|为什么)",
         r"أفهم\s+نفسي", r"لماذا\s+أنا",
     ],
     WishType.SELF_EXPRESSION: [
-        r"(?:write|express|say|tell|share)\s+(?:my|what|how|a)",
+        r"(?:write|express|say|tell|share)\s+(?:my|what|how|a|about|down)",
         r"write\s+(?:a\s+)?letter",
-        r"写(?:信|下|出|一封)", r"表达(?:自己|我的)",
+        r"写(?:信|下|出|一封)", r"把.*(?:写|说)出",
+        r"表达(?:自己|我的)",
         r"给自己写", r"说出", r"倾诉",
         r"أعبر\s+عن", r"أكتب",
     ],
     WishType.RELATIONSHIP_INSIGHT: [
         r"(?:relationship|between\s+us|why\s+we)",
         r"(?:我和他|我和她|我们俩|我们为什么)",
-        r"(?:总是?吵|为什么.*吵|关系)",
+        r"(?:总是?吵|为什么.*吵|亲密关系|关系)",
+        r"(?:每段感情|感情.*失败)",
         r"علاقت", r"بيننا",
     ],
     WishType.EMOTIONAL_PROCESSING: [
         r"(?:my|this|the)\s+(?:anger|sadness|anxiety|fear|grief|pain|frustration)",
         r"(?:where|why).*(?:anger|sadness|anxiety|fear)\s+(?:comes?\s+from|from)",
-        r"(?:process|deal\s+with|handle|cope)\s+(?:my|this|the)",
+        r"(?:process|deal\s+with|handle|cope|figure\s+out)\s+(?:my|this|the|what)",
+        r"(?:eating|weighing|gnawing)\s+(?:at|on)\s+me",
         r"(?:愤怒|悲伤|焦虑|恐惧|痛苦).*(?:从哪|为什么|怎么)",
         r"理解我的(?:愤怒|悲伤|焦虑|情绪)",
-        r"处理.*(?:情绪|感受)",
+        r"处理.*(?:情绪|感受)", r"放下.*(?:执念|过去|前任)",
         r"غضب", r"حزن", r"قلق",
     ],
     WishType.LIFE_REFLECTION: [
-        r"(?:summary|reflection|look\s+back|overview)\s+(?:of|about|on)",
+        r"(?:summary|reflection|look\s+back|overview|portrait)\s+(?:of|about|on|my)",
+        r"(?:portrait|snapshot|overview)\s+(?:of\s+)?(?:my|me|myself|who)",
         r"总结(?:一下|关于)?(?:自己|我的|人生|生活)?",
         r"回顾", r"复盘",
         r"أراجع", r"ملخص",
@@ -91,7 +100,7 @@ _TYPE_KEYWORDS: dict[WishType, list[str]] = {
     # L2 types
     WishType.LEARN_SKILL: [
         r"(?:learn|study|master|practice)\s+",
-        r"学(?:会|习)", r"أتعلم",
+        r"学(?:会|习|(?=\w))", r"أتعلم",
     ],
     WishType.FIND_PLACE: [
         r"(?:find|go\s+to|visit)\s+(?:a\s+)?(?:place|park|café|library|quiet)",
@@ -108,7 +117,7 @@ _TYPE_KEYWORDS: dict[WishType, list[str]] = {
         r"مهنة", r"عمل",
     ],
     WishType.HEALTH_WELLNESS: [
-        r"(?:meditat|yoga|therapy|wellness|heal|exercise)",
+        r"(?:meditat|yoga|therap|wellness|heal|exercise|counsell)",
         r"(?:冥想|瑜伽|疗愈|健康|运动)",
         r"تأمل", r"صحة",
     ],
@@ -149,20 +158,56 @@ def _detect_language(text: str) -> str:
     return "en"
 
 
+# Negation patterns — if these appear BEFORE the desire marker, reject
+_NEGATION_PATTERNS: dict[str, list[str]] = {
+    "en": [
+        r"\b(?:don't|doesn't|didn't|do\s+not|never|no\s+i\s+don't)\b.*\b(?:want|wish|need|wanna)\b",
+        r"\b(?:i\s+(?:don't|never|didn't))\b.*\b(?:want|wish|need|wanna)\b",
+    ],
+    "zh": [
+        r"(?:不想|不需要|不要|别想|不用)",
+        r"真的不想",
+    ],
+    "ar": [
+        r"لا\s+(?:أريد|أتمنى|أحتاج)",
+        r"ما\s+(?:أريد|أبغى)",
+    ],
+}
+
+
+def _is_negated(text: str, lang: str) -> bool:
+    """Check if the desire is negated (I don't want, 不想, etc.)."""
+    patterns = _NEGATION_PATTERNS.get(lang, _NEGATION_PATTERNS["en"])
+    lower = text.lower()
+    return any(re.search(p, lower) for p in patterns)
+
+
 def _has_desire_marker(text: str, lang: str) -> bool:
-    """Check if text contains a desire/wish keyword."""
+    """Check if text contains a desire/wish keyword (and is NOT negated)."""
+    # Check negation first
+    if _is_negated(text, lang):
+        return False
     patterns = _DESIRE_MARKERS.get(lang, _DESIRE_MARKERS["en"])
     lower = text.lower()
     return any(re.search(p, lower) for p in patterns)
 
 
 def _classify_wish_type(text: str) -> WishType | None:
-    """Try to classify wish type from text keywords. Returns None if no match."""
+    """Try to classify wish type from text keywords. Returns None if no match.
+
+    When multiple types match, returns the one with the most keyword hits (specificity wins).
+    """
     lower = text.lower()
+    best_type: WishType | None = None
+    best_hits = 0
+
     for wish_type, patterns in _TYPE_KEYWORDS.items():
-        if any(re.search(p, lower) for p in patterns):
-            return wish_type
-    return None
+        hits = sum(1 for p in patterns if re.search(p, lower))
+        if hits > best_hits:
+            best_hits = hits
+            best_type = wish_type
+
+    return best_type
 
 
 # ── Local fallback scorer (replaces Haiku for ambiguous cases) ───────────────
@@ -173,7 +218,7 @@ _FALLBACK_KEYWORDS: list[tuple[WishType, list[str], float]] = [
     # (type, keyword patterns, base confidence)
     (WishType.SELF_UNDERSTANDING, [r"myself|自己|نفسي", r"why|为什么|لماذا", r"understand|明白|أفهم"], 0.65),
     (WishType.EMOTIONAL_PROCESSING, [r"feel|emotion|mood|感受|情绪|心情|شعور", r"angry|sad|anxious|scared|害怕|难过|生气"], 0.65),
-    (WishType.RELATIONSHIP_INSIGHT, [r"relation|partner|friend|他|她|朋友|伴侣|صديق", r"fight|argue|吵|争"], 0.60),
+    (WishType.RELATIONSHIP_INSIGHT, [r"relation|partner|friend|他|她|朋友|伴侣|前任|ex\b|صديق", r"fight|argue|吵|争|感情|失败"], 0.60),
     (WishType.SELF_EXPRESSION, [r"write|letter|journal|diary|写|日记|信|أكتب", r"express|tell|说|表达"], 0.60),
     (WishType.LIFE_REFLECTION, [r"life|past|future|growth|人生|过去|未来|成长|حياة"], 0.55),
     (WishType.HEALTH_WELLNESS, [r"health|wellness|relax|calm|peace|放松|平静|健康|هدوء"], 0.55),
