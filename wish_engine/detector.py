@@ -182,10 +182,36 @@ def _is_negated(text: str, lang: str) -> bool:
     return any(re.search(p, lower) for p in patterns)
 
 
+# Casual/physical "want" that are NOT psychological wishes
+_CASUAL_WANT_PATTERNS: dict[str, list[str]] = {
+    "en": [
+        r"\bwant\s+to\s+(?:eat|sleep|drink|go|leave|come|stay|sit|stand|run|walk|stop|start|say|tell\s+you|mention|add|get|buy|pay|play|watch|listen|try\s+(?:this|that|it))\b",
+        r"\bwant\s+(?:pizza|food|coffee|water|some|this|that|it)\b",
+        r"\bneed\s+to\s+(?:eat|sleep|go|leave|pee|rest|shower|work|study)\b",
+        r"\bwanna\s+(?:eat|sleep|go|leave|hang|chill|play|watch)\b",
+    ],
+    "zh": [
+        r"想(?:去|吃|喝|睡|买|玩|看看|听|坐|走|回)",
+        r"想(?:上厕所|洗澡|休息一下)",
+    ],
+    "ar": [
+        r"أريد\s+أن\s+(?:آكل|أنام|أذهب|أشرب|أرتاح)",
+    ],
+}
+
+
+def _is_casual_want(text: str, lang: str) -> bool:
+    """Check if 'want' is casual/physical, not a psychological wish."""
+    patterns = _CASUAL_WANT_PATTERNS.get(lang, _CASUAL_WANT_PATTERNS["en"])
+    lower = text.lower()
+    return any(re.search(p, lower) for p in patterns)
+
+
 def _has_desire_marker(text: str, lang: str) -> bool:
-    """Check if text contains a desire/wish keyword (and is NOT negated)."""
-    # Check negation first
+    """Check if text contains a desire/wish keyword (and is NOT negated or casual)."""
     if _is_negated(text, lang):
+        return False
+    if _is_casual_want(text, lang):
         return False
     patterns = _DESIRE_MARKERS.get(lang, _DESIRE_MARKERS["en"])
     lower = text.lower()
@@ -266,10 +292,10 @@ def _call_haiku(prompt: str, api_key: str) -> dict[str, Any]:
 
     client = anthropic.Anthropic(
         api_key=api_key,
-        base_url="https://openrouter.ai/api/v1",
+        base_url="https://openrouter.ai/api",
     )
     response = client.messages.create(
-        model="anthropic/claude-haiku",
+        model="anthropic/claude-haiku-4-5-20251001",
         max_tokens=128,
         messages=[{"role": "user", "content": prompt}],
     )
@@ -313,6 +339,11 @@ def detect_wishes(
     # Pass 1: rule-based fast path
     for intent in intentions:
         lang = _detect_language(intent.text)
+
+        # Skip very short texts (language-aware minimum)
+        min_len = 4 if lang in ("zh", "ar") else 10
+        if len(intent.text.strip()) < min_len:
+            continue
         has_desire = _has_desire_marker(intent.text, lang)
 
         if has_desire:

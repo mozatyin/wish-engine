@@ -129,11 +129,11 @@ def _build_fulfillment_prompt(
         pattern_str = "\nPatterns: " + ", ".join(p.pattern_name for p in patterns[:3])
 
     card_instruction = {
-        CardType.INSIGHT: "Write a personalized psychological insight (150-250 words). Explain the WHY behind their pattern. End with a gentle reflection question.",
-        CardType.RELATIONSHIP_ANALYSIS: "Analyze the relationship dynamic (150-250 words). Explain the friction/harmony pattern. End with one suggestion.",
-        CardType.EMOTION_TRACE: "Trace the emotional origin (150-250 words). Connect current feeling to underlying patterns. End with a grounding thought.",
-        CardType.SOUL_PORTRAIT: "Write a soul self-portrait (200-300 words). Weave all dimensions into a narrative. Warm, poetic, personal.",
-        CardType.SELF_DIALOGUE: "Write the opening of a letter to self (100-200 words). Warm, reflective tone. Leave space for the user to continue.",
+        CardType.INSIGHT: "Write a personalized insight (150-250 words). Reference their specific traits from the profile (e.g. conflict style, attachment, values). Explain WHY this pattern exists for THIS person. End with a reflection question.",
+        CardType.RELATIONSHIP_ANALYSIS: "Analyze the relationship dynamic (150-250 words). Reference their specific conflict style, attachment, love language from profile. Explain the friction pattern. End with one suggestion.",
+        CardType.EMOTION_TRACE: "Trace the emotional origin (150-250 words). Reference their specific distress level, fragility pattern, attachment style from profile. Connect current feeling to their underlying patterns. End with a grounding thought.",
+        CardType.SOUL_PORTRAIT: "Write a soul self-portrait (200-300 words). YOU MUST weave their specific MBTI, conflict style, values, EQ, and soul type from the profile into the narrative. Name these traits explicitly. Warm, poetic, personal.",
+        CardType.SELF_DIALOGUE: "Write the opening of a letter to self (100-200 words). Reference their specific fragility pattern, attachment style, or values from the profile. Warm, reflective tone. Leave space for the user to continue.",
     }
 
     return (
@@ -151,10 +151,10 @@ def _call_sonnet(prompt: str, api_key: str) -> dict[str, Any]:
 
     client = anthropic.Anthropic(
         api_key=api_key,
-        base_url="https://openrouter.ai/api/v1",
+        base_url="https://openrouter.ai/api",
     )
     response = client.messages.create(
-        model="anthropic/claude-sonnet",
+        model="anthropic/claude-sonnet-4",
         max_tokens=512,
         messages=[{"role": "user", "content": prompt}],
     )
