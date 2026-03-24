@@ -19,6 +19,7 @@ from wish_engine.classifier import classify, classify_batch, WISH_TYPES, FULFILL
 from wish_engine.l1_fulfiller import fulfill
 from wish_engine.renderer import render, render_lifecycle
 from wish_engine.adapter import detect_from_soul_items
+from wish_engine.marketplace import Marketplace, Match, MatchState, Request, AgentRecord
 from wish_engine.deduplicator import deduplicate
 from wish_engine.queue import WishQueue, WishPriority, QueuedWish
 
@@ -51,6 +52,12 @@ __all__ = [
     "WishQueue",
     "WishPriority",
     "QueuedWish",
+    # Marketplace (L3)
+    "Marketplace",
+    "Match",
+    "MatchState",
+    "Request",
+    "AgentRecord",
     # Constants
     "WISH_TYPES",
     "FULFILLMENT_STRATEGIES",
