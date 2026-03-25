@@ -138,7 +138,7 @@ def main():
     print("=" * 70)
 
     # 1. Annotated real users (100)
-    path1 = "/Users/michael/detector-orchestrator/eval/real_users_annotated.jsonl"
+    path1 = "/Users/mozat/detector-orchestrator/eval/real_users_annotated.jsonl"
     print(f"\n[1/3] Loading {path1}...")
     records = load_jsonl(path1)
     result1 = validate_single_turn(records)
@@ -153,7 +153,7 @@ def main():
         print(f"    [{ex['type']}/{ex['level']}] conf={ex['confidence']} dist={ex['distress']} | {ex['text']}")
 
     # 2. Multi-turn sessions (30)
-    path2 = "/Users/michael/detector-orchestrator/eval/multi_turn_sessions.jsonl"
+    path2 = "/Users/mozat/detector-orchestrator/eval/multi_turn_sessions.jsonl"
     print(f"\n[2/3] Loading {path2}...")
     sessions = load_jsonl(path2)
     result2 = validate_multi_turn(sessions)
@@ -165,7 +165,7 @@ def main():
     print(f"  Wish per turn rate: {result2['wish_per_turn_rate']:.1%}")
 
     # 3. Critical records (584)
-    path3 = "/Users/michael/emotion-detector/data/real_user/critical.jsonl"
+    path3 = "/Users/mozat/emotion-detector/data/real_user/critical.jsonl"
     print(f"\n[3/3] Loading {path3}...")
     critical = load_jsonl(path3)
     result3 = validate_single_turn(critical)

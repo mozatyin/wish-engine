@@ -18,7 +18,7 @@ from wish_engine.marketplace import Marketplace
 from wish_engine.queue import WishQueue, WishPriority
 
 
-FIXTURES_DIR = Path("/Users/michael/soulgraph/fixtures")
+FIXTURES_DIR = Path.home() / "soulgraph" / "fixtures"
 
 
 def _load_fixture(name: str) -> list[dict]:

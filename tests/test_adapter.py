@@ -21,7 +21,7 @@ from wish_engine.adapter import (
 
 # ── Load real fixtures ───────────────────────────────────────────────────────
 
-FIXTURES_DIR = Path("/Users/michael/soulgraph/fixtures")
+FIXTURES_DIR = Path.home() / "soulgraph" / "fixtures"
 
 
 def _load_fixture(name: str) -> list[dict]:
