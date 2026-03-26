@@ -10,10 +10,14 @@ from wish_engine.models import (
     EmotionState,
     Intention,
     L1FulfillmentResult,
+    L2FulfillmentResult,
     L3MatchResult,
+    MapData,
     NegotiationProposal,
     NegotiationResponse,
     NegotiationState,
+    Recommendation,
+    ReminderOption,
     RenderOutput,
     WishLevel,
     WishState,
@@ -26,6 +30,12 @@ from wish_engine.renderer import render, render_lifecycle
 from wish_engine.adapter import detect_from_soul_items
 from wish_engine.marketplace import Marketplace, Match, MatchState, Request, AgentRecord
 from wish_engine.match_reason import generate_match_reason
+from wish_engine.l2_fulfiller import fulfill_l2, L2Fulfiller, PersonalityFilter
+from wish_engine.l2_places import PlaceFulfiller
+from wish_engine.l2_books import BookFulfiller
+from wish_engine.l2_courses import CourseFulfiller
+from wish_engine.l2_career import CareerFulfiller
+from wish_engine.l2_wellness import WellnessFulfiller
 from wish_engine.deduplicator import deduplicate
 from wish_engine.engine import WishEngine, WishEngineResult
 from wish_engine.queue import WishQueue, WishPriority, QueuedWish
@@ -43,7 +53,11 @@ __all__ = [
     "EmotionState",
     "Intention",
     "L1FulfillmentResult",
+    "L2FulfillmentResult",
     "L3MatchResult",
+    "MapData",
+    "Recommendation",
+    "ReminderOption",
     "NegotiationProposal",
     "NegotiationResponse",
     "NegotiationState",
@@ -60,6 +74,15 @@ __all__ = [
     "render_lifecycle",
     # Adapter (SoulGraph → Wish Engine)
     "detect_from_soul_items",
+    # L2 Fulfillment
+    "fulfill_l2",
+    "L2Fulfiller",
+    "PersonalityFilter",
+    "PlaceFulfiller",
+    "BookFulfiller",
+    "CourseFulfiller",
+    "CareerFulfiller",
+    "WellnessFulfiller",
     # Deduplicator
     "deduplicate",
     # Queue

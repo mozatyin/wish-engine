@@ -36,6 +36,7 @@ from wish_engine.models import (
     EmotionState,
     Intention,
     L1FulfillmentResult,
+    L2FulfillmentResult,
     L3MatchResult,
     RenderOutput,
     WishLevel,
@@ -47,6 +48,7 @@ from wish_engine.detector import detect_wishes
 from wish_engine.classifier import classify
 from wish_engine.deduplicator import deduplicate
 from wish_engine.l1_fulfiller import fulfill
+from wish_engine.l2_fulfiller import fulfill_l2
 from wish_engine.renderer import render
 from wish_engine.queue import WishQueue, WishPriority, QueuedWish
 from wish_engine.marketplace import Marketplace
@@ -64,6 +66,7 @@ class WishEngineResult:
         self.l2_wishes: list[ClassifiedWish] = []
         self.l3_wishes: list[ClassifiedWish] = []
         self.fulfillments: dict[str, L1FulfillmentResult] = {}  # wish_text → result
+        self.l2_fulfillments: dict[str, L2FulfillmentResult] = {}  # wish_text → result
         self.renders: list[RenderOutput] = []
         self.queued: list[QueuedWish] = []
         self.marketplace_needs_posted: int = 0
@@ -87,6 +90,7 @@ class WishEngineResult:
             "l2": len(self.l2_wishes),
             "l3": len(self.l3_wishes),
             "fulfilled": len(self.fulfillments),
+            "l2_fulfilled": len(self.l2_fulfillments),
             "renders": len(self.renders),
             "queued": len(self.queued),
             "marketplace_posted": self.marketplace_needs_posted,
@@ -334,17 +338,28 @@ class WishEngine:
                     born_render = render(WishState.BORN, wish=wish)
                     result.renders.append(born_render)
 
-        # L2: Queue only (fulfillment is future Phase 2)
+        # L2: Fulfill with local-compute adapters
         for wish in result.l2_wishes:
             try:
                 qw = self._queue.enqueue(
                     wish, session_id=session_id, user_id=user_id, distress=distress,
                 )
                 result.queued.append(qw)
+                self._queue.mark_searching(qw.wish_id)
+
+                # L2 fulfillment (zero LLM, local-compute)
+                l2_result = fulfill_l2(wish, det_results)
+                result.l2_fulfillments[wish.wish_text] = l2_result
+
+                delay = self._queue.compute_delay(qw.priority)
+                self._queue.mark_found(qw.wish_id, l2_result, delay_seconds=delay)
+
+                found_render = render(WishState.FOUND, wish=wish, l2_fulfillment=l2_result)
+                result.renders.append(found_render)
+            except Exception as e:
+                result.errors.append(f"L2 fulfillment error: {e}")
                 born_render = render(WishState.BORN, wish=wish)
                 result.renders.append(born_render)
-            except Exception as e:
-                result.errors.append(f"L2 queue error: {e}")
 
         # L3: Post to marketplace
         if self._post_l3 and self._marketplace and agent_id:

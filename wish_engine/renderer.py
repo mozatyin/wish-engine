@@ -11,6 +11,7 @@ from wish_engine.models import (
     CardType,
     ClassifiedWish,
     L1FulfillmentResult,
+    L2FulfillmentResult,
     RenderOutput,
     WishLevel,
     WishState,
@@ -82,6 +83,7 @@ def _build_card_data(
     wish: ClassifiedWish | None,
     fulfillment: L1FulfillmentResult | None,
     state: WishState,
+    l2_fulfillment: L2FulfillmentResult | None = None,
 ) -> dict[str, Any]:
     """Build frontend card data payload."""
     card: dict[str, Any] = {}
@@ -95,6 +97,29 @@ def _build_card_data(
         card["fulfillment_text"] = fulfillment.fulfillment_text
         card["card_type"] = fulfillment.card_type.value
         card["related_stars"] = fulfillment.related_stars
+
+    if l2_fulfillment:
+        card["recommendations"] = [
+            {
+                "title": r.title,
+                "description": r.description,
+                "category": r.category,
+                "relevance_reason": r.relevance_reason,
+                "score": r.score,
+                "tags": r.tags,
+            }
+            for r in l2_fulfillment.recommendations
+        ]
+        if l2_fulfillment.map_data:
+            card["map_data"] = {
+                "place_type": l2_fulfillment.map_data.place_type,
+                "radius_km": l2_fulfillment.map_data.radius_km,
+            }
+        if l2_fulfillment.reminder_option:
+            card["reminder"] = {
+                "text": l2_fulfillment.reminder_option.text,
+                "delay_hours": l2_fulfillment.reminder_option.delay_hours,
+            }
 
     # Chocolate moment text — multilingual, Zero-AI language (V10 §7.2)
     lang = wish.wish_text[:1] if wish else ""
@@ -150,6 +175,7 @@ def render(
     state: WishState,
     wish: ClassifiedWish | None = None,
     fulfillment: L1FulfillmentResult | None = None,
+    l2_fulfillment: L2FulfillmentResult | None = None,
 ) -> RenderOutput:
     """Render star map visual state for a wish.
 
@@ -159,6 +185,7 @@ def render(
         state: Current wish lifecycle state.
         wish: Classified wish (needed for level-dependent colors).
         fulfillment: L1 fulfillment result (included in card_data if present).
+        l2_fulfillment: L2 fulfillment result (included in card_data if present).
 
     Returns:
         RenderOutput with star_state, color, animation, and card_data.
@@ -166,7 +193,7 @@ def render(
     level = wish.level if wish else None
     color = _get_color(state, level)
     animation = _get_animation(state, level)
-    card_data = _build_card_data(wish, fulfillment, state)
+    card_data = _build_card_data(wish, fulfillment, state, l2_fulfillment=l2_fulfillment)
 
     return RenderOutput(
         star_state=state,
@@ -179,13 +206,21 @@ def render(
 def render_lifecycle(
     wish: ClassifiedWish,
     fulfillment: L1FulfillmentResult | None = None,
+    l2_fulfillment: L2FulfillmentResult | None = None,
 ) -> list[RenderOutput]:
     """Render all lifecycle states for a wish (for animation sequencing).
 
     Returns ordered list from BORN through current state.
     """
     states = [WishState.BORN, WishState.SEARCHING, WishState.FOUND]
-    if fulfillment:
+    if fulfillment or l2_fulfillment:
         states.extend([WishState.RECOMMENDED, WishState.CONFIRMED, WishState.FULFILLED])
 
-    return [render(s, wish, fulfillment if s == WishState.FULFILLED else None) for s in states]
+    return [
+        render(
+            s, wish,
+            fulfillment if s == WishState.FULFILLED else None,
+            l2_fulfillment=l2_fulfillment if s == WishState.FULFILLED else None,
+        )
+        for s in states
+    ]

@@ -21,7 +21,6 @@ from pydantic import BaseModel, Field
 
 from wish_engine.models import (
     ClassifiedWish,
-    L1FulfillmentResult,
     WishLevel,
     WishState,
 )
@@ -51,8 +50,8 @@ class QueuedWish(BaseModel):
     fulfilled_at: float = 0.0
     archived_at: float = 0.0
 
-    # Fulfillment data (populated when Found)
-    fulfillment: L1FulfillmentResult | None = None
+    # Fulfillment data (populated when Found — L1FulfillmentResult or L2FulfillmentResult)
+    fulfillment: Any = None
 
     # Scheduling
     reveal_after: float = 0.0   # Don't reveal before this timestamp
@@ -163,7 +162,7 @@ class WishQueue:
     def mark_found(
         self,
         wish_id: str,
-        fulfillment: L1FulfillmentResult,
+        fulfillment: Any,
         delay_seconds: float = 0,
     ) -> QueuedWish:
         """Transition wish to FOUND state with fulfillment data.
