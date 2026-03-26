@@ -1,0 +1,10 @@
+[
+  {
+    "id": "shell_09c98cee",
+    "topic": "Rhett",
+    "pattern": "emotion_anomaly",
+    "confidence": 0.95,
+    "stage": "bloom",
+    "signals_count": 26
+  }
+]
