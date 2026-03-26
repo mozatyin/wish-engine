@@ -14,11 +14,13 @@ Pipeline:
                     ┌───────────┼───────────┐
                     L1          L2          L3
                     │           │           │
-              L1 Fulfiller   (future)   Marketplace
-                    │                       │
-                 Queue ◄────────────────────┘
+              L1 Fulfiller  L2 Fulfiller  Marketplace + Matcher
+                    │           │           │
+                 Queue ◄────────┴───────────┘
                     │
                 Renderer → RenderOutput[]
+                    │
+              Compass (optional) → hidden desire detection
 """
 
 from __future__ import annotations
@@ -54,6 +56,7 @@ from wish_engine.queue import WishQueue, WishPriority, QueuedWish
 from wish_engine.marketplace import Marketplace
 from wish_engine.l3_matcher import L3Matcher
 from wish_engine.agent_negotiator import AgentNegotiator
+from wish_engine.compass.compass import WishCompass
 
 
 class WishEngineResult:
@@ -72,6 +75,8 @@ class WishEngineResult:
         self.marketplace_needs_posted: int = 0
         self.l3_matches: list[L3MatchResult] = []
         self.errors: list[str] = []
+        self.compass_scan = None          # ScanResult from compass
+        self.compass_renders = []         # CompassStarOutput list
 
     @property
     def total_wishes(self) -> int:
@@ -96,6 +101,7 @@ class WishEngineResult:
             "marketplace_posted": self.marketplace_needs_posted,
             "l3_matches": len(self.l3_matches),
             "l3_mutual": sum(1 for m in self.l3_matches if m.is_mutual),
+            "compass_shells": self.compass_scan.total_shells if self.compass_scan else 0,
             "errors": self.errors,
         }
 
@@ -174,6 +180,7 @@ class WishEngine:
         negotiator: AgentNegotiator | None = None,
         fulfill_l1: bool = True,
         post_l3: bool = True,
+        compass: WishCompass | None = None,
     ):
         self._api_key = api_key or os.environ.get("ANTHROPIC_API_KEY", "")
         self._marketplace = marketplace
@@ -182,6 +189,7 @@ class WishEngine:
         self._negotiator = negotiator or AgentNegotiator(matcher=self._l3_matcher)
         self._fulfill_l1 = fulfill_l1
         self._post_l3 = post_l3
+        self._compass = compass
         # Agent profiles registry (agent_id → AgentProfile)
         self._agent_profiles: dict[str, AgentProfile] = {}
 
@@ -200,6 +208,10 @@ class WishEngine:
     @property
     def negotiator(self) -> AgentNegotiator:
         return self._negotiator
+
+    @property
+    def compass(self) -> WishCompass | None:
+        return self._compass
 
     def register_agent_profile(self, profile: AgentProfile) -> None:
         """Register an agent's dimension profile for L3 matching."""
@@ -384,6 +396,27 @@ class WishEngine:
                     result.renders.append(searching_render)
                 except Exception as e:
                     result.errors.append(f"L3 marketplace error: {e}")
+
+        # ── Compass: scan for hidden desires ───────────────────────────
+        if self._compass:
+            try:
+                compass_topics = []
+                for wish in all_wishes:
+                    compass_topics.append({
+                        "entity": wish.wish_text[:50],
+                        "sentiment": "mixed",
+                        "arousal": 0.5,
+                        "mentions": 1,
+                    })
+                scan_result = self._compass.scan(
+                    topics=compass_topics,
+                    detector_results=det_results,
+                    session_id=session_id,
+                )
+                result.compass_scan = scan_result
+                result.compass_renders = self._compass.get_star_renders()
+            except Exception as e:
+                result.errors.append(f"Compass scan error: {e}")
 
         return result
 

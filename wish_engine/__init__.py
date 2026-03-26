@@ -41,6 +41,21 @@ from wish_engine.engine import WishEngine, WishEngineResult
 from wish_engine.queue import WishQueue, WishPriority, QueuedWish
 from wish_engine.l3_matcher import L3Matcher, L3MatchScore, MATCH_THRESHOLD
 from wish_engine.agent_negotiator import AgentNegotiator
+from wish_engine.compass import (
+    WishCompass,
+    ScanResult,
+    Shell,
+    ShellStage,
+    Signal,
+    ContradictionPattern,
+    SecretVault,
+    TriggerEngine,
+    RevelationRenderer,
+    Revelation,
+    RevelationStyle,
+    CompassStarOutput,
+    render_shell_star,
+)
 
 __all__ = [
     # Models
@@ -105,6 +120,20 @@ __all__ = [
     "MATCH_THRESHOLD",
     # Agent Negotiator
     "AgentNegotiator",
+    # Compass
+    "WishCompass",
+    "ScanResult",
+    "Shell",
+    "ShellStage",
+    "Signal",
+    "ContradictionPattern",
+    "SecretVault",
+    "TriggerEngine",
+    "RevelationRenderer",
+    "Revelation",
+    "RevelationStyle",
+    "CompassStarOutput",
+    "render_shell_star",
     # Constants
     "WISH_TYPES",
     "FULFILLMENT_STRATEGIES",

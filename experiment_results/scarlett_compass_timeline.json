@@ -78,7 +78,7 @@
     "topic_entity": "Rhett",
     "topic_sentiment": "negative",
     "topic_arousal": 0.75,
-    "rhett_confidence": 0.25000000000000006,
+    "rhett_confidence": 0.2176923076923077,
     "rhett_stage": "seed",
     "new_shells": 1,
     "total_shells": 1
@@ -90,7 +90,7 @@
     "topic_entity": "Ashley",
     "topic_sentiment": "positive",
     "topic_arousal": 0.45,
-    "rhett_confidence": 0.25000000000000006,
+    "rhett_confidence": 0.2176923076923077,
     "rhett_stage": "seed",
     "new_shells": 0,
     "total_shells": 1
@@ -102,7 +102,7 @@
     "topic_entity": "Ashley",
     "topic_sentiment": "neutral",
     "topic_arousal": 0.3,
-    "rhett_confidence": 0.25000000000000006,
+    "rhett_confidence": 0.2176923076923077,
     "rhett_stage": "seed",
     "new_shells": 0,
     "total_shells": 1
@@ -114,7 +114,7 @@
     "topic_entity": "Ashley",
     "topic_sentiment": "neutral",
     "topic_arousal": 0.3,
-    "rhett_confidence": 0.25000000000000006,
+    "rhett_confidence": 0.2176923076923077,
     "rhett_stage": "seed",
     "new_shells": 0,
     "total_shells": 1
@@ -126,7 +126,7 @@
     "topic_entity": "Ashley",
     "topic_sentiment": "positive",
     "topic_arousal": 0.45,
-    "rhett_confidence": 0.25000000000000006,
+    "rhett_confidence": 0.2176923076923077,
     "rhett_stage": "seed",
     "new_shells": 0,
     "total_shells": 1
@@ -138,7 +138,7 @@
     "topic_entity": "Ashley",
     "topic_sentiment": "neutral",
     "topic_arousal": 0.3,
-    "rhett_confidence": 0.25000000000000006,
+    "rhett_confidence": 0.2176923076923077,
     "rhett_stage": "seed",
     "new_shells": 0,
     "total_shells": 1
@@ -150,7 +150,7 @@
     "topic_entity": "Ashley",
     "topic_sentiment": "neutral",
     "topic_arousal": 0.3,
-    "rhett_confidence": 0.25000000000000006,
+    "rhett_confidence": 0.2176923076923077,
     "rhett_stage": "seed",
     "new_shells": 0,
     "total_shells": 1
@@ -162,7 +162,7 @@
     "topic_entity": "Ashley",
     "topic_sentiment": "positive",
     "topic_arousal": 0.45,
-    "rhett_confidence": 0.25000000000000006,
+    "rhett_confidence": 0.2176923076923077,
     "rhett_stage": "seed",
     "new_shells": 0,
     "total_shells": 1
@@ -174,7 +174,7 @@
     "topic_entity": "Rhett",
     "topic_sentiment": "positive",
     "topic_arousal": 0.6,
-    "rhett_confidence": 0.25000000000000006,
+    "rhett_confidence": 0.2176923076923077,
     "rhett_stage": "seed",
     "new_shells": 0,
     "total_shells": 1
@@ -186,7 +186,7 @@
     "topic_entity": "Rhett",
     "topic_sentiment": "negative",
     "topic_arousal": 0.75,
-    "rhett_confidence": 0.4220000000000001,
+    "rhett_confidence": 0.3298516368327689,
     "rhett_stage": "sprout",
     "new_shells": 0,
     "total_shells": 1
@@ -198,7 +198,7 @@
     "topic_entity": "Ashley",
     "topic_sentiment": "neutral",
     "topic_arousal": 0.3,
-    "rhett_confidence": 0.4220000000000001,
+    "rhett_confidence": 0.3298516368327689,
     "rhett_stage": "sprout",
     "new_shells": 0,
     "total_shells": 1
@@ -210,7 +210,7 @@
     "topic_entity": "Ashley",
     "topic_sentiment": "neutral",
     "topic_arousal": 0.3,
-    "rhett_confidence": 0.4220000000000001,
+    "rhett_confidence": 0.3298516368327689,
     "rhett_stage": "sprout",
     "new_shells": 0,
     "total_shells": 1
@@ -222,8 +222,8 @@
     "topic_entity": "Rhett",
     "topic_sentiment": "negative",
     "topic_arousal": 0.75,
-    "rhett_confidence": 0.5940000000000001,
-    "rhett_stage": "bud",
+    "rhett_confidence": 0.437968519949652,
+    "rhett_stage": "sprout",
     "new_shells": 0,
     "total_shells": 1
   },
@@ -234,8 +234,8 @@
     "topic_entity": "Ashley",
     "topic_sentiment": "neutral",
     "topic_arousal": 0.3,
-    "rhett_confidence": 0.5940000000000001,
-    "rhett_stage": "bud",
+    "rhett_confidence": 0.437968519949652,
+    "rhett_stage": "sprout",
     "new_shells": 0,
     "total_shells": 1
   },
@@ -246,8 +246,8 @@
     "topic_entity": "Ashley",
     "topic_sentiment": "neutral",
     "topic_arousal": 0.3,
-    "rhett_confidence": 0.5940000000000001,
-    "rhett_stage": "bud",
+    "rhett_confidence": 0.437968519949652,
+    "rhett_stage": "sprout",
     "new_shells": 0,
     "total_shells": 1
   },
@@ -258,8 +258,8 @@
     "topic_entity": "Rhett",
     "topic_sentiment": "positive",
     "topic_arousal": 0.6,
-    "rhett_confidence": 0.5940000000000001,
-    "rhett_stage": "bud",
+    "rhett_confidence": 0.437968519949652,
+    "rhett_stage": "sprout",
     "new_shells": 0,
     "total_shells": 1
   },
@@ -270,8 +270,8 @@
     "topic_entity": "Ashley",
     "topic_sentiment": "neutral",
     "topic_arousal": 0.3,
-    "rhett_confidence": 0.5940000000000001,
-    "rhett_stage": "bud",
+    "rhett_confidence": 0.437968519949652,
+    "rhett_stage": "sprout",
     "new_shells": 0,
     "total_shells": 1
   },
@@ -282,8 +282,8 @@
     "topic_entity": "Rhett",
     "topic_sentiment": "positive",
     "topic_arousal": 0.6,
-    "rhett_confidence": 0.5940000000000001,
-    "rhett_stage": "bud",
+    "rhett_confidence": 0.437968519949652,
+    "rhett_stage": "sprout",
     "new_shells": 0,
     "total_shells": 1
   },
@@ -294,8 +294,8 @@
     "topic_entity": "Rhett",
     "topic_sentiment": "mixed",
     "topic_arousal": 0.45,
-    "rhett_confidence": 0.5940000000000001,
-    "rhett_stage": "bud",
+    "rhett_confidence": 0.437968519949652,
+    "rhett_stage": "sprout",
     "new_shells": 0,
     "total_shells": 1
   },
@@ -306,8 +306,8 @@
     "topic_entity": "Rhett",
     "topic_sentiment": "negative",
     "topic_arousal": 0.75,
-    "rhett_confidence": 0.7660000000000001,
-    "rhett_stage": "bloom",
+    "rhett_confidence": 0.542324236828055,
+    "rhett_stage": "bud",
     "new_shells": 0,
     "total_shells": 1
   },
@@ -318,8 +318,8 @@
     "topic_entity": "Ashley",
     "topic_sentiment": "neutral",
     "topic_arousal": 0.3,
-    "rhett_confidence": 0.7660000000000001,
-    "rhett_stage": "bloom",
+    "rhett_confidence": 0.542324236828055,
+    "rhett_stage": "bud",
     "new_shells": 0,
     "total_shells": 1
   },
@@ -330,8 +330,8 @@
     "topic_entity": "Ashley",
     "topic_sentiment": "neutral",
     "topic_arousal": 0.3,
-    "rhett_confidence": 0.7660000000000001,
-    "rhett_stage": "bloom",
+    "rhett_confidence": 0.542324236828055,
+    "rhett_stage": "bud",
     "new_shells": 0,
     "total_shells": 1
   },
@@ -342,8 +342,8 @@
     "topic_entity": "Ashley",
     "topic_sentiment": "neutral",
     "topic_arousal": 0.3,
-    "rhett_confidence": 0.7660000000000001,
-    "rhett_stage": "bloom",
+    "rhett_confidence": 0.542324236828055,
+    "rhett_stage": "bud",
     "new_shells": 0,
     "total_shells": 1
   },
@@ -354,8 +354,8 @@
     "topic_entity": "Ashley",
     "topic_sentiment": "positive",
     "topic_arousal": 0.45,
-    "rhett_confidence": 0.7660000000000001,
-    "rhett_stage": "bloom",
+    "rhett_confidence": 0.542324236828055,
+    "rhett_stage": "bud",
     "new_shells": 0,
     "total_shells": 1
   },
@@ -366,8 +366,8 @@
     "topic_entity": "Rhett",
     "topic_sentiment": "negative",
     "topic_arousal": 0.75,
-    "rhett_confidence": 0.9380000000000001,
-    "rhett_stage": "bloom",
+    "rhett_confidence": 0.6431716944551736,
+    "rhett_stage": "bud",
     "new_shells": 0,
     "total_shells": 1
   },
@@ -378,8 +378,8 @@
     "topic_entity": "Rhett",
     "topic_sentiment": "positive",
     "topic_arousal": 0.6,
-    "rhett_confidence": 0.9380000000000001,
-    "rhett_stage": "bloom",
+    "rhett_confidence": 0.6431716944551736,
+    "rhett_stage": "bud",
     "new_shells": 0,
     "total_shells": 1
   },
@@ -390,8 +390,8 @@
     "topic_entity": "Rhett",
     "topic_sentiment": "mixed",
     "topic_arousal": 0.45,
-    "rhett_confidence": 0.9380000000000001,
-    "rhett_stage": "bloom",
+    "rhett_confidence": 0.6431716944551736,
+    "rhett_stage": "bud",
     "new_shells": 0,
     "total_shells": 1
   },
@@ -402,8 +402,8 @@
     "topic_entity": "Rhett",
     "topic_sentiment": "positive",
     "topic_arousal": 0.6,
-    "rhett_confidence": 0.9380000000000001,
-    "rhett_stage": "bloom",
+    "rhett_confidence": 0.6431716944551736,
+    "rhett_stage": "bud",
     "new_shells": 0,
     "total_shells": 1
   },
@@ -414,8 +414,8 @@
     "topic_entity": "Rhett",
     "topic_sentiment": "mixed",
     "topic_arousal": 0.45,
-    "rhett_confidence": 0.9380000000000001,
-    "rhett_stage": "bloom",
+    "rhett_confidence": 0.6431716944551736,
+    "rhett_stage": "bud",
     "new_shells": 0,
     "total_shells": 1
   },
@@ -426,8 +426,8 @@
     "topic_entity": "Ashley",
     "topic_sentiment": "neutral",
     "topic_arousal": 0.3,
-    "rhett_confidence": 0.9380000000000001,
-    "rhett_stage": "bloom",
+    "rhett_confidence": 0.6431716944551736,
+    "rhett_stage": "bud",
     "new_shells": 0,
     "total_shells": 1
   },
@@ -438,8 +438,8 @@
     "topic_entity": "Ashley",
     "topic_sentiment": "neutral",
     "topic_arousal": 0.3,
-    "rhett_confidence": 0.9380000000000001,
-    "rhett_stage": "bloom",
+    "rhett_confidence": 0.6431716944551736,
+    "rhett_stage": "bud",
     "new_shells": 0,
     "total_shells": 1
   },
@@ -450,8 +450,8 @@
     "topic_entity": "Rhett",
     "topic_sentiment": "positive",
     "topic_arousal": 0.6,
-    "rhett_confidence": 0.9380000000000001,
-    "rhett_stage": "bloom",
+    "rhett_confidence": 0.6431716944551736,
+    "rhett_stage": "bud",
     "new_shells": 0,
     "total_shells": 1
   },
@@ -462,8 +462,8 @@
     "topic_entity": "Rhett",
     "topic_sentiment": "mixed",
     "topic_arousal": 0.45,
-    "rhett_confidence": 0.9380000000000001,
-    "rhett_stage": "bloom",
+    "rhett_confidence": 0.6431716944551736,
+    "rhett_stage": "bud",
     "new_shells": 0,
     "total_shells": 1
   },
@@ -474,8 +474,8 @@
     "topic_entity": "Rhett",
     "topic_sentiment": "positive",
     "topic_arousal": 0.6,
-    "rhett_confidence": 0.9380000000000001,
-    "rhett_stage": "bloom",
+    "rhett_confidence": 0.6431716944551736,
+    "rhett_stage": "bud",
     "new_shells": 0,
     "total_shells": 1
   },
@@ -486,8 +486,8 @@
     "topic_entity": "Rhett",
     "topic_sentiment": "positive",
     "topic_arousal": 0.6,
-    "rhett_confidence": 0.9380000000000001,
-    "rhett_stage": "bloom",
+    "rhett_confidence": 0.6431716944551736,
+    "rhett_stage": "bud",
     "new_shells": 0,
     "total_shells": 1
   },
@@ -498,8 +498,8 @@
     "topic_entity": "Rhett",
     "topic_sentiment": "mixed",
     "topic_arousal": 0.45,
-    "rhett_confidence": 0.9380000000000001,
-    "rhett_stage": "bloom",
+    "rhett_confidence": 0.6431716944551736,
+    "rhett_stage": "bud",
     "new_shells": 0,
     "total_shells": 1
   },
@@ -510,8 +510,8 @@
     "topic_entity": "Ashley",
     "topic_sentiment": "neutral",
     "topic_arousal": 0.3,
-    "rhett_confidence": 0.9380000000000001,
-    "rhett_stage": "bloom",
+    "rhett_confidence": 0.6431716944551736,
+    "rhett_stage": "bud",
     "new_shells": 0,
     "total_shells": 1
   },
@@ -522,7 +522,7 @@
     "topic_entity": "Rhett",
     "topic_sentiment": "negative",
     "topic_arousal": 0.75,
-    "rhett_confidence": 0.95,
+    "rhett_confidence": 0.7407391190982195,
     "rhett_stage": "bloom",
     "new_shells": 0,
     "total_shells": 1
@@ -534,7 +534,7 @@
     "topic_entity": "Rhett",
     "topic_sentiment": "positive",
     "topic_arousal": 0.6,
-    "rhett_confidence": 0.95,
+    "rhett_confidence": 0.7407391190982195,
     "rhett_stage": "bloom",
     "new_shells": 0,
     "total_shells": 1
@@ -546,7 +546,7 @@
     "topic_entity": "Rhett",
     "topic_sentiment": "positive",
     "topic_arousal": 0.6,
-    "rhett_confidence": 0.95,
+    "rhett_confidence": 0.7407391190982195,
     "rhett_stage": "bloom",
     "new_shells": 0,
     "total_shells": 1
@@ -558,7 +558,7 @@
     "topic_entity": "Rhett",
     "topic_sentiment": "negative",
     "topic_arousal": 0.75,
-    "rhett_confidence": 0.95,
+    "rhett_confidence": 0.8352331667172672,
     "rhett_stage": "bloom",
     "new_shells": 0,
     "total_shells": 1
@@ -570,7 +570,7 @@
     "topic_entity": "Rhett",
     "topic_sentiment": "mixed",
     "topic_arousal": 0.45,
-    "rhett_confidence": 0.95,
+    "rhett_confidence": 0.8352331667172672,
     "rhett_stage": "bloom",
     "new_shells": 0,
     "total_shells": 1
@@ -582,7 +582,7 @@
     "topic_entity": "Rhett",
     "topic_sentiment": "mixed",
     "topic_arousal": 0.45,
-    "rhett_confidence": 0.95,
+    "rhett_confidence": 0.8352331667172672,
     "rhett_stage": "bloom",
     "new_shells": 0,
     "total_shells": 1
@@ -594,7 +594,7 @@
     "topic_entity": "Rhett",
     "topic_sentiment": "mixed",
     "topic_arousal": 0.45,
-    "rhett_confidence": 0.95,
+    "rhett_confidence": 0.8352331667172672,
     "rhett_stage": "bloom",
     "new_shells": 0,
     "total_shells": 1
@@ -606,7 +606,7 @@
     "topic_entity": "Rhett",
     "topic_sentiment": "positive",
     "topic_arousal": 0.6,
-    "rhett_confidence": 0.95,
+    "rhett_confidence": 0.8352331667172672,
     "rhett_stage": "bloom",
     "new_shells": 0,
     "total_shells": 1
@@ -618,7 +618,7 @@
     "topic_entity": "Rhett",
     "topic_sentiment": "negative",
     "topic_arousal": 0.75,
-    "rhett_confidence": 0.95,
+    "rhett_confidence": 0.9268415583256587,
     "rhett_stage": "bloom",
     "new_shells": 0,
     "total_shells": 1
@@ -630,7 +630,7 @@
     "topic_entity": "Ashley",
     "topic_sentiment": "neutral",
     "topic_arousal": 0.3,
-    "rhett_confidence": 0.95,
+    "rhett_confidence": 0.9268415583256587,
     "rhett_stage": "bloom",
     "new_shells": 0,
     "total_shells": 1
@@ -642,7 +642,7 @@
     "topic_entity": "Rhett",
     "topic_sentiment": "mixed",
     "topic_arousal": 0.45,
-    "rhett_confidence": 0.95,
+    "rhett_confidence": 0.9268415583256587,
     "rhett_stage": "bloom",
     "new_shells": 0,
     "total_shells": 1
@@ -654,7 +654,7 @@
     "topic_entity": "Rhett",
     "topic_sentiment": "positive",
     "topic_arousal": 0.6,
-    "rhett_confidence": 0.95,
+    "rhett_confidence": 0.9268415583256587,
     "rhett_stage": "bloom",
     "new_shells": 0,
     "total_shells": 1
@@ -666,7 +666,7 @@
     "topic_entity": "Rhett",
     "topic_sentiment": "positive",
     "topic_arousal": 0.6,
-    "rhett_confidence": 0.95,
+    "rhett_confidence": 0.9268415583256587,
     "rhett_stage": "bloom",
     "new_shells": 0,
     "total_shells": 1
@@ -678,7 +678,7 @@
     "topic_entity": "Rhett",
     "topic_sentiment": "mixed",
     "topic_arousal": 0.45,
-    "rhett_confidence": 0.95,
+    "rhett_confidence": 0.9268415583256587,
     "rhett_stage": "bloom",
     "new_shells": 0,
     "total_shells": 1

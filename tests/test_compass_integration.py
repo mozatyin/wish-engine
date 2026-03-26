@@ -33,7 +33,7 @@ class TestCompassScan:
         )
         rhett_shells = compass.vault.get_by_topic("Rhett")
         assert len(rhett_shells) == 1  # merged, not duplicated
-        assert rhett_shells[0].confidence > 0.25  # grew from evidence
+        assert rhett_shells[0].confidence > 0.18  # grew from evidence (diminishing returns)
 
     def test_no_shells_for_normal_conversation(self):
         compass = WishCompass()
