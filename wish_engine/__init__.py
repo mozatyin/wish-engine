@@ -1,6 +1,7 @@
 """Wish Engine — SoulMap V10 wish detection, classification, fulfillment, and rendering."""
 
 from wish_engine.models import (
+    AgentProfile,
     CardType,
     ClassifiedWish,
     CrossDetectorPattern,
@@ -9,6 +10,10 @@ from wish_engine.models import (
     EmotionState,
     Intention,
     L1FulfillmentResult,
+    L3MatchResult,
+    NegotiationProposal,
+    NegotiationResponse,
+    NegotiationState,
     RenderOutput,
     WishLevel,
     WishState,
@@ -24,9 +29,12 @@ from wish_engine.match_reason import generate_match_reason
 from wish_engine.deduplicator import deduplicate
 from wish_engine.engine import WishEngine, WishEngineResult
 from wish_engine.queue import WishQueue, WishPriority, QueuedWish
+from wish_engine.l3_matcher import L3Matcher, L3MatchScore, MATCH_THRESHOLD
+from wish_engine.agent_negotiator import AgentNegotiator
 
 __all__ = [
     # Models
+    "AgentProfile",
     "CardType",
     "ClassifiedWish",
     "CrossDetectorPattern",
@@ -35,6 +43,10 @@ __all__ = [
     "EmotionState",
     "Intention",
     "L1FulfillmentResult",
+    "L3MatchResult",
+    "NegotiationProposal",
+    "NegotiationResponse",
+    "NegotiationState",
     "RenderOutput",
     "WishLevel",
     "WishState",
@@ -64,6 +76,12 @@ __all__ = [
     "MatchState",
     "Request",
     "AgentRecord",
+    # L3 Matcher
+    "L3Matcher",
+    "L3MatchScore",
+    "MATCH_THRESHOLD",
+    # Agent Negotiator
+    "AgentNegotiator",
     # Constants
     "WISH_TYPES",
     "FULFILLMENT_STRATEGIES",

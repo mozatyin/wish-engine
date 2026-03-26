@@ -137,3 +137,85 @@ class RenderOutput(BaseModel):
     color: str
     animation: str
     card_data: dict[str, Any] = Field(default_factory=dict)
+
+
+# ── L3 Models ───────────────────────────────────────────────────────────────
+
+
+class AgentProfile(BaseModel):
+    """Dimension-only profile for L3 matching.
+
+    Contains ONLY detector dimensions — never raw conversation content.
+    Used by agents LOCALLY to compute match scores.
+    """
+
+    agent_id: str
+    user_id: str
+
+    # Detector dimensions (abstract scores/labels, no conversation text)
+    soul_type: str = ""
+    mbti: str = ""
+    attachment_style: str = ""
+    conflict_style: str = ""
+    eq_score: float = 0.0
+    values: list[str] = Field(default_factory=list)
+    love_language: str = ""
+    humor_style: str = ""
+    communication_style: str = ""
+    fragility_pattern: str = ""
+
+    # Safety signals
+    is_crisis: bool = False
+    distress: float = 0.0
+
+    # Availability
+    available: bool = True
+    load: int = 0  # active L3 connections count
+
+    # Language for same-language matching
+    language: str = "en"
+
+
+class NegotiationState(str, Enum):
+    PROPOSED = "proposed"
+    ACCEPTED = "accepted"
+    DELAYED = "delayed"
+    DECLINED = "declined"
+
+
+class NegotiationProposal(BaseModel):
+    """Agent A's proposal to Agent B — dimension-based, no conversation content."""
+
+    proposal_id: str = ""
+    match_id: str  # marketplace Match ID
+    from_agent_id: str
+    to_agent_id: str
+    wish_type: WishType
+    match_score: float = 0.0
+    score_breakdown: dict[str, float] = Field(default_factory=dict)
+    created_at: float = Field(default_factory=lambda: __import__("time").time())
+
+
+class NegotiationResponse(BaseModel):
+    """Agent B's response to a proposal."""
+
+    proposal_id: str
+    agent_id: str
+    state: NegotiationState
+    reason: str = ""  # e.g., "distress_delay", "load_limit", "incompatible"
+    delay_until: float = 0.0  # for DELAYED state: resume after this timestamp
+    responded_at: float = Field(default_factory=lambda: __import__("time").time())
+
+
+class L3MatchResult(BaseModel):
+    """Final L3 match result — "Your stars found each other"."""
+
+    match_id: str
+    agent_a_id: str
+    agent_b_id: str
+    wish_type: WishType
+    match_score: float
+    score_breakdown: dict[str, float] = Field(default_factory=dict)
+    is_mutual: bool = False  # both had complementary wishes
+    match_text: str = ""  # "Your stars found each other"
+    created_at: float = Field(default_factory=lambda: __import__("time").time())

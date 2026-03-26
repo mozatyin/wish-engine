@@ -28,6 +28,7 @@ import os
 from typing import Any
 
 from wish_engine.models import (
+    AgentProfile,
     ClassifiedWish,
     CrossDetectorPattern,
     DetectedWish,
@@ -35,6 +36,7 @@ from wish_engine.models import (
     EmotionState,
     Intention,
     L1FulfillmentResult,
+    L3MatchResult,
     RenderOutput,
     WishLevel,
     WishState,
@@ -48,6 +50,8 @@ from wish_engine.l1_fulfiller import fulfill
 from wish_engine.renderer import render
 from wish_engine.queue import WishQueue, WishPriority, QueuedWish
 from wish_engine.marketplace import Marketplace
+from wish_engine.l3_matcher import L3Matcher
+from wish_engine.agent_negotiator import AgentNegotiator
 
 
 class WishEngineResult:
@@ -63,6 +67,7 @@ class WishEngineResult:
         self.renders: list[RenderOutput] = []
         self.queued: list[QueuedWish] = []
         self.marketplace_needs_posted: int = 0
+        self.l3_matches: list[L3MatchResult] = []
         self.errors: list[str] = []
 
     @property
@@ -85,6 +90,8 @@ class WishEngineResult:
             "renders": len(self.renders),
             "queued": len(self.queued),
             "marketplace_posted": self.marketplace_needs_posted,
+            "l3_matches": len(self.l3_matches),
+            "l3_mutual": sum(1 for m in self.l3_matches if m.is_mutual),
             "errors": self.errors,
         }
 
@@ -159,14 +166,20 @@ class WishEngine:
         api_key: str | None = None,
         marketplace: Marketplace | None = None,
         queue: WishQueue | None = None,
+        l3_matcher: L3Matcher | None = None,
+        negotiator: AgentNegotiator | None = None,
         fulfill_l1: bool = True,
         post_l3: bool = True,
     ):
         self._api_key = api_key or os.environ.get("ANTHROPIC_API_KEY", "")
         self._marketplace = marketplace
         self._queue = queue or WishQueue()
+        self._l3_matcher = l3_matcher or L3Matcher()
+        self._negotiator = negotiator or AgentNegotiator(matcher=self._l3_matcher)
         self._fulfill_l1 = fulfill_l1
         self._post_l3 = post_l3
+        # Agent profiles registry (agent_id → AgentProfile)
+        self._agent_profiles: dict[str, AgentProfile] = {}
 
     @property
     def queue(self) -> WishQueue:
@@ -175,6 +188,21 @@ class WishEngine:
     @property
     def marketplace(self) -> Marketplace | None:
         return self._marketplace
+
+    @property
+    def l3_matcher(self) -> L3Matcher:
+        return self._l3_matcher
+
+    @property
+    def negotiator(self) -> AgentNegotiator:
+        return self._negotiator
+
+    def register_agent_profile(self, profile: AgentProfile) -> None:
+        """Register an agent's dimension profile for L3 matching."""
+        self._agent_profiles[profile.agent_id] = profile
+
+    def get_agent_profile(self, agent_id: str) -> AgentProfile | None:
+        return self._agent_profiles.get(agent_id)
 
     def process(
         self,
@@ -377,3 +405,152 @@ class WishEngine:
     def archive_wish(self, wish_id: str) -> None:
         """Archive a fulfilled or dismissed wish."""
         self._queue.mark_archived(wish_id)
+
+    # ── L3 matching ────────────────────────────────────────────────────────
+
+    def match_l3(
+        self,
+        seeker_agent_id: str,
+        wish_type: WishType,
+        seeking: list[str] | None = None,
+        candidate_agent_ids: list[str] | None = None,
+    ) -> list[L3MatchResult]:
+        """Run L3 matching for a seeker against registered candidates.
+
+        Args:
+            seeker_agent_id: Agent posting the L3 wish.
+            wish_type: The L3 wish type.
+            seeking: Capability tags the seeker needs.
+            candidate_agent_ids: Specific candidates to evaluate.
+                If None, evaluates all registered profiles.
+
+        Returns:
+            List of successful L3MatchResult (accepted negotiations).
+        """
+        seeker = self._agent_profiles.get(seeker_agent_id)
+        if not seeker:
+            return []
+
+        # Safety gate
+        safe, reason = self._l3_matcher.is_safe_for_pool(seeker)
+        if not safe:
+            return []
+
+        # Gather candidates
+        if candidate_agent_ids:
+            candidates = [
+                self._agent_profiles[aid]
+                for aid in candidate_agent_ids
+                if aid in self._agent_profiles and aid != seeker_agent_id
+            ]
+        else:
+            candidates = [
+                p for p in self._agent_profiles.values()
+                if p.agent_id != seeker_agent_id
+            ]
+
+        # Filter out unsafe candidates
+        candidates = [
+            c for c in candidates
+            if self._l3_matcher.is_safe_for_pool(c)[0]
+        ]
+
+        if not candidates:
+            return []
+
+        # Get capability offerings from marketplace (if available)
+        offerings: dict[str, list[str]] = {}
+        if self._marketplace:
+            for c in candidates:
+                # Check if candidate has posted any responses
+                for req in self._marketplace._requests.values():
+                    if (req.agent_id == c.agent_id
+                            and req.request_type.value == "response"
+                            and req.offering):
+                        offerings[c.agent_id] = req.offering
+                        break
+
+        # Rank candidates
+        ranked = self._l3_matcher.rank_candidates(
+            seeker, candidates, wish_type,
+            seeking=seeking, offerings=offerings,
+        )
+
+        results: list[L3MatchResult] = []
+        for candidate, score in ranked:
+            match_result, response = self._negotiator.negotiate_full(
+                a_profile=seeker,
+                b_profile=candidate,
+                match_id=f"l3_{seeker.agent_id}_{candidate.agent_id}",
+                wish_type=wish_type,
+                seeking=seeking,
+                offering=offerings.get(candidate.agent_id, []),
+            )
+            if match_result:
+                results.append(match_result)
+
+        return results
+
+    def detect_mutual_matches(self) -> list[L3MatchResult]:
+        """Scan all registered profiles for mutual complementary wishes.
+
+        This is the "Your stars found each other" detection — both users
+        have L3 wishes that the other can fulfill.
+
+        Should be called periodically (e.g., every hour).
+
+        Returns:
+            List of mutual L3MatchResult.
+        """
+        if not self._marketplace:
+            return []
+
+        # Collect open needs per agent
+        agent_needs: dict[str, list] = {}
+        for req in self._marketplace._requests.values():
+            if req.request_type.value == "need" and req.state.value == "open":
+                agent_needs.setdefault(req.agent_id, []).append(req)
+
+        # Collect responses per agent
+        agent_offerings: dict[str, list[str]] = {}
+        for req in self._marketplace._requests.values():
+            if req.request_type.value == "response" and req.offering:
+                agent_offerings.setdefault(req.agent_id, []).extend(req.offering)
+
+        results: list[L3MatchResult] = []
+        checked: set[tuple[str, str]] = set()
+
+        agents_with_needs = list(agent_needs.keys())
+        for i, a_id in enumerate(agents_with_needs):
+            a_profile = self._agent_profiles.get(a_id)
+            if not a_profile:
+                continue
+
+            for j in range(i + 1, len(agents_with_needs)):
+                b_id = agents_with_needs[j]
+                if (a_id, b_id) in checked:
+                    continue
+                checked.add((a_id, b_id))
+
+                b_profile = self._agent_profiles.get(b_id)
+                if not b_profile:
+                    continue
+
+                # Check all need combinations for mutual match
+                for a_need in agent_needs[a_id]:
+                    for b_need in agent_needs.get(b_id, []):
+                        result = self._negotiator.negotiate_mutual(
+                            a_profile=a_profile,
+                            b_profile=b_profile,
+                            match_id=f"mutual_{a_id}_{b_id}",
+                            a_wish_type=a_need.wish_type,
+                            b_wish_type=b_need.wish_type,
+                            a_seeking=a_need.seeking,
+                            a_offering=agent_offerings.get(a_id, []),
+                            b_seeking=b_need.seeking,
+                            b_offering=agent_offerings.get(b_id, []),
+                        )
+                        if result:
+                            results.append(result)
+
+        return results
