@@ -130,6 +130,43 @@ class L1FulfillmentResult(BaseModel):
     card_type: CardType
 
 
+# ── L2 Models ───────────────────────────────────────────────────────────────
+
+
+class Recommendation(BaseModel):
+    """A single L2 recommendation item."""
+
+    title: str
+    description: str
+    category: str
+    relevance_reason: str
+    score: float = Field(ge=0.0, le=1.0)
+    action_url: str | None = None
+    tags: list[str] = Field(default_factory=list)
+
+
+class MapData(BaseModel):
+    """Map display data for place-based wishes."""
+
+    place_type: str
+    radius_km: float = Field(gt=0.0)
+
+
+class ReminderOption(BaseModel):
+    """Reminder suggestion for the user."""
+
+    text: str
+    delay_hours: int = Field(gt=0)
+
+
+class L2FulfillmentResult(BaseModel):
+    """Output of L2 fulfiller — personalized recommendations."""
+
+    recommendations: list[Recommendation] = Field(min_length=1)
+    map_data: MapData | None = None
+    reminder_option: ReminderOption | None = None
+
+
 class RenderOutput(BaseModel):
     """Output of WishRenderer — visual state for the star map."""
 
