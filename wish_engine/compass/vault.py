@@ -24,6 +24,7 @@ CONFIRM_DELTA = 0.10             # user says "好像是"
 DENY_DELTA = -0.15               # user says "不对"
 IGNORE_DELTA = 0.02              # user opened but no feedback
 MERGE_BONUS = 0.06               # bonus when merging same-topic shells
+DECAY_PER_WEEK = 0.01            # confidence decay per week without new evidence
 CONFIDENCE_MAX = 0.95
 CONFIDENCE_MIN = 0.0
 
@@ -101,6 +102,25 @@ class SecretVault:
         else:
             self.add(new_shell)
             return new_shell
+
+    def apply_decay(self) -> int:
+        """Apply time-based confidence decay to all shells.
+
+        Shells without new evidence lose 0.01 confidence per week.
+        Returns number of shells that decayed.
+        """
+        now = time.time()
+        decayed = 0
+        for shell in list(self._shells.values()):
+            weeks_since_update = (now - shell.last_updated) / (7 * 86400)
+            if weeks_since_update >= 1.0:
+                delta = -DECAY_PER_WEEK * weeks_since_update
+                self._update_confidence(shell, delta, f"time_decay: {weeks_since_update:.1f} weeks")
+                decayed += 1
+                # Remove shells that decay below 0.05
+                if shell.confidence < 0.05:
+                    del self._shells[shell.id]
+        return decayed
 
     def _update_confidence(self, shell: Shell, delta: float, reason: str) -> None:
         old = shell.confidence

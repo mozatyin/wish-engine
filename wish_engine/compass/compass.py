@@ -34,6 +34,23 @@ from wish_engine.compass.vault import SecretVault
 from wish_engine.models import DetectorResults
 
 
+# Shell pattern → wish text templates
+_SHELL_WISH_TEMPLATES: dict[str, str] = {
+    "emotion_anomaly": "想更了解自己对{topic}的真实感受",
+    "mouth_hard_heart_soft": "想面对自己对{topic}的真实态度",
+    "say_one_do_other": "想理解自己为什么嘴上否认{topic}但行动上在靠近",
+    "repeated_probing": "想认真想想{topic}对自己到底意味着什么",
+    "value_conflict": "想理解自己内心的价值矛盾",
+    "avoidance_signal": "想面对自己一直在回避的{topic}",
+    "growth_gap": "想让自己的行动跟上内心的成长",
+}
+
+
+def _shell_to_wish_text(shell) -> str:
+    template = _SHELL_WISH_TEMPLATES.get(shell.pattern.value, "想了解自己内心隐藏的渴望")
+    return template.format(topic=shell.topic)
+
+
 class ScanResult(BaseModel):
     """Result of a compass scan."""
 
@@ -73,6 +90,8 @@ class WishCompass:
         Returns:
             ScanResult with counts of new/updated shells.
         """
+        self.vault.apply_decay()
+
         signals = {
             "topics": topics,
             "detector_results": detector_results,
@@ -161,6 +180,28 @@ class WishCompass:
             if star:
                 renders.append(star)
         return renders
+
+    def harvest_blooms(self) -> list[dict]:
+        """Convert bloom-stage shells to wish-like dicts for Engine fulfillment.
+
+        Returns list of dicts compatible with Wish Engine raw_wishes input.
+        Each bloom shell is harvested once (marked with related_wishes entry).
+        """
+        harvested = []
+        for shell in self.vault.bloom_shells:
+            if "harvested" in shell.related_wishes:
+                continue  # already harvested
+            # Convert shell topic + pattern to a wish text
+            wish_text = _shell_to_wish_text(shell)
+            harvested.append({
+                "wish_text": wish_text,
+                "shell_id": shell.id,
+                "shell_topic": shell.topic,
+                "shell_pattern": shell.pattern.value,
+                "confidence": shell.confidence,
+            })
+            shell.related_wishes.append("harvested")
+        return harvested
 
     def summary(self) -> dict[str, int]:
         """Summary of compass state."""

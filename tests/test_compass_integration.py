@@ -119,3 +119,31 @@ class TestCompassSummary:
         assert s["seeds"] == 1
         assert s["sprouts"] == 1
         assert s["blooms"] == 1
+
+
+class TestCompassHarvest:
+    def test_harvest_blooms_returns_wish_text(self):
+        from wish_engine.compass.models import Shell
+        compass = WishCompass()
+        shell = Shell(pattern=ContradictionPattern.EMOTION_ANOMALY, topic="Rhett", confidence=0.8)
+        compass.vault.add(shell)
+        blooms = compass.harvest_blooms()
+        assert len(blooms) == 1
+        assert "Rhett" in blooms[0]["wish_text"]
+        assert blooms[0]["shell_id"] == shell.id
+
+    def test_harvest_marks_as_harvested(self):
+        from wish_engine.compass.models import Shell
+        compass = WishCompass()
+        shell = Shell(pattern=ContradictionPattern.EMOTION_ANOMALY, topic="test", confidence=0.8)
+        compass.vault.add(shell)
+        compass.harvest_blooms()
+        # Second harvest should return empty
+        assert len(compass.harvest_blooms()) == 0
+
+    def test_no_harvest_for_non_bloom(self):
+        from wish_engine.compass.models import Shell
+        compass = WishCompass()
+        shell = Shell(pattern=ContradictionPattern.EMOTION_ANOMALY, topic="young", confidence=0.4)
+        compass.vault.add(shell)
+        assert len(compass.harvest_blooms()) == 0

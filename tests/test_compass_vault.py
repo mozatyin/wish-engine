@@ -1,5 +1,6 @@
 """Tests for Secret Vault — shell storage and confidence management."""
 
+import time
 import pytest
 from wish_engine.compass.models import (
     ContradictionPattern,
@@ -129,6 +130,33 @@ class TestVisibleShells:
         blooms = vault.bloom_shells
         assert len(blooms) == 1
         assert blooms[0].topic == "mature"
+
+
+class TestTimeDecay:
+    def test_decay_after_one_week(self):
+        vault = SecretVault()
+        shell = Shell(pattern=ContradictionPattern.EMOTION_ANOMALY, topic="old", confidence=0.5)
+        shell.last_updated = time.time() - 8 * 86400  # 8 days ago
+        vault.add(shell)
+        decayed = vault.apply_decay()
+        assert decayed == 1
+        assert vault.get(shell.id).confidence < 0.5
+
+    def test_no_decay_if_recent(self):
+        vault = SecretVault()
+        shell = Shell(pattern=ContradictionPattern.EMOTION_ANOMALY, topic="fresh", confidence=0.5)
+        vault.add(shell)
+        decayed = vault.apply_decay()
+        assert decayed == 0
+        assert vault.get(shell.id).confidence == 0.5
+
+    def test_very_low_confidence_shell_removed(self):
+        vault = SecretVault()
+        shell = Shell(pattern=ContradictionPattern.EMOTION_ANOMALY, topic="dying", confidence=0.04)
+        shell.last_updated = time.time() - 14 * 86400  # 2 weeks ago
+        vault.add(shell)
+        vault.apply_decay()
+        assert vault.get(shell.id) is None  # removed
 
 
 class TestConfidenceHistory:

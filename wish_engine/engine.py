@@ -77,6 +77,7 @@ class WishEngineResult:
         self.errors: list[str] = []
         self.compass_scan = None          # ScanResult from compass
         self.compass_renders = []         # CompassStarOutput list
+        self.compass_blooms: list[dict] = []  # harvested bloom shells
 
     @property
     def total_wishes(self) -> int:
@@ -102,6 +103,7 @@ class WishEngineResult:
             "l3_matches": len(self.l3_matches),
             "l3_mutual": sum(1 for m in self.l3_matches if m.is_mutual),
             "compass_shells": self.compass_scan.total_shells if self.compass_scan else 0,
+            "compass_blooms": len(self.compass_blooms),
             "errors": self.errors,
         }
 
@@ -415,6 +417,7 @@ class WishEngine:
                 )
                 result.compass_scan = scan_result
                 result.compass_renders = self._compass.get_star_renders()
+                result.compass_blooms = self._compass.harvest_blooms()
             except Exception as e:
                 result.errors.append(f"Compass scan error: {e}")
 
