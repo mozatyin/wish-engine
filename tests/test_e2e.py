@@ -1,5 +1,7 @@
 """End-to-end tests — full pipeline from intention to render output (no LLM)."""
 
+from __future__ import annotations
+
 import pytest
 
 from wish_engine.models import (

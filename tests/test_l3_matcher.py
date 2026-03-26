@@ -4,6 +4,8 @@ Covers: score computation, safety gates, privacy, compatibility tables,
 ranking, mutual detection, and edge cases.
 """
 
+from __future__ import annotations
+
 import pytest
 
 from wish_engine.models import AgentProfile, WishType

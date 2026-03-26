@@ -4,6 +4,8 @@ Covers: proposal creation, evaluation logic, safety gates (crisis/distress/load)
 full negotiation lifecycle, mutual match detection, and privacy.
 """
 
+from __future__ import annotations
+
 import time
 import pytest
 
