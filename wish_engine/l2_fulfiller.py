@@ -277,8 +277,145 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     from wish_engine.l2_tenant_rights import TenantRightsFulfiller
     from wish_engine.l2_immigration import ImmigrationFulfiller
     from wish_engine.l2_anti_discrimination import AntiDiscriminationFulfiller
+    from wish_engine.l2_bereavement import BereavementFulfiller
+    from wish_engine.l2_pregnancy_loss import PregnancyLossFulfiller
+    from wish_engine.l2_pet_loss import PetLossFulfiller
+    from wish_engine.l2_farewell_ritual import FarewellRitualFulfiller
+    from wish_engine.l2_estate_items import EstateItemsFulfiller
+    from wish_engine.l2_addiction_meetings import AddictionMeetingFulfiller
+    from wish_engine.l2_trigger_alert import TriggerAlertFulfiller
+    from wish_engine.l2_craving_alternatives import CravingAlternativeFulfiller
+    from wish_engine.l2_sobriety_tracker import SobrietyTrackerFulfiller
+    from wish_engine.l2_behavioral_addiction import BehavioralAddictionFulfiller
+    from wish_engine.l2_suicide_prevention import SuicidePreventionFulfiller
+    from wish_engine.l2_domestic_violence import DomesticViolenceFulfiller
+    from wish_engine.l2_debt_crisis import DebtCrisisFulfiller
+    from wish_engine.l2_emergency_shelter import EmergencyShelterFulfiller
+    from wish_engine.l2_collective_trauma import CollectiveTraumaFulfiller
+    from wish_engine.l2_chronic_illness import ChronicIllnessFulfiller
+    from wish_engine.l2_chronic_pain import ChronicPainFulfiller
+    from wish_engine.l2_eating_disorder import EatingDisorderFulfiller
+    from wish_engine.l2_disability_social import DisabilitySocialFulfiller
+    from wish_engine.l2_postpartum import PostpartumFulfiller
+    from wish_engine.l2_cyberbullying import CyberbullyingFulfiller
+    from wish_engine.l2_privacy_protection import PrivacyProtectionFulfiller
+    from wish_engine.l2_child_safety_online import ChildSafetyOnlineFulfiller
+    from wish_engine.l2_scam_detection import ScamDetectionFulfiller
+    from wish_engine.l2_legacy_planning import LegacyPlanningFulfiller
+    from wish_engine.l2_social_justice import SocialJusticeFulfiller
+    from wish_engine.l2_environmental_action import EnvironmentalActionFulfiller
+    from wish_engine.l2_oral_history import OralHistoryFulfiller
+    from wish_engine.l2_roots_journey import RootsJourneyFulfiller
+    from wish_engine.l2_mother_tongue import MotherTongueFulfiller
+    from wish_engine.l2_cultural_recovery import CulturalRecoveryFulfiller
 
     text_lower = wish_text.lower()
+
+    # ── CRISIS (highest priority — check first) ─────────────────────────────
+    suicide_kw = {
+        "自杀", "suicide", "不想活", "kill myself", "انتحار", "想死",
+        "end my life", "结束生命", "活不下去", "self harm", "自残",
+    }
+    if any(kw in text_lower for kw in suicide_kw):
+        return SuicidePreventionFulfiller()
+
+    dv_kw = {
+        "家暴", "domestic violence", "abuse", "عنف أسري", "被打",
+        "hurt me", "他打我", "她打我",
+    }
+    if any(kw in text_lower for kw in dv_kw):
+        return DomesticViolenceFulfiller()
+
+    emergency_shelter_kw = {
+        "庇护", "emergency housing", "无家可归", "homeless", "مأوى",
+        "nowhere to go", "没地方住", "流浪",
+    }
+    if any(kw in text_lower for kw in emergency_shelter_kw):
+        return EmergencyShelterFulfiller()
+
+    debt_crisis_kw = {
+        "债务", "bankruptcy", "催收", "破产", "ديون", "欠钱", "还不起",
+    }
+    if any(kw in text_lower for kw in debt_crisis_kw):
+        return DebtCrisisFulfiller()
+
+    collective_trauma_kw = {
+        "灾后", "ptsd", "创伤后", "صدمة", "war trauma", "战争创伤",
+        "mass shooting", "refugee trauma", "难民创伤",
+    }
+    if any(kw in text_lower for kw in collective_trauma_kw):
+        return CollectiveTraumaFulfiller()
+
+    # ── GRIEF ────────────────────────────────────────────────────────────────
+    pregnancy_loss_kw = {
+        "流产", "miscarriage", "stillbirth", "失去孩子", "إجهاض",
+        "pregnancy loss", "baby loss", "死产", "nicu",
+    }
+    if any(kw in text_lower for kw in pregnancy_loss_kw):
+        return PregnancyLossFulfiller()
+
+    pet_loss_kw = {
+        "宠物去世", "pet loss", "rainbow bridge", "失去宠物",
+        "فقدان حيوان", "pet died", "dog died", "cat died",
+    }
+    if any(kw in text_lower for kw in pet_loss_kw):
+        return PetLossFulfiller()
+
+    farewell_ritual_kw = {
+        "告别仪式", "farewell ritual", "葬礼", "funeral", "جنازة",
+        "janazah", "头七", "scattering ceremony", "memorial service",
+    }
+    if any(kw in text_lower for kw in farewell_ritual_kw):
+        return FarewellRitualFulfiller()
+
+    estate_items_kw = {
+        "遗物", "estate items", "belongings of deceased", "تركة",
+        "遗产整理", "sort belongings",
+    }
+    if any(kw in text_lower for kw in estate_items_kw):
+        return EstateItemsFulfiller()
+
+    bereavement_kw = {
+        "丧亲", "bereavement", "فقدان", "mourning", "grief support",
+        "loss of loved one",
+    }
+    if any(kw in text_lower for kw in bereavement_kw):
+        return BereavementFulfiller()
+
+    # ── ADDICTION ─────────────────────────────────────────────────────────────
+    craving_kw = {
+        "渴望", "craving", "urge", "想喝", "想抽", "رغبة",
+    }
+    if any(kw in text_lower for kw in craving_kw):
+        return CravingAlternativeFulfiller()
+
+    sobriety_kw = {
+        "清醒天数", "sober days", "sobriety", "days clean", "نظافة",
+        "recovery track",
+    }
+    if any(kw in text_lower for kw in sobriety_kw):
+        return SobrietyTrackerFulfiller()
+
+    behavioral_addiction_kw = {
+        "行为成瘾", "gaming addiction", "赌博", "gambling", "قمار",
+        "shopping addiction", "购物成瘾", "phone addiction", "手机成瘾",
+    }
+    if any(kw in text_lower for kw in behavioral_addiction_kw):
+        return BehavioralAddictionFulfiller()
+
+    trigger_alert_kw = {
+        "触发预警", "trigger alert", "avoid triggers", "تجنب",
+        "temptation alert",
+    }
+    if any(kw in text_lower for kw in trigger_alert_kw):
+        return TriggerAlertFulfiller()
+
+    addiction_meeting_kw = {
+        "戒瘾", "addiction meeting", "aa meeting", "na meeting",
+        "إدمان", "戒酒", "戒毒", "recovery meeting",
+    }
+    if any(kw in text_lower for kw in addiction_meeting_kw):
+        return AddictionMeetingFulfiller()
 
     # Check for personality growth keywords
     growth_keywords = {
@@ -1027,6 +1164,140 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     }
     if any(kw in text_lower for kw in anti_discrimination_kw):
         return AntiDiscriminationFulfiller()
+
+    # ── NURTURING (养) ────────────────────────────────────────────────────────
+
+    # Check for eating disorder keywords (highest sensitivity — before chronic)
+    eating_disorder_kw = {
+        "饮食障碍", "eating disorder", "厌食", "anorexia", "暴食",
+        "bulimia", "اضطراب الأكل", "binge", "purge",
+    }
+    if any(kw in text_lower for kw in eating_disorder_kw):
+        return EatingDisorderFulfiller()
+
+    # Check for chronic pain keywords (before generic chronic illness)
+    chronic_pain_kw = {
+        "慢性疼痛", "chronic pain", "疼痛", "ألم", "pain management",
+    }
+    if any(kw in text_lower for kw in chronic_pain_kw):
+        return ChronicPainFulfiller()
+
+    # Check for chronic illness keywords
+    chronic_illness_kw = {
+        "慢性病", "chronic", "diabetes", "糖尿病", "مرض مزمن",
+        "long-term illness", "autoimmune", "thyroid", "epilepsy",
+    }
+    if any(kw in text_lower for kw in chronic_illness_kw):
+        return ChronicIllnessFulfiller()
+
+    # Check for disability social keywords
+    disability_social_kw = {
+        "残障社交", "disabled", "残疾", "adaptive",
+        "wheelchair", "轮椅", "blind", "视障", "deaf", "听障",
+        "neurodivergent",
+    }
+    if any(kw in text_lower for kw in disability_social_kw):
+        return DisabilitySocialFulfiller()
+
+    # Check for postpartum keywords
+    postpartum_kw = {
+        "产后", "postpartum", "新妈妈", "new mom", "ما بعد الولادة",
+        "baby blues",
+    }
+    if any(kw in text_lower for kw in postpartum_kw):
+        return PostpartumFulfiller()
+
+    # ── DIGITAL SAFETY (安) ───────────────────────────────────────────────────
+
+    # Check for cyberbullying keywords
+    cyberbullying_kw = {
+        "网络霸凌", "cyberbullying", "网暴", "online harassment",
+        "تنمر إلكتروني",
+    }
+    if any(kw in text_lower for kw in cyberbullying_kw):
+        return CyberbullyingFulfiller()
+
+    # Check for child safety online keywords
+    child_safety_kw = {
+        "儿童安全", "child safety", "kids online", "أمان الأطفال",
+        "parental control", "家长控制",
+    }
+    if any(kw in text_lower for kw in child_safety_kw):
+        return ChildSafetyOnlineFulfiller()
+
+    # Check for scam detection keywords
+    scam_kw = {
+        "诈骗", "scam", "fraud", "骗", "احتيال", "fake", "deepfake",
+        "杀猪盘",
+    }
+    if any(kw in text_lower for kw in scam_kw):
+        return ScamDetectionFulfiller()
+
+    # Check for privacy protection keywords
+    privacy_kw = {
+        "隐私", "privacy", "密码", "password", "خصوصية",
+        "stalkerware", "phishing", "钓鱼", "vpn",
+    }
+    if any(kw in text_lower for kw in privacy_kw):
+        return PrivacyProtectionFulfiller()
+
+    # ── PURPOSE (义) ──────────────────────────────────────────────────────────
+
+    # Check for legacy planning keywords
+    legacy_kw = {
+        "遗产", "legacy", "留给", "leave behind", "إرث",
+    }
+    if any(kw in text_lower for kw in legacy_kw):
+        return LegacyPlanningFulfiller()
+
+    # Check for social justice keywords
+    social_justice_kw = {
+        "社会正义", "social justice", "公正", "عدالة", "activism",
+        "advocacy", "petition", "请愿",
+    }
+    if any(kw in text_lower for kw in social_justice_kw):
+        return SocialJusticeFulfiller()
+
+    # Check for environmental action keywords
+    environmental_kw = {
+        "环保", "climate", "碳", "carbon", "بيئة", "sustainable",
+        "可持续", "zero waste", "零浪费", "renewable", "wildlife",
+    }
+    if any(kw in text_lower for kw in environmental_kw):
+        return EnvironmentalActionFulfiller()
+
+    # Check for oral history keywords
+    oral_history_kw = {
+        "口述历史", "oral history", "تاريخ شفوي", "family story",
+    }
+    if any(kw in text_lower for kw in oral_history_kw):
+        return OralHistoryFulfiller()
+
+    # ── ROOTS (根) ────────────────────────────────────────────────────────────
+
+    # Check for roots journey keywords
+    roots_kw = {
+        "寻根", "roots", "جذور", "homeland", "故乡", "diaspora",
+        "genealogy", "族谱",
+    }
+    if any(kw in text_lower for kw in roots_kw):
+        return RootsJourneyFulfiller()
+
+    # Check for mother tongue keywords
+    mother_tongue_kw = {
+        "母语", "mother tongue", "heritage language", "لغة أم",
+        "native language",
+    }
+    if any(kw in text_lower for kw in mother_tongue_kw):
+        return MotherTongueFulfiller()
+
+    # Check for cultural recovery keywords
+    cultural_recovery_kw = {
+        "文化恢复", "cultural recovery", "复兴", "indigenous",
+        "原住民",
+    }
+    if any(kw in text_lower for kw in cultural_recovery_kw):
+        return CulturalRecoveryFulfiller()
 
     _FULFILLER_MAP: dict[WishType, L2Fulfiller] = {
         WishType.FIND_PLACE: PlaceFulfiller(),
