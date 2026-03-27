@@ -185,6 +185,12 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     from wish_engine.l2_music import MusicFulfiller
     from wish_engine.l2_safety import SafeRouteFulfiller
     from wish_engine.l2_deals import DealsFulfiller
+    from wish_engine.l2_interest_circles import InterestCircleFulfiller
+    from wish_engine.l2_safe_spaces import SafeSpaceFulfiller
+    from wish_engine.l2_mentor_enhanced import MentorFulfiller
+    from wish_engine.l2_progress_groups import ProgressGroupFulfiller
+    from wish_engine.l2_emotion_weather import EmotionWeatherFulfiller
+    from wish_engine.l2_virtual_companion import VirtualCompanionFulfiller
 
     text_lower = wish_text.lower()
 
@@ -196,6 +202,22 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     if any(kw in text_lower for kw in prayer_keywords):
         return PlaceFulfiller()  # Routes to place search with mosque focus
 
+    # Check for emotion weather keywords (before safety to avoid "mood" clash)
+    emotion_weather_keywords = {
+        "情绪天气", "mood", "atmosphere", "氛围", "مزاج",
+        "vibe", "emotion weather",
+    }
+    if any(kw in text_lower for kw in emotion_weather_keywords):
+        return EmotionWeatherFulfiller()
+
+    # Check for safe space keywords (before safety route)
+    safe_space_keywords = {
+        "safe space", "inclusive", "friendly", "welcoming", "آمن",
+        "包容", "无障碍", "accessible",
+    }
+    if any(kw in text_lower for kw in safe_space_keywords):
+        return SafeSpaceFulfiller()
+
     # Check for safety keywords (cross-cuts multiple wish types)
     safety_keywords = {
         "安全", "回家", "safe", "night", "late", "晚上", "dark",
@@ -203,6 +225,35 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     }
     if any(kw in text_lower for kw in safety_keywords):
         return SafeRouteFulfiller()
+
+    # Check for virtual companion keywords
+    companion_keywords = {
+        "陪伴", "companion", "陪我", "虚拟", "مرافق",
+        "buddy", "陪",
+    }
+    if any(kw in text_lower for kw in companion_keywords):
+        return VirtualCompanionFulfiller()
+
+    # Check for mentor keywords
+    mentor_keywords = {
+        "导师", "mentor", "前辈", "指导", "مرشد", "guidance", "coach",
+    }
+    if any(kw in text_lower for kw in mentor_keywords):
+        return MentorFulfiller()
+
+    # Check for interest circle keywords
+    interest_keywords = {
+        "兴趣", "hobby", "爱好", "circle", "圈子", "同好", "هواية",
+    }
+    if any(kw in text_lower for kw in interest_keywords):
+        return InterestCircleFulfiller()
+
+    # Check for progress group keywords
+    progress_keywords = {
+        "打卡", "accountability", "互助", "challenge",
+    }
+    if any(kw in text_lower for kw in progress_keywords):
+        return ProgressGroupFulfiller()
 
     # Check for deals keywords (cross-cuts multiple wish types)
     deals_keywords = {
