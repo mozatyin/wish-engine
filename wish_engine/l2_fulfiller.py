@@ -848,6 +848,85 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     if any(kw in text_lower for kw in pet_training_kw):
         return PetTrainingFulfiller()
 
+    # Check for accessibility keywords
+    accessibility_kw = {
+        "无障碍", "accessible", "wheelchair", "disability", "إعاقة",
+        "barrier-free", "轮椅", "braille", "hearing loop", "guide dog",
+    }
+    if any(kw in text_lower for kw in accessibility_kw):
+        return AccessibilityFulfiller()
+
+    # Check for allergy-friendly keywords
+    allergy_kw = {
+        "过敏", "allergy", "gluten free", "素食", "vegan", "حساسية",
+        "nut free", "dairy free", "celiac", "allergen",
+    }
+    if any(kw in text_lower for kw in allergy_kw):
+        return AllergyFriendlyFulfiller()
+
+    # Check for noise map keywords
+    noise_kw = {
+        "噪音", "noise level", "quiet place", "安静的地方", "هدوء",
+        "sound level", "noise map",
+    }
+    if any(kw in text_lower for kw in noise_kw):
+        return NoiseMapFulfiller()
+
+    # Check for air quality keywords
+    air_quality_kw = {
+        "空气质量", "air quality", "pm2.5", "pollution", "雾霾",
+        "جودة الهواء", "aqi", "smog",
+    }
+    if any(kw in text_lower for kw in air_quality_kw):
+        return AirQualityFulfiller()
+
+    # Check for night owl keywords
+    night_owl_kw = {
+        "夜猫子", "night owl", "深夜活动", "ليلي",
+        "insomnia", "睡不着", "midnight activity",
+    }
+    if any(kw in text_lower for kw in night_owl_kw):
+        return NightOwlFulfiller()
+
+    # Check for early bird keywords
+    early_bird_kw = {
+        "早起", "early bird", "sunrise", "日出", "صباحي",
+        "dawn", "清晨",
+    }
+    if any(kw in text_lower for kw in early_bird_kw):
+        return EarlyBirdFulfiller()
+
+    # Check for rainy day keywords
+    rainy_day_kw = {
+        "下雨", "rainy day", "雨天", "مطر", "raining",
+    }
+    if any(kw in text_lower for kw in rainy_day_kw):
+        return RainyDayFulfiller()
+
+    # Check for extreme weather keywords
+    extreme_weather_kw = {
+        "极端天气", "extreme weather", "暴风", "عاصفة",
+        "heatwave", "blizzard", "沙尘暴", "typhoon", "earthquake",
+    }
+    if any(kw in text_lower for kw in extreme_weather_kw):
+        return ExtremeWeatherFulfiller()
+
+    # Check for pregnancy keywords
+    pregnancy_kw = {
+        "孕期", "pregnancy", "prenatal", "怀孕", "حمل",
+        "expecting", "maternity", "孕妇",
+    }
+    if any(kw in text_lower for kw in pregnancy_kw):
+        return PregnancyFulfiller()
+
+    # Check for life stage keywords
+    life_stage_kw = {
+        "人生阶段", "life stage", "毕业", "graduation", "退休",
+        "retirement", "مرحلة", "milestone", "career change",
+    }
+    if any(kw in text_lower for kw in life_stage_kw):
+        return LifeStageFulfiller()
+
     _FULFILLER_MAP: dict[WishType, L2Fulfiller] = {
         WishType.FIND_PLACE: PlaceFulfiller(),
         WishType.FIND_RESOURCE: BookFulfiller(),
