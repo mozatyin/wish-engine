@@ -1,0 +1,1613 @@
+{
+  "total": 59,
+  "passed": 6,
+  "failed": 53,
+  "errors": 0,
+  "results": [
+    {
+      "fulfiller": "l2_suicide_prevention",
+      "character": "anna",
+      "reason": "Anna throws herself under the train — the system should detect crisis signals before the final act",
+      "passed": false,
+      "expected_tags": [
+        "crisis",
+        "hotline"
+      ],
+      "actual_tags": [
+        "calming",
+        "practical",
+        "quiet",
+        "relaxation",
+        "self-paced",
+        "sleep",
+        "theory"
+      ],
+      "recommendations": [
+        "Sleep Hygiene Routine",
+        "Guided Sleep Meditation",
+        "CBT for Insomnia (CBT-I)"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_suicide_prevention",
+      "character": "hamlet",
+      "reason": "'To be or not to be' — active suicidal ideation masked as philosophy",
+      "passed": false,
+      "expected_tags": [
+        "crisis"
+      ],
+      "actual_tags": [
+        "calming",
+        "practical",
+        "quiet",
+        "relaxation",
+        "self-paced",
+        "sleep",
+        "theory"
+      ],
+      "recommendations": [
+        "Sleep Hygiene Routine",
+        "Guided Sleep Meditation",
+        "CBT for Insomnia (CBT-I)"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_suicide_prevention",
+      "character": "raskolnikov",
+      "reason": "Post-murder existential despair, isolation, self-destruction",
+      "passed": false,
+      "expected_tags": [
+        "crisis",
+        "counseling"
+      ],
+      "actual_tags": [
+        "calming",
+        "practical",
+        "quiet",
+        "relaxation",
+        "self-paced",
+        "sleep",
+        "theory"
+      ],
+      "recommendations": [
+        "Sleep Hygiene Routine",
+        "Guided Sleep Meditation",
+        "CBT for Insomnia (CBT-I)"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_suicide_prevention",
+      "character": "lady_macbeth",
+      "reason": "Guilt-driven madness and self-harm ('Out, damn'd spot')",
+      "passed": false,
+      "expected_tags": [
+        "crisis"
+      ],
+      "actual_tags": [
+        "calming",
+        "practical",
+        "quiet",
+        "relaxation",
+        "self-paced",
+        "sleep",
+        "theory"
+      ],
+      "recommendations": [
+        "Sleep Hygiene Routine",
+        "Guided Sleep Meditation",
+        "CBT for Insomnia (CBT-I)"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_domestic_violence",
+      "character": "celie",
+      "reason": "Beaten and raped by her husband for years — needs escape and support",
+      "passed": false,
+      "expected_tags": [
+        "shelter",
+        "safety"
+      ],
+      "actual_tags": [
+        "calming",
+        "practical",
+        "quiet",
+        "relaxation",
+        "self-paced",
+        "sleep",
+        "theory"
+      ],
+      "recommendations": [
+        "Sleep Hygiene Routine",
+        "Guided Sleep Meditation",
+        "CBT for Insomnia (CBT-I)"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_domestic_violence",
+      "character": "rochester",
+      "reason": "Bertha Mason locked in the attic — structural violence against women",
+      "passed": false,
+      "expected_tags": [
+        "legal"
+      ],
+      "actual_tags": [
+        "calming",
+        "practical",
+        "quiet",
+        "relaxation",
+        "self-paced",
+        "sleep",
+        "theory"
+      ],
+      "recommendations": [
+        "Sleep Hygiene Routine",
+        "Guided Sleep Meditation",
+        "CBT for Insomnia (CBT-I)"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_domestic_violence",
+      "character": "heathcliff",
+      "reason": "Violence toward Isabella and Hareton — cycle of abuse",
+      "passed": false,
+      "expected_tags": [
+        "counseling"
+      ],
+      "actual_tags": [
+        "calming",
+        "practical",
+        "quiet",
+        "relaxation",
+        "self-paced",
+        "sleep",
+        "theory"
+      ],
+      "recommendations": [
+        "Sleep Hygiene Routine",
+        "Guided Sleep Meditation",
+        "CBT for Insomnia (CBT-I)"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_debt_crisis",
+      "character": "xu_sanguan",
+      "reason": "Sells blood to feed family, perpetual poverty crisis",
+      "passed": false,
+      "expected_tags": [
+        "financial",
+        "emergency"
+      ],
+      "actual_tags": [
+        "calming",
+        "conservative",
+        "practical",
+        "quiet"
+      ],
+      "recommendations": [
+        "Budgeting Basics",
+        "Emergency Fund Guide",
+        "Smart Saving Habits"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_debt_crisis",
+      "character": "raskolnikov",
+      "reason": "Desperate poverty drives him to murder — financial crisis is root cause",
+      "passed": false,
+      "expected_tags": [
+        "counseling",
+        "assistance"
+      ],
+      "actual_tags": [
+        "calming",
+        "conservative",
+        "practical",
+        "quiet"
+      ],
+      "recommendations": [
+        "Budgeting Basics",
+        "Emergency Fund Guide",
+        "Smart Saving Habits"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_debt_crisis",
+      "character": "gatsby",
+      "reason": "Built entire fortune on crime to escape poverty — class desperation",
+      "passed": false,
+      "expected_tags": [
+        "financial"
+      ],
+      "actual_tags": [
+        "calming",
+        "conservative",
+        "practical",
+        "quiet"
+      ],
+      "recommendations": [
+        "Budgeting Basics",
+        "Emergency Fund Guide",
+        "Smart Saving Habits"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_collective_trauma",
+      "character": "katniss",
+      "reason": "PTSD from the Hunger Games and war — collective trauma of District 12",
+      "passed": false,
+      "expected_tags": [
+        "trauma",
+        "ptsd"
+      ],
+      "actual_tags": [
+        "calming",
+        "practical",
+        "quiet",
+        "relaxation",
+        "self-paced",
+        "sleep",
+        "theory"
+      ],
+      "recommendations": [
+        "Sleep Hygiene Routine",
+        "Guided Sleep Meditation",
+        "CBT for Insomnia (CBT-I)"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_collective_trauma",
+      "character": "scarlett",
+      "reason": "Atlanta burning, siege, starvation — war trauma",
+      "passed": false,
+      "expected_tags": [
+        "disaster",
+        "community"
+      ],
+      "actual_tags": [
+        "calming",
+        "practical",
+        "quiet",
+        "relaxation",
+        "self-paced",
+        "sleep",
+        "theory"
+      ],
+      "recommendations": [
+        "Sleep Hygiene Routine",
+        "Guided Sleep Meditation",
+        "CBT for Insomnia (CBT-I)"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_collective_trauma",
+      "character": "celie",
+      "reason": "Generational trauma of slavery and racism",
+      "passed": false,
+      "expected_tags": [
+        "trauma"
+      ],
+      "actual_tags": [
+        "calming",
+        "practical",
+        "quiet",
+        "relaxation",
+        "self-paced",
+        "sleep",
+        "theory"
+      ],
+      "recommendations": [
+        "Sleep Hygiene Routine",
+        "Guided Sleep Meditation",
+        "CBT for Insomnia (CBT-I)"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_bereavement",
+      "character": "hamlet",
+      "reason": "Father murdered — complicated grief drives the entire plot",
+      "passed": false,
+      "expected_tags": [
+        "grief",
+        "loss"
+      ],
+      "actual_tags": [
+        "calming",
+        "practical",
+        "quiet",
+        "relaxation",
+        "self-paced",
+        "sleep",
+        "theory"
+      ],
+      "recommendations": [
+        "Sleep Hygiene Routine",
+        "Guided Sleep Meditation",
+        "CBT for Insomnia (CBT-I)"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_bereavement",
+      "character": "heathcliff",
+      "reason": "Catherine's death destroys him — grief becomes vengeance",
+      "passed": false,
+      "expected_tags": [
+        "grief",
+        "support"
+      ],
+      "actual_tags": [
+        "calming",
+        "practical",
+        "quiet",
+        "relaxation",
+        "self-paced",
+        "sleep",
+        "theory"
+      ],
+      "recommendations": [
+        "Sleep Hygiene Routine",
+        "Guided Sleep Meditation",
+        "CBT for Insomnia (CBT-I)"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_bereavement",
+      "character": "scarlett",
+      "reason": "Loses her mother, her child Bonnie, and Melanie",
+      "passed": false,
+      "expected_tags": [
+        "grief"
+      ],
+      "actual_tags": [
+        "calming",
+        "practical",
+        "quiet",
+        "relaxation",
+        "self-paced",
+        "sleep",
+        "theory"
+      ],
+      "recommendations": [
+        "Sleep Hygiene Routine",
+        "Guided Sleep Meditation",
+        "CBT for Insomnia (CBT-I)"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_bereavement",
+      "character": "katniss",
+      "reason": "Loses Prim, Rue, Finnick — survivor's grief",
+      "passed": false,
+      "expected_tags": [
+        "grief",
+        "survivor"
+      ],
+      "actual_tags": [
+        "calming",
+        "practical",
+        "quiet",
+        "relaxation",
+        "self-paced",
+        "sleep",
+        "theory"
+      ],
+      "recommendations": [
+        "Sleep Hygiene Routine",
+        "Guided Sleep Meditation",
+        "CBT for Insomnia (CBT-I)"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_pet_loss",
+      "character": "elizabeth",
+      "reason": "Pastoral life at Longbourn — losing a beloved animal would be personal",
+      "passed": true,
+      "expected_tags": [
+        "grief",
+        "memorial"
+      ],
+      "actual_tags": [
+        "gentle",
+        "guided",
+        "memorial",
+        "online",
+        "peer",
+        "pet_loss",
+        "professional",
+        "ritual",
+        "solo",
+        "support_group"
+      ],
+      "recommendations": [
+        "Pet Grief Counseling",
+        "Pet Memorial Service",
+        "Rainbow Bridge Support Group"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_addiction_meetings",
+      "character": "don_draper",
+      "reason": "Alcoholic throughout the series — functional but deteriorating",
+      "passed": false,
+      "expected_tags": [
+        "aa",
+        "recovery"
+      ],
+      "actual_tags": [
+        "cafe",
+        "calming",
+        "dining",
+        "entertainment",
+        "everyday",
+        "food",
+        "movie",
+        "practical",
+        "quiet",
+        "reading"
+      ],
+      "recommendations": [
+        "Solo-Friendly Cafe",
+        "Single Dining — Counter Seat",
+        "Solo Movie — Weekday Matinee"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_addiction_meetings",
+      "character": "jordan_belfort",
+      "reason": "Quaaludes, cocaine — extreme substance abuse",
+      "passed": false,
+      "expected_tags": [
+        "na",
+        "recovery"
+      ],
+      "actual_tags": [
+        "cafe",
+        "calming",
+        "dining",
+        "entertainment",
+        "everyday",
+        "food",
+        "movie",
+        "practical",
+        "quiet",
+        "reading"
+      ],
+      "recommendations": [
+        "Solo-Friendly Cafe",
+        "Single Dining — Counter Seat",
+        "Solo Movie — Weekday Matinee"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_addiction_meetings",
+      "character": "tony_soprano",
+      "reason": "Food, rage, power — behavioral addictions",
+      "passed": false,
+      "expected_tags": [
+        "recovery"
+      ],
+      "actual_tags": [
+        "cafe",
+        "calming",
+        "dining",
+        "entertainment",
+        "everyday",
+        "food",
+        "movie",
+        "practical",
+        "quiet",
+        "reading"
+      ],
+      "recommendations": [
+        "Solo-Friendly Cafe",
+        "Single Dining — Counter Seat",
+        "Solo Movie — Weekday Matinee"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_trigger_alert",
+      "character": "don_draper",
+      "reason": "Bars and stress trigger drinking — needs avoidance routing",
+      "passed": false,
+      "expected_tags": [
+        "avoidance",
+        "trigger"
+      ],
+      "actual_tags": [
+        "calming",
+        "practical",
+        "quiet",
+        "relaxation",
+        "self-paced",
+        "sleep",
+        "theory"
+      ],
+      "recommendations": [
+        "Sleep Hygiene Routine",
+        "Guided Sleep Meditation",
+        "CBT for Insomnia (CBT-I)"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_trigger_alert",
+      "character": "jordan_belfort",
+      "reason": "Wall Street parties = drug trigger",
+      "passed": false,
+      "expected_tags": [
+        "alert"
+      ],
+      "actual_tags": [
+        "calming",
+        "practical",
+        "quiet",
+        "relaxation",
+        "self-paced",
+        "sleep",
+        "theory"
+      ],
+      "recommendations": [
+        "Sleep Hygiene Routine",
+        "Guided Sleep Meditation",
+        "CBT for Insomnia (CBT-I)"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_caregiver_respite",
+      "character": "jane",
+      "reason": "Cares for Rochester after his blindness — total caregiver burden",
+      "passed": false,
+      "expected_tags": [
+        "respite",
+        "relief"
+      ],
+      "actual_tags": [
+        "calming",
+        "convenient",
+        "ev",
+        "fast",
+        "practical",
+        "quick",
+        "slow",
+        "tesla"
+      ],
+      "recommendations": [
+        "DC Fast Charger",
+        "Level 2 Slow Charger",
+        "Tesla Supercharger"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_caregiver_respite",
+      "character": "scarlett",
+      "reason": "Forced to care for Melanie, the baby, everyone at Tara",
+      "passed": false,
+      "expected_tags": [
+        "respite"
+      ],
+      "actual_tags": [
+        "calming",
+        "convenient",
+        "ev",
+        "fast",
+        "practical",
+        "quick",
+        "slow",
+        "tesla"
+      ],
+      "recommendations": [
+        "DC Fast Charger",
+        "Level 2 Slow Charger",
+        "Tesla Supercharger"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_caregiver_respite",
+      "character": "xu_sanguan",
+      "reason": "Carries his entire family on his back — literal blood sacrifice",
+      "passed": false,
+      "expected_tags": [
+        "respite",
+        "support"
+      ],
+      "actual_tags": [
+        "calming",
+        "convenient",
+        "ev",
+        "fast",
+        "practical",
+        "quick",
+        "slow",
+        "tesla"
+      ],
+      "recommendations": [
+        "DC Fast Charger",
+        "Level 2 Slow Charger",
+        "Tesla Supercharger"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_legal_aid",
+      "character": "atticus",
+      "reason": "Defends Tom Robinson — legal system as justice/injustice",
+      "passed": true,
+      "expected_tags": [
+        "legal",
+        "rights"
+      ],
+      "actual_tags": [
+        "calming",
+        "employment_lawyer",
+        "free",
+        "free_legal_clinic",
+        "general",
+        "housing",
+        "professional",
+        "rights",
+        "tenant_lawyer",
+        "work"
+      ],
+      "recommendations": [
+        "Free Legal Clinic",
+        "Tenant Rights Lawyer",
+        "Employment Lawyer"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_legal_aid",
+      "character": "celie",
+      "reason": "No legal protection from her abuser",
+      "passed": false,
+      "expected_tags": [
+        "legal",
+        "domestic"
+      ],
+      "actual_tags": [
+        "calming",
+        "employment_lawyer",
+        "free",
+        "free_legal_clinic",
+        "general",
+        "housing",
+        "professional",
+        "rights",
+        "tenant_lawyer",
+        "work"
+      ],
+      "recommendations": [
+        "Free Legal Clinic",
+        "Tenant Rights Lawyer",
+        "Employment Lawyer"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_legal_aid",
+      "character": "raskolnikov",
+      "reason": "Criminal justice system — needs defense",
+      "passed": false,
+      "expected_tags": [
+        "legal",
+        "criminal"
+      ],
+      "actual_tags": [
+        "calming",
+        "employment_lawyer",
+        "free",
+        "free_legal_clinic",
+        "general",
+        "housing",
+        "professional",
+        "rights",
+        "tenant_lawyer",
+        "work"
+      ],
+      "recommendations": [
+        "Free Legal Clinic",
+        "Tenant Rights Lawyer",
+        "Employment Lawyer"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_anti_discrimination",
+      "character": "atticus",
+      "reason": "Fights racial discrimination in 1930s Alabama",
+      "passed": false,
+      "expected_tags": [
+        "discrimination",
+        "racial"
+      ],
+      "actual_tags": [
+        "attachment",
+        "calming",
+        "practical",
+        "quiet",
+        "relationships",
+        "theory"
+      ],
+      "recommendations": [
+        "Attached",
+        "Hold Me Tight",
+        "Wired for Love"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_anti_discrimination",
+      "character": "celie",
+      "reason": "Racial + gender discrimination",
+      "passed": false,
+      "expected_tags": [
+        "discrimination"
+      ],
+      "actual_tags": [
+        "attachment",
+        "calming",
+        "practical",
+        "quiet",
+        "relationships",
+        "theory"
+      ],
+      "recommendations": [
+        "Attached",
+        "Hold Me Tight",
+        "Wired for Love"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_anti_discrimination",
+      "character": "darcy",
+      "reason": "Class discrimination — he both perpetuates and suffers from it",
+      "passed": false,
+      "expected_tags": [
+        "discrimination",
+        "class"
+      ],
+      "actual_tags": [
+        "attachment",
+        "calming",
+        "practical",
+        "quiet",
+        "relationships",
+        "theory"
+      ],
+      "recommendations": [
+        "Attached",
+        "Hold Me Tight",
+        "Wired for Love"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_chronic_pain",
+      "character": "rochester",
+      "reason": "Blinded and maimed in the fire — chronic disability",
+      "passed": false,
+      "expected_tags": [
+        "pain",
+        "management"
+      ],
+      "actual_tags": [
+        "calming",
+        "convenient",
+        "ev",
+        "fast",
+        "practical",
+        "quick",
+        "slow",
+        "tesla"
+      ],
+      "recommendations": [
+        "DC Fast Charger",
+        "Level 2 Slow Charger",
+        "Tesla Supercharger"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_chronic_pain",
+      "character": "xu_sanguan",
+      "reason": "Body broken from selling blood — chronic health consequences",
+      "passed": false,
+      "expected_tags": [
+        "pain"
+      ],
+      "actual_tags": [
+        "calming",
+        "convenient",
+        "ev",
+        "fast",
+        "practical",
+        "quick",
+        "slow",
+        "tesla"
+      ],
+      "recommendations": [
+        "DC Fast Charger",
+        "Level 2 Slow Charger",
+        "Tesla Supercharger"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_eating_disorder",
+      "character": "anna",
+      "reason": "Stops eating as despair deepens — self-starvation as control",
+      "passed": false,
+      "expected_tags": [
+        "ed",
+        "therapy"
+      ],
+      "actual_tags": [
+        "calming",
+        "practical",
+        "quiet",
+        "relaxation",
+        "self-paced",
+        "sleep",
+        "theory"
+      ],
+      "recommendations": [
+        "Sleep Hygiene Routine",
+        "Guided Sleep Meditation",
+        "CBT for Insomnia (CBT-I)"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_postpartum",
+      "character": "anna",
+      "reason": "After giving birth to Vronsky's daughter, spirals into depression",
+      "passed": false,
+      "expected_tags": [
+        "postpartum",
+        "depression"
+      ],
+      "actual_tags": [
+        "calming",
+        "practical",
+        "quiet",
+        "relaxation",
+        "self-paced",
+        "sleep",
+        "theory"
+      ],
+      "recommendations": [
+        "Sleep Hygiene Routine",
+        "Guided Sleep Meditation",
+        "CBT for Insomnia (CBT-I)"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_postpartum",
+      "character": "scarlett",
+      "reason": "Rejection of motherhood, complicated maternal feelings",
+      "passed": false,
+      "expected_tags": [
+        "postpartum"
+      ],
+      "actual_tags": [
+        "calming",
+        "practical",
+        "quiet",
+        "relaxation",
+        "self-paced",
+        "sleep",
+        "theory"
+      ],
+      "recommendations": [
+        "Sleep Hygiene Routine",
+        "Guided Sleep Meditation",
+        "CBT for Insomnia (CBT-I)"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_legacy_planning",
+      "character": "walter_white",
+      "reason": "'I did it for me' — legacy vs ego, what do you leave behind?",
+      "passed": false,
+      "expected_tags": [
+        "legacy"
+      ],
+      "actual_tags": [
+        "calming",
+        "community",
+        "ethical_will",
+        "memoir",
+        "mentoring",
+        "recording",
+        "self-paced",
+        "story",
+        "values",
+        "writing"
+      ],
+      "recommendations": [
+        "Ethical Will Writing",
+        "Life Story Recording",
+        "Mentoring Next Generation"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_legacy_planning",
+      "character": "gatsby",
+      "reason": "Built an empire but left nothing real — the hollow legacy",
+      "passed": false,
+      "expected_tags": [
+        "legacy",
+        "meaning"
+      ],
+      "actual_tags": [
+        "calming",
+        "community",
+        "ethical_will",
+        "memoir",
+        "mentoring",
+        "recording",
+        "self-paced",
+        "story",
+        "values",
+        "writing"
+      ],
+      "recommendations": [
+        "Ethical Will Writing",
+        "Life Story Recording",
+        "Mentoring Next Generation"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_legacy_planning",
+      "character": "atticus",
+      "reason": "Moral legacy to his children — 'real courage'",
+      "passed": false,
+      "expected_tags": [
+        "legacy"
+      ],
+      "actual_tags": [
+        "calming",
+        "community",
+        "ethical_will",
+        "memoir",
+        "mentoring",
+        "recording",
+        "self-paced",
+        "story",
+        "values",
+        "writing"
+      ],
+      "recommendations": [
+        "Ethical Will Writing",
+        "Life Story Recording",
+        "Mentoring Next Generation"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_social_justice",
+      "character": "atticus",
+      "reason": "Fighting systemic racism through the legal system",
+      "passed": false,
+      "expected_tags": [
+        "justice",
+        "advocacy"
+      ],
+      "actual_tags": [
+        "attachment",
+        "calming",
+        "practical",
+        "quiet",
+        "relationships",
+        "theory"
+      ],
+      "recommendations": [
+        "Attached",
+        "Hold Me Tight",
+        "Wired for Love"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_social_justice",
+      "character": "katniss",
+      "reason": "Rebellion against oppressive regime — revolutionary justice",
+      "passed": false,
+      "expected_tags": [
+        "justice",
+        "activism"
+      ],
+      "actual_tags": [
+        "attachment",
+        "calming",
+        "practical",
+        "quiet",
+        "relationships",
+        "theory"
+      ],
+      "recommendations": [
+        "Attached",
+        "Hold Me Tight",
+        "Wired for Love"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_social_justice",
+      "character": "celie",
+      "reason": "Finding voice and agency after a lifetime of oppression",
+      "passed": false,
+      "expected_tags": [
+        "justice",
+        "empowerment"
+      ],
+      "actual_tags": [
+        "attachment",
+        "calming",
+        "practical",
+        "quiet",
+        "relationships",
+        "theory"
+      ],
+      "recommendations": [
+        "Attached",
+        "Hold Me Tight",
+        "Wired for Love"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_roots_journey",
+      "character": "gatsby",
+      "reason": "James Gatz erased his origins — the lost roots haunt him",
+      "passed": false,
+      "expected_tags": [
+        "roots",
+        "heritage"
+      ],
+      "actual_tags": [
+        "attachment",
+        "calming",
+        "practical",
+        "quiet",
+        "relationships",
+        "theory"
+      ],
+      "recommendations": [
+        "Attached",
+        "Hold Me Tight",
+        "Wired for Love"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_roots_journey",
+      "character": "don_draper",
+      "reason": "Dick Whitman stole a dead man's identity — ultimate rootlessness",
+      "passed": false,
+      "expected_tags": [
+        "roots",
+        "identity"
+      ],
+      "actual_tags": [
+        "attachment",
+        "calming",
+        "practical",
+        "quiet",
+        "relationships",
+        "theory"
+      ],
+      "recommendations": [
+        "Attached",
+        "Hold Me Tight",
+        "Wired for Love"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_roots_journey",
+      "character": "heathcliff",
+      "reason": "Orphan with no known origin — rootlessness drives rage",
+      "passed": false,
+      "expected_tags": [
+        "roots"
+      ],
+      "actual_tags": [
+        "attachment",
+        "calming",
+        "practical",
+        "quiet",
+        "relationships",
+        "theory"
+      ],
+      "recommendations": [
+        "Attached",
+        "Hold Me Tight",
+        "Wired for Love"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_cultural_recovery",
+      "character": "celie",
+      "reason": "African heritage suppressed by slavery — Shug helps her reconnect",
+      "passed": false,
+      "expected_tags": [
+        "cultural",
+        "recovery"
+      ],
+      "actual_tags": [
+        "attachment",
+        "calming",
+        "practical",
+        "quiet",
+        "relationships",
+        "theory"
+      ],
+      "recommendations": [
+        "Attached",
+        "Hold Me Tight",
+        "Wired for Love"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_cultural_recovery",
+      "character": "xu_sanguan",
+      "reason": "Chinese cultural traditions as survival anchor through hardship",
+      "passed": false,
+      "expected_tags": [
+        "cultural",
+        "tradition"
+      ],
+      "actual_tags": [
+        "attachment",
+        "calming",
+        "practical",
+        "quiet",
+        "relationships",
+        "theory"
+      ],
+      "recommendations": [
+        "Attached",
+        "Hold Me Tight",
+        "Wired for Love"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_food",
+      "character": "xu_sanguan",
+      "reason": "Hunger is central — 'selling blood to eat pork liver noodles'",
+      "passed": false,
+      "expected_tags": [
+        "comfort"
+      ],
+      "actual_tags": [
+        "calming",
+        "meditation",
+        "mindfulness",
+        "nature",
+        "peaceful",
+        "quiet",
+        "self-paced",
+        "traditional",
+        "walking"
+      ],
+      "recommendations": [
+        "Mindfulness Meditation Center",
+        "Zen Garden Retreat",
+        "Lakeside Park"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_food",
+      "character": "scarlett",
+      "reason": "'I'll never be hungry again' — food as survival and dignity",
+      "passed": false,
+      "expected_tags": [
+        "comfort"
+      ],
+      "actual_tags": [
+        "calming",
+        "meditation",
+        "mindfulness",
+        "nature",
+        "peaceful",
+        "quiet",
+        "self-paced",
+        "traditional",
+        "walking"
+      ],
+      "recommendations": [
+        "Mindfulness Meditation Center",
+        "Zen Garden Retreat",
+        "Lakeside Park"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_food",
+      "character": "tony_soprano",
+      "reason": "Emotional eating — food as coping mechanism",
+      "passed": false,
+      "expected_tags": [
+        "comfort",
+        "emotional"
+      ],
+      "actual_tags": [
+        "calming",
+        "meditation",
+        "mindfulness",
+        "nature",
+        "peaceful",
+        "quiet",
+        "self-paced",
+        "traditional",
+        "walking"
+      ],
+      "recommendations": [
+        "Mindfulness Meditation Center",
+        "Zen Garden Retreat",
+        "Lakeside Park"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_music",
+      "character": "elizabeth",
+      "reason": "Piano playing at Pemberley — music as expression",
+      "passed": true,
+      "expected_tags": [
+        "calming"
+      ],
+      "actual_tags": [
+        "acoustic",
+        "ambient",
+        "anxiety-relief",
+        "calming",
+        "focus",
+        "lo-fi",
+        "meditation",
+        "quiet",
+        "self-paced"
+      ],
+      "recommendations": [
+        "Calming Acoustic",
+        "Ambient Soundscapes",
+        "Lo-Fi Beats to Relax"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_music",
+      "character": "gatsby",
+      "reason": "The parties, the orchestra — music as facade",
+      "passed": false,
+      "expected_tags": [
+        "upbeat"
+      ],
+      "actual_tags": [
+        "acoustic",
+        "ambient",
+        "anxiety-relief",
+        "calming",
+        "focus",
+        "lo-fi",
+        "meditation",
+        "quiet",
+        "self-paced"
+      ],
+      "recommendations": [
+        "Calming Acoustic",
+        "Ambient Soundscapes",
+        "Lo-Fi Beats to Relax"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_nature_healing",
+      "character": "jane",
+      "reason": "Moors as healing landscape — nature restores her",
+      "passed": true,
+      "expected_tags": [
+        "nature",
+        "healing"
+      ],
+      "actual_tags": [
+        "calming",
+        "meditation",
+        "mindfulness",
+        "nature",
+        "peaceful",
+        "quiet",
+        "self-paced",
+        "traditional",
+        "walking"
+      ],
+      "recommendations": [
+        "Mindfulness Meditation Center",
+        "Zen Garden Retreat",
+        "Lakeside Park"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_nature_healing",
+      "character": "katniss",
+      "reason": "The forest is her only safe space — nature as sanctuary",
+      "passed": true,
+      "expected_tags": [
+        "nature",
+        "forest"
+      ],
+      "actual_tags": [
+        "calming",
+        "meditation",
+        "mindfulness",
+        "nature",
+        "peaceful",
+        "quiet",
+        "self-paced",
+        "traditional",
+        "walking"
+      ],
+      "recommendations": [
+        "Mindfulness Meditation Center",
+        "Zen Garden Retreat",
+        "Lakeside Park"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_nature_healing",
+      "character": "darcy",
+      "reason": "Pemberley grounds — nature as authentic self",
+      "passed": true,
+      "expected_tags": [
+        "nature"
+      ],
+      "actual_tags": [
+        "calming",
+        "meditation",
+        "mindfulness",
+        "nature",
+        "peaceful",
+        "quiet",
+        "self-paced",
+        "traditional",
+        "walking"
+      ],
+      "recommendations": [
+        "Mindfulness Meditation Center",
+        "Zen Garden Retreat",
+        "Lakeside Park"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_confidence",
+      "character": "darcy",
+      "reason": "Needs to overcome social rigidity to express love",
+      "passed": false,
+      "expected_tags": [
+        "confidence"
+      ],
+      "actual_tags": [
+        "calming",
+        "convenient",
+        "ev",
+        "fast",
+        "practical",
+        "quick",
+        "slow",
+        "tesla"
+      ],
+      "recommendations": [
+        "DC Fast Charger",
+        "Level 2 Slow Charger",
+        "Tesla Supercharger"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_confidence",
+      "character": "elizabeth",
+      "reason": "Confident but must learn humility — balanced self-assurance",
+      "passed": false,
+      "expected_tags": [
+        "confidence"
+      ],
+      "actual_tags": [
+        "calming",
+        "convenient",
+        "ev",
+        "fast",
+        "practical",
+        "quick",
+        "slow",
+        "tesla"
+      ],
+      "recommendations": [
+        "DC Fast Charger",
+        "Level 2 Slow Charger",
+        "Tesla Supercharger"
+      ],
+      "error": ""
+    },
+    {
+      "fulfiller": "l2_confidence",
+      "character": "celie",
+      "reason": "From zero self-worth to 'I'm here' — the ultimate confidence journey",
+      "passed": false,
+      "expected_tags": [
+        "confidence",
+        "growth"
+      ],
+      "actual_tags": [
+        "calming",
+        "convenient",
+        "ev",
+        "fast",
+        "practical",
+        "quick",
+        "slow",
+        "tesla"
+      ],
+      "recommendations": [
+        "DC Fast Charger",
+        "Level 2 Slow Charger",
+        "Tesla Supercharger"
+      ],
+      "error": ""
+    }
+  ],
+  "unmapped_fulfillers": [
+    "l2_intergenerational",
+    "l2_home_decor",
+    "l2_cyberbullying",
+    "l2_caregiver_support",
+    "l2_interview_prep",
+    "l2_volunteer",
+    "l2_dream_journal",
+    "l2_games",
+    "l2_ev_charging",
+    "l2_panic_relief",
+    "l2_date_spots",
+    "l2_gift",
+    "l2_farewell_ritual",
+    "l2_remote_care",
+    "l2_child_safety_online",
+    "l2_ramadan",
+    "l2_secondhand",
+    "l2_safety",
+    "l2_course_tracker",
+    "l2_books",
+    "l2_local_guide",
+    "l2_family_dining",
+    "l2_astro_fun",
+    "l2_bucket_list",
+    "l2_fashion",
+    "l2_services",
+    "l2_memory_map",
+    "l2_labor_rights",
+    "l2_career",
+    "l2_breakup_healing",
+    "l2_neighborhood",
+    "l2_photo_spots",
+    "l2_personality_growth",
+    "l2_tenant_rights",
+    "l2_estate_items",
+    "l2_privacy_protection",
+    "l2_mentor_enhanced",
+    "l2_environmental_action",
+    "l2_caregiver_emotional",
+    "l2_deals",
+    "l2_allergy_friendly",
+    "l2_rainy_day",
+    "l2_safe_spaces",
+    "l2_digital_detox",
+    "l2_medical",
+    "l2_emergency_shelter",
+    "l2_free_activities",
+    "l2_focus_mode",
+    "l2_history_stories",
+    "l2_courses",
+    "l2_micro_challenge",
+    "l2_pet_training",
+    "l2_mother_tongue",
+    "l2_behavioral_addiction",
+    "l2_life_stage",
+    "l2_writing",
+    "l2_language_env",
+    "l2_podcast",
+    "l2_personal_brand",
+    "l2_early_bird",
+    "l2_housing",
+    "l2_chronic_illness",
+    "l2_progress_groups",
+    "l2_finance",
+    "l2_immigration",
+    "l2_noise_map",
+    "l2_seasonal_activities",
+    "l2_mindfulness",
+    "l2_craving_alternatives",
+    "l2_collecting",
+    "l2_emotion_calendar",
+    "l2_sleep_env",
+    "l2_events",
+    "l2_interest_circles",
+    "l2_scam_detection",
+    "l2_reviews",
+    "l2_places",
+    "l2_extreme_weather",
+    "l2_weekend_planner",
+    "l2_coworking",
+    "l2_kids_activities",
+    "l2_eq_training",
+    "l2_poetry",
+    "l2_oral_history",
+    "l2_birthday_planning",
+    "l2_sobriety_tracker",
+    "l2_identity_exploration",
+    "l2_travel",
+    "l2_culture_bridge",
+    "l2_moving",
+    "l2_pet_friendly",
+    "l2_crafts",
+    "l2_parking",
+    "l2_habit_tracker",
+    "l2_night_owl",
+    "l2_solo_friendly",
+    "l2_pregnancy_loss",
+    "l2_public_speaking",
+    "l2_hometown_food",
+    "l2_pregnancy",
+    "l2_emotion_weather",
+    "l2_seasonal_wellness",
+    "l2_air_quality",
+    "l2_elderly_care",
+    "l2_skill_exchange",
+    "l2_deep_social",
+    "l2_virtual_companion",
+    "l2_gratitude",
+    "l2_wedding",
+    "l2_accessibility",
+    "l2_documentaries",
+    "l2_fulfiller",
+    "l2_health_sync",
+    "l2_wellness",
+    "l2_late_night",
+    "l2_startup_resources",
+    "l2_disability_social"
+  ]
+}
