@@ -65,11 +65,13 @@ class TestSoloFriendlyFulfiller:
         result = f.fulfill(self._make_wish(), DetectorResults())
         assert result.reminder_option is not None
 
-    def test_relevance_reason_mentions_solo(self):
+    def test_relevance_reason_personalized_or_fallback(self):
         f = SoloFriendlyFulfiller()
         result = f.fulfill(self._make_wish(), DetectorResults())
         for r in result.recommendations:
-            assert "solo" in r.relevance_reason.lower() or "alone" in r.relevance_reason.lower()
+            # With no detector data, personalization falls back to title-based reason
+            assert len(r.relevance_reason) > 5
+            assert r.title in r.relevance_reason or "solo" in r.relevance_reason.lower()
 
     def test_relevance_reason_not_empty(self):
         f = SoloFriendlyFulfiller()

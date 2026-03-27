@@ -29,6 +29,7 @@ from wish_engine.models import (
     WishLevel,
     WishType,
 )
+from wish_engine.personalization import personalize_reason
 
 
 class PersonalityFilter:
@@ -155,18 +156,26 @@ class L2Fulfiller(ABC):
         """Filter, score, and convert candidates to Recommendation models."""
         pf = PersonalityFilter(detector_results)
         ranked = pf.filter_and_rank(candidates, max_results=max_results)
-        return [
-            Recommendation(
-                title=c["title"],
-                description=c["description"],
-                category=c["category"],
-                relevance_reason=c.get("relevance_reason", "Matches your profile"),
-                score=c.get("_personality_score", 0.5),
-                action_url=c.get("action_url"),
-                tags=c.get("tags", []),
+        results: list[Recommendation] = []
+        for c in ranked:
+            tags = c.get("tags", [])
+            reason = personalize_reason(
+                recommendation_title=c["title"],
+                recommendation_tags=tags,
+                detector_results=detector_results,
             )
-            for c in ranked
-        ]
+            results.append(
+                Recommendation(
+                    title=c["title"],
+                    description=c["description"],
+                    category=c["category"],
+                    relevance_reason=reason,
+                    score=c.get("_personality_score", 0.5),
+                    action_url=c.get("action_url"),
+                    tags=tags,
+                )
+            )
+        return results
 
 
 def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
