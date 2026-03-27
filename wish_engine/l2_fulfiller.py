@@ -219,12 +219,22 @@ def fulfill_l2(
     wish: ClassifiedWish,
     detector_results: DetectorResults,
 ) -> L2FulfillmentResult:
-    """Route an L2 wish to the appropriate fulfiller and return recommendations.
+    """Route and fulfill an L2 wish using the universal pipeline.
 
+    Pipeline: Router → CatalogStore → PersonalityRanker → Personalizer
     Zero LLM — all local-compute with curated knowledge bases.
     """
     if wish.level != WishLevel.L2:
         raise ValueError(f"L2Fulfiller only handles L2 wishes, got {wish.level}")
 
-    fulfiller = _get_fulfiller(wish.wish_type, wish_text=wish.wish_text)
-    return fulfiller.fulfill(wish, detector_results)
+    from wish_engine.l2_router import route
+    from wish_engine.universal_fulfiller import universal_fulfill
+
+    # Route to catalog
+    module_path, _class_name = route(wish.wish_text, wish.wish_type)
+
+    # Extract catalog_id from module_path (e.g., "wish_engine.l2_food" → "food")
+    catalog_id = module_path.replace("wish_engine.l2_", "").replace("wish_engine.", "")
+
+    # Use universal fulfiller
+    return universal_fulfill(catalog_id, wish, detector_results)

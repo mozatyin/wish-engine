@@ -15,11 +15,11 @@
       ],
       "actual_tags": [
         "accessible",
+        "chat",
         "crisis",
-        "emergency",
-        "hospital",
         "hotline",
         "immediate",
+        "online",
         "priority",
         "professional",
         "text"
@@ -27,7 +27,7 @@
       "recommendations": [
         "Crisis Hotline — Call Now",
         "Crisis Text Line",
-        "Hospital Emergency Department"
+        "Crisis Chat Support"
       ],
       "error": ""
     },
@@ -41,11 +41,11 @@
       ],
       "actual_tags": [
         "accessible",
+        "chat",
         "crisis",
-        "emergency",
-        "hospital",
         "hotline",
         "immediate",
+        "online",
         "priority",
         "professional",
         "text"
@@ -53,7 +53,7 @@
       "recommendations": [
         "Crisis Hotline — Call Now",
         "Crisis Text Line",
-        "Hospital Emergency Department"
+        "Crisis Chat Support"
       ],
       "error": ""
     },
@@ -68,11 +68,11 @@
       ],
       "actual_tags": [
         "accessible",
+        "chat",
         "crisis",
-        "emergency",
-        "hospital",
         "hotline",
         "immediate",
+        "online",
         "priority",
         "professional",
         "text"
@@ -80,7 +80,7 @@
       "recommendations": [
         "Crisis Hotline — Call Now",
         "Crisis Text Line",
-        "Hospital Emergency Department"
+        "Crisis Chat Support"
       ],
       "error": ""
     },
@@ -94,11 +94,11 @@
       ],
       "actual_tags": [
         "accessible",
+        "chat",
         "crisis",
-        "emergency",
-        "hospital",
         "hotline",
         "immediate",
+        "online",
         "priority",
         "professional",
         "text"
@@ -106,7 +106,7 @@
       "recommendations": [
         "Crisis Hotline — Call Now",
         "Crisis Text Line",
-        "Hospital Emergency Department"
+        "Crisis Chat Support"
       ],
       "error": ""
     },
@@ -120,21 +120,21 @@
         "hotline"
       ],
       "actual_tags": [
-        "confidential",
+        "children",
+        "community",
+        "counseling",
         "dv",
-        "hotline",
-        "immediate",
-        "practical",
-        "priority",
-        "safe_place",
-        "safety_plan",
-        "shelter",
-        "structured"
+        "family",
+        "gentle",
+        "peer",
+        "professional",
+        "support_group",
+        "therapy"
       ],
       "recommendations": [
-        "DV Hotline — Confidential",
-        "Shelter Locator",
-        "Safety Planning"
+        "Children Witness Support",
+        "DV Support Group",
+        "DV Counseling"
       ],
       "error": ""
     },
@@ -148,21 +148,21 @@
         "hotline"
       ],
       "actual_tags": [
-        "confidential",
+        "children",
+        "community",
+        "counseling",
         "dv",
-        "hotline",
-        "immediate",
-        "practical",
-        "priority",
-        "safe_place",
-        "safety_plan",
-        "shelter",
-        "structured"
+        "family",
+        "gentle",
+        "peer",
+        "professional",
+        "support_group",
+        "therapy"
       ],
       "recommendations": [
-        "DV Hotline — Confidential",
-        "Shelter Locator",
-        "Safety Planning"
+        "Children Witness Support",
+        "DV Support Group",
+        "DV Counseling"
       ],
       "error": ""
     },
@@ -176,21 +176,21 @@
         "confidential"
       ],
       "actual_tags": [
-        "confidential",
+        "children",
+        "community",
+        "counseling",
         "dv",
-        "hotline",
-        "immediate",
-        "practical",
-        "priority",
-        "safe_place",
-        "safety_plan",
-        "shelter",
-        "structured"
+        "family",
+        "gentle",
+        "peer",
+        "professional",
+        "support_group",
+        "therapy"
       ],
       "recommendations": [
-        "DV Hotline — Confidential",
-        "Shelter Locator",
-        "Safety Planning"
+        "Children Witness Support",
+        "DV Support Group",
+        "DV Counseling"
       ],
       "error": ""
     },
@@ -726,14 +726,21 @@
         "advocacy"
       ],
       "actual_tags": [
-        "advocacy",
         "calming",
-        "community",
-        "human_rights_org",
-        "rights"
+        "employment_lawyer",
+        "free",
+        "free_legal_clinic",
+        "general",
+        "housing",
+        "professional",
+        "rights",
+        "tenant_lawyer",
+        "work"
       ],
       "recommendations": [
-        "Human Rights Organization"
+        "Free Legal Clinic",
+        "Tenant Rights Lawyer",
+        "Employment Lawyer"
       ],
       "error": ""
     },
@@ -747,14 +754,21 @@
         "community"
       ],
       "actual_tags": [
-        "advocacy",
         "calming",
-        "community",
-        "human_rights_org",
-        "rights"
+        "employment_lawyer",
+        "free",
+        "free_legal_clinic",
+        "general",
+        "housing",
+        "professional",
+        "rights",
+        "tenant_lawyer",
+        "work"
       ],
       "recommendations": [
-        "Human Rights Organization"
+        "Free Legal Clinic",
+        "Tenant Rights Lawyer",
+        "Employment Lawyer"
       ],
       "error": ""
     },
@@ -768,14 +782,21 @@
         "advocacy"
       ],
       "actual_tags": [
-        "advocacy",
         "calming",
-        "community",
-        "human_rights_org",
-        "rights"
+        "employment_lawyer",
+        "free",
+        "free_legal_clinic",
+        "general",
+        "housing",
+        "professional",
+        "rights",
+        "tenant_lawyer",
+        "work"
       ],
       "recommendations": [
-        "Human Rights Organization"
+        "Free Legal Clinic",
+        "Tenant Rights Lawyer",
+        "Employment Lawyer"
       ],
       "error": ""
     },
@@ -874,16 +895,20 @@
       ],
       "actual_tags": [
         "calming",
+        "cbt",
         "clinic",
-        "journaling",
+        "exercise",
+        "gentle",
         "management",
+        "movement",
         "professional",
-        "self-paced",
-        "tracking"
+        "psychology",
+        "self-paced"
       ],
       "recommendations": [
         "Pain Management Clinic Finder",
-        "Pain Journaling Toolkit"
+        "Gentle Exercise for Pain",
+        "Pain Psychology Resources"
       ],
       "error": ""
     },
@@ -898,16 +923,20 @@
       ],
       "actual_tags": [
         "calming",
+        "cbt",
         "clinic",
-        "journaling",
+        "exercise",
+        "gentle",
         "management",
+        "movement",
         "professional",
-        "self-paced",
-        "tracking"
+        "psychology",
+        "self-paced"
       ],
       "recommendations": [
         "Pain Management Clinic Finder",
-        "Pain Journaling Toolkit"
+        "Gentle Exercise for Pain",
+        "Pain Psychology Resources"
       ],
       "error": ""
     },
@@ -1087,20 +1116,21 @@
         "petition"
       ],
       "actual_tags": [
-        "accountability",
+        "activism",
         "advocacy",
         "calming",
+        "community",
         "government",
+        "organizing",
         "petition",
         "policy",
         "practical",
-        "self-paced",
-        "transparency"
+        "self-paced"
       ],
       "recommendations": [
         "Petition Platform Guide",
-        "Policy Advocacy Guide",
-        "Transparency Organizations"
+        "Community Organizing Toolkit",
+        "Policy Advocacy Guide"
       ],
       "error": ""
     },
@@ -1114,20 +1144,21 @@
         "accountability"
       ],
       "actual_tags": [
-        "accountability",
+        "activism",
         "advocacy",
         "calming",
+        "community",
         "government",
+        "organizing",
         "petition",
         "policy",
         "practical",
-        "self-paced",
-        "transparency"
+        "self-paced"
       ],
       "recommendations": [
         "Petition Platform Guide",
-        "Policy Advocacy Guide",
-        "Transparency Organizations"
+        "Community Organizing Toolkit",
+        "Policy Advocacy Guide"
       ],
       "error": ""
     },
@@ -1141,20 +1172,21 @@
         "government"
       ],
       "actual_tags": [
-        "accountability",
+        "activism",
         "advocacy",
         "calming",
+        "community",
         "government",
+        "organizing",
         "petition",
         "policy",
         "practical",
-        "self-paced",
-        "transparency"
+        "self-paced"
       ],
       "recommendations": [
         "Petition Platform Guide",
-        "Policy Advocacy Guide",
-        "Transparency Organizations"
+        "Community Organizing Toolkit",
+        "Policy Advocacy Guide"
       ],
       "error": ""
     },
@@ -1171,18 +1203,18 @@
         "ancestry",
         "calming",
         "culture",
-        "genealogy",
+        "discovery",
+        "dna",
         "heritage",
         "homeland",
         "planning",
-        "research",
         "self-paced",
         "travel"
       ],
       "recommendations": [
+        "Ancestry DNA Testing",
         "Homeland Visit Planning",
-        "Cultural Heritage Sites",
-        "Genealogy Research Guide"
+        "Cultural Heritage Sites"
       ],
       "error": ""
     },
@@ -1199,18 +1231,18 @@
         "ancestry",
         "calming",
         "culture",
-        "genealogy",
+        "discovery",
+        "dna",
         "heritage",
         "homeland",
         "planning",
-        "research",
         "self-paced",
         "travel"
       ],
       "recommendations": [
+        "Ancestry DNA Testing",
         "Homeland Visit Planning",
-        "Cultural Heritage Sites",
-        "Genealogy Research Guide"
+        "Cultural Heritage Sites"
       ],
       "error": ""
     },
@@ -1227,18 +1259,18 @@
         "ancestry",
         "calming",
         "culture",
-        "genealogy",
+        "discovery",
+        "dna",
         "heritage",
         "homeland",
         "planning",
-        "research",
         "self-paced",
         "travel"
       ],
       "recommendations": [
+        "Ancestry DNA Testing",
         "Homeland Visit Planning",
-        "Cultural Heritage Sites",
-        "Genealogy Research Guide"
+        "Cultural Heritage Sites"
       ],
       "error": ""
     },
@@ -1253,16 +1285,20 @@
       ],
       "actual_tags": [
         "calming",
+        "celebration",
         "ceremony",
         "community",
+        "festival",
         "indigenous",
         "practice",
+        "social",
         "spiritual",
         "tradition"
       ],
       "recommendations": [
         "Traditional Ceremony Guide",
-        "Indigenous Practice Revival"
+        "Indigenous Practice Revival",
+        "Cultural Celebration Planning"
       ],
       "error": ""
     },
@@ -1277,16 +1313,20 @@
       ],
       "actual_tags": [
         "calming",
+        "celebration",
         "ceremony",
         "community",
+        "festival",
         "indigenous",
         "practice",
+        "social",
         "spiritual",
         "tradition"
       ],
       "recommendations": [
         "Traditional Ceremony Guide",
-        "Indigenous Practice Revival"
+        "Indigenous Practice Revival",
+        "Cultural Celebration Planning"
       ],
       "error": ""
     },
@@ -1299,21 +1339,20 @@
         "comfort"
       ],
       "actual_tags": [
-        "bakery",
         "calming",
         "chinese",
         "comfort",
         "halal-option",
+        "hearty",
         "noodles",
         "quiet",
         "soup",
-        "sweet",
-        "traditional"
+        "warm"
       ],
       "recommendations": [
+        "Warm Noodle Soup",
         "Congee & Dim Sum",
-        "Traditional Bakery",
-        "Warm Noodle Soup"
+        "Homestyle Stew"
       ],
       "error": ""
     },
@@ -1326,21 +1365,20 @@
         "comfort"
       ],
       "actual_tags": [
-        "bakery",
         "calming",
         "chinese",
         "comfort",
         "halal-option",
+        "hearty",
         "noodles",
         "quiet",
         "soup",
-        "sweet",
-        "traditional"
+        "warm"
       ],
       "recommendations": [
+        "Warm Noodle Soup",
         "Congee & Dim Sum",
-        "Traditional Bakery",
-        "Warm Noodle Soup"
+        "Homestyle Stew"
       ],
       "error": ""
     },
@@ -1354,21 +1392,20 @@
         "emotional"
       ],
       "actual_tags": [
-        "bakery",
         "calming",
         "chinese",
         "comfort",
         "halal-option",
+        "hearty",
         "noodles",
         "quiet",
         "soup",
-        "sweet",
-        "traditional"
+        "warm"
       ],
       "recommendations": [
+        "Warm Noodle Soup",
         "Congee & Dim Sum",
-        "Traditional Bakery",
-        "Warm Noodle Soup"
+        "Homestyle Stew"
       ],
       "error": ""
     },
@@ -1511,17 +1548,17 @@
       ],
       "actual_tags": [
         "calming",
-        "energizing",
         "practical",
         "quiet",
         "self-paced",
+        "simple",
         "social",
         "warm"
       ],
       "recommendations": [
-        "Strength Finder Exercise",
-        "Comfort Zone Challenge",
-        "Skill Mastery Session"
+        "Daily Affirmation Practice",
+        "Achievement Log",
+        "Strength Finder Exercise"
       ],
       "error": ""
     },
@@ -1536,17 +1573,17 @@
       ],
       "actual_tags": [
         "calming",
-        "energizing",
         "practical",
         "quiet",
         "self-paced",
+        "simple",
         "social",
         "warm"
       ],
       "recommendations": [
-        "Strength Finder Exercise",
-        "Comfort Zone Challenge",
-        "Skill Mastery Session"
+        "Daily Affirmation Practice",
+        "Achievement Log",
+        "Strength Finder Exercise"
       ],
       "error": ""
     },
@@ -1561,17 +1598,17 @@
       ],
       "actual_tags": [
         "calming",
-        "energizing",
         "practical",
         "quiet",
         "self-paced",
+        "simple",
         "social",
         "warm"
       ],
       "recommendations": [
-        "Strength Finder Exercise",
-        "Comfort Zone Challenge",
-        "Skill Mastery Session"
+        "Daily Affirmation Practice",
+        "Achievement Log",
+        "Strength Finder Exercise"
       ],
       "error": ""
     }
