@@ -228,8 +228,88 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     from wish_engine.l2_volunteer import VolunteerFulfiller
     from wish_engine.l2_nature_healing import NatureHealingFulfiller
     from wish_engine.l2_reviews import ReviewsFulfiller
+    from wish_engine.l2_personality_growth import PersonalityGrowthFulfiller
+    from wish_engine.l2_emotion_calendar import EmotionCalendarFulfiller
+    from wish_engine.l2_dream_journal import DreamJournalFulfiller
+    from wish_engine.l2_digital_detox import DigitalDetoxFulfiller
+    from wish_engine.l2_personal_brand import PersonalBrandFulfiller
+    from wish_engine.l2_public_speaking import PublicSpeakingFulfiller
+    from wish_engine.l2_interview_prep import InterviewPrepFulfiller
+    from wish_engine.l2_confidence import ConfidenceFulfiller
+    from wish_engine.l2_eq_training import EQTrainingFulfiller
+    from wish_engine.l2_identity_exploration import IdentityExplorationFulfiller
 
     text_lower = wish_text.lower()
+
+    # Check for personality growth keywords
+    growth_keywords = {
+        "成长", "growth", "提升", "improve", "نمو", "develop",
+    }
+    if any(kw in text_lower for kw in growth_keywords):
+        return PersonalityGrowthFulfiller()
+
+    # Check for emotion calendar keywords
+    emotion_calendar_keywords = {
+        "情绪日历", "emotion", "mood", "calendar", "日历", "مزاج",
+    }
+    if any(kw in text_lower for kw in emotion_calendar_keywords):
+        return EmotionCalendarFulfiller()
+
+    # Check for dream journal keywords
+    dream_keywords = {
+        "梦", "dream", "حلم", "nightmare", "sleep", "梦境",
+    }
+    if any(kw in text_lower for kw in dream_keywords):
+        return DreamJournalFulfiller()
+
+    # Check for digital detox keywords
+    detox_keywords = {
+        "排毒", "detox", "屏幕", "screen time", "手机", "digital", "إزالة السموم",
+    }
+    if any(kw in text_lower for kw in detox_keywords):
+        return DigitalDetoxFulfiller()
+
+    # Check for personal brand keywords
+    brand_keywords = {
+        "品牌", "brand", "展示", "portfolio", "showcase", "作品集",
+    }
+    if any(kw in text_lower for kw in brand_keywords):
+        return PersonalBrandFulfiller()
+
+    # Check for public speaking keywords
+    speaking_keywords = {
+        "演讲", "speaking", "public", "speech", "خطاب", "talk",
+    }
+    if any(kw in text_lower for kw in speaking_keywords):
+        return PublicSpeakingFulfiller()
+
+    # Check for interview prep keywords
+    interview_keywords = {
+        "面试", "interview", "简历", "resume", "مقابلة", "job",
+    }
+    if any(kw in text_lower for kw in interview_keywords):
+        return InterviewPrepFulfiller()
+
+    # Check for confidence keywords
+    confidence_keywords = {
+        "自信", "confidence", "勇气", "courage", "ثقة", "brave",
+    }
+    if any(kw in text_lower for kw in confidence_keywords):
+        return ConfidenceFulfiller()
+
+    # Check for EQ training keywords
+    eq_keywords = {
+        "情商", "eq", "emotional intelligence", "同理心", "empathy", "ذكاء عاطفي",
+    }
+    if any(kw in text_lower for kw in eq_keywords):
+        return EQTrainingFulfiller()
+
+    # Check for identity exploration keywords
+    identity_keywords = {
+        "身份", "identity", "探索", "explore", "هوية", "who am i", "我是谁",
+    }
+    if any(kw in text_lower for kw in identity_keywords):
+        return IdentityExplorationFulfiller()
 
     # Check for prayer keywords (cross-cuts multiple wish types)
     prayer_keywords = {
