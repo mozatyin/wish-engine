@@ -213,6 +213,16 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     from wish_engine.l2_health_sync import HealthSyncFulfiller
     from wish_engine.l2_focus_mode import FocusModeFulfiller
     from wish_engine.l2_bucket_list import BucketListFulfiller
+    from wish_engine.l2_travel import TravelFulfiller
+    from wish_engine.l2_home_decor import HomeDecorFulfiller
+    from wish_engine.l2_date_spots import DateSpotFulfiller
+    from wish_engine.l2_breakup_healing import BreakupHealingFulfiller
+    from wish_engine.l2_sleep_env import SleepEnvFulfiller
+    from wish_engine.l2_panic_relief import PanicReliefFulfiller
+    from wish_engine.l2_gift import GiftFulfiller
+    from wish_engine.l2_solo_friendly import SoloFriendlyFulfiller
+    from wish_engine.l2_deep_social import DeepSocialFulfiller
+    from wish_engine.l2_startup_resources import StartupResourceFulfiller
 
     text_lower = wish_text.lower()
 
@@ -470,6 +480,77 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     }
     if any(kw in text_lower for kw in bucket_list_keywords):
         return BucketListFulfiller()
+
+    # Check for panic relief keywords (before sleep to catch anxiety/breathing)
+    panic_keywords = {
+        "panic", "恐慌", "calm down", "emergency", "紧急",
+        "焦虑发作", "breathing exercise",
+    }
+    if any(kw in text_lower for kw in panic_keywords):
+        return PanicReliefFulfiller()
+
+    # Check for travel keywords
+    travel_keywords = {
+        "旅行", "travel", "旅游", "destination", "سفر", "trip", "去哪",
+    }
+    if any(kw in text_lower for kw in travel_keywords):
+        return TravelFulfiller()
+
+    # Check for home decor keywords
+    decor_keywords = {
+        "家居", "home decor", "装修", "decor", "interior", "ديكور", "furnish",
+    }
+    if any(kw in text_lower for kw in decor_keywords):
+        return HomeDecorFulfiller()
+
+    # Check for date spot keywords
+    date_keywords = {
+        "约会", "date", "约", "romantic", "رومانسي", "两个人", "together",
+    }
+    if any(kw in text_lower for kw in date_keywords):
+        return DateSpotFulfiller()
+
+    # Check for breakup healing keywords
+    breakup_keywords = {
+        "分手", "breakup", "失恋", "heartbreak", "انفصال", "move on", "healing",
+    }
+    if any(kw in text_lower for kw in breakup_keywords):
+        return BreakupHealingFulfiller()
+
+    # Check for sleep environment keywords
+    sleep_keywords = {
+        "睡眠", "insomnia", "失眠", "نوم", "bedtime", "rest",
+    }
+    if any(kw in text_lower for kw in sleep_keywords):
+        return SleepEnvFulfiller()
+
+    # Check for gift keywords
+    gift_keywords_new = {
+        "礼物", "gift", "birthday", "生日", "هدية", "anniversary", "纪念日",
+    }
+    if any(kw in text_lower for kw in gift_keywords_new):
+        return GiftFulfiller()
+
+    # Check for solo-friendly keywords
+    solo_keywords = {
+        "一个人", "solo", "alone", "独自", "وحدي", "by myself", "独处",
+    }
+    if any(kw in text_lower for kw in solo_keywords):
+        return SoloFriendlyFulfiller()
+
+    # Check for deep social keywords
+    deep_social_keywords = {
+        "深度", "deep", "meaningful", "有意义", "عميق", "genuine", "真诚",
+    }
+    if any(kw in text_lower for kw in deep_social_keywords):
+        return DeepSocialFulfiller()
+
+    # Check for startup resource keywords
+    startup_keywords = {
+        "创业", "startup", "创新", "innovation", "ريادة", "founder", "incubator",
+    }
+    if any(kw in text_lower for kw in startup_keywords):
+        return StartupResourceFulfiller()
 
     _FULFILLER_MAP: dict[WishType, L2Fulfiller] = {
         WishType.FIND_PLACE: PlaceFulfiller(),
