@@ -40,6 +40,11 @@ class SoulState:
         self.emotion_history: defaultdict = defaultdict(list)
         self.recurring_concerns: Counter = Counter()
 
+        # Scarlett's base personality (doesn't change)
+        self.base_mbti = "ESTJ"
+        self.base_values = ["power", "achievement", "security"]
+        self.base_attachment = "fearful"
+
         # Deep layer: Compass
         self.compass = WishCompass()
         self.scanner = DialogueScanner({
@@ -123,6 +128,26 @@ class SoulState:
             self.emotion_history[emotion].append(level)
             self.topic_history[emotion] += 1
 
+    def get_detector_results(self) -> DetectorResults:
+        """Build DetectorResults from current Soul state — this is what fulfillers use."""
+        # Values shift based on life phase
+        current_values = list(self.base_values)
+        if "survival" in self.current_topics:
+            current_values = ["security", "achievement", "power"]
+        if "independence" in self.current_topics:
+            current_values = ["self-direction", "achievement", "power"]
+        if "loss" in self.current_topics:
+            current_values = ["benevolence", "security", "tradition"]
+
+        return DetectorResults(
+            mbti={"type": self.base_mbti, "dimensions": {"E_I": 0.7}},
+            emotion={"emotions": dict(self.current_emotions), "distress": self.current_emotions.get("sadness", 0) + self.current_emotions.get("fear", 0)},
+            values={"top_values": current_values},
+            attachment={"style": self.base_attachment},
+            conflict={"style": "competing"},
+            fragility={"pattern": "defensive" if self.current_emotions.get("anger", 0) > 0.3 else "sensitive"},
+        )
+
     def get_focus_wishes(self) -> list[str]:
         """What she needs RIGHT NOW based on current chapter."""
         wishes = []
@@ -191,19 +216,20 @@ class SoulState:
         return wishes
 
 
-def fulfill_wish(wish_text: str) -> dict:
-    """Route and fulfill a single wish."""
+def fulfill_wish(wish_text, soul_det=None):
+    """Route and fulfill a single wish with the user's current Soul state."""
     module_path, _ = route(wish_text)
     catalog_id = module_path.replace("wish_engine.l2_", "").replace("wish_engine.", "")
     wish = ClassifiedWish(
         wish_text=wish_text, wish_type=WishType.FIND_RESOURCE,
         level=WishLevel.L2, fulfillment_strategy="soul",
     )
-    result = universal_fulfill(catalog_id, wish, DetectorResults())
+    det = soul_det or DetectorResults()
+    result = universal_fulfill(catalog_id, wish, det)
     if result.recommendations:
         r = result.recommendations[0]
-        return {"title": r.title, "category": r.category, "reason": r.relevance_reason[:80]}
-    return {"title": "No match", "category": "", "reason": ""}
+        return {"title": r.title, "category": r.category, "reason": r.relevance_reason[:100], "desc": r.description[:80]}
+    return {"title": "No match", "category": "", "reason": "", "desc": ""}
 
 
 def main():
@@ -242,7 +268,7 @@ def main():
             print(f"     Topics: {soul.current_topics}")
             print(f"     Emotions: {dict((k, round(v,2)) for k,v in sorted(soul.current_emotions.items(), key=lambda x:-x[1])[:3])}")
             for w in focus_wishes:
-                rec = fulfill_wish(w)
+                rec = fulfill_wish(w, soul.get_detector_results())
                 print(f"\n     Need: \"{w}\"")
                 print(f"     → {rec['title']} [{rec['category']}]")
 
@@ -252,7 +278,7 @@ def main():
             print(f"\n  🟡 MEMORY (一直在重复的主题):")
             print(f"     Recurring: {dict(soul.recurring_concerns.most_common(3))}")
             for w in memory_wishes:
-                rec = fulfill_wish(w)
+                rec = fulfill_wish(w, soul.get_detector_results())
                 print(f"\n     Pattern: \"{w}\"")
                 print(f"     → {rec['title']} [{rec['category']}]")
 
@@ -263,7 +289,7 @@ def main():
             for w in deep_wishes:
                 print(f"     {w}")
                 if w.startswith("MATURE"):
-                    rec = fulfill_wish(w)
+                    rec = fulfill_wish(w, soul.get_detector_results())
                     print(f"     → {rec['title']} [{rec['category']}]")
 
         # Compass summary

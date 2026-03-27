@@ -1004,7 +1004,7 @@ def _build_registry():
         name="startup_resources", fulfiller_class="StartupResourceFulfiller",
         module="wish_engine.l2_startup_resources", priority=20,
         keywords={
-            "en": ["startup", "incubator", "investor", "entrepreneur", "founder", "accelerator"],
+            "en": ["startup", "incubator", "investor", "entrepreneur", "founder", "accelerator", "own business", "my business", "build a business", "start a business"],
             "zh": ["创业", "孵化器", "投资人"],
             "ar": ["ريادة", "مستثمر"],
             "es": ["startup", "emprendedor", "incubadora", "inversor"],
@@ -1206,7 +1206,7 @@ def _build_registry():
     register(FulfillerSpec(
         name="career", fulfiller_class="CareerFulfiller",
         module="wish_engine.l2_career", priority=10,
-        keywords={"en": ["career", "job", "profession"], "zh": ["职业", "工作方向"]},
+        keywords={"en": ["career", "job", "profession", "business", "independent", "self-employed", "be independent"], "zh": ["职业", "工作方向", "创业", "独立"]},
     ))
 
     register(FulfillerSpec(
