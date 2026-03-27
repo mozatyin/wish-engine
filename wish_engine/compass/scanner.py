@@ -37,6 +37,9 @@ _DENIAL_WORDS = {
     "don't care", "doesn't matter", "not important", "I'm fine",
     "don't need", "not interested", "over it", "moved on",
     "couldn't care less", "irrelevant", "meaningless",
+    "doesn't exist", "don't have", "was nobody", "wasn't worth",
+    "not real", "never existed", "forget about", "leave behind",
+    "don't think about", "that's behind me", "not who i am",
 }
 
 
