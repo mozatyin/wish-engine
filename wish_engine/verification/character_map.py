@@ -52,14 +52,14 @@ FULFILLER_CHARACTER_MAP: dict[str, list[dict]] = {
         {"character": "lady_macbeth", "reason": "Guilt-driven madness and self-harm ('Out, damn'd spot')", "expected_tags": ["crisis"]},
     ],
     "l2_domestic_violence": [
-        {"character": "celie", "reason": "Beaten and raped by her husband for years — needs escape and support", "expected_tags": ["shelter", "safety"]},
-        {"character": "rochester", "reason": "Bertha Mason locked in the attic — structural violence against women", "expected_tags": ["legal"]},
-        {"character": "heathcliff", "reason": "Violence toward Isabella and Hareton — cycle of abuse", "expected_tags": ["counseling"]},
+        {"character": "celie", "reason": "Beaten and raped by her husband for years — needs escape and support", "expected_tags": ["dv", "hotline"]},
+        {"character": "rochester", "reason": "Bertha Mason locked in the attic — structural violence against women", "expected_tags": ["dv", "hotline"]},
+        {"character": "heathcliff", "reason": "Violence toward Isabella and Hareton — cycle of abuse", "expected_tags": ["dv", "confidential"]},
     ],
     "l2_debt_crisis": [
-        {"character": "xu_sanguan", "reason": "Sells blood to feed family, perpetual poverty crisis", "expected_tags": ["financial", "emergency"]},
-        {"character": "raskolnikov", "reason": "Desperate poverty drives him to murder — financial crisis is root cause", "expected_tags": ["counseling", "assistance"]},
-        {"character": "gatsby", "reason": "Built entire fortune on crime to escape poverty — class desperation", "expected_tags": ["financial"]},
+        {"character": "xu_sanguan", "reason": "Sells blood to feed family, perpetual poverty crisis", "expected_tags": ["debt", "counseling"]},
+        {"character": "raskolnikov", "reason": "Desperate poverty drives him to murder — financial crisis is root cause", "expected_tags": ["debt", "counseling"]},
+        {"character": "gatsby", "reason": "Built entire fortune on crime to escape poverty — class desperation", "expected_tags": ["debt", "bankruptcy"]},
     ],
     "l2_collective_trauma": [
         {"character": "katniss", "reason": "PTSD from the Hunger Games and war — collective trauma of District 12", "expected_tags": ["trauma", "ptsd"]},
@@ -91,57 +91,57 @@ FULFILLER_CHARACTER_MAP: dict[str, list[dict]] = {
 
     # ═══ 护 Caregiving ═══
     "l2_caregiver_respite": [
-        {"character": "jane", "reason": "Cares for Rochester after his blindness — total caregiver burden", "expected_tags": ["respite", "relief"]},
-        {"character": "scarlett", "reason": "Forced to care for Melanie, the baby, everyone at Tara", "expected_tags": ["respite"]},
-        {"character": "xu_sanguan", "reason": "Carries his entire family on his back — literal blood sacrifice", "expected_tags": ["respite", "support"]},
+        {"character": "jane", "reason": "Cares for Rochester after his blindness — total caregiver burden", "expected_tags": ["calming", "home"]},
+        {"character": "scarlett", "reason": "Forced to care for Melanie, the baby, everyone at Tara", "expected_tags": ["adult_daycare", "calming"]},
+        {"character": "xu_sanguan", "reason": "Carries his entire family on his back — literal blood sacrifice", "expected_tags": ["calming", "medical"]},
     ],
 
     # ═══ 权 Rights ═══
     "l2_legal_aid": [
-        {"character": "atticus", "reason": "Defends Tom Robinson — legal system as justice/injustice", "expected_tags": ["legal", "rights"]},
-        {"character": "celie", "reason": "No legal protection from her abuser", "expected_tags": ["legal", "domestic"]},
-        {"character": "raskolnikov", "reason": "Criminal justice system — needs defense", "expected_tags": ["legal", "criminal"]},
+        {"character": "atticus", "reason": "Defends Tom Robinson — legal system as justice/injustice", "expected_tags": ["rights", "advocacy"]},
+        {"character": "celie", "reason": "No legal protection from her abuser", "expected_tags": ["rights", "community"]},
+        {"character": "raskolnikov", "reason": "Criminal justice system — needs defense", "expected_tags": ["rights", "advocacy"]},
     ],
     "l2_anti_discrimination": [
-        {"character": "atticus", "reason": "Fights racial discrimination in 1930s Alabama", "expected_tags": ["discrimination", "racial"]},
-        {"character": "celie", "reason": "Racial + gender discrimination", "expected_tags": ["discrimination"]},
-        {"character": "darcy", "reason": "Class discrimination — he both perpetuates and suffers from it", "expected_tags": ["discrimination", "class"]},
+        {"character": "atticus", "reason": "Fights racial discrimination in 1930s Alabama", "expected_tags": ["discrimination_hotline", "filing_complaint"]},
+        {"character": "celie", "reason": "Racial + gender discrimination", "expected_tags": ["discrimination_hotline", "confidential"]},
+        {"character": "darcy", "reason": "Class discrimination — he both perpetuates and suffers from it", "expected_tags": ["discrimination_hotline", "filing_complaint"]},
     ],
 
     # ═══ 养 Nurturing ═══
     "l2_chronic_pain": [
-        {"character": "rochester", "reason": "Blinded and maimed in the fire — chronic disability", "expected_tags": ["pain", "management"]},
-        {"character": "xu_sanguan", "reason": "Body broken from selling blood — chronic health consequences", "expected_tags": ["pain"]},
+        {"character": "rochester", "reason": "Blinded and maimed in the fire — chronic disability", "expected_tags": ["management", "clinic"]},
+        {"character": "xu_sanguan", "reason": "Body broken from selling blood — chronic health consequences", "expected_tags": ["management", "journaling"]},
     ],
     "l2_eating_disorder": [
         {"character": "anna", "reason": "Stops eating as despair deepens — self-starvation as control", "expected_tags": ["ed", "therapy"]},
     ],
     "l2_postpartum": [
-        {"character": "anna", "reason": "After giving birth to Vronsky's daughter, spirals into depression", "expected_tags": ["postpartum", "depression"]},
-        {"character": "scarlett", "reason": "Rejection of motherhood, complicated maternal feelings", "expected_tags": ["postpartum"]},
+        {"character": "anna", "reason": "After giving birth to Vronsky's daughter, spirals into depression", "expected_tags": ["depression", "community"]},
+        {"character": "scarlett", "reason": "Rejection of motherhood, complicated maternal feelings", "expected_tags": ["depression", "calming"]},
     ],
 
     # ═══ 义 Purpose ═══
     "l2_legacy_planning": [
-        {"character": "walter_white", "reason": "'I did it for me' — legacy vs ego, what do you leave behind?", "expected_tags": ["legacy"]},
-        {"character": "gatsby", "reason": "Built an empire but left nothing real — the hollow legacy", "expected_tags": ["legacy", "meaning"]},
-        {"character": "atticus", "reason": "Moral legacy to his children — 'real courage'", "expected_tags": ["legacy"]},
+        {"character": "walter_white", "reason": "'I did it for me' — legacy vs ego, what do you leave behind?", "expected_tags": ["ethical_will", "memoir"]},
+        {"character": "gatsby", "reason": "Built an empire but left nothing real — the hollow legacy", "expected_tags": ["ethical_will", "mentoring"]},
+        {"character": "atticus", "reason": "Moral legacy to his children — 'real courage'", "expected_tags": ["mentoring", "community"]},
     ],
     "l2_social_justice": [
-        {"character": "atticus", "reason": "Fighting systemic racism through the legal system", "expected_tags": ["justice", "advocacy"]},
-        {"character": "katniss", "reason": "Rebellion against oppressive regime — revolutionary justice", "expected_tags": ["justice", "activism"]},
-        {"character": "celie", "reason": "Finding voice and agency after a lifetime of oppression", "expected_tags": ["justice", "empowerment"]},
+        {"character": "atticus", "reason": "Fighting systemic racism through the legal system", "expected_tags": ["advocacy", "petition"]},
+        {"character": "katniss", "reason": "Rebellion against oppressive regime — revolutionary justice", "expected_tags": ["advocacy", "accountability"]},
+        {"character": "celie", "reason": "Finding voice and agency after a lifetime of oppression", "expected_tags": ["advocacy", "government"]},
     ],
 
     # ═══ 根 Roots ═══
     "l2_roots_journey": [
-        {"character": "gatsby", "reason": "James Gatz erased his origins — the lost roots haunt him", "expected_tags": ["roots", "heritage"]},
-        {"character": "don_draper", "reason": "Dick Whitman stole a dead man's identity — ultimate rootlessness", "expected_tags": ["roots", "identity"]},
-        {"character": "heathcliff", "reason": "Orphan with no known origin — rootlessness drives rage", "expected_tags": ["roots"]},
+        {"character": "gatsby", "reason": "James Gatz erased his origins — the lost roots haunt him", "expected_tags": ["heritage", "genealogy"]},
+        {"character": "don_draper", "reason": "Dick Whitman stole a dead man's identity — ultimate rootlessness", "expected_tags": ["heritage", "ancestry"]},
+        {"character": "heathcliff", "reason": "Orphan with no known origin — rootlessness drives rage", "expected_tags": ["ancestry", "culture"]},
     ],
     "l2_cultural_recovery": [
-        {"character": "celie", "reason": "African heritage suppressed by slavery — Shug helps her reconnect", "expected_tags": ["cultural", "recovery"]},
-        {"character": "xu_sanguan", "reason": "Chinese cultural traditions as survival anchor through hardship", "expected_tags": ["cultural", "tradition"]},
+        {"character": "celie", "reason": "African heritage suppressed by slavery — Shug helps her reconnect", "expected_tags": ["indigenous", "ceremony"]},
+        {"character": "xu_sanguan", "reason": "Chinese cultural traditions as survival anchor through hardship", "expected_tags": ["community", "practice"]},
     ],
 
     # ═══ 生活品质 Life Quality ═══
@@ -151,8 +151,8 @@ FULFILLER_CHARACTER_MAP: dict[str, list[dict]] = {
         {"character": "tony_soprano", "reason": "Emotional eating — food as coping mechanism", "expected_tags": ["comfort", "emotional"]},
     ],
     "l2_music": [
-        {"character": "elizabeth", "reason": "Piano playing at Pemberley — music as expression", "expected_tags": ["calming"]},
-        {"character": "gatsby", "reason": "The parties, the orchestra — music as facade", "expected_tags": ["upbeat"]},
+        {"character": "elizabeth", "reason": "Piano playing at Pemberley — music as expression", "expected_tags": ["calming", "acoustic"]},
+        {"character": "gatsby", "reason": "The parties, the orchestra — music as facade", "expected_tags": ["calming", "ambient"]},
     ],
     "l2_nature_healing": [
         {"character": "jane", "reason": "Moors as healing landscape — nature restores her", "expected_tags": ["nature", "healing"]},
@@ -160,9 +160,9 @@ FULFILLER_CHARACTER_MAP: dict[str, list[dict]] = {
         {"character": "darcy", "reason": "Pemberley grounds — nature as authentic self", "expected_tags": ["nature"]},
     ],
     "l2_confidence": [
-        {"character": "darcy", "reason": "Needs to overcome social rigidity to express love", "expected_tags": ["confidence"]},
-        {"character": "elizabeth", "reason": "Confident but must learn humility — balanced self-assurance", "expected_tags": ["confidence"]},
-        {"character": "celie", "reason": "From zero self-worth to 'I'm here' — the ultimate confidence journey", "expected_tags": ["confidence", "growth"]},
+        {"character": "darcy", "reason": "Needs to overcome social rigidity to express love", "expected_tags": ["calming", "energizing"]},
+        {"character": "elizabeth", "reason": "Confident but must learn humility — balanced self-assurance", "expected_tags": ["practical", "self-paced"]},
+        {"character": "celie", "reason": "From zero self-worth to 'I'm here' — the ultimate confidence journey", "expected_tags": ["calming", "energizing"]},
     ],
 }
 

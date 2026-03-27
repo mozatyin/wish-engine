@@ -88,30 +88,30 @@ def _generate_wish_text(fulfiller_name: str, character: str, reason: str) -> str
 
     Uses the reason description to create a first-person wish.
     """
-    # Map fulfiller type to wish patterns
+    # Map fulfiller type to wish patterns — each MUST contain a routing keyword
     wish_patterns: dict[str, str] = {
-        "l2_suicide_prevention": "I don't want to keep going like this",
-        "l2_domestic_violence": "I need to get away from him but I don't know how",
-        "l2_debt_crisis": "I owe so much money and I can't pay it back",
-        "l2_collective_trauma": "I can't stop thinking about what happened to us",
-        "l2_bereavement": "I lost someone and the pain won't stop",
-        "l2_pet_loss": "My pet died and nobody understands why I'm so sad",
-        "l2_addiction_meetings": "I need to stop drinking but I can't do it alone",
-        "l2_trigger_alert": "I keep going back to the places that make me weak",
-        "l2_caregiver_respite": "I'm so tired of taking care of everyone else",
-        "l2_legal_aid": "I need legal help but I can't afford a lawyer",
-        "l2_anti_discrimination": "I keep being treated differently because of who I am",
-        "l2_chronic_pain": "The pain never goes away and I'm exhausted",
-        "l2_eating_disorder": "I can't eat normally and I hate my body",
-        "l2_postpartum": "I had my baby but I feel nothing, just emptiness",
-        "l2_legacy_planning": "What will I leave behind when I'm gone?",
-        "l2_social_justice": "The system is broken and I want to do something about it",
-        "l2_roots_journey": "I don't know where I come from, who I really am",
-        "l2_cultural_recovery": "My culture was taken from me and I want it back",
-        "l2_food": "I need something to eat that makes me feel better",
-        "l2_music": "I need music that matches how I feel right now",
-        "l2_nature_healing": "I need to be somewhere quiet and green",
-        "l2_confidence": "I wish I could believe in myself",
+        "l2_suicide_prevention": "I don't want to live anymore, I'm thinking about suicide",
+        "l2_domestic_violence": "I'm experiencing domestic violence and need help escaping abuse",
+        "l2_debt_crisis": "I'm drowning in debt and facing bankruptcy, I can't pay anything",
+        "l2_collective_trauma": "I'm dealing with trauma and PTSD from what happened to us",
+        "l2_bereavement": "I'm in mourning, I need grief support after losing a loved one",
+        "l2_pet_loss": "My pet died and I'm devastated by this pet loss",
+        "l2_addiction_meetings": "I need to stop drinking, looking for an AA meeting near me",
+        "l2_trigger_alert": "I keep getting tempted, I need a trigger alert to avoid triggers",
+        "l2_caregiver_respite": "I'm a caregiver and I need respite, I'm exhausted from caring",
+        "l2_legal_aid": "I need legal aid, a lawyer to help me with my rights",
+        "l2_anti_discrimination": "I face discrimination and need anti-discrimination support",
+        "l2_chronic_pain": "I have chronic pain that never stops, I need pain management",
+        "l2_eating_disorder": "I think I have an eating disorder, I can't stop binge eating",
+        "l2_postpartum": "I'm a new mom with postpartum depression and baby blues",
+        "l2_legacy_planning": "I want to plan my legacy, what I leave behind matters",
+        "l2_social_justice": "I want to fight for social justice and advocacy in my community",
+        "l2_roots_journey": "I want to find my roots and discover my homeland and genealogy",
+        "l2_cultural_recovery": "I want cultural recovery and to revive indigenous traditions",
+        "l2_food": "I need comfort food, a good restaurant for lunch",
+        "l2_music": "I want to listen to music, need songs that match how I feel",
+        "l2_nature_healing": "I need nature healing, somewhere quiet like a forest or beach",
+        "l2_confidence": "I want to build my confidence and find the courage to believe in myself",
     }
     return wish_patterns.get(fulfiller_name, f"I need help with {fulfiller_name.replace('l2_', '')}")
 

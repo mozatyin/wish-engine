@@ -315,6 +315,9 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     suicide_kw = {
         "自杀", "suicide", "不想活", "kill myself", "انتحار", "想死",
         "end my life", "结束生命", "活不下去", "self harm", "自残",
+        "don't want to live", "want to die", "rather be dead",
+        "can't go on", "end it all", "no reason to live",
+        "not worth living", "take my own life",
     }
     if any(kw in text_lower for kw in suicide_kw):
         return SuicidePreventionFulfiller()
@@ -322,6 +325,8 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     dv_kw = {
         "家暴", "domestic violence", "abuse", "عنف أسري", "被打",
         "hurt me", "他打我", "她打我",
+        "he hits me", "she hurts me", "scared of him", "scared of her",
+        "violent partner", "被他打", "escape", "flee",
     }
     if any(kw in text_lower for kw in dv_kw):
         return DomesticViolenceFulfiller()
@@ -335,6 +340,8 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
 
     debt_crisis_kw = {
         "债务", "bankruptcy", "催收", "破产", "ديون", "欠钱", "还不起",
+        "debt", "can't pay", "owe money", "collectors", "催债",
+        "financial ruin", "bankrupt", "in debt",
     }
     if any(kw in text_lower for kw in debt_crisis_kw):
         return DebtCrisisFulfiller()
@@ -342,6 +349,7 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     collective_trauma_kw = {
         "灾后", "ptsd", "创伤后", "صدمة", "war trauma", "战争创伤",
         "mass shooting", "refugee trauma", "难民创伤",
+        "trauma", "collective trauma", "survivor guilt",
     }
     if any(kw in text_lower for kw in collective_trauma_kw):
         return CollectiveTraumaFulfiller()
@@ -357,6 +365,7 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     pet_loss_kw = {
         "宠物去世", "pet loss", "rainbow bridge", "失去宠物",
         "فقدان حيوان", "pet died", "dog died", "cat died",
+        "lost my pet", "pet passed", "my dog passed", "my cat passed",
     }
     if any(kw in text_lower for kw in pet_loss_kw):
         return PetLossFulfiller()
@@ -377,7 +386,7 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
 
     bereavement_kw = {
         "丧亲", "bereavement", "فقدان", "mourning", "grief support",
-        "loss of loved one",
+        "loss of loved one", "grief", "grieving", "in mourning",
     }
     if any(kw in text_lower for kw in bereavement_kw):
         return BereavementFulfiller()
@@ -405,7 +414,7 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
 
     trigger_alert_kw = {
         "触发预警", "trigger alert", "avoid triggers", "تجنب",
-        "temptation alert",
+        "temptation alert", "triggered", "tempt",
     }
     if any(kw in text_lower for kw in trigger_alert_kw):
         return TriggerAlertFulfiller()
@@ -413,6 +422,7 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     addiction_meeting_kw = {
         "戒瘾", "addiction meeting", "aa meeting", "na meeting",
         "إدمان", "戒酒", "戒毒", "recovery meeting",
+        " aa ", "stop drinking", "sober", "rehab",
     }
     if any(kw in text_lower for kw in addiction_meeting_kw):
         return AddictionMeetingFulfiller()
@@ -684,8 +694,9 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
 
     # Check for EV charging / gas keywords
     ev_keywords = {
-        "充电", "charging", "加油", "gas", "电动", "شحن",
-        "ev", "charger", "supercharger",
+        "充电", "charging", "加油", "gas station", "电动", "شحن",
+        "ev charging", "ev charger", "charger", "supercharger",
+        "electric vehicle", "电动车",
     }
     if any(kw in text_lower for kw in ev_keywords):
         return EVChargingFulfiller()
@@ -1076,6 +1087,7 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     # Check for caregiver respite keywords
     caregiver_respite_kw = {
         "照护", "caregiver", "respite", "看护", "رعاية", "relief", "喘息",
+        "caring for", "taking care of", "exhausted from caring",
     }
     if any(kw in text_lower for kw in caregiver_respite_kw):
         # Disambiguate among caregiver sub-fulfillers
@@ -1115,6 +1127,7 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     # Check for legal aid keywords
     legal_aid_kw = {
         "法律", "legal", "律师", "lawyer", "محامي", "rights", "权益", "法援",
+        "legal aid", "attorney", "court",
     }
     if any(kw in text_lower for kw in legal_aid_kw):
         # Disambiguate: labor, tenant, immigration, or general legal
@@ -1171,6 +1184,7 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     eating_disorder_kw = {
         "饮食障碍", "eating disorder", "厌食", "anorexia", "暴食",
         "bulimia", "اضطراب الأكل", "binge", "purge",
+        "binge eating", "can't eat normally", "starving myself",
     }
     if any(kw in text_lower for kw in eating_disorder_kw):
         return EatingDisorderFulfiller()
@@ -1178,6 +1192,7 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     # Check for chronic pain keywords (before generic chronic illness)
     chronic_pain_kw = {
         "慢性疼痛", "chronic pain", "疼痛", "ألم", "pain management",
+        "pain never stops", "constant pain", "pain relief",
     }
     if any(kw in text_lower for kw in chronic_pain_kw):
         return ChronicPainFulfiller()
@@ -1202,7 +1217,7 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     # Check for postpartum keywords
     postpartum_kw = {
         "产后", "postpartum", "新妈妈", "new mom", "ما بعد الولادة",
-        "baby blues",
+        "baby blues", "after giving birth", "postnatal depression",
     }
     if any(kw in text_lower for kw in postpartum_kw):
         return PostpartumFulfiller()
@@ -1246,6 +1261,7 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     # Check for legacy planning keywords
     legacy_kw = {
         "遗产", "legacy", "留给", "leave behind", "إرث",
+        "what i leave", "my legacy", "legacy planning",
     }
     if any(kw in text_lower for kw in legacy_kw):
         return LegacyPlanningFulfiller()
@@ -1253,7 +1269,7 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     # Check for social justice keywords
     social_justice_kw = {
         "社会正义", "social justice", "公正", "عدالة", "activism",
-        "advocacy", "petition", "请愿",
+        "advocacy", "petition", "请愿", "justice",
     }
     if any(kw in text_lower for kw in social_justice_kw):
         return SocialJusticeFulfiller()
@@ -1278,7 +1294,7 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     # Check for roots journey keywords
     roots_kw = {
         "寻根", "roots", "جذور", "homeland", "故乡", "diaspora",
-        "genealogy", "族谱",
+        "genealogy", "族谱", "heritage", "ancestry", "where i come from",
     }
     if any(kw in text_lower for kw in roots_kw):
         return RootsJourneyFulfiller()
@@ -1294,7 +1310,7 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     # Check for cultural recovery keywords
     cultural_recovery_kw = {
         "文化恢复", "cultural recovery", "复兴", "indigenous",
-        "原住民",
+        "原住民", "cultural traditions", "revive",
     }
     if any(kw in text_lower for kw in cultural_recovery_kw):
         return CulturalRecoveryFulfiller()
