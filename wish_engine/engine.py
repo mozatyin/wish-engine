@@ -274,6 +274,7 @@ class WishEngine:
                 intentions,
                 emotion_state=emotion_state,
                 cross_detector_patterns=cross_detector_patterns,
+                api_key=self._api_key,
             )
             all_wishes.extend(path_b)
 

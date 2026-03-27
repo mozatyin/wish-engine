@@ -24,11 +24,11 @@ from wish_engine.compass.models import (
 
 # ── Thresholds ───────────────────────────────────────────────────────────────
 
-AROUSAL_ANOMALY_THRESHOLD = 0.25       # arousal above baseline by this much
+AROUSAL_ANOMALY_THRESHOLD = 0.15       # arousal above baseline by this much
 MOUTH_HARD_AROUSAL_THRESHOLD = 0.6     # high arousal with negative sentiment
 REPEATED_SESSION_THRESHOLD = 3         # topic in 3+ sessions = repeated
 EQ_JUMP_THRESHOLD = 0.15              # EQ change > 0.15 = growth gap
-SEED_CONFIDENCE = 0.20                # default confidence for new shells
+SEED_CONFIDENCE = 0.25                # default confidence for new shells
 
 
 class ContradictionDetector:
@@ -67,7 +67,7 @@ class ContradictionDetector:
                 shells.append(Shell(
                     pattern=ContradictionPattern.EMOTION_ANOMALY,
                     topic=entity,
-                    confidence=min((arousal - avg_arousal) / 0.5 * SEED_CONFIDENCE, 0.4),
+                    confidence=min((arousal - avg_arousal) / 0.4 * SEED_CONFIDENCE + 0.05, 0.45),
                     raw_signals=[Signal(
                         signal_type="emotion_anomaly",
                         topic=entity,

@@ -120,6 +120,8 @@ class ClassifiedWish(BaseModel):
     wish_type: WishType
     level: WishLevel
     fulfillment_strategy: str
+    state: WishState = WishState.BORN
+    confidence: float = Field(default=0.0, ge=0.0, le=1.0)
 
 
 class L1FulfillmentResult(BaseModel):

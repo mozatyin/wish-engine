@@ -6,6 +6,7 @@ from wish_engine.models import (
     ClassifiedWish,
     DetectedWish,
     WishLevel,
+    WishState,
     WishType,
 )
 
@@ -75,6 +76,8 @@ def classify(wish: DetectedWish) -> ClassifiedWish:
         wish_type=wish.wish_type,
         level=level,
         fulfillment_strategy=strategy,
+        state=WishState.BORN,
+        confidence=wish.confidence,
     )
 
 

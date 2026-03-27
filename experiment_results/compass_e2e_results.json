@@ -1,0 +1,126 @@
+[
+  {
+    "name": "Scarlett",
+    "status": "PASS",
+    "hidden_desire": "Rhett",
+    "detected": true,
+    "bloomed": true,
+    "fulfilled": true,
+    "milestones": {
+      "sprout": 1,
+      "bloom": 3
+    },
+    "total_shells": 2,
+    "total_blooms": 2,
+    "harvested_count": 2,
+    "fulfillment_results": [
+      {
+        "wish_text": "想更了解自己对Ashley的真实感受",
+        "shell_topic": "Ashley",
+        "shell_pattern": "emotion_anomaly",
+        "recommendations": [
+          {
+            "title": "Attached",
+            "category": "book",
+            "score": 0.5
+          },
+          {
+            "title": "Hold Me Tight",
+            "category": "book",
+            "score": 0.5
+          },
+          {
+            "title": "Wired for Love",
+            "category": "book",
+            "score": 0.5
+          }
+        ]
+      },
+      {
+        "wish_text": "想更了解自己对Rhett的真实感受",
+        "shell_topic": "Rhett",
+        "shell_pattern": "emotion_anomaly",
+        "recommendations": [
+          {
+            "title": "Attached",
+            "category": "book",
+            "score": 0.5
+          },
+          {
+            "title": "Hold Me Tight",
+            "category": "book",
+            "score": 0.5
+          },
+          {
+            "title": "Wired for Love",
+            "category": "book",
+            "score": 0.5
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Darcy",
+    "status": "PARTIAL",
+    "hidden_desire": "Elizabeth",
+    "detected": true,
+    "bloomed": false,
+    "fulfilled": false,
+    "milestones": {
+      "seed": 1,
+      "sprout": 4
+    },
+    "total_shells": 2,
+    "total_blooms": 0,
+    "harvested_count": 0,
+    "fulfillment_results": []
+  },
+  {
+    "name": "Walter White",
+    "status": "PARTIAL",
+    "hidden_desire": "Power",
+    "detected": true,
+    "bloomed": false,
+    "fulfilled": false,
+    "milestones": {
+      "seed": 2,
+      "sprout": 4,
+      "bud": 6
+    },
+    "total_shells": 2,
+    "total_blooms": 0,
+    "harvested_count": 0,
+    "fulfillment_results": []
+  },
+  {
+    "name": "Gatsby",
+    "status": "PARTIAL",
+    "hidden_desire": "Origins",
+    "detected": true,
+    "bloomed": false,
+    "fulfilled": false,
+    "milestones": {
+      "seed": 1
+    },
+    "total_shells": 2,
+    "total_blooms": 0,
+    "harvested_count": 0,
+    "fulfillment_results": []
+  },
+  {
+    "name": "Don Draper",
+    "status": "PARTIAL",
+    "hidden_desire": "Identity",
+    "detected": true,
+    "bloomed": false,
+    "fulfilled": false,
+    "milestones": {
+      "seed": 3
+    },
+    "total_shells": 1,
+    "total_blooms": 0,
+    "harvested_count": 0,
+    "fulfillment_results": []
+  }
+]

@@ -15,6 +15,8 @@ from wish_engine.detector import (
     _has_desire_marker,
     _classify_wish_type,
     _local_fallback_classify,
+    _check_implicit_wish,
+    _check_short_emotional,
 )
 
 
@@ -362,3 +364,229 @@ class TestEdgeCases:
         results = detect_wishes(intentions, api_key="")
         # Either detected via rule or skipped — should not crash
         assert isinstance(results, list)
+
+
+# ── Implicit wish detection ────────────────────────────────────────────────
+
+
+class TestImplicitWishDetection:
+    """Tests for implicit wish patterns (problem-as-wish, help-seeking, aspiration)."""
+
+    # ── Problem-as-wish ──
+
+    def test_keep_failing_relationships(self):
+        """'I keep failing at relationships' → should detect as wish."""
+        intentions = [Intention(id="imp1", text="I keep failing at relationships")]
+        results = detect_wishes(intentions, api_key="")
+        assert len(results) >= 1
+        assert results[0].wish_type in (
+            WishType.RELATIONSHIP_INSIGHT,
+            WishType.EMOTIONAL_PROCESSING,
+            WishType.SELF_UNDERSTANDING,
+        )
+
+    def test_cant_stop(self):
+        intentions = [Intention(id="imp2", text="I can't stop overthinking everything")]
+        results = detect_wishes(intentions, api_key="")
+        assert len(results) >= 1
+
+    def test_dont_know_how(self):
+        intentions = [Intention(id="imp3", text="I don't know how to move on from this")]
+        results = detect_wishes(intentions, api_key="")
+        assert len(results) >= 1
+
+    def test_im_stuck(self):
+        intentions = [Intention(id="imp4", text="I'm stuck in this cycle of self-doubt")]
+        results = detect_wishes(intentions, api_key="")
+        assert len(results) >= 1
+
+    def test_tired_of(self):
+        intentions = [Intention(id="imp5", text="I'm tired of feeling this way")]
+        results = detect_wishes(intentions, api_key="")
+        assert len(results) >= 1
+
+    # ── Help-seeking ──
+
+    def test_how_do_i_deal(self):
+        """'How do I deal with anxiety' → should detect."""
+        intentions = [Intention(id="hs1", text="How do I deal with anxiety")]
+        results = detect_wishes(intentions, api_key="")
+        assert len(results) >= 1
+
+    def test_what_should_i(self):
+        intentions = [Intention(id="hs2", text="What should I do about my relationship")]
+        results = detect_wishes(intentions, api_key="")
+        assert len(results) >= 1
+
+    def test_any_advice(self):
+        intentions = [Intention(id="hs3", text="Any advice on dealing with loneliness")]
+        results = detect_wishes(intentions, api_key="")
+        assert len(results) >= 1
+
+    # ── Aspiration ──
+
+    def test_thinking_about(self):
+        intentions = [Intention(id="asp1", text="I've been thinking about changing careers")]
+        results = detect_wishes(intentions, api_key="")
+        assert len(results) >= 1
+
+    def test_would_be_nice(self):
+        intentions = [Intention(id="asp2", text="It would be nice to have someone to talk to")]
+        results = detect_wishes(intentions, api_key="")
+        assert len(results) >= 1
+
+    # ── Short emotional messages ──
+
+    def test_im_so_lonely(self):
+        """'I'm so lonely' → short but emotional → should detect."""
+        intentions = [Intention(id="se1", text="I'm so lonely")]
+        results = detect_wishes(intentions, api_key="")
+        assert len(results) >= 1
+        assert results[0].wish_type == WishType.EMOTIONAL_PROCESSING
+
+    def test_im_lost(self):
+        intentions = [Intention(id="se2", text="I feel lost")]
+        results = detect_wishes(intentions, api_key="")
+        assert len(results) >= 1
+
+    def test_help_me(self):
+        intentions = [Intention(id="se3", text="help me")]
+        results = detect_wishes(intentions, api_key="")
+        assert len(results) >= 1
+
+    # ── Chinese implicit ──
+
+    def test_zenmeban(self):
+        """'怎么办' → should detect."""
+        intentions = [Intention(id="zh1", text="怎么办")]
+        results = detect_wishes(intentions, api_key="")
+        assert len(results) >= 1
+
+    def test_zh_dont_know_how(self):
+        intentions = [Intention(id="zh2", text="我不知道怎么面对这一切")]
+        results = detect_wishes(intentions, api_key="")
+        assert len(results) >= 1
+
+    # ── Arabic implicit ──
+
+    def test_ar_tired_of_everything(self):
+        """'تعبت من كل شيء' → should detect."""
+        intentions = [Intention(id="ar1", text="تعبت من كل شيء")]
+        results = detect_wishes(intentions, api_key="")
+        assert len(results) >= 1
+
+    def test_ar_cant(self):
+        intentions = [Intention(id="ar2", text="لا أستطيع التحمل أكثر")]
+        results = detect_wishes(intentions, api_key="")
+        assert len(results) >= 1
+
+    # ── Distress-based detection ──
+
+    def test_distress_triggers_emotional_processing(self):
+        """High distress + non-trivial message → emotional_processing wish."""
+        intentions = [
+            Intention(id="dist1", text="Everything feels wrong and I don't know what to do"),
+        ]
+        emotion = EmotionState(distress=0.7)
+        results = detect_wishes(intentions, emotion_state=emotion, api_key="")
+        assert len(results) >= 1
+
+    # ── Negative cases (should NOT detect) ──
+
+    def test_ok_not_detected(self):
+        """'ok' → too short, no emotional content → should NOT detect."""
+        intentions = [Intention(id="neg1", text="ok")]
+        results = detect_wishes(intentions, api_key="")
+        assert len(results) == 0
+
+    def test_yes_not_detected(self):
+        intentions = [Intention(id="neg2", text="yes")]
+        results = detect_wishes(intentions, api_key="")
+        assert len(results) == 0
+
+    def test_had_lunch_not_detected(self):
+        """'I had lunch' → factual statement → should NOT detect."""
+        intentions = [Intention(id="neg3", text="I had lunch")]
+        results = detect_wishes(intentions, api_key="")
+        assert len(results) == 0
+
+    def test_weather_not_detected(self):
+        intentions = [Intention(id="neg4", text="The weather is nice today")]
+        results = detect_wishes(intentions, api_key="")
+        assert len(results) == 0
+
+    def test_greeting_not_detected(self):
+        intentions = [Intention(id="neg5", text="Hello how are you")]
+        results = detect_wishes(intentions, api_key="")
+        assert len(results) == 0
+
+
+# ── Implicit pattern unit tests ────────────────────────────────────────────
+
+
+class TestImplicitPatterns:
+    """Unit tests for the implicit wish pattern matchers."""
+
+    def test_problem_pattern_en(self):
+        is_imp, cat = _check_implicit_wish("I keep failing at everything", "en")
+        assert is_imp is True
+        assert cat == "problem"
+
+    def test_help_seeking_en(self):
+        is_imp, cat = _check_implicit_wish("How do I deal with this", "en")
+        assert is_imp is True
+        assert cat == "help_seeking"
+
+    def test_aspiration_en(self):
+        is_imp, cat = _check_implicit_wish("I've been thinking about moving abroad", "en")
+        assert is_imp is True
+        assert cat == "aspiration"
+
+    def test_no_implicit_neutral(self):
+        is_imp, cat = _check_implicit_wish("I had a meeting today", "en")
+        assert is_imp is False
+
+    def test_short_emotional_en(self):
+        assert _check_short_emotional("I'm so lonely", "en") is True
+        assert _check_short_emotional("help", "en") is True
+
+    def test_short_emotional_negative(self):
+        assert _check_short_emotional("ok", "en") is False
+        assert _check_short_emotional("yes sure", "en") is False
+
+    def test_zh_problem_pattern(self):
+        is_imp, cat = _check_implicit_wish("我不知道怎么面对", "zh")
+        assert is_imp is True
+
+    def test_ar_problem_pattern(self):
+        is_imp, cat = _check_implicit_wish("تعبت من كل شيء", "ar")
+        assert is_imp is True
+
+
+# ── Casual want filter refinement ──────────────────────────────────────────
+
+
+class TestCasualWantRefinement:
+    """Verify that legitimate L2 wishes are no longer filtered as casual wants."""
+
+    def test_want_to_study_detected(self):
+        """'want to study' should NOT be filtered — it's a legitimate wish."""
+        intentions = [Intention(id="cw1", text="I want to study psychology")]
+        results = detect_wishes(intentions, api_key="")
+        assert len(results) >= 1
+
+    def test_want_to_exercise_detected(self):
+        intentions = [Intention(id="cw2", text="I want to go to therapy")]
+        results = detect_wishes(intentions, api_key="")
+        assert len(results) >= 1
+
+    def test_want_to_eat_still_filtered(self):
+        """'want to eat' should still be filtered as casual/physical."""
+        intentions = [Intention(id="cw3", text="I want to eat something")]
+        results = detect_wishes(intentions, api_key="")
+        assert len(results) == 0
+
+    def test_want_to_sleep_still_filtered(self):
+        intentions = [Intention(id="cw4", text="I want to sleep now")]
+        results = detect_wishes(intentions, api_key="")
+        assert len(results) == 0

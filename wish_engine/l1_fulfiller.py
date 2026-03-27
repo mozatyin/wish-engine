@@ -201,37 +201,38 @@ def _build_fulfillment_prompt(
 
 
 def _call_sonnet(prompt: str, api_key: str, prefill: str = "") -> dict[str, Any]:
-    """Call Sonnet via Anthropic SDK. Returns parsed JSON dict.
+    """Call Sonnet via shared LLM client. Returns parsed JSON dict.
 
     Uses prefill technique: start the assistant response with grounded text
     to force personalization from the first sentence.
     """
-    import anthropic
-
-    client = anthropic.Anthropic(
-        api_key=api_key,
-        base_url="https://openrouter.ai/api",
-    )
+    from wish_engine.llm_client import call_llm
 
     messages = [{"role": "user", "content": prompt}]
     # Prefill forces Claude to continue from a grounded starting point
     if prefill:
         messages.append({"role": "assistant", "content": prefill})
 
-    response = client.messages.create(
-        model="anthropic/claude-sonnet-4",
+    raw = call_llm(
+        model="claude-sonnet-4-20250514",
+        prompt=prompt,
+        api_key=api_key,
         max_tokens=512,
+        parse_json=False,
         messages=messages,
     )
-    raw = response.content[0].text.strip()
     # If prefilled, prepend the prefill to the response
     if prefill:
-        raw = prefill + raw
+        raw = prefill + str(raw)
 
+    raw = str(raw).strip()
     start = raw.find("{")
     end = raw.rfind("}") + 1
     if start >= 0 and end > start:
-        return json.loads(raw[start:end])
+        try:
+            return json.loads(raw[start:end])
+        except json.JSONDecodeError:
+            pass
     return {"text": raw, "related_dimensions": []}
 
 

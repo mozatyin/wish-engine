@@ -1436,18 +1436,18 @@
         "healing"
       ],
       "actual_tags": [
-        "body",
-        "gentle",
+        "beach_walk",
+        "calming",
+        "forest_bathing",
+        "mountain_hike",
         "nature",
-        "new_area",
-        "self_paced",
-        "solo",
-        "space"
+        "practical",
+        "quiet"
       ],
       "recommendations": [
-        "Solo Cafe in a New Area",
-        "Nature Walk on a New Trail",
-        "Solo Travel — Weekend Escape"
+        "Forest Bathing (Shinrin-yoku)",
+        "Beach Walk & Ocean Sounds",
+        "Mountain Hike & Summit Views"
       ],
       "error": ""
     },
@@ -1461,18 +1461,18 @@
         "forest"
       ],
       "actual_tags": [
-        "body",
-        "gentle",
+        "beach_walk",
+        "calming",
+        "forest_bathing",
+        "mountain_hike",
         "nature",
-        "new_area",
-        "self_paced",
-        "solo",
-        "space"
+        "practical",
+        "quiet"
       ],
       "recommendations": [
-        "Solo Cafe in a New Area",
-        "Nature Walk on a New Trail",
-        "Solo Travel — Weekend Escape"
+        "Forest Bathing (Shinrin-yoku)",
+        "Beach Walk & Ocean Sounds",
+        "Mountain Hike & Summit Views"
       ],
       "error": ""
     },
@@ -1485,18 +1485,18 @@
         "nature"
       ],
       "actual_tags": [
-        "body",
-        "gentle",
+        "beach_walk",
+        "calming",
+        "forest_bathing",
+        "mountain_hike",
         "nature",
-        "new_area",
-        "self_paced",
-        "solo",
-        "space"
+        "practical",
+        "quiet"
       ],
       "recommendations": [
-        "Solo Cafe in a New Area",
-        "Nature Walk on a New Trail",
-        "Solo Travel — Weekend Escape"
+        "Forest Bathing (Shinrin-yoku)",
+        "Beach Walk & Ocean Sounds",
+        "Mountain Hike & Summit Views"
       ],
       "error": ""
     },
@@ -1593,6 +1593,7 @@
     "l2_remote_care",
     "l2_child_safety_online",
     "l2_ramadan",
+    "l2_router",
     "l2_secondhand",
     "l2_safety",
     "l2_course_tracker",

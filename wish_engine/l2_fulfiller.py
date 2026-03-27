@@ -136,8 +136,25 @@ class PersonalityFilter:
         return scored[:max_results]
 
 
+# Categories that are safety-critical — PersonalityFilter MUST be bypassed.
+# Crisis hotlines and resources must always appear in their original priority
+# order regardless of user personality traits (MBTI, attachment, etc.).
+SAFETY_CRITICAL_CATEGORIES: frozenset[str] = frozenset({
+    "suicide_prevention",
+    "domestic_violence",
+    "crisis",
+})
+
+
 class L2Fulfiller(ABC):
-    """Base class for L2 domain-specific fulfillers."""
+    """Base class for L2 domain-specific fulfillers.
+
+    Subclasses can set ``safety_critical = True`` to bypass PersonalityFilter
+    entirely — crisis resources are returned in their original priority order.
+    """
+
+    # Override in subclass to skip PersonalityFilter
+    safety_critical: bool = False
 
     @abstractmethod
     def fulfill(
@@ -153,17 +170,31 @@ class L2Fulfiller(ABC):
         detector_results: DetectorResults,
         max_results: int = 3,
     ) -> list[Recommendation]:
-        """Filter, score, and convert candidates to Recommendation models."""
-        pf = PersonalityFilter(detector_results)
-        ranked = pf.filter_and_rank(candidates, max_results=max_results)
+        """Filter, score, and convert candidates to Recommendation models.
+
+        Safety-critical fulfillers bypass PersonalityFilter entirely — crisis
+        resources are returned in their original priority order so that
+        hotlines always appear first regardless of user personality.
+        """
+        if self.safety_critical:
+            # No filtering, no reranking — preserve original priority order
+            ranked = candidates[:max_results]
+        else:
+            pf = PersonalityFilter(detector_results)
+            ranked = pf.filter_and_rank(candidates, max_results=max_results)
+
         results: list[Recommendation] = []
         for c in ranked:
             tags = c.get("tags", [])
-            reason = personalize_reason(
-                recommendation_title=c["title"],
-                recommendation_tags=tags,
-                detector_results=detector_results,
-            )
+            if self.safety_critical:
+                # Use the pre-set relevance reason for crisis resources
+                reason = c.get("relevance_reason", "Help is available")
+            else:
+                reason = personalize_reason(
+                    recommendation_title=c["title"],
+                    recommendation_tags=tags,
+                    detector_results=detector_results,
+                )
             results.append(
                 Recommendation(
                     title=c["title"],

@@ -271,13 +271,14 @@ def _is_negated(text: str, lang: str) -> bool:
 # Casual/physical "want" that are NOT psychological wishes
 _CASUAL_WANT_PATTERNS: dict[str, list[str]] = {
     "en": [
-        r"\bwant\s+to\s+(?:eat|sleep|drink|go|leave|come|stay|sit|stand|run|walk|stop|start|say|tell\s+you|mention|add|get|buy|pay|play|watch|listen|try\s+(?:this|that|it))\b",
+        # Only filter basic physical needs — NOT aspirational activities
+        r"\bwant\s+to\s+(?:eat|sleep|drink|leave|come|stay|sit|stand|run|walk|stop|start|say|tell\s+you|mention|add|get|buy|pay|watch|listen|try\s+(?:this|that|it))\b",
         r"\bwant\s+(?:pizza|food|coffee|water|some|this|that|it)\b",
-        r"\bneed\s+to\s+(?:eat|sleep|go|leave|pee|rest|shower|work|study)\b",
-        r"\bwanna\s+(?:eat|sleep|go|leave|hang|chill|play|watch)\b",
+        r"\bneed\s+to\s+(?:eat|sleep|go|leave|pee|rest|shower)\b",
+        r"\bwanna\s+(?:eat|sleep|leave|hang|chill|watch)\b",
     ],
     "zh": [
-        r"想(?:去|吃|喝|睡|买|玩|看看|听|坐|走|回)",
+        r"想(?:吃|喝|睡|买|看看|听|坐|走|回)",
         r"想(?:上厕所|洗澡|休息一下)",
     ],
     "ar": [
@@ -309,6 +310,127 @@ _CASUAL_WANT_PATTERNS: dict[str, list[str]] = {
 def _is_casual_want(text: str, lang: str) -> bool:
     """Check if 'want' is casual/physical, not a psychological wish."""
     patterns = _CASUAL_WANT_PATTERNS.get(lang, _CASUAL_WANT_PATTERNS["en"])
+    lower = text.lower()
+    return any(re.search(p, lower) for p in patterns)
+
+
+# ── Implicit wish patterns (no explicit desire marker needed) ────────────────
+
+# Problem-as-wish: describing a problem implies a wish to solve it
+_PROBLEM_AS_WISH_PATTERNS: dict[str, list[str]] = {
+    "en": [
+        r"\bi\s+keep\s+(?:failing|struggling|fighting|losing|forgetting|messing|screwing|getting|making)",
+        r"\bi\s+can'?t\s+(?:stop|handle|deal|cope|manage|figure|control|help|get\s+over|move\s+on)",
+        r"\bi\s+don'?t\s+know\s+(?:how\s+to|what\s+to|why|where|when|if)",
+        r"\bit'?s\s+(?:so\s+)?hard\s+to\b",
+        r"\bi'?m\s+stuck\b",
+        r"\bi'?m\s+(?:so\s+)?tired\s+of\b",
+        r"\bi\s+always\s+(?:end\s+up|fail|mess|screw|ruin)",
+        r"\bi\s+struggle\s+(?:with|to)\b",
+    ],
+    "zh": [
+        r"我不知道怎么",
+        r"我一直(?:在|都)",
+        r"很难(?:做到|接受|面对|理解|相信|放下|忘记)",
+        r"受不了",
+        r"我总是",
+        r"怎么都(?:不|无法)",
+    ],
+    "ar": [
+        r"لا\s+أعرف\s+كيف",
+        r"مشكلتي",
+        r"أحتاج\s+مساعدة",
+        r"تعبت\s+من",
+        r"لا\s+أستطيع",
+        r"ما\s+أقدر",
+    ],
+}
+
+# Help-seeking patterns
+_HELP_SEEKING_PATTERNS: dict[str, list[str]] = {
+    "en": [
+        r"\bhow\s+(?:do|can|should)\s+i\b",
+        r"\bwhat\s+should\s+i\b",
+        r"\bcan\s+you\s+help\b",
+        r"\bany\s+(?:advice|suggestions?|tips?|ideas?)\b",
+        r"\bwhat\s+do\s+you\s+think\s+i\s+should\b",
+        r"\bhow\s+(?:do\s+i|to)\s+(?:deal|cope|handle|manage|fix|solve|stop|get\s+over)\b",
+    ],
+    "zh": [
+        r"怎么办",
+        r"该怎么",
+        r"有什么建议",
+        r"帮帮我",
+        r"怎么(?:才能|样才)",
+    ],
+    "ar": [
+        r"كيف\s+(?:أ|ا)",
+        r"ماذا\s+أفعل",
+        r"ساعدني",
+        r"ما\s+الحل",
+    ],
+}
+
+# Aspiration patterns
+_ASPIRATION_PATTERNS: dict[str, list[str]] = {
+    "en": [
+        r"\bi'?ve\s+been\s+(?:thinking|wondering)\s+about\b",
+        r"\bit\s+would\s+be\s+nice\s+(?:if|to)\b",
+        r"\bsometimes\s+i\s+(?:think|wonder|dream)\s+about\b",
+        r"\bi'?ve\s+been\s+considering\b",
+        r"\bi\s+(?:really\s+)?wish\s+(?:i|things|life|it)\b",
+    ],
+    "zh": [
+        r"我在想",
+        r"如果能(?:够|\.{0})",
+        r"我考虑",
+        r"希望有一天",
+        r"要是.*就好了",
+    ],
+    "ar": [
+        r"أفكر\s+في",
+        r"لو\s+أستطيع",
+        r"أتمنى\s+لو",
+        r"يا\s+ريت",
+    ],
+}
+
+# Short-message emotional keywords that imply a wish for emotional support
+_SHORT_EMOTIONAL_KEYWORDS: dict[str, list[str]] = {
+    "en": [
+        r"\b(?:lonely|scared|lost|confused|stuck|help|hopeless|alone|overwhelmed|terrified|desperate|broken)\b",
+    ],
+    "zh": [
+        r"(?:孤独|害怕|迷茫|无助|崩溃|救|绝望|痛苦|难受|焦虑)",
+    ],
+    "ar": [
+        r"(?:وحيد|خايف|ضايع|محتاج|تعبان|مكسور)",
+    ],
+}
+
+
+def _check_implicit_wish(text: str, lang: str) -> tuple[bool, str]:
+    """Check for implicit wish patterns (problem-as-wish, help-seeking, aspiration).
+
+    Returns (is_implicit_wish, pattern_category).
+    """
+    lower = text.lower()
+
+    for category, pattern_dict in [
+        ("problem", _PROBLEM_AS_WISH_PATTERNS),
+        ("help_seeking", _HELP_SEEKING_PATTERNS),
+        ("aspiration", _ASPIRATION_PATTERNS),
+    ]:
+        patterns = pattern_dict.get(lang, pattern_dict.get("en", []))
+        if any(re.search(p, lower) for p in patterns):
+            return True, category
+
+    return False, ""
+
+
+def _check_short_emotional(text: str, lang: str) -> bool:
+    """Check if short message contains strong emotional keywords."""
+    patterns = _SHORT_EMOTIONAL_KEYWORDS.get(lang, _SHORT_EMOTIONAL_KEYWORDS.get("en", []))
     lower = text.lower()
     return any(re.search(p, lower) for p in patterns)
 
@@ -393,24 +515,18 @@ def _build_haiku_prompt(intention_text: str) -> str:
 
 
 def _call_haiku(prompt: str, api_key: str) -> dict[str, Any]:
-    """Call Haiku via Anthropic SDK. Returns parsed JSON dict."""
-    import anthropic
+    """Call Haiku via shared LLM client. Returns parsed JSON dict."""
+    from wish_engine.llm_client import call_llm
 
-    client = anthropic.Anthropic(
+    result = call_llm(
+        model="claude-haiku-4-5-20251001",
+        prompt=prompt,
         api_key=api_key,
-        base_url="https://openrouter.ai/api",
-    )
-    response = client.messages.create(
-        model="anthropic/claude-haiku-4-5-20251001",
         max_tokens=128,
-        messages=[{"role": "user", "content": prompt}],
+        parse_json=True,
     )
-    raw = response.content[0].text.strip()
-    # Extract JSON from response
-    start = raw.find("{")
-    end = raw.rfind("}") + 1
-    if start >= 0 and end > start:
-        return json.loads(raw[start:end])
+    if isinstance(result, dict):
+        return result
     return {"is_wish": False, "wish_type": None, "confidence": 0.0}
 
 
@@ -442,14 +558,59 @@ def detect_wishes(
     results: list[DetectedWish] = []
     ambiguous: list[Intention] = []
 
-    # Pass 1: rule-based fast path
+    # Pass 1: rule-based fast path (explicit desire markers)
+    implicit_candidates: list[Intention] = []
+
     for intent in intentions:
         lang = _detect_language(intent.text)
+        text_stripped = intent.text.strip()
+        text_len = len(text_stripped)
 
         # Skip very short texts (language-aware minimum)
         min_len = 4 if lang in ("zh", "ar", "hi") else 10
-        if len(intent.text.strip()) < min_len:
+
+        # For short messages: check desire markers first (they're more specific),
+        # then fall back to emotional/implicit detection
+        has_desire_short = _has_desire_marker(intent.text, lang) if text_len >= min_len else False
+
+        if text_len < min_len and not has_desire_short:
+            # Check short-message emotional keywords
+            if _check_short_emotional(text_stripped, lang):
+                results.append(
+                    DetectedWish(
+                        wish_text=intent.text,
+                        wish_type=WishType.EMOTIONAL_PROCESSING,
+                        confidence=0.40,
+                        source_intention_id=intent.id,
+                    )
+                )
+                continue
+            # Check if it's an implicit wish even though short (e.g., "怎么办")
+            is_imp_short, cat_short = _check_implicit_wish(text_stripped, lang)
+            if is_imp_short:
+                results.append(
+                    DetectedWish(
+                        wish_text=intent.text,
+                        wish_type=WishType.EMOTIONAL_PROCESSING,
+                        confidence=0.45,
+                        source_intention_id=intent.id,
+                    )
+                )
             continue
+
+        # Short-message emotional boost (for messages >= min_len but < 20 chars,
+        # only if no explicit desire marker — desire markers are more specific)
+        if text_len < 20 and not _has_desire_marker(intent.text, lang) and _check_short_emotional(text_stripped, lang):
+            results.append(
+                DetectedWish(
+                    wish_text=intent.text,
+                    wish_type=WishType.EMOTIONAL_PROCESSING,
+                    confidence=0.40,
+                    source_intention_id=intent.id,
+                )
+            )
+            continue
+
         has_desire = _has_desire_marker(intent.text, lang)
 
         if has_desire:
@@ -478,13 +639,64 @@ def detect_wishes(
             else:
                 # Has desire marker but type unclear → ambiguous
                 ambiguous.append(intent)
-        # No desire marker → not a wish, skip
+        else:
+            # No explicit desire marker → check implicit patterns
+            implicit_candidates.append(intent)
+
+    # Pass 1b: Implicit wish detection (problem-as-wish, help-seeking, aspiration)
+    for intent in implicit_candidates:
+        lang = _detect_language(intent.text)
+        is_implicit, category = _check_implicit_wish(intent.text, lang)
+
+        if is_implicit:
+            # Try to classify the type
+            wish_type = _classify_wish_type(intent.text)
+            if wish_type is None:
+                # Use local fallback for type classification
+                wish_type, fallback_conf = _local_fallback_classify(intent.text)
+
+            if wish_type is None:
+                # Implicit pattern matched but no specific type → default based on category
+                if category == "problem":
+                    wish_type = WishType.SELF_UNDERSTANDING
+                elif category == "help_seeking":
+                    wish_type = WishType.EMOTIONAL_PROCESSING
+                elif category == "aspiration":
+                    wish_type = WishType.SELF_UNDERSTANDING
+                else:
+                    wish_type = WishType.EMOTIONAL_PROCESSING
+
+            # Implicit wishes get lower base confidence
+            conf = 0.60
+            if category == "help_seeking":
+                conf = 0.65  # help-seeking is more intentional
+            # Emotion distress boost for implicit wishes
+            if emotion_state and emotion_state.distress > 0.3:
+                conf = min(conf + 0.10, 0.80)
+            results.append(
+                DetectedWish(
+                    wish_text=intent.text,
+                    wish_type=wish_type,
+                    confidence=conf,
+                    source_intention_id=intent.id,
+                )
+            )
+        elif emotion_state and emotion_state.distress > 0.5 and len(intent.text.strip()) > 15:
+            # High distress + non-trivial message → implicit emotional support wish
+            results.append(
+                DetectedWish(
+                    wish_text=intent.text,
+                    wish_type=WishType.EMOTIONAL_PROCESSING,
+                    confidence=0.50,
+                    source_intention_id=intent.id,
+                )
+            )
 
     # Pass 2: Local fallback for ambiguous intentions (zero LLM)
     still_ambiguous: list[Intention] = []
     for intent in ambiguous:
         fallback_type, fallback_conf = _local_fallback_classify(intent.text)
-        if fallback_type is not None and fallback_conf >= 0.50:
+        if fallback_type is not None and fallback_conf >= 0.30:
             results.append(
                 DetectedWish(
                     wish_text=intent.text,

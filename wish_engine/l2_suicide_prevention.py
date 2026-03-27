@@ -146,6 +146,8 @@ class SuicidePreventionFulfiller(L2Fulfiller):
     Always prioritizes crisis hotline. Question-style engagement. Zero LLM.
     """
 
+    safety_critical = True
+
     def fulfill(
         self,
         wish: ClassifiedWish,

@@ -5,6 +5,7 @@ Produces frontend animation instructions based on wish state and level.
 
 from __future__ import annotations
 
+import re
 from typing import Any
 
 from wish_engine.models import (
@@ -122,9 +123,7 @@ def _build_card_data(
             }
 
     # Chocolate moment text — multilingual, Zero-AI language (V10 §7.2)
-    lang = wish.wish_text[:1] if wish else ""
     # Detect language from wish text for reveal text
-    import re
     if wish and re.search(r"[\u4e00-\u9fff]", wish.wish_text):
         reveal_lang = "zh"
     elif wish and re.search(r"[\u0600-\u06ff]", wish.wish_text):

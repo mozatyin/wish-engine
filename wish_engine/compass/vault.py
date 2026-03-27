@@ -20,10 +20,10 @@ from wish_engine.compass.models import (
 # ── Confidence update deltas ─────────────────────────────────────────────────
 
 EVIDENCE_BASE_DELTA = 0.05       # per evidence signal
-CONFIRM_DELTA = 0.10             # user says "好像是"
+CONFIRM_DELTA = 0.15             # user says "好像是"
 DENY_DELTA = -0.15               # user says "不对"
 IGNORE_DELTA = 0.02              # user opened but no feedback
-MERGE_BONUS = 0.06               # bonus when merging same-topic shells
+MERGE_BONUS = 0.10               # bonus when merging same-topic shells (repeated evidence)
 DECAY_PER_WEEK = 0.01            # confidence decay per week without new evidence
 CONFIDENCE_MAX = 0.95
 CONFIDENCE_MIN = 0.0
@@ -91,10 +91,15 @@ class SecretVault:
             target = existing[0]
             # Merge: combine signals, boost confidence
             target.raw_signals.extend(new_shell.raw_signals)
-            # Diminishing returns — bonus shrinks as signals accumulate
+            # Gentle diminishing returns — repeated evidence is still meaningful,
+            # but each additional signal contributes slightly less.
             signal_count = len(target.raw_signals)
-            diminish = 1.0 / (1.0 + signal_count * 0.02)
+            diminish = 1.0 / (1.0 + signal_count * 0.03)
             delta = MERGE_BONUS * diminish
+            # Cross-pattern corroboration: if the new shell has a different
+            # pattern from the existing one, it's stronger evidence.
+            if new_shell.pattern != target.pattern:
+                delta *= 1.3
             self._update_confidence(target, delta, f"merged with {new_shell.pattern.value}")
             if new_shell.pattern != target.pattern:
                 target.related_shells.append(f"{new_shell.pattern.value}")

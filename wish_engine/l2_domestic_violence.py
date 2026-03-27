@@ -146,6 +146,8 @@ class DomesticViolenceFulfiller(L2Fulfiller):
     10 curated entries. Safety plan and hotline always prioritized. Zero LLM.
     """
 
+    safety_critical = True
+
     def fulfill(
         self,
         wish: ClassifiedWish,

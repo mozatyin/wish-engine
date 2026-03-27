@@ -6,7 +6,6 @@ Uses Zero-AI language (V10 §7.2).
 
 from __future__ import annotations
 
-import json
 import os
 from typing import Any
 
@@ -97,7 +96,7 @@ def _generate_via_haiku(
     api_key: str,
 ) -> str:
     """Generate match reason via Haiku. 1 call, ~30 tokens output."""
-    import anthropic
+    from wish_engine.llm_client import call_llm
 
     lang_instruction = {
         "en": "in English",
@@ -115,13 +114,13 @@ def _generate_via_haiku(
     )
 
     try:
-        client = anthropic.Anthropic(api_key=api_key, base_url="https://openrouter.ai/api")
-        response = client.messages.create(
-            model="anthropic/claude-haiku-4-5-20251001",
+        raw = call_llm(
+            model="claude-haiku-4-5-20251001",
+            prompt=prompt,
+            api_key=api_key,
             max_tokens=60,
-            messages=[{"role": "user", "content": prompt}],
         )
-        return response.content[0].text.strip().strip('"')
+        return str(raw).strip().strip('"')
     except Exception:
         generic = {"en": "Your stars found each other", "zh": "你们的星星找到了彼此", "ar": "نجومكما وجدت بعضها"}
         return generic.get(language, generic["en"])
