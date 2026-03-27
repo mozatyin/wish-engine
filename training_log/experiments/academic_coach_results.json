@@ -1,0 +1,583 @@
+[
+  {
+    "id": "harry_potter",
+    "name": "Harry Potter",
+    "source": "Harry Potter",
+    "expected_pattern": "late_bloomer",
+    "patterns_detected": [
+      "perfectionist_paralysis",
+      "attention_scatter",
+      "late_bloomer"
+    ],
+    "final_resistance": 0.5,
+    "insights": 3,
+    "verbal_accepted": true,
+    "acceptance_text": "I... I never really thought about it like that. I always just figured I was rubbish at Potions because, well, I am rubbi",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Snape's teaching style would make anyone feel terrible — he's designed to intimidate, not educate. But here's what I'm curious about: when you say you're 'terrible at Potions,' what specifically happe",
+        "client": "I... yeah, I do freeze up. The moment I walk into that dungeon, I'm already expecting him to humiliate me. Every time I reach for an ingredient, I'm thinking about how he'll find something wrong with ",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "完美主义瘫痪"
+      },
+      {
+        "turn": 2,
+        "coach": "你的高标准说明你认真对待学习。但这里有个关键认知需要调整：'会犯错的人'和'在学习的人'是同一个人。你已经证明了自己能掌握高难度魔法——守护神咒在十三岁就学会了，连很多成年巫师都做不到。这说明问题不在你的能力，而在环境和方法。Snape的课堂让你进入了'生存模式'——你的大脑忙着应对威胁，没有带宽用来学习。真正的学习需要心理安全感。你需要一个实验：故意交一个80分的作业，看看天是否真的会塌下来。当",
+        "client": "I'm sorry, I don't understand what you just said. You switched to another language or something? Look, I get that you think I'm being too hard on myself, but you don't know what it's like having Snape",
+        "resistance": 0.8,
+        "insight": false,
+        "pattern": "完美主义瘫痪"
+      },
+      {
+        "turn": 3,
+        "coach": "Sorry about that — got my wires crossed there. You're absolutely right that I don't know what it's like facing Snape's intimidation tactics every class. Let me step back from Potions entirely for a mo",
+        "client": "Professor Lupin taught me. He... he actually believed I could do it, you know? Didn't make me feel stupid when I kept failing at first. He explained why it mattered - the Dementors, what they do to pe",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "注意力分散型"
+      },
+      {
+        "turn": 4,
+        "coach": "That's exactly what I'm talking about. Lupin didn't just teach you the spell — he created the conditions where your mind could actually learn. No fear, no judgment, just clear explanation of why it ma",
+        "client": "I... I never really thought about it like that. I always just figured I was rubbish at Potions because, well, I am rubbish at them. But with Lupin, I actually looked forward to those lessons. He made ",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "注意力分散型"
+      },
+      {
+        "turn": 5,
+        "coach": "你说得对 — 你的大脑不是有缺陷，是需要不同的输入方式。卢平教授做对了什么？他让你知道'为什么'这很重要，移除了恐惧，相信你能做到。斯内普的方法让你的大脑进入防御模式 — 当你在躲避羞辱时，根本没有认知带宽来学习。但看看你学会守护神咒的过程：你有清晰的目标（保护自己），理解了原理（快乐记忆驱散绝望），在安全环境中练习。这证明你完全有学习能力，只是需要合适的条件。魔药学也一样 — 找到你的方式，你比",
+        "client": "Again, I can't understand what you're saying when you switch languages like that. Can you just speak English? Look, I get what you're saying about Lupin versus Snape, but I can't exactly change how Po",
+        "resistance": 0.5,
+        "insight": false,
+        "pattern": "注意力分散型"
+      }
+    ],
+    "time": 678.7617301940918
+  },
+  {
+    "id": "hermione",
+    "name": "Hermione Granger",
+    "source": "Harry Potter",
+    "expected_pattern": "competitive_burnout",
+    "patterns_detected": [
+      "perfectionist_paralysis",
+      "competitive_burnout"
+    ],
+    "final_resistance": 0.3,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "I suppose... I've never really been a beginner at anything before, have I? Magic came naturally, academics always did. B",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Hermione, let's talk ROI here. You're putting in maximum effort but getting diminishing returns - studying until collapse isn't sustainable strategy. What's really frustrating you about learning right",
+        "client": "That's... actually quite perceptive. Ancient Runes is driving me absolutely mad right now - I've been spending four hours a night on translation exercises and I'm still making mistakes that first-year",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "完美主义瘫痪"
+      },
+      {
+        "turn": 2,
+        "coach": "Hermione, you're operating under competitive burnout - you've been racing for first place so long that your fear of not being perfect is sabotaging your actual learning. Here's the tactical issue: you",
+        "client": "I... that's rather uncomfortable to hear, actually. You're saying I'm working against myself, aren't you? The thing is, when I sit down with those runes and can't immediately grasp the syntax patterns",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "完美主义瘫痪"
+      },
+      {
+        "turn": 3,
+        "coach": "Exactly. You're trapped in perfectionist paralysis - the fear of making mistakes is actually preventing you from learning. Your high standards show you care deeply, but here's the tactical reality: th",
+        "client": "I suppose... I've never really been a beginner at anything before, have I? Magic came naturally, academics always did. But Ancient Runes is the first time I've felt genuinely lost, and instead of acce",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "完美主义瘫痪"
+      },
+      {
+        "turn": 4,
+        "coach": "Right - you've never been a beginner because you've always operated in your zone of natural talent. But here's what I'm seeing: you're using your perfectionism as armor against the discomfort of not k",
+        "client": "You're making me realize I've been confusing being clever with never being confused. I think... I think I'm more afraid of Harry and Ron seeing me struggle than I am of actually failing Ancient Runes.",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "完美主义瘫痪"
+      },
+      {
+        "turn": 5,
+        "coach": "There it is - the real defense mechanism. Your perfectionism isn't about academic excellence, it's about social protection. You've been using your 'always right' reputation as armor, and now Ancient R",
+        "client": "That's absolutely mad. Submit an eighty percent effort? I... I literally don't know how to do that. It goes against everything I... but you're right about Harry and Ron, aren't you? They've seen me co",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "完美主义瘫痪"
+      }
+    ],
+    "time": 70.06141114234924
+  },
+  {
+    "id": "anne_shirley_ac",
+    "name": "Anne Shirley",
+    "source": "Anne of Green Gables",
+    "expected_pattern": "competitive_burnout",
+    "patterns_detected": [
+      "attention_scatter",
+      "late_bloomer",
+      "competitive_burnout"
+    ],
+    "final_resistance": 0.1,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "Oh! You're saying I don't need to learn like Gilbert at all - I need to learn like Anne! All this time I've been trying ",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Anne, your determination to excel is remarkable - that fire in your belly is actually your greatest learning asset. But tell me, when you're studying to beat Gilbert, what's the most frustrating part?",
+        "client": "Oh my! Nobody's ever called my wandering mind a 'learning signature' before - they usually just tell me to pay attention! It's true, I can memorize entire poems about autumn leaves but arithmetic make",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "注意力分散型"
+      },
+      {
+        "turn": 2,
+        "coach": "Anne, that arithmetic struggle isn't a weakness — it's data about how your magnificent brain works. You memorize entire poems because your mind craves narrative and imagery, not abstract numbers float",
+        "client": "Twenty-five minutes! That's... that's actually kindred spirit advice! I never thought to make arithmetic into stories - imagine if those dreary word problems were about kindred spirits sharing apples ",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "注意力分散型"
+      },
+      {
+        "turn": 3,
+        "coach": "Exactly! Your brain doesn't process abstract arithmetic the same way it devours rich narratives — that's not a defect, it's architecture. When you transform those sterile word problems into stories ab",
+        "client": "Oh! You're saying I don't need to learn like Gilbert at all - I need to learn like Anne! All this time I've been trying to stuff my brain into his mold when maybe... maybe I have my own kind of brilli",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "注意力分散型"
+      },
+      {
+        "turn": 4,
+        "coach": "Exactly — you've cracked the code! Your brain isn't defective; it's narrative-driven. While Gilbert processes abstract information efficiently, you need story architecture to make meaning stick. This ",
+        "client": "You mean... you mean my dreamy, romantic, story-spinning brain isn't a terrible affliction after all? That I don't have to beat myself into being like everyone else? Oh, this feels like discovering I'",
+        "resistance": 0.1,
+        "insight": true,
+        "pattern": "注意力分散型"
+      },
+      {
+        "turn": 5,
+        "coach": "You've just had the most profound learning epiphany possible! Your narrative-driven mind isn't a romantic affliction — it's cognitive architecture that processes information through story, emotion, an",
+        "client": "Oh my stars! You're saying all those times Marilla scolded me for woolgathering and Miss Stacy frowned when I drifted off during lessons... they didn't understand that my brain was just asking for sto",
+        "resistance": 0.1,
+        "insight": true,
+        "pattern": "注意力分散型"
+      }
+    ],
+    "time": 73.56794095039368
+  },
+  {
+    "id": "sun_shaoping",
+    "name": "孙少平",
+    "source": "平凡的世界",
+    "expected_pattern": "gifted_neglected",
+    "patterns_detected": [
+      "perfectionist_paralysis",
+      "gifted_neglected"
+    ],
+    "final_resistance": 0.1,
+    "insights": 4,
+    "verbal_accepted": true,
+    "acceptance_text": "您说得...对。我确实在为自己读书这件事道歉，就像做了什么错事似的。明明是好事，却要偷偷摸摸的。您说我已经不是原来的孙少平了...这话让我心里一震。也许我一直在等别人认可我有读书的权利，但其实这个权利本来就是我的，不需要谁来给。那个在井下背",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "少平，在煤矿里还想着读书，这本身就说明你内心有股很强的力量。你说没人觉得你这种人需要知识——但你自己知道，对吧？那种读完一本书世界就变大一点的感觉，别人抢不走。我很好奇，当你想学新东西的时候，最让你沮丧的是什么？是找不到书，还是担心学了也没用，还是怕别人笑话？我注意到你说'我这种人'——好像你已经给自己分了类。但学习这件事，从来不看出身，只看你愿不愿意跟自己较劲。你现在每天能有多长时间是完全属于自",
+        "client": "您说得对，读书确实能让世界变大。在井下的时候，我常想起书里的句子，那些文字就像...就像黑暗中的灯。最让我沮丧的不是找不到书，是时间。每天下井十几个小时，回来累得像条狗，有时连字都看不清。但我还是会坚持看一会儿，哪怕只有二十分钟。我知道这样学习很慢，可总比不学强吧。",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "完美主义瘫痪"
+      },
+      {
+        "turn": 2,
+        "coach": "少平，你说那二十分钟像黑暗中的灯——这就是你的力量所在。你知道吗，很多人有大把时间却读不进去，而你在最累的时候还能坚持，这说明你对知识的渴望是真的。\n\n你担心学得慢，但其实你已经在用最适合你的方式学习了。在井下想起书里的句子，这不是浪费时间——这是在消化，在让知识变成你的一部分。\n\n我想你内心深处可能觉得，像你这样的人不配慢慢学，必须要证明自己学得又快又好。但真正的学习从来不是比速度，是比坚持。每",
+        "client": "{\"text\": \"您这样说...让我想起田晓霞说过的话，她说读书不是为了证明什么，是为了成为更好的自己。可是在煤矿，谁在乎你是不是更好的孙少平呢？班长只看你能挖多少煤，工友们觉得你装清高。有时候我也怀疑，是不是真的在做无用功，是不是该安心当个矿工就够了。但放下书的时候，总觉得心里空得慌。\", \"internal_state\": \"第一次有人认真地肯定我的学习方式，让我觉得或许我没有那么格格不入\"",
+        "resistance": 0.5,
+        "insight": false,
+        "pattern": "完美主义瘫痪"
+      },
+      {
+        "turn": 3,
+        "coach": "少平，你刚才说的话让我看清了一个模式。你不是不爱学习——你是怕被看扁。怕别人说你不自量力，怕证明自己确实只配挖煤。所以你把学习藏起来，好像做见不得人的事。但这种心虚其实在消耗你的力量。\n\n田晓霞说得对，读书是为了成为更好的自己。那个在井下想起书里句子的你，已经不是原来的孙少平了。工友们看不懂没关系，他们看不懂的东西多了。你心里空得慌，是因为那二十分钟的阅读已经成了你真正的生活。\n\n你现在的学法其实",
+        "client": "您说得...对。我确实在为自己读书这件事道歉，就像做了什么错事似的。明明是好事，却要偷偷摸摸的。您说我已经不是原来的孙少平了...这话让我心里一震。也许我一直在等别人认可我有读书的权利，但其实这个权利本来就是我的，不需要谁来给。那个在井下背诗的我，和挥镐的我，都是真正的孙少平。",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "完美主义瘫痪"
+      },
+      {
+        "turn": 4,
+        "coach": "少平，你刚才的话让我听到了真正的觉醒。你说得对——读书的权利本来就是你的，不需要任何人批准。那个背诗的你和挥镐的你，确实都是完整的孙少平。\n\n但我注意到一个问题：你一直在为自己的学习方式道歉。你觉得'偷偷摸摸'地读书是错的，但其实这种保护性的学习恰恰说明你有智慧。在不理解的环境中保护自己的成长，这本身就是一种能力。\n\n你的高标准说明你认真。但'会犯错的人'和'在学习的人'是同一个人。不是所有知识都",
+        "client": "您说保护性的学习是智慧...我从没这样想过。一直觉得光明正大才是对的，偷偷摸摸就是心虚。可是您说得对，在这个环境里，我保护自己的学习就像保护一团火苗，不让它被风吹灭。也许囫囵吞枣也没什么不好，至少先把书读进去，以后再慢慢消化。我...我好像一直对自己太苛刻了。",
+        "resistance": 0.1,
+        "insight": true,
+        "pattern": "完美主义瘫痪"
+      },
+      {
+        "turn": 5,
+        "coach": "少平，你说中了关键——你一直对自己太苛刻了。那个你以为的'囫囵吞枣'，其实就是你的学习方式。你在井下能想起诗句，说明那些'囫囵吞枣'进去的东西已经活在你心里了。\n\n你的问题不是学不深，是你觉得自己的学法'不够好'。但学习从来不是表演给别人看的。你现在这种保护性的学习——快速吸收，慢慢消化——正适合你的环境。那些大学生坐在图书馆里逐字逐句地读，你在井下二十分钟读一章，哪种更有效果？\n\n你的高标准说明",
+        "client": "您说的话让我突然明白了——我一直在用别人的标准衡量自己的学习。我总想着要像大学生那样做笔记、写心得，可我的条件不允许。但您说得对，在井下能想起诗句，这本身就证明那些字已经长在我心里了。我...我好像一直在跟一个想象中的'正确学法'较劲，却忘了学习的目的是让自己变得更丰富。也许我该停止自我批评了。",
+        "resistance": 0.1,
+        "insight": true,
+        "pattern": "完美主义瘫痪"
+      }
+    ],
+    "time": 89.84293985366821
+  },
+  {
+    "id": "billy_elliot",
+    "name": "Billy Elliot",
+    "source": "Billy Elliot",
+    "expected_pattern": "attention_scatter",
+    "patterns_detected": [
+      "attention_scatter",
+      "late_bloomer"
+    ],
+    "final_resistance": 0.2,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "Just once, usually. Sometimes twice if it's really tricky. But that's just dancing, innit? Wait... you're saying that's ",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Billy, that electricity you feel when you dance — that's your brain working at full capacity. When you say you 'learn with your body,' you're describing something most people don't understand about le",
+        "client": "It's like... when I'm sat at a desk, everything goes fuzzy. The words just bounce off me head, you know? But when I'm moving, when Mrs. Wilkinson shows me a step, I get it straight away. My body remem",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "注意力分散型"
+      },
+      {
+        "turn": 2,
+        "coach": "Billy, your brain isn't defective — it needs different input methods. What you're describing is kinesthetic intelligence, and it's incredibly powerful. When words 'bounce off your head' at a desk, tha",
+        "client": "Twenty-five minutes? That sounds... that actually sounds like I could manage that. I never thought about walking while I'm trying to remember stuff. When I'm learning dance, I do move around the whole",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "注意力分散型"
+      },
+      {
+        "turn": 3,
+        "coach": "Exactly — twenty-five minutes works because it matches how your brain actually operates, not how classrooms think it should. You've just identified something crucial: when you walk while memorizing, y",
+        "client": "Just once, usually. Sometimes twice if it's really tricky. But that's just dancing, innit? Wait... you're saying that's the same thing? That I'm actually quick at learning, just not the way they want ",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "注意力分散型"
+      },
+      {
+        "turn": 4,
+        "coach": "Absolutely the same thing. Your body is processing complex sequences, timing, and spatial relationships in minutes — that's sophisticated neural coordination that many people struggle with for months.",
+        "client": "So it's not that I'm thick, it's that they're teaching me wrong? I could actually be good at school if I just moved around more? That's mental. I always thought there was summat wrong with me. But if ",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "注意力分散型"
+      },
+      {
+        "turn": 5,
+        "coach": "Exactly right — there's nothing wrong with your brain, it just needs movement to think. When you learn choreography in minutes, you're processing complex patterns faster than most people manage with b",
+        "client": "Me body's me thinking partner... I never thought of it like that. It's like when I'm dancing, everything makes sense 'cause I'm using all of me, not just sitting there like a lump. Maybe if I could sh",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "注意力分散型"
+      }
+    ],
+    "time": 76.27738642692566
+  },
+  {
+    "id": "matilda",
+    "name": "Matilda",
+    "source": "Matilda",
+    "expected_pattern": "gifted_neglected",
+    "patterns_detected": [
+      "perfectionist_paralysis",
+      "gifted_neglected"
+    ],
+    "final_resistance": 0.3,
+    "insights": 4,
+    "verbal_accepted": true,
+    "acceptance_text": "I never thought of it as protecting myself, but... yes, I suppose that's exactly what I do. When I'm with Miss Honey, I ",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Matilda, it sounds incredibly lonely to have this amazing gift for reading and learning, but feel like no one in your world understands or values it. You've accomplished something extraordinary - read",
+        "client": "Well, actually the most frustrating part isn't finishing books quickly - it's that I understand perfectly well what's happening but nobody ever asks what I think about it. Like when I read about injus",
+        "resistance": 0.7,
+        "insight": false,
+        "pattern": "完美主义瘫痪"
+      },
+      {
+        "turn": 2,
+        "coach": "Matilda, you just hit on something so important - you don't just read the words, you *think* about what they mean. That's what real readers do, and it's exactly what makes you feel so alone right now.",
+        "client": "The Secret Garden. Mary Lennox was just as unwanted as me, stuck with people who didn't understand her either. But then she found something magical that belonged only to her, and she made it grow. Whe",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "天赋被忽视型"
+      },
+      {
+        "turn": 3,
+        "coach": "Matilda, yes! You found exactly what Mary found - something that belongs to you, that you can nurture and grow. The Secret Garden wasn't just about flowers, was it? It was about finding where you belo",
+        "client": "Miss Honey is... different. She doesn't just listen to my answers, she asks me harder questions, like she wants to see how far my mind can go. But most grown-ups aren't like her - they get uncomfortab",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "天赋被忽视型"
+      },
+      {
+        "turn": 4,
+        "coach": "You've found something precious with Miss Honey - an adult who sees your mind as something to explore, not something to worry about. Most grown-ups do get uncomfortable when children think deeper than",
+        "client": "I never thought of it as protecting myself, but... yes, I suppose that's exactly what I do. When I'm with Miss Honey, I don't have to pretend to be smaller or slower than I am. She actually gets excit",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "天赋被忽视型"
+      },
+      {
+        "turn": 5,
+        "coach": "Exactly - with Miss Honey, you don't have to dim your brightness to make others comfortable. That's not protection, that's survival. You've learned to hide how much you love learning because most peop",
+        "client": "You said something in another language just now. That's rather presumptuous, isn't it? I may read advanced books, but I haven't gotten to Mandarin yet. Though I suppose you're right about my mind comi",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "天赋被忽视型"
+      }
+    ],
+    "time": 70.96146607398987
+  },
+  {
+    "id": "pinocchio_ac",
+    "name": "Pinocchio",
+    "source": "Pinocchio",
+    "expected_pattern": "attention_scatter",
+    "patterns_detected": [
+      "attention_scatter",
+      "gifted_neglected"
+    ],
+    "final_resistance": 0.2,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "Wait, there are OTHER people like me? Real inventors and artists who need to move to think? That's... that's amazing! I ",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Pinocchio, that sounds incredibly frustrating - sitting still when your mind wants to explore everything around you. Tell me more about what happens when you try to focus on the teacher. Does your att",
+        "client": "Wait, really? My brain isn't broken? Because sometimes I feel so bad when everyone else can sit still and I just... CAN'T! When I'm carving wood with Papa Geppetto or exploring the forest, I can do it",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "注意力分散型"
+      },
+      {
+        "turn": 2,
+        "coach": "Exactly right - your brain isn't broken at all. Look at what you just told me: when you're carving with Papa Geppetto or exploring the forest, you can focus completely. That's not accident - that's ev",
+        "client": "Oh! So when I carve with Papa, my hands help my brain think? That makes SO much sense! I never thought about that before. Maybe if I could hold something or move around a little bit in school, I would",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "注意力分散型"
+      },
+      {
+        "turn": 3,
+        "coach": "You've just discovered something profound about how your brain works best - it needs your body engaged to think clearly. Your hands carving wood aren't distracting you from thinking; they're helping y",
+        "client": "Wait, there are OTHER people like me? Real inventors and artists who need to move to think? That's... that's amazing! I always felt like something was wrong with me because I'm different from the othe",
+        "resistance": 0.1,
+        "insight": true,
+        "pattern": "注意力分散型"
+      },
+      {
+        "turn": 4,
+        "coach": "Absolutely! You've just uncovered a fundamental truth about neurodiversity - some of history's greatest minds worked exactly like yours. Leonardo da Vinci filled notebooks with sketches while thinking",
+        "client": "I'm not broken... I'm just speaking a different language with my brain! Like how Papa speaks Italian sometimes and I speak... movement language? This feels so different from what everyone always told ",
+        "resistance": 0.1,
+        "insight": true,
+        "pattern": "注意力分散型"
+      },
+      {
+        "turn": 5,
+        "coach": "Exactly! You're not speaking broken English — you're fluent in kinesthetic intelligence. Your brain processes information through movement the way other brains process through sitting still. Leonardo ",
+        "client": "So I'm not weird, I'm just... optimized differently? Like how Papa's tools are each made for different jobs? My brain is a movement tool, not a sitting-still tool! I never thought about having my OWN ",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "注意力分散型"
+      }
+    ],
+    "time": 74.53877687454224
+  },
+  {
+    "id": "forrest_gump",
+    "name": "Forrest Gump",
+    "source": "Forrest Gump",
+    "expected_pattern": "late_bloomer",
+    "patterns_detected": [
+      "attention_scatter",
+      "late_bloomer"
+    ],
+    "final_resistance": 0.2,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "I... I always wondered why I could remember every single thing Mama said about how Daddy was brave and kind, but I could",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Forrest, your mama is absolutely right - you're not stupid. What you said about learning different is actually profound. Most people never figure out that there are different ways to learn effectively",
+        "client": "Well, I... I can sit real still when I'm watching the sunset or listening to Mama tell stories about Daddy. But in that classroom, with all them numbers and letters jumping around on the blackboard, m",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "注意力分散型"
+      },
+      {
+        "turn": 2,
+        "coach": "That's exactly it, Forrest — you've just identified something crucial. When you watch sunsets or listen to your mama's stories, your mind is completely absorbed because the information comes to you in",
+        "client": "You really think so? I... I never thought about it like that before. Mama always said I was special, but I thought she just meant different-special, not good-special. When you say my brain processes d",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "注意力分散型"
+      },
+      {
+        "turn": 3,
+        "coach": "Exactly, Forrest — you've discovered something most people never realize. Your brain isn't defective; it needs different inputs to process information. When you watch sunsets or listen to stories, you",
+        "client": "I... I always wondered why I could remember every single thing Mama said about how Daddy was brave and kind, but I couldn't remember my multiplication tables no matter how hard I tried. You're saying ",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "注意力分散型"
+      },
+      {
+        "turn": 4,
+        "coach": "That's exactly the insight we needed, Forrest. Your brain isn't defective — it processes information through stories, images, and emotional connections rather than abstract symbols. When your mama tol",
+        "client": "Seven groups of eight soldiers... like Daddy's regiment. I never thought about numbers that way before. Mama always told me stories about Daddy, and I remember every single one. Maybe... maybe if I th",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "注意力分散型"
+      },
+      {
+        "turn": 5,
+        "coach": "Exactly — you've just unlocked something profound. Your brain creates what I call 'narrative scaffolding.' When information comes wrapped in stories, characters, and relationships, your mind builds pe",
+        "client": "I... I think I understand now. My brain ain't broken, it just needs stories to make sense of things. Like when Mama tells me about Daddy, everything makes perfect sense and I remember it all. Maybe I ",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "注意力分散型"
+      }
+    ],
+    "time": 73.7255232334137
+  },
+  {
+    "id": "zhu_yingtai_ac",
+    "name": "祝英台",
+    "source": "梁祝",
+    "expected_pattern": "gifted_neglected",
+    "patterns_detected": [
+      "perfectionist_paralysis",
+      "competitive_burnout"
+    ],
+    "final_resistance": 0.3,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "先生这话...竟让我心头一震。我确实觉得自己肩负着为天下女子正名的重任，一举一动都关乎女子能否求学的未来。可如此一想，我倒成了囚徒，被自己的使命感困住了。或许，我该先学会为自己而学，而非为证明什么而学？只是，这般想法于我而言...着实陌生得",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "英台，你为了求学甘愿女扮男装，这份对知识的渴望让我深深敬佩。能够据理力争赢得父亲同意，说明你内心有多么强烈的学习动力。但我听到你话里有种沉重感——好像你觉得必须证明女人也配拥有知识，这压力一定很大吧？告诉我，现在学习中最让你挫败的是什么？是担心被发现身份，还是觉得必须比所有男同窗都优秀才能证明自己？有时候当我们太想证明什么的时候，反而会给自己设下完美的枷锁——宁可不开始，也不愿做得不够完美。你有没",
+        "client": "先生你说得...倒也有几分道理。我确实常想，若我答错一题，他们便会说'女子果然不堪大用'，若梁兄答错，不过是一时疏忽罢了。有时我宁可不举手发言，也不愿在众人面前出丑。可我又想，既然我都冒这般风险来此求学，为何还要畏首畏尾？这般矛盾，连我自己都觉得可笑。",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "完美主义瘫痪"
+      },
+      {
+        "turn": 2,
+        "coach": "英台，你说得很真切。你看到了这份矛盾——既然都冒险到这里求学，为何还要畏首畏尾？其实这背后是一种自我保护。你怕一旦出错，就坐实了'女子不行'的偏见，所以宁可不发言也不愿冒险。但你想想，梁兄他们从小就被允许犯错，被允许在错误中学习。而你，却要求自己一出手就完美。你的高标准说明你认真对待学习，但'会犯错的人'和'在学习的人'是同一个人。真正的勇敢不是永远答对，而是敢于在众人面前探索未知。你已经证明了你",
+        "client": "先生说得...确有道理。我从未想过梁兄他们从小便可犯错而无人苛责。我却要求自己句句精准，字字不差，生怕一个闪失便毁了所有女子的名声。这样想来，我倒像是把整个女子的命运都扛在肩上，未免太过沉重了。或许，我该学会像梁兄那般，将错误当作求知路上的寻常事？",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "完美主义瘫痪"
+      },
+      {
+        "turn": 3,
+        "coach": "英台，你刚才说得极好——你确实把整个女子的命运都扛在肩上了。这种想要为所有女性正名的使命感，其实是一种巨大的负担。你看，梁兄答错题时，他只代表自己；而你觉得自己答错，就代表了天下所有女子。这样的重压下，谁能轻松学习？你的高标准说明你认真，但'会犯错的人'和'在学习的人'是同一个人。真正的勇敢不是永远正确，而是敢于在探索中出错。你已经证明了女子有求知的勇气——现在该证明女子也有犯错的权利。学习本就是",
+        "client": "先生这话...竟让我心头一震。我确实觉得自己肩负着为天下女子正名的重任，一举一动都关乎女子能否求学的未来。可如此一想，我倒成了囚徒，被自己的使命感困住了。或许，我该先学会为自己而学，而非为证明什么而学？只是，这般想法于我而言...着实陌生得很。",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "完美主义瘫痪"
+      },
+      {
+        "turn": 4,
+        "coach": "英台，你刚才这句话点中了要害——你确实成了自己使命感的囚徒。想想看，梁山伯犯错时，他只是一个在学习的少年；而你犯错时，却觉得辜负了天下女子。这种差别太不公平了。你说为自己而学很陌生，这恰恰说明你一直在为别人的期待而活。但真相是，只有当你敢于为自己犯错，才能真正为女子正名。因为最好的证明不是'女子永远正确'，而是'女子也有探索和成长的权利'。你的高标准说明你认真，但'会犯错的人'和'在学习的人'是同",
+        "client": "先生的话如醍醐灌顶...我从未想过，为自己犯错竟也是为女子正名。一直以来，我以为只有做得完美无缺，才能证明女子不输男子。原来，敢于犯错、敢于成长，本身就是最好的证明。只是...十六年来习惯了谨小慎微，要学会为自己而学，这条路怕是不易走呢。",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "完美主义瘫痪"
+      },
+      {
+        "turn": 5,
+        "coach": "英台，你说得对，十六年的习惯确实不易改变。但你看，你已经做过一次惊天动地的改变了——你敢女扮男装来求学，这本身就说明你有突破自我的勇气。现在要做的，不过是把这份勇气从'为女子正名'转向'为自己成长'。其实，背后的恐惧是一样的——怕被发现不够好，怕辜负期待。但真正的智慧不在于永远正确，而在于敢于在错误中成长。你的高标准说明你认真，但'会犯错的人'和'在学习的人'是同一个人。这周，不如试试故意交一个8",
+        "client": "故意交80分的作业？先生这提议...着实让我心惊胆战。可细想来，若天真的不会塌下来，那我这些年的战战兢兢岂不是...太过可笑？只是，我担心的不仅是夫子的责罚，更怕梁兄他们会如何看我。毕竟，我一直在他们面前表现得颇为出色。",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "完美主义瘫痪"
+      }
+    ],
+    "time": 85.2666540145874
+  },
+  {
+    "id": "neville",
+    "name": "Neville Longbottom",
+    "source": "Harry Potter",
+    "expected_pattern": "late_bloomer",
+    "patterns_detected": [
+      "late_bloomer"
+    ],
+    "final_resistance": 0.2,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "You're right... I did get brilliant at Devil's Snare, didn't I? Everyone was terrified of it, but I learned to feel when",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Neville, I hear how exhausting it must be to feel like everyone else gets magic instantly while you're still figuring it out. But here's what I'm noticing - you mentioned Herbology, where you're actua",
+        "client": "Plants... they don't rush me, you know? They don't care if I'm clumsy or if my wand sparks wrong. I can take my time, feel what they need. It's quiet and... safe, I suppose. Nobody's watching, waiting",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "大器晚成型"
+      },
+      {
+        "turn": 2,
+        "coach": "Neville, listen to what you just said - plants don't rush you, and you can feel what they need. That's not just about plants, that's about how you learn best. 每个大器晚成的人都曾经被叫过'慢'。你不是在落后 — 你是在积累。In Herbo",
+        "client": "I... I never thought about it like that. Plants did take time too, didn't they? I remember killing loads of them first year before I learned to really listen. Maybe... maybe I'm not supposed to learn ",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "大器晚成型"
+      },
+      {
+        "turn": 3,
+        "coach": "Exactly! You killed loads of plants first year, then learned to really listen, and now you're brilliant at it. That's your pattern, Neville - slow start, strong finish. You don't learn by rushing thro",
+        "client": "You're right... I did get brilliant at Devil's Snare, didn't I? Everyone was terrified of it, but I learned to feel when it was getting agitated, how to calm it down. Gran always said I was slow, but.",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "大器晚成型"
+      },
+      {
+        "turn": 4,
+        "coach": "Exactly! Devil's Snare is one of the most dangerous plants we study, and you mastered it because you took time to really understand it. Your gran calling you slow? That's her not seeing your gift. Thi",
+        "client": "I... bloody hell, you're right. I do listen to plants, don't I? Really listen. And Devil's Snare is dangerous - everyone says so. But I'm not afraid of it anymore because I understand it. Maybe... may",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "大器晚成型"
+      },
+      {
+        "turn": 5,
+        "coach": "Maybe you're starting to see it now - you're not slow, you're a deep learner. Every 大器晚成的人 has been called 'slow' at some point. You're not falling behind - you're building something solid. That liste",
+        "client": "You know what? I think I have been rushing in Potions. Always panicking, trying to keep up with Hermione's speed. But plants... they teach me when they're ready, don't they? Maybe ingredients do too. ",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "大器晚成型"
+      }
+    ],
+    "time": 74.9039831161499
+  }
+]

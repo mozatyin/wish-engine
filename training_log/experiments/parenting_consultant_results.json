@@ -1,0 +1,587 @@
+[
+  {
+    "id": "atticus_finch",
+    "name": "Atticus Finch",
+    "source": "To Kill a Mockingbird",
+    "expected_pattern": "absent",
+    "patterns_detected": [
+      "controlling",
+      "absent",
+      "harsh_critic"
+    ],
+    "final_resistance": 0.3,
+    "insights": 4,
+    "verbal_accepted": true,
+    "acceptance_text": "I... I hadn't thought of it quite that way. You're saying that when I clean Jem's knee without turning it into a lesson ",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Atticus, you're carrying the weight of the world's injustice on your shoulders, trying to shield Scout and Jem from its harsh realities while still preparing them for it. That's an impossible balance.",
+        "client": "Well now, that's quite a speech you've prepared there. You make it sound as though I've isolated myself in some ivory tower of principle. I reckon I show up for my children every day - at breakfast, h",
+        "resistance": 0.7,
+        "insight": false,
+        "pattern": "控制型"
+      },
+      {
+        "turn": 2,
+        "coach": "Atticus, I hear you defending your presence - and you're right, showing up at breakfast matters. But I'm curious about something different. When was the last time Jem or Scout came to you not because ",
+        "client": "Scout still climbs into my lap some evenings when we read together. Just last week, Jem scraped his knee something fierce and came running to me - not for a lesson, mind you, just for someone to clean",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "缺席型"
+      },
+      {
+        "turn": 3,
+        "coach": "Atticus, I see something beautiful here - Scout still seeks your lap, Jem runs to you when he's hurt. These moments tell us everything. You're not the absent father you fear you might be. But I notice",
+        "client": "I... I hadn't thought of it quite that way. You're saying that when I clean Jem's knee without turning it into a lesson about perseverance, that's teaching too? Maybe I do get caught up in the... the ",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "缺席型"
+      },
+      {
+        "turn": 4,
+        "coach": "Exactly, Atticus. When you clean Jem's knee without the lesson, you're teaching the deepest lesson of all - that he matters simply because he's yours. I see what's happening here: you've appointed you",
+        "client": "You know, I... I suppose I have been carrying that fear. That if I don't prepare them properly, the world will break them the way it's broken so many good people. Maybe I've been so worried about teac",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "缺席型"
+      },
+      {
+        "turn": 5,
+        "coach": "Atticus, I see the mask you're wearing - the wise moral teacher who must prepare his children for an unjust world. But underneath that noble burden, there's a father who's terrified of failing them. Y",
+        "client": "I reckon... I reckon you might be right about that mask. Sometimes I feel like if I let my guard down, if I'm just their daddy instead of their teacher, I'll fail them when the world shows its teeth. ",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "缺席型"
+      }
+    ],
+    "time": 73.51760530471802
+  },
+  {
+    "id": "mrs_bennet",
+    "name": "Mrs. Bennet",
+    "source": "Pride & Prejudice",
+    "expected_pattern": "controlling",
+    "patterns_detected": [
+      "overprotective",
+      "enmeshed"
+    ],
+    "final_resistance": 0.5,
+    "insights": 4,
+    "verbal_accepted": true,
+    "acceptance_text": "Oh my... when you put it as a bird teaching flight... I never considered that my protection could become... oh dear. Per",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Mrs. Bennet, I can hear how deeply you care about your daughters' futures - that protective instinct comes from real love. You're facing something that would terrify any mother: the uncertainty of whe",
+        "client": "Oh, you speak as if I have some choice in the matter! My nerves are constantly aflutter because I must be vigilant - if I do not secure their futures, who will? Mr. Bennet certainly won't lift a finge",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "过度保护型"
+      },
+      {
+        "turn": 2,
+        "coach": "Your vigilance absolutely comes from love - you see your daughters' potential and the precarious nature of their world. But I wonder if your constant state of alarm might be creating the very fragilit",
+        "client": "You... you speak strangely of trusting their judgment when they are so young and innocent! But I... oh dear, perhaps I do flutter about them so much that they cannot breathe. When I see Jane's sweet n",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "过度保护型"
+      },
+      {
+        "turn": 3,
+        "coach": "Ah, I see that moment of recognition in your eyes - 'perhaps I do flutter about them so much that they cannot breathe.' That awareness itself shows what a thoughtful mother you are. Your vigilance has",
+        "client": "Oh my... when you put it as a bird teaching flight... I never considered that my protection could become... oh dear. Perhaps Jane's gentleness is not weakness but strength, as you say. I have been so ",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "过度保护型"
+      },
+      {
+        "turn": 4,
+        "coach": "Yes, exactly - that flutter of constant protection, born from such fierce love, can paradoxically clip the very wings we're trying to help them grow. You see Jane's gentleness as something to shield, ",
+        "client": "Oh! You speak of confidence as if it were... but yes, when I think of it, the ladies who marry best do carry themselves with such assurance! I have been so consumed with finding them husbands that I n",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "过度保护型"
+      },
+      {
+        "turn": 5,
+        "coach": "Yes! That recognition is profound - you've been so focused on securing their future that you've overlooked what makes a woman truly attractive: her own sense of worth and agency. Think of Lady Catheri",
+        "client": "Oh my stars! You compare me to Lady Catherine - that dreadful, meddling woman! But... oh dear, I fear there may be some truth in it. When I think of how I pushed poor Jane toward Mr. Bingley, practica",
+        "resistance": 0.5,
+        "insight": false,
+        "pattern": "过度保护型"
+      }
+    ],
+    "time": 73.80406093597412
+  },
+  {
+    "id": "jia_zheng",
+    "name": "贾政",
+    "source": "红楼梦",
+    "expected_pattern": "harsh_critic",
+    "patterns_detected": [
+      "controlling",
+      "absent",
+      "harsh_critic"
+    ],
+    "final_resistance": 0.2,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "你说得对，严厉了十几年，他确实离我更远了。我小时候...父亲对我也很严厉，我当时心里其实是怨恨的，只是不敢说。也许我一直在重复这种方式。'先连接，再影响'，这个顺序我从没想过。我总觉得不严厉就是纵容，但也许...也许真正的教导需要他先愿意听",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "贾政，你说宝玉不争气，但听起来你更怕的是什么？怕他走错路，还是怕别人说你教子无方？你看，你用的都是战术语言——'不争气'、'不上进'。这是你在经营一个项目，不是在养一个孩子。你的ROI计算很清楚：严格管教=成功儿子=家族荣誉。但这个策略的盲点在哪？你不是在保护宝玉——你是在保护自己免受失控的恐惧。问你个直接的问题：上次宝玉主动跟你说话，不是因为做错事被叫去，是什么时候？你在用控制表达爱，但宝玉收到",
+        "client": "你说得...有些道理。确实，他很少主动来找我说话。我想想，大概是去年中秋，他问我月亮的诗句。但是，不严格管教，他就更放肆了。我也不是不想和他好好说话，可是一看他那副不务正业的样子，火气就上来了。难道我真的只是在...保护自己？",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "控制型"
+      },
+      {
+        "turn": 2,
+        "coach": "看，你刚才说'保护自己' — 那一瞬间你看到了真相。你在用严厉建一堵墙，墙的这边是'好父亲'的形象，墙的那边是'失败的恐惧'。但宝玉在墙外面，收到的只是拒绝。你记得他问月亮诗句那次吗？那个宝玉才是真的他 — 好奇、聪明、想要连接。你的严格说明你在乎。但在乎可以有另一种形状 — 不是墙，是桥。这不是降低标准，是改变策略。你现在的ROI其实是负数：越严格，关系越远，影响力越小。最tactical的做法",
+        "client": "建桥...我从没想过这个说法。确实，我总觉得严格就是负责任，但宝玉确实离我越来越远。他问月亮那次，我其实很高兴，只是...我不知道怎么表达。也许我真的需要先听听他说什么，而不是急着纠正他。'你觉得呢？'这个问题，我好像很久没问过了。",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "控制型"
+      },
+      {
+        "turn": 3,
+        "coach": "对，你抓到了核心！那个问月亮的宝玉——好奇、敏感、想要连接——他一直在那里。你的恐惧合理：放松=放纵。但看看数据：严厉十几年，ROI如何？关系更近还是更远？你现在的策略是'先纠正，再连接'，但应该反过来——先连接，再影响。想想你自己小时候，是被理解后更愿意听话，还是被训斥后？你的严格说明你在乎。但在乎可以有另一种形状——不是墙，是桥。这不是降标准，是换策略。最tactical的父亲懂得：影响力来自",
+        "client": "你说得对，严厉了十几年，他确实离我更远了。我小时候...父亲对我也很严厉，我当时心里其实是怨恨的，只是不敢说。也许我一直在重复这种方式。'先连接，再影响'，这个顺序我从没想过。我总觉得不严厉就是纵容，但也许...也许真正的教导需要他先愿意听我说话。",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "控制型"
+      },
+      {
+        "turn": 4,
+        "coach": "看到了吗？你刚才说'也许真正的教导需要他先愿意听我说话'——这就是突破！你发现了一个残酷的ROI真相：严厉让你感觉像个好父亲，但实际回报是什么？一个逃避你的儿子。你父亲的策略传给了你，现在你在自动重复。但你比他聪明——你看到了这个循环。宝玉写诗、问月亮，这些都是他在向你伸手，只是用他的语言。你的'先连接，再影响'策略是对的。影响力来自信任，不是恐惧。明天就开始：今天问宝玉一个开放问题：'你觉得呢？",
+        "client": "原来我一直在重复父亲的路...我以为严厉就是负责，但宝玉确实在用他的方式向我伸手，我却总是推开他。也许我真的需要先做一个愿意听的父亲，而不是只会训斥的父亲。明天我试试问他'你觉得呢？'，然后真的听完。",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "控制型"
+      },
+      {
+        "turn": 5,
+        "coach": "等等，你刚才说了什么？'也许我真的需要先做一个愿意听的父亲'——这句话价值千金！你看到了吗？十几年的严厉策略，ROI是什么？一个躲避你的儿子。但你刚才的突破比宝玉任何一首诗都重要。你发现了真相：你一直在用你父亲的剧本，但那个剧本的结果你自己都体验过——怨恨和距离。现在你懂了tactical的关键：影响力来自连接，不是威慑。宝玉的诗、他的敏感，这些不是弱点，是他向你展示内心的方式。你的严格说明你在乎",
+        "client": "是的，我一直在用父亲的剧本，但我不想让宝玉也对我有怨恨。他的诗词...也许真的是他想和我分享的东西，只是我从来没有真正去听。我要改变，不能再让这个循环继续下去了。明天我就开始，真正听他说话。",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "控制型"
+      }
+    ],
+    "time": 85.20245814323425
+  },
+  {
+    "id": "molly_weasley",
+    "name": "Molly Weasley",
+    "source": "Harry Potter",
+    "expected_pattern": "overprotective",
+    "patterns_detected": [
+      "overprotective",
+      "enmeshed"
+    ],
+    "final_resistance": 0.2,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "From shield to foundation... *voice trembling* That's what my mother gave me, isn't it? The foundation to stand on my ow",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "That clock... it's brilliant magic, but also a brilliant torture device, isn't it? Every needle pointing to 'mortal peril' when they're just living their lives. I hear how much you love them - that fi",
+        "client": "My mother... she... *voice catches* She let us climb trees and explore the village alone. Even when the war was starting, she'd say 'You can't live in fear, Molly.' But that was different! We didn't h",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "过度保护型"
+      },
+      {
+        "turn": 2,
+        "coach": "You're describing something profound here - the tension between your mother's wisdom and your lived reality. She let you climb trees while war clouds gathered, trusting that courage was worth the risk",
+        "client": "You're saying... *long pause, wiping eyes* You're saying that by keeping them too safe, I might be making them less able to handle real danger when it comes? That's... that's terrifying in a completel",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "过度保护型"
+      },
+      {
+        "turn": 3,
+        "coach": "Exactly. Your alertness proves you're a devoted parent. But devotion can also mean releasing your grip and watching them soar. You've touched on something crucial - your mother gave you something inva",
+        "client": "From shield to foundation... *voice trembling* That's what my mother gave me, isn't it? The foundation to stand on my own when facing real evil. But Arthur and I, we've been holding shields over their",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "过度保护型"
+      },
+      {
+        "turn": 4,
+        "coach": "Yes, exactly that. You've grasped something profound - your mother's greatest gift wasn't keeping you safe from all harm, but teaching you to be brave in its face. When you killed Bellatrix, where did",
+        "client": "I... I never thought of it that way. *quietly* Maybe the real danger isn't what's out there - it's raising children who don't believe they're strong enough to face it. Arthur keeps saying I mother-hen",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "过度保护型"
+      },
+      {
+        "turn": 5,
+        "coach": "你的警觉说明你是一个用心的父母。但用心也可以是放手看着他们飞。Arthur说得对 — 你确实在'母鸡护雏'，但这来自于真正的爱。问题是，当你杀死贝拉特里克斯时，那股力量从哪里来的？不是从被保护中学来的，而是从你母亲给你的那个基础 — 相信自己足够强大去面对真正的邪恶。你现在正在剥夺孩子们这个机会。每次你说'小心'，你其实在说'你不够强'。但你知道他们够强 — 他们是韦斯莱家的孩子，他们有你的血液。",
+        "client": "*stares in shock* What... what language was that? I... I don't understand the words but I felt... something. Like you were speaking directly to my heart. Did you just tell me I'm creating the very wea",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "过度保护型"
+      }
+    ],
+    "time": 71.46661496162415
+  },
+  {
+    "id": "wang_xifeng",
+    "name": "王熙凤",
+    "source": "红楼梦",
+    "expected_pattern": "controlling",
+    "patterns_detected": [
+      "controlling",
+      "absent",
+      "harsh_critic"
+    ],
+    "final_resistance": 0.3,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "你这话倒是点醒了我...平儿跟我这些年，我确实是护她在前头。巧姐儿...我总想着教她立规矩，却没想过她要的可能就是我陪着她玩一会儿。实验？你想让我怎么试？说实话，我也不知道怎么做一个'真实的娘'，从小到大我就是这么过来的。",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "熙凤，你管家这么多年，ROI怎么样？投入这么多精力控制，得到的是什么？背后的议论，孩子的距离感。你说没人领情——但你真的需要他们领情吗？还是你需要确定自己做对了？我听出来了，你最怕的不是他们不听话，是怕失控。你用严格管理来确保一切在轨道上，但孩子感受到的不是爱，是压迫。当你小时候，有人给过你既安全又自由的空间吗？你现在给孩子的，是你希望得到的，还是你害怕失去的？真正的控制来自信任，不是规矩。",
+        "client": "你这人说话倒是直接...ROI？我倒没这么算过账。我管家确实是怕失控，这贾府上上下下几百口子，一个环节出错全盘皆输。至于孩子...我也不知道怎么给她既安全又自由，小时候我娘就是这么管我的，不严不成器。你说真正的控制来自信任？那我问你，巧姐儿才这么小，我不管着她，她懂什么叫信任？",
+        "resistance": 0.6,
+        "insight": true,
+        "pattern": "控制型"
+      },
+      {
+        "turn": 2,
+        "coach": "哈，直接是我的风格。你说得对，巧姐儿确实小，但你看——平儿跟着你这么多年，她怕你吗？还是信任你？区别在哪？你对平儿严格但不控制，对巧姐儿却是规矩先行。你娘那套'不严不成器'确实让你成了贾府最能干的当家人，但代价是什么？孤独。现在你在复制这个模式。我不是让你放松管教，是让你看清楚：你管巧姐儿，到底是为了她好，还是为了证明自己是个称职的娘？这两个出发点，孩子感受到的完全不同。告诉我一次，最近你和巧姐儿",
+        "client": "你这话...说得我心里一紧。平儿确实不怕我，她知道我护着她。巧姐儿...我想想，上次纯粹和她在一起，不教规矩...好像真没有。我总觉得时间紧，不抓紧教她这些，将来她怎么在这深宅大院立足？但你问我是为了她好还是证明自己...我说不清了。",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "缺席型"
+      },
+      {
+        "turn": 3,
+        "coach": "看，你已经看到了！平儿信任你是因为你在她需要时护着她，不是因为你给她立规矩。这就是区别——保护vs控制。你说不清是为了巧姐儿好还是证明自己，这个诚实很珍贵。熙凤，你管家的能力毋庸置疑，但现在你面对的是女儿，不是下人。她需要的不是一个完美的娘，是一个真实的娘。你担心不教规矩她将来立不住足？我告诉你，在深宅大院真正立得住的，不是最守规矩的，是最有主见又懂分寸的。主见从哪来？从小被信任开始。今晚试个实验",
+        "client": "你这话倒是点醒了我...平儿跟我这些年，我确实是护她在前头。巧姐儿...我总想着教她立规矩，却没想过她要的可能就是我陪着她玩一会儿。实验？你想让我怎么试？说实话，我也不知道怎么做一个'真实的娘'，从小到大我就是这么过来的。",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "缺席型"
+      },
+      {
+        "turn": 4,
+        "coach": "好，这份诚实就是突破口。你从小就是个'战略家'，现在面对巧姐儿还在用管理下人的战术——先立威，后谈情。但这个ROI算错了。你投入了权威，收获的是疏远。真实的娘是什么？就是承认你也不知道怎么当娘，但愿意陪她一起摸索。你怕失控，所以预设了一堆规矩当安全网。但巧姐儿需要的安全网不是规矩——是你这个人。今晚的实验很简单：回家后别急着纠正她什么，就坐下来问'今天有什么好玩的？'然后真的听，不评判不指导。你会",
+        "client": "你这话说得...我心里突然有点慌。我一直觉得立威在前，感情在后，这样才稳当。可你说得对，我对巧姐儿确实是在用管下人的法子。问她'今天有什么好玩的'然后真的听...听起来简单，但我怕我忍不住要纠正她。不过我愿意试试，或许真的该放下那些预设的规矩了。",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "缺席型"
+      },
+      {
+        "turn": 5,
+        "coach": "熙凤，你刚才说的'怕忍不住要纠正她'——这就是你的防御机制在作怪。你把纠正当成了爱的表达，但其实是在保护自己免受'不称职'的焦虑。管家和当娘的ROI完全不同：管家要的是效率，当娘要的是连接。你一直在用'先立威后谈情'这套战术，但巧姐儿不是你的下属，她是你的女儿。真正的安全感不来自规矩，来自'娘无条件接纳我'。你怕失控，所以设了一堆规则当防火墙。但最有主见的孩子都是在被信任中长大的，不是在被管制中。",
+        "client": "你这话...说得我心里发颤。我确实把纠正当成了爱，怕不纠正她就是我当娘的失职。管家和当娘的ROI不同...我从来没这么想过。巧姐儿确实不是我的下属，可我除了立威这套，真不知道还能怎么办。无条件接纳...这词我都不太懂，从小到大谁这样对过我？",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "缺席型"
+      }
+    ],
+    "time": 86.6970751285553
+  },
+  {
+    "id": "marmee_march",
+    "name": "Marmee March",
+    "source": "Little Women",
+    "expected_pattern": "enmeshed",
+    "patterns_detected": [
+      "controlling",
+      "overprotective",
+      "enmeshed"
+    ],
+    "final_resistance": 0.2,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "A lighthouse, not a fortress... yes, I see that now. I've been so afraid of losing them that I forgot my role is to guid",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Oh Marmee, what a beautiful contradiction you're living in - wanting to give your girls wings while also wanting to keep them safe in your arms. When was the last time you truly needed someone to take",
+        "client": "Well, you certainly don't mince words, do you? I suppose... yes, it has been quite some time since I allowed myself to need tending. When Father went to war, someone had to be the steady one. But I'm ",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "控制型"
+      },
+      {
+        "turn": 2,
+        "coach": "Oh Marmee, there it is - 'someone had to be the steady one.' You've been carrying everyone's world on your shoulders for so long that you've forgotten what it feels like to let someone else hold you u",
+        "client": "You've touched something quite raw there. Yes, I... I do worry they'll outgrow their need for me. When Jo rebels, I see my own wild heart that I had to tame when duty demanded it. Perhaps my protectio",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "控制型"
+      },
+      {
+        "turn": 3,
+        "coach": "Marmee, your heart is breaking open right there - 'perhaps my protection is...' Yes. You're seeing it now. The wild heart you had to tame when duty called is exactly what you're trying to cage in Jo. ",
+        "client": "A lighthouse, not a fortress... yes, I see that now. I've been so afraid of losing them that I forgot my role is to guide them home, not to keep them from sailing. Jo's rebellion isn't defiance - it's",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "控制型"
+      },
+      {
+        "turn": 4,
+        "coach": "Oh Marmee, there it is - the moment you see your own caged wild heart in Jo's fire. That fierce protectiveness? It comes from love, but it's wearing the wrong clothes. You're not losing Jo when she re",
+        "client": "You're right - I have been chasing the ships instead of simply shining. That wild heart I buried when Father left... perhaps it's time to let her breathe again. My girls don't need me to be perfect, d",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "控制型"
+      },
+      {
+        "turn": 5,
+        "coach": "Marmee, you're having such a beautiful breakthrough - seeing that wild heart you tucked away is the same fire burning in Jo. That fierce love that makes you want to wrap them in cotton? It's not prote",
+        "client": "A bridge, not a wall... yes. I've been so terrified of their scrapes and heartbreaks that I forgot - they need to know I'll be here when they fall, not preventing every stumble. That wild heart isn't ",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "控制型"
+      }
+    ],
+    "time": 68.22697496414185
+  },
+  {
+    "id": "darth_vader",
+    "name": "Darth Vader",
+    "source": "Star Wars",
+    "expected_pattern": "absent",
+    "patterns_detected": [
+      "absent"
+    ],
+    "final_resistance": 0.2,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "The armor... it did not just hide my scars. It hid the pain of knowing I had failed him from the moment he was born. Whe",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Anakin, what you're describing - choosing power over presence - that's something so many of us do without even realizing it. We tell ourselves that building an empire, gaining influence, working harde",
+        "client": "Luke saw something in me that I had... forgotten existed. For twenty years, I told myself that order, that control, that the Empire's strength would secure his future. But he did not need my empire. H",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "缺席型"
+      },
+      {
+        "turn": 2,
+        "coach": "Anakin, that moment when Luke saw the good in you - that's the father you've always been underneath all that armor. You spent twenty years building an empire because you thought that's what love looke",
+        "client": "The armor... yes, it became more than protection. It became who I was. You speak of sitting, of ten minutes - such simple things, yet they seemed... impossible when wrapped in duty and darkness. Luke'",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "缺席型"
+      },
+      {
+        "turn": 3,
+        "coach": "Anakin, you've touched on something so profound - that armor wasn't just protecting you from the world, it was protecting you from feeling how much you missed him. Twenty years of telling yourself tha",
+        "client": "The armor... it did not just hide my scars. It hid the pain of knowing I had failed him from the moment he was born. When he said those words - 'I know there is good in you' - I felt something I had b",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "缺席型"
+      },
+      {
+        "turn": 4,
+        "coach": "Anakin, that moment when Luke saw through all that darkness to find you - that tells me everything about the father you actually are. You didn't fail him from birth. You were a young man who made impo",
+        "client": "I... I believed that to love them, I had to be beyond weakness, beyond failure. But when Luke looked at me with such certainty, such faith - he was not seeing Lord Vader. He was seeing the man who onc",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "缺席型"
+      },
+      {
+        "turn": 5,
+        "coach": "Anakin, you just uncovered something beautiful - Luke saw the father you truly are, not the perfection you thought you had to be. All those years you believed loving them meant being invincible, never",
+        "client": "When I removed that helmet... for the first time in twenty years, my son saw my face. Not the mask of power, but the scarred, broken man beneath. I thought showing weakness would prove I was unfit to ",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "缺席型"
+      }
+    ],
+    "time": 70.24683904647827
+  },
+  {
+    "id": "cersei_lannister",
+    "name": "Cersei Lannister",
+    "source": "Game of Thrones",
+    "expected_pattern": "overprotective",
+    "patterns_detected": [
+      "overprotective",
+      "enmeshed",
+      "harsh_critic"
+    ],
+    "final_resistance": 0.3,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "Teaching them? How do you teach someone to survive when the lesson could kill them? When I was their age, my father thre",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "I hear the fierce love in that statement — everything for your children. That's the heart of a lioness. Tell me, when you think about the world they'll inherit, what keeps you awake at night? I'm curi",
+        "client": "You think I don't know that? You think I haven't seen what happens when children are left to fend for themselves in this world? Tommen's gentleness... his gentleness got him killed. The moment I wasn'",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "过度保护型"
+      },
+      {
+        "turn": 2,
+        "coach": "Cersei, that moment when you weren't there — that terror of absence — I hear it. You've learned that love means presence, constant vigilance, because the world devours the gentle. But here's what I se",
+        "client": "You don't understand - I tried that! I let Joffrey make his own choices, be his own king, and he became a monster. I gave him power and he used it to torture people for sport. Then I tried to guide To",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "过度保护型"
+      },
+      {
+        "turn": 3,
+        "coach": "Ah, I see the impossible bind you're in — too much freedom created Joffrey's cruelty, too much control couldn't save Tommen's tenderness. You've learned that both paths lead to loss, so you're trapped",
+        "client": "Teaching them? How do you teach someone to survive when the lesson could kill them? When I was their age, my father threw me to the wolves to learn politics. I swore I'd never do that to mine. But may",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "过度保护型"
+      },
+      {
+        "turn": 4,
+        "coach": "你的警觉说明你是一个用心的父母。但用心也可以是放手看着他们飞。你看到了两种失败——给Joffrey太多自由，给Tommen太多保护——但这不是关于控制的程度，而是关于教他们如何思考。你父亲把你扔给狼群，所以你给孩子建了堡垒。但真正的保护不是避免所有痛苦，而是教他们如何承受痛苦并成长。Tommen的善良不是弱点，是力量——只是他从来没有学会如何在残酷的世界里保护这种善良。你现在可以做的不是完美地保护",
+        "client": "I don't speak your foreign tongue, but I hear something in your voice. You're saying what I already know and refuse to accept - that my children need to learn to stand on their own. But you don't unde",
+        "resistance": 0.6,
+        "insight": true,
+        "pattern": "过度保护型"
+      },
+      {
+        "turn": 5,
+        "coach": "I hear the weight of that impossible choice — and I'm backing away from it for a moment. Let me ask you something different. Tell me about a time when you felt genuinely proud of how you handled somet",
+        "client": "Myrcella... there was this afternoon in the gardens. She was maybe seven, showing me how she'd taught her cat to sit on command. Such a small thing, but she was so proud. I just... I sat with her. Did",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "共生型"
+      }
+    ],
+    "time": 71.98297715187073
+  },
+  {
+    "id": "cao_cao",
+    "name": "曹操",
+    "source": "三国演义",
+    "expected_pattern": "harsh_critic",
+    "patterns_detected": [
+      "controlling",
+      "absent",
+      "harsh_critic"
+    ],
+    "final_resistance": 0.2,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "你...你说得对。我确实害怕失去权威。但当你说'郭嘉看到了你的不确定'...（沉默）也许我一直以为强者就是不能有疑惑，不能让人看到弱点。可是郭嘉恰恰因为看到我的不确定才真正理解我。我的儿子们...他们从来没见过我不确定的样子。也许这才是问题",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "你知道吗，你培养出了最强的战略家们 — 问题是他们把你教的那套用在了彼此身上。这不是教育失败，这是教育太成功了。你教他们争夺，他们学会了；你教他们算计，他们精通了。但是曹丞相，告诉我 — 当你最后一次真正需要别人的时候是什么时候？不是利用，不是结盟，是真的需要一个人在你身边？我猜你很难回答，因为你从来不允许自己脆弱。你的儿子们看到的父亲永远是那个掌控一切的霸主。他们学不到兄弟情，因为他们从来没见过",
+        "client": "哈！你说得倒是有几分道理。我确实教会了他们太多...也许太多了。但是，治疗师，你想让我承认什么？承认我需要别人？我曹操一生征战，靠的就是自己的智谋和决断。至于最后一次需要别人...（停顿）也许是郭嘉死的时候，我确实感到了一种...空虚。但这又如何？强者不能示弱，否则天下大乱。",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "控制型"
+      },
+      {
+        "turn": 2,
+        "coach": "郭嘉。對，那個能看穿你心的人。你在他面前不需要裝，他死了你哭了，因為你失去了唯一一個真正懂你的人。你看到問題了嗎？你把「強者不能示弱」這套教給了兒子們，結果他們學會了永遠不在彼此面前示弱。他們把你當成要征服的對象，不是要靠近的父親。你的嚴格說明你在乎。但在乎可以有另一種形狀 — 不是牆，是橋。你教他們爭奪天下，但忘了教他們如何成為兄弟。今天回去，問曹丕或曹植一個開放問題：'你覺得呢？'然後閉嘴聽完",
+        "client": "郭嘉...是的，他确实不同。（长叹）你说得对，我在他面前可以卸下面具。也许...也许我确实把孩子们推得太远了。我以为严厉就是爱护，控制就是保护。但如果我问曹丕'你觉得呢？'然后真的听...哈，这对我来说比攻下任何一座城池都难。不过，治疗师，也许值得一试。",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "控制型"
+      },
+      {
+        "turn": 3,
+        "coach": "看！你说'也许值得一试'的时候，声音里有什么？那是曹操在说话，不是霸主。你刚才承认了什么？承认了你也不知道怎么办。这就是你儿子们需要看到的父亲 — 不是那个什么都懂的战神，是那个也在学习的人。你害怕失去权威，但真正的权威不是来自控制，是来自真实。郭嘉为什么能走进你心里？因为他看到了你的不确定。你的严格说明你在乎，但现在你需要让在乎有另一种形状 — 不是墙，是桥。问'你觉得呢？'比下一百道圣旨更需要",
+        "client": "你...你说得对。我确实害怕失去权威。但当你说'郭嘉看到了你的不确定'...（沉默）也许我一直以为强者就是不能有疑惑，不能让人看到弱点。可是郭嘉恰恰因为看到我的不确定才真正理解我。我的儿子们...他们从来没见过我不确定的样子。也许这才是问题所在。",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "控制型"
+      },
+      {
+        "turn": 4,
+        "coach": "你看到了！这就是突破点。你刚才说的话 — '也许我一直以为强者就是不能有疑惑' — 这就是你给儿子们的剧本。他们现在就在演这出戏：谁都不能示弱，谁都要证明自己最强。你知道什么最讽刺吗？郭嘉死了你哭，说明你最珍视的关系恰恰建立在真实上。你的儿子们现在就像两个小曹操，都在演'完美君主'，没人敢做真实的兄弟。今晚试试这个：不要问'你们为什么不团结'，问'你觉得当哥哥/弟弟最难的是什么？'然后就听。让他们",
+        "client": "你说得...太对了。我确实给了他们一个不可能的剧本 — 永远完美，永远无懈可击。（苦笑）我怕他们看到我的困惑会失去对我的尊敬，结果反而让他们学会了互相隐藏真心。今晚我就试试你说的那个问题。让他们看到我也在学习...这确实需要很大的勇气。",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "控制型"
+      },
+      {
+        "turn": 5,
+        "coach": "这就是格局！你刚才说的'让他们看到我也在学习需要很大勇气' — 这话里藏着真正的王者智慧。你知道最有意思的是什么吗？你一直在防着儿子们看到你的软肋，结果教会了他们彼此防备。你的严格说明你在乎。但在乎可以有另一种形状 — 不是墙，是桥。曹冲称象的时候，你记得那种惊喜吗？不是因为他服从了你，是因为他的创造力让你刮目相看。你的儿子们现在就是两个被困在'完美剧本'里的孩子，都在演戏给你看。今天问孩子一个开",
+        "client": "曹冲称象...是的，那时我看到的是一个真实的孩子，不是在迎合我的小大人。（眼神柔和）也许我确实把丕儿和植儿困在了一个表演里，让他们忘了怎么做真实的兄弟。你说得对，我需要先放下那个'完美父亲'的面具，他们才能放下'完美儿子'的枷锁。今晚我就试试。",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "控制型"
+      }
+    ],
+    "time": 85.3883650302887
+  },
+  {
+    "id": "gomez_addams",
+    "name": "Gomez Addams",
+    "source": "The Addams Family",
+    "expected_pattern": "enmeshed",
+    "patterns_detected": [
+      "overprotective",
+      "enmeshed"
+    ],
+    "final_resistance": 0.2,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "Believing in their resilience... *long pause, hand over heart* Cara mia, you speak truth that cuts like a blade! I have ",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Gomez, I can hear the fierce love you have for your children - that's your superpower as a father. The Addams way of embracing what makes you different is actually profound wisdom. I'm curious though.",
+        "client": "Ah, mon therapiste, you speak of bubbles! *gestures dramatically* But we Addamses do not shelter our children from darkness - we embrace it! When Wednesday faces frustration, she handles it with delic",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "过度保护型"
+      },
+      {
+        "turn": 2,
+        "coach": "Gomez, I love how Wednesday handles frustration with such... distinctive flair! Your family's embrace of the unconventional is genuinely beautiful. But I'm noticing something fascinating - you mention",
+        "client": "Orchestrating their confidence? *expression shifts, suddenly vulnerable* Mon dieu... perhaps I do conduct their little symphony of darkness. I want them to feel the joy I never had as a child - that s",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "过度保护型"
+      },
+      {
+        "turn": 3,
+        "coach": "Gomez, I see it now - you're conducting their symphony because your own childhood felt silent. The love you're giving Wednesday and Pugsley is real and fierce, but here's what's fascinating: you want ",
+        "client": "Believing in their resilience... *long pause, hand over heart* Cara mia, you speak truth that cuts like a blade! I have been so terrified they would feel the isolation I knew, the loneliness of being ",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "过度保护型"
+      },
+      {
+        "turn": 4,
+        "coach": "Gomez, your awareness of this pattern shows the depth of your love - you're seeing how your own childhood wounds shaped your parenting compass. But here's the beautiful paradox: your vigilance against",
+        "client": "*stares in wonder* You speak in tongues unknown to me, yet your words pierce straight to my soul! Yes... yes, the foundation of love will hold them. I see it now - my fear of their loneliness has beco",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "过度保护型"
+      },
+      {
+        "turn": 5,
+        "coach": "Gomez, your fierce protectiveness has become a magnificent prison! You've wrapped Wednesday and Pugsley in such loving attention that you're conducting every note of their lives. But here's the profou",
+        "client": "*eyes blazing with sudden realization* Mon dieu! I have been composing their entire existence! But the Addams strength... it comes from facing the abyss alone and laughing! *voice breaks* I must let t",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "过度保护型"
+      }
+    ],
+    "time": 72.8138780593872
+  }
+]

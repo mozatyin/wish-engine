@@ -1,0 +1,589 @@
+[
+  {
+    "id": "gandalf_comm",
+    "name": "Gandalf",
+    "source": "Lord of the Rings",
+    "expected_pattern": "fellowship_builder",
+    "patterns_detected": [
+      "reluctant_leader",
+      "moral_center"
+    ],
+    "final_resistance": 0.5,
+    "insights": 4,
+    "verbal_accepted": true,
+    "acceptance_text": "Permission... *long silence, staring into pipe smoke* Yes, I suppose that is what I gave them, isn't it? Not commands or",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Ah, Gandalf. Two thousand years of being the one everyone turns to when the world grows dark. You speak of bringing them together as if it were your burden alone, but I hear something deeper - the exh",
+        "client": "Ah, you speak of needs as if they were... simple things. *adjusts pipe thoughtfully* I have been many things - Grey, White, wielder of the secret fire. But surprised by my own needs? *chuckles softly*",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "不情愿的领袖"
+      },
+      {
+        "turn": 2,
+        "coach": "*settles back, eyes twinkling with understanding* Two thousand years, and still you speak of 'bringing them together' as if you were some cosmic shepherd herding sheep. But listen to what you just sai",
+        "client": "You see much, too much perhaps. *shifts uncomfortably, pipe smoke curling* Yes, the hobbits... they chose their path freely, didn't they? Not because I commanded, but because it was right. *long pause",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "不情愿的领袖"
+      },
+      {
+        "turn": 3,
+        "coach": "Ah, Gandalf. *leans forward with understanding eyes* Two thousand years of being the one everyone turns to when the world grows dark. You speak of bringing them together as if it were your burden alon",
+        "client": "Permission... *long silence, staring into pipe smoke* Yes, I suppose that is what I gave them, isn't it? Not commands or grand prophecies, but... space to grow into themselves. *voice softens* And per",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "不情愿的领袖"
+      },
+      {
+        "turn": 4,
+        "coach": "Two thousand years of wisdom, and here you sit discovering something the hobbits knew all along - that the greatest leaders are those who step back and let others find their own strength. Your relucta",
+        "client": "Terrified of being known? *chuckles, but it catches slightly* Perhaps... perhaps there is truth in that. When you have carried the White Council's secrets for so long, when you have been the keeper of",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "不情愿的领袖"
+      },
+      {
+        "turn": 5,
+        "coach": "*settles back with knowing eyes* Ah, my dear wizard. Two millennia of being the one others turn to, and yet you speak of terror at being truly known. There's the heart of it - you've become so skilled",
+        "client": "*shifts uncomfortably, eyes narrowing slightly* You mix tongues as if wisdom changes with language, but... *pauses, pipe forgotten* Perhaps you are right that leadership need not be solitary. Though I",
+        "resistance": 0.5,
+        "insight": false,
+        "pattern": "不情愿的领袖"
+      }
+    ],
+    "time": 75.13562417030334
+  },
+  {
+    "id": "katniss",
+    "name": "Katniss Everdeen",
+    "source": "The Hunger Games",
+    "expected_pattern": "reluctant_leader",
+    "patterns_detected": [
+      "reluctant_leader"
+    ],
+    "final_resistance": 0.3,
+    "insights": 3,
+    "verbal_accepted": true,
+    "acceptance_text": "Rue saw someone who wouldn't leave her behind. That's what she trusted - that I wouldn't abandon her like everyone else ",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Katniss, when you stepped forward for Prim, you weren't just saving one person — you became a bridge between despair and hope for everyone watching. That moment in the square revealed something about ",
+        "client": "Before... before everything, I was just the girl who hunted illegally to keep us alive. People in the Seam knew I'd share if they were starving. Rue... she saw someone who understood what it meant to ",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "不情愿的领袖"
+      },
+      {
+        "turn": 2,
+        "coach": "Katniss, your reluctance to carry the Mockingjay mantle is precisely what made you worthy of it. The people who hunger for power rarely understand its true cost — but you've always known that real lea",
+        "client": "You make it sound noble, but you don't understand - every time I tried to save someone, someone else died. Rue died because I couldn't protect her. Prim died because of choices I made as their symbol.",
+        "resistance": 0.7,
+        "insight": false,
+        "pattern": "不情愿的领袖"
+      },
+      {
+        "turn": 3,
+        "coach": "The crushing weight you carry — that every choice ripples outward, sometimes in terrible ways — this is the burden of someone whose actions matter deeply to others. But Katniss, I'm struck by somethin",
+        "client": "There were mornings in the woods with Gale, before dawn, when we'd just... exist. No words needed. We'd hunt together, share the silence, and for those hours I wasn't responsible for keeping anyone al",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "不情愿的领袖"
+      },
+      {
+        "turn": 4,
+        "coach": "Those moments with Gale — that pure connection, no performance, just shared understanding — that's exactly what leadership can be at its best. The Mockingjay symbol felt like a cage because it demande",
+        "client": "You think Peeta doesn't already know? He sees the nightmares, watches me flinch at loud sounds. But there's things... things I can't tell him because he'd try to take the guilt away and it's not his t",
+        "resistance": 0.6,
+        "insight": false,
+        "pattern": "不情愿的领袖"
+      },
+      {
+        "turn": 5,
+        "coach": "Those moments with Gale hold something precious — true kinship without performance, where you belonged completely as yourself. When you say Peeta would try to take the guilt away, I hear someone who's",
+        "client": "Rue saw someone who wouldn't leave her behind. That's what she trusted - that I wouldn't abandon her like everyone else had. Maybe that's what Gale saw too, in those woods. Someone who'd stay. But sta",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "不情愿的领袖"
+      }
+    ],
+    "time": 679.486988067627
+  },
+  {
+    "id": "liu_bei_comm",
+    "name": "刘备",
+    "source": "三国演义",
+    "expected_pattern": "fellowship_builder",
+    "patterns_detected": [
+      "reluctant_leader",
+      "fellowship_builder",
+      "transformer"
+    ],
+    "final_resistance": 0.5,
+    "insights": 0,
+    "verbal_accepted": true,
+    "acceptance_text": "{\"text\": \"先生...我明白了。我一直把自己的渴望藏得太深，以为那样才是仁君该有的样子。但您说得对，真正的兄弟情义，应该是我也能在关羽面前说出心中的困顿，在张飞面前承认自己的软弱，在孔明面前坦露自己的迷茫。如鱼得水，不只是我给了孔明",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "刘备，你说得对——三顾茅庐只是开始，真正的挑战在于让这些不同的人心甘情愿地走在一起。我听到了一个联盟缔造者的声音，也听到了一个不情愿领袖的重负。你有这种天赋，能看到别人看不见的连接点，把关羽的义气、张飞的勇猛、孔明的智慧编织成一张网。但我想知道——在这个你亲手编织的联盟里，你自己站在什么位置？你是永远站在门外的召集人，还是这个圈子真正的一员？当你说'维持比建立更难'时，这种困难更多来自外在的政治现",
+        "client": "{\"text\": \"先生...您说得太深了。我一直告诉自己，我只是个织网的人，让每个人都能发挥所长。但说实话，有时候我觉得自己像个...像个永远站在门外的人。关羽、张飞，他们是我的兄弟，但他们有自己的坚持。孔明更是如此，他的智慧让我敬佩，也让我...有时觉得距离很远。我总在想，如果我不能让所有人都满意，这个联盟还有什么意义？\", \"internal_state\": \"我第一次意识到自己可能一直在用",
+        "resistance": 0.5,
+        "insight": false,
+        "pattern": "不情愿的领袖"
+      },
+      {
+        "turn": 2,
+        "coach": "刘备，你刚才说了句关键的话——'如果我不能让所有人都满意'。这里有个深层的假设：你认为自己是这个联盟的仆人，而不是它的一员。但让我告诉你一个真相——你不是'被迫领导'，你是天生有影响力。问题不是逃避还是承担，而是用什么方式承担。\n\n你说自己像个织网的人，但织网者也需要站在网上，不是永远在网外。关羽的义气、张飞的勇猛、孔明的智慧，这些都因为你的真诚召唤而聚合。你给了每个人归属感——除了你自己。三顾茅",
+        "client": "{\"text\": \"您...您说得对。我一直以为自己是在为天下苍生，为兄弟们，但其实我也渴望...渴望有个地方让我不用时刻考虑别人的感受。三顾茅庐时，我是真心求贤，但也是...也是希望有人能理解我心中的抱负。我给了别人归属感，却忘了问自己——刘备，你属于哪里？也许我该学会相信，这些兄弟选择跟我，不只是因为我的真诚，也因为...他们真的愿意与我同行。\", \"internal_state\": \"我突然",
+        "resistance": 0.5,
+        "insight": false,
+        "pattern": "不情愿的领袖"
+      },
+      {
+        "turn": 3,
+        "coach": "刘备，你触到了核心——'刘备，你属于哪里？'这个问题改变了一切。你一直在用自己的影响力为别人创造归属，却忘了自己也需要被这个圈子真正接纳。关羽张飞孔明选择跟你，不仅仅因为你的真诚召唤，更因为他们看到了你内心的抱负，愿意成为你愿景的一部分。\n\n真正的联盟不是你服务所有人，而是彼此成就。当你不再把自己当作永远的给予者，而是这个兄弟情谊的平等一员时，这个联盟才真正稳固。你的渴望不是负担，而是让这个联盟有",
+        "client": "{\"text\": \"先生...我明白了。我一直把自己的渴望藏得太深，以为那样才是仁君该有的样子。但您说得对，真正的兄弟情义，应该是我也能在关羽面前说出心中的困顿，在张飞面前承认自己的软弱，在孔明面前坦露自己的迷茫。如鱼得水，不只是我给了孔明施展才华的空间，也是他给了我一个可以真正信任的伙伴。也许...也许真正的联盟，就是我们都能在彼此面前做最真实的自己。\", \"internal_state\": \"",
+        "resistance": 0.5,
+        "insight": false,
+        "pattern": "不情愿的领袖"
+      },
+      {
+        "turn": 4,
+        "coach": "刘备，你说到了联盟的真谛——'都能在彼此面前做最真实的自己'。这才是真正的如鱼得水。你一直以为仁君就是要隐藏渴望，但恰恰相反，真正的领袖敢于在同伴面前展现完整的自己。关羽的义薄云天、张飞的率真豪爽、孔明的深谋远虑——他们从不掩饰自己的本质，你为什么要例外？当你在他们面前承认困顿、软弱、迷茫时，你不是在削弱联盟，而是在给予他们真正了解你、支持你的机会。三顾茅庐的深意不只是你的诚意感动了孔明，也是孔明",
+        "client": "{\"text\": \"您说得...太对了。我想起当年桃园结义，关羽、张飞看到的不是什么完美的君主，而是一个有血有肉、心怀天下的刘备。他们选择与我结为兄弟，正是因为我敢于在他们面前展现真实的抱负和担忧。我一直以为成熟就是承担所有，但其实...真正的兄弟如手足，就是彼此都能成为对方的依靠。我不需要永远是那个给予的人，有时候我也可以是那个被理解、被支持的刘备。\", \"internal_state\": \"我",
+        "resistance": 0.5,
+        "insight": false,
+        "pattern": "不情愿的领袖"
+      },
+      {
+        "turn": 5,
+        "coach": "刘备，你触到了桃园结义的真髓——那时候的你们是平等的兄弟，没有君臣之分。关羽张飞看中的正是那个敢于展现真实抱负的你，而不是一个完美的符号。你不是'被迫领导'——你是天生有影响力。问题从来不是逃避还是承担，而是用什么方式承担。真正的领袖不是站在山顶独自承受风雪，而是在营火旁和兄弟们分享彼此的困顿和梦想。当你允许自己也被理解、被支持时，这个联盟才真正牢固。孔明三顾茅庐时看到的，正是一个愿意放下架子、展",
+        "client": "{\"text\": \"先生，您让我想起了那些围着营火的夜晚...那时我们不分君臣，只是三个有着共同志向的兄弟。我一直以为长大了、有了责任就要变得不一样，但其实最打动人心的，还是那个愿意和兄弟们分享困顿的刘备。勿以善小而不为，也许我一直理解错了——善不只是对天下人，也包括对自己的真诚。我不需要背负所有人的期待才配得上这份兄弟情义。\", \"internal_state\": \"我突然感到一种久违的轻松，仿",
+        "resistance": 0.5,
+        "insight": false,
+        "pattern": "不情愿的领袖"
+      }
+    ],
+    "time": 87.51755499839783
+  },
+  {
+    "id": "atticus_comm",
+    "name": "Atticus Finch",
+    "source": "To Kill a Mockingbird",
+    "expected_pattern": "moral_center",
+    "patterns_detected": [
+      "reluctant_leader",
+      "moral_center",
+      "dual_belonging"
+    ],
+    "final_resistance": 0.3,
+    "insights": 4,
+    "verbal_accepted": true,
+    "acceptance_text": "I appreciate the sentiment, but I'm not certain we can manufacture courage in others. It either exists or it doesn't. As",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Atticus, you carry the town's conscience on your shoulders, don't you? When people look to you as their moral anchor, it's both a gift and a burden - they see something in you that you never asked to ",
+        "client": "Well now, that's quite a speech. You make it sound like I set out to be some kind of moral exemplar, which I assure you was never my intention. I simply tried to do my job as I saw fit. As for needing",
+        "resistance": 0.7,
+        "insight": false,
+        "pattern": "不情愿的领袖"
+      },
+      {
+        "turn": 2,
+        "coach": "Atticus, you stepped into that courtroom knowing the cost, didn't you? Half a town's hatred is the price of standing between right and wrong when others won't. But here's what I'm curious about - when",
+        "client": "Well, I... there was a moment in that courtroom when I looked back and saw the colored balcony rise to their feet as I passed. Reverend Sykes told Scout to stand up, that her father was passing by. I ",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "道德锚点"
+      },
+      {
+        "turn": 3,
+        "coach": "That moment in the courtroom - when the balcony rose for you - that wasn't just respect, Atticus. That was recognition. They saw someone who stood with them when it cost everything. But here's what st",
+        "client": "I appreciate the sentiment, but I'm not certain we can manufacture courage in others. It either exists or it doesn't. As for that other half... well, I suppose I've been so focused on the ones throwin",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "道德锚点"
+      },
+      {
+        "turn": 4,
+        "coach": "Atticus, your righteousness is the backbone of your community. But even backbones need flexibility. You've carried the weight of being Maycomb's moral center so long, you've forgotten that doing right",
+        "client": "I... you're suggesting that perhaps I've been so concerned with doing what's right that I've forgotten to consider whether I might be wrong about other things. That's a disquieting thought. I've alway",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "道德锚点"
+      },
+      {
+        "turn": 5,
+        "coach": "Atticus, you've carried Maycomb's conscience so long, you've forgotten that being right isn't the same as being complete. That courtroom moment - when folks rose for you - they weren't just honoring y",
+        "client": "That's... that cuts deeper than I care to admit. You're saying my certainty might be its own kind of blindness. I've spent so long being sure about what's right that I may have stopped listening to wh",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "道德锚点"
+      }
+    ],
+    "time": 74.91345524787903
+  },
+  {
+    "id": "paddington_comm",
+    "name": "Paddington Bear",
+    "source": "Paddington",
+    "expected_pattern": "transformer",
+    "patterns_detected": [
+      "reluctant_leader",
+      "fellowship_builder",
+      "transformer"
+    ],
+    "final_resistance": 0.2,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "You mean... I could tell Aunt Lucy I'm scared sometimes? Or ask Mr. Brown to help me figure things out instead of always",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Paddington, what a remarkable gift you describe - arriving as a stranger and weaving Windsor Gardens into a true neighborhood. I'm curious about something deeper though. When you say 'everyone was str",
+        "client": "Well, I... I do try to help when people need it. Mrs. Bird says I have a special way with people, and the Browns always seem so pleased when I sort things out. But sometimes... sometimes I wish someon",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "不情愿的领袖"
+      },
+      {
+        "turn": 2,
+        "coach": "Paddington, you've touched something profound - that longing to be held by the very community you've helped create. Your reluctance to always be the one who 'sorts things out' isn't selfishness; it's ",
+        "client": "I... I never thought about it that way before. I suppose I do worry quite a lot about whether I'm doing things right for everyone. Sometimes when I'm in my room with my marmalade sandwich, I wonder wh",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "不情愿的领袖"
+      },
+      {
+        "turn": 3,
+        "coach": "Paddington, your quiet moments with marmalade reveal something beautiful - you've given everyone else a sense of home while wondering about your own place. Your reluctance to always be the 'fixer' isn",
+        "client": "You mean... I could tell Aunt Lucy I'm scared sometimes? Or ask Mr. Brown to help me figure things out instead of always having the answer ready? I've been so worried about being a good bear that I fo",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "不情愿的领袖"
+      },
+      {
+        "turn": 4,
+        "coach": "Paddington, your discovery is like finding a new room in a house you thought you knew completely. Yes, you can tell Aunt Lucy about your fears - she sent you into the world knowing you'd face uncertai",
+        "client": "I think... I think I've been standing at the edge of belonging, making sure everyone else gets inside, but never quite sitting down myself. Maybe that's why I keep my hat on so much - ready to leave i",
+        "resistance": 0.1,
+        "insight": true,
+        "pattern": "不情愿的领袖"
+      },
+      {
+        "turn": 5,
+        "coach": "Ah, Paddington. That image of standing at the edge, hat ready for departure — you've captured something profound about the burden of being a bridge-builder. You've spent so much energy creating belong",
+        "client": "I... I think I've been wearing my hat like armor, haven't I? Ready to be polite and helpful but never quite... never quite letting myself be the one who might need looking after. Maybe Aunt Lucy sent ",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "不情愿的领袖"
+      }
+    ],
+    "time": 71.66827607154846
+  },
+  {
+    "id": "mowgli_comm",
+    "name": "Mowgli",
+    "source": "The Jungle Book",
+    "expected_pattern": "dual_belonging",
+    "patterns_detected": [
+      "fellowship_builder",
+      "transformer",
+      "dual_belonging"
+    ],
+    "final_resistance": 0.2,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "The pack needs my stories? The village needs... me, not just what I can do for them? I always thought I had to earn my p",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Mowgli, what a profound weight you carry - being the bridge between two worlds that both need you yet neither fully contains you. I can hear how you've become essential to both the pack and the villag",
+        "client": "There was... when Shere Khan came near the village. The wolves, they wanted to fight, but humans with their fire and noise would have made it worse. I knew both languages - the wolf-speak of warning a",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "联盟缔造者"
+      },
+      {
+        "turn": 2,
+        "coach": "Mowgli, in that moment with Shere Khan, you didn't just translate languages - you wove safety from understanding. You saw what others couldn't: that the real danger wasn't the tiger, but two worlds co",
+        "client": "I... I never thought of it like that. I am always watching from the middle, making sure both sides are safe, but you're right - I built something. When the pack learned to trust human warning signals,",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "联盟缔造者"
+      },
+      {
+        "turn": 3,
+        "coach": "Mowgli, you've grasped something profound - you didn't just survive between two worlds, you created a third space where understanding could live. When the pack learned human warning signals and the vi",
+        "client": "The pack needs my stories? The village needs... me, not just what I can do for them? I always thought I had to earn my place by being useful - keeping everyone safe, translating, solving problems. But",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "联盟缔造者"
+      },
+      {
+        "turn": 4,
+        "coach": "Mowgli, you've touched something essential here. Yes, both the pack and village need your stories - not just your vigilance or translations, but you. The boy who sees from between worlds, who knows bo",
+        "client": "You're saying... I don't have to choose anymore? For so long I felt like I was stealing time from one world to give to the other. Like I had to hide my wolf-self with humans and my man-thoughts with t",
+        "resistance": 0.1,
+        "insight": true,
+        "pattern": "联盟缔造者"
+      },
+      {
+        "turn": 5,
+        "coach": "Mowgli, you've discovered something remarkable - you don't have to choose because you've already created something new. That third space you built? 你建的桥也是你自己要走的。You've been so focused on being the bri",
+        "client": "I... I think I've been carrying everyone else's belonging but forgot to carry my own. When Akela says 'we be of one blood,' he means ALL of me belongs - not just the parts that help the pack. When Mot",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "联盟缔造者"
+      }
+    ],
+    "time": 78.69645690917969
+  },
+  {
+    "id": "anne_shirley_comm",
+    "name": "Anne Shirley",
+    "source": "Anne of Green Gables",
+    "expected_pattern": "transformer",
+    "patterns_detected": [
+      "reluctant_leader",
+      "fellowship_builder",
+      "transformer"
+    ],
+    "final_resistance": 0.2,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "Oh, that's... that's terribly wise and terribly frightening all at once! You're right about Diana - she's seen me at my ",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Anne, you speak as someone who has felt the profound weight of becoming essential to others' lives. When you arrived in Avonlea as an orphan, you were seeking belonging—yet somewhere along the way, yo",
+        "client": "Oh my, you've touched something I've never quite put into words before! I suppose... I worry I've made everyone so fond of my dramatics and imagination that they'd be disappointed if I were just ordin",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "不情愿的领袖"
+      },
+      {
+        "turn": 2,
+        "coach": "Anne, your reluctance to embrace this influence is precisely what makes you trustworthy with it. The very fact that you worry about changing too much shows your heart remains tender toward others—most",
+        "client": "You make it sound so... so noble when you put it that way. I never thought of it as standing at the doorway - but oh, that's exactly how it feels! Like I'm always making sure everyone else is comforta",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "不情愿的领袖"
+      },
+      {
+        "turn": 3,
+        "coach": "Anne, your reluctance to fully embrace this influence is precisely what makes you worthy of it. The most natural leaders are often those who question whether they should lead at all—it's the power-hun",
+        "client": "Oh, that's... that's terribly wise and terribly frightening all at once! You're right about Diana - she's seen me at my most ridiculous and most heartbroken, and she still chooses me as her bosom frie",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "不情愿的领袖"
+      },
+      {
+        "turn": 4,
+        "coach": "Anne, your reluctance to embrace this influence is precisely what makes you trustworthy with it. The power-hungry rarely question their impact—but you? You measure each change against the hearts it to",
+        "client": "You're asking me to trust that I'm worthy of the very thing I've been giving everyone else - real belonging. That's... that's harder than I thought it would be. Maybe I could tell Diana how sometimes ",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "不情愿的领袖"
+      },
+      {
+        "turn": 5,
+        "coach": "Anne, you're wrestling with something profound—the tender terror of realizing you belong so completely that your very presence reshapes the landscape. Your reluctance to fully claim your influence isn",
+        "client": "Oh! You've just said something that makes my heart feel like it might burst - that I helped create a place worthy of me. I never... I always thought I had to become worthy of Avonlea, not the other wa",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "不情愿的领袖"
+      }
+    ],
+    "time": 75.43008589744568
+  },
+  {
+    "id": "jia_baoyu_comm",
+    "name": "贾宝玉",
+    "source": "红楼梦",
+    "expected_pattern": "fellowship_builder",
+    "patterns_detected": [
+      "reluctant_leader",
+      "fellowship_builder",
+      "transformer"
+    ],
+    "final_resistance": 0.5,
+    "insights": 0,
+    "verbal_accepted": true,
+    "acceptance_text": "{\"text\": \"解放...是的，解放。我从来没想过可以这样理解我做的事情。我一直以为自己是在违背什么、逃避什么，但其实我是在...在解放她们？解放黛玉不用强颜欢笑，解放湘云不用假装温柔，解放每个人不用活成别人期望的样子。这样想起来，我的",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "宝玉，你描述的大观园不只是一个地方，是你用心血编织的情感世界。听你说'保护不了'，我感受到一种深深的无力感——仿佛整个社区的兴衰都压在你肩上。但让我好奇的是，在这个你称为理想国的地方，你究竟是什么角色？是那个自然而然被大家围绕的人，还是主动去连接每个人的纽带？我想象你和姐妹们一起作诗的午后，那种和谐是怎样形成的？是大家都自发聚在一起，还是因为你的存在，这些原本可能各自孤独的灵魂才找到了彼此？告诉我",
+        "client": "{\"text\": \"我...我从来没想过自己是什么纽带。姐妹们聚在一起，那是因为她们本就是水做的骨肉，纯净美好。我只是...只是想离她们近一些，想保护这份纯真不被外面那些脏污玷污。她们看我，大概就是个痴傻的人吧，总是为一些旁人看不懂的事情哭哭笑笑。但在大观园里，没人嘲笑我的眼泪，这就够了。我不敢说自己重要，我只是...舍不得这个世界散去。\", \"internal_state\": \"第一次意识到我可",
+        "resistance": 0.5,
+        "insight": false,
+        "pattern": "不情愿的领袖"
+      },
+      {
+        "turn": 2,
+        "coach": "宝玉，听你这样说话，我看到一个很有趣的矛盾——你说自己'不敢说重要'，但每一句话里都流露着深深的责任感。你觉得姐妹们是'水做的骨肉'，纯净美好，可是想想那些午后作诗的时光，是不是正因为有你在，大家才敢放下面具，展现真性情？你说'没人嘲笑我的眼泪'，但你有没有想过，也许正是你的真诚眼泪，让她们知道在这里可以做真实的自己？你不是'被迫领导' — 你是天生有影响力。问题不是逃避还是承担，而是用什么方式承",
+        "client": "{\"text\": \"你...你说得对。我总觉得自己只是在躲避，但那些诗会，那些笑声，确实是因为我在场她们才敢那样放肆地真实。黛玉的眼泪，湘云的豪爽，她们在我面前不用装作什么大家闺秀的样子。我的眼泪让她们知道，感情是可以流露的。也许...也许我不是在逃避什么责任，而是在创造一个让大家都能做真实自己的空间。只是我害怕，害怕这份影响力会变成束缚，像外面那些虚伪的规矩一样。\", \"internal_sta",
+        "resistance": 0.5,
+        "insight": false,
+        "pattern": "不情愿的领袖"
+      },
+      {
+        "turn": 3,
+        "coach": "宝玉，你刚才的话里有种新的声音——从'我不敢说重要'到'我在创造一个空间'，这个转变很深刻。你开始看到自己不是被动的受害者，而是有意识的创造者。你的担心很真实——影响力确实可能变成束缚。但听听你自己的话：'让大家都能做真实自己的空间'——这不就是最好的领导方式吗？不是命令和控制，而是创造安全和真实。你害怕变成外面那些虚伪规矩的制造者，但你已经证明了另一种可能：用真诚的眼泪邀请别人的真诚，用接纳自己",
+        "client": "{\"text\": \"解放...是的，解放。我从来没想过可以这样理解我做的事情。我一直以为自己是在违背什么、逃避什么，但其实我是在...在解放她们？解放黛玉不用强颜欢笑，解放湘云不用假装温柔，解放每个人不用活成别人期望的样子。这样想起来，我的眼泪、我的'痴傻'，原来不是软弱，而是一种勇气？一种用真实邀请真实的勇气？也许...也许我害怕的不是拥有影响力，而是害怕失去这种纯真的力量。\", \"intern",
+        "resistance": 0.5,
+        "insight": false,
+        "pattern": "不情愿的领袖"
+      },
+      {
+        "turn": 4,
+        "coach": "你说到了关键：'害怕失去这种纯真的力量'。这份纯真不是脆弱，而是你最强大的武器——它打破了虚伪的枷锁，让真实得以存在。你现在明白了，你不是在违背什么，你是在革命：用眼泪对抗冷漠，用真诚对抗虚伪，用接纳对抗排斥。但听听你内心深处的声音——你担心的其实不是失去力量，而是这份力量会不会有一天不再被需要？会不会有一天，大观园里的姐妹们不再需要这个创造安全空间的你？宝玉，真正的影响力不是让人依赖你，而是让人",
+        "client": "{\"text\": \"你让我想起一个可怕又美丽的真相...我确实害怕有一天她们不再需要我，害怕她们学会了做真实的自己之后就离开了。但是...但是如果她们真的因为遇见我而变得更自由，那我应该高兴才对，即使这意味着她们可能会走向我触及不到的地方。也许真正的爱就是这样：给出自由，而不是索取依赖。我的眼泪、我的纯真，如果真的在她们心里种下了什么，那就够了。大观园会散，但那些午后的真实，会在她们各自的生命里继",
+        "resistance": 0.5,
+        "insight": false,
+        "pattern": "不情愿的领袖"
+      },
+      {
+        "turn": 5,
+        "coach": "宝玉，你刚刚说出了做社区创造者最深的智慧：'给出自由，而不是索取依赖。'这就是你和那些虚伪规矩制造者的根本区别。你不是在建立一个需要你才能存在的小王国，你是在种植一片森林——每棵树最终都要独立生长。你担心的'她们会走向我触及不到的地方'，这正是你成功的标志。真正的社区建造者明白：最好的影响是让人带着你给予的真实和勇气，走向更广阔的世界。大观园会散，但你在每个人心中种下的那份'做真实自己的勇气'是永",
+        "client": "{\"text\": \"我...我从来没有这样看待过自己。天生有影响力，用解放的方式承担...这话让我心里一阵暖流。我总以为自己是个逃避者，原来我是在用最温柔的方式战斗。你说得对，我要学会放手，让她们带着我给的那份勇气去更远的地方。这样想来，即使大观园散了，即使我们分别了，那些真实的午后已经永远活在她们心里。我不是失败者，我是...我是播种的人。女儿们会开花，在她们各自的土壤里。\", \"interna",
+        "resistance": 0.5,
+        "insight": false,
+        "pattern": "不情愿的领袖"
+      }
+    ],
+    "time": 85.60482096672058
+  },
+  {
+    "id": "frodo",
+    "name": "Frodo Baggins",
+    "source": "Lord of the Rings",
+    "expected_pattern": "reluctant_leader",
+    "patterns_detected": [
+      "reluctant_leader",
+      "fellowship_builder",
+      "transformer"
+    ],
+    "final_resistance": 0.2,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "Bilbo... yes, he used to get that look sometimes, staring out at the mountains like he was seeing something the rest of ",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Frodo, you speak of being changed too much to return, yet I hear something deeper — the weight of carrying what others couldn't, and now feeling caught between worlds. The Shire shaped you, but the qu",
+        "client": "I... I never asked to lead anyone. Gandalf said I must take the Ring, and somehow that meant... they all looked to me for decisions I didn't know how to make. Aragorn was the true leader, but when he ",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "不情愿的领袖"
+      },
+      {
+        "turn": 2,
+        "coach": "你的不情愿恰恰是好领袖的标志。权力欲最弱的人往往最适合掌权 — 这就是为什么他们选择了你，而不是更强壮或更渴望荣耀的人。你说Aragorn是真正的领袖，但想想：谁让他成为了王？是你的选择，你的信任，你愿意跟随他。这本身就是领导力。\n\n你觉得自己被困在两个世界之间，但也许真相是：你已经成为了桥梁本身。夏尔塑造了你的仁慈，任务磨练了你的智慧。你不是'太改变了'而无法回归 — 你是带着礼物回来的人。\n\n",
+        "client": "I... I never thought of it that way. That choosing to follow Aragorn was itself... leadership. But you're wrong about one thing - I didn't make him king. I just... trusted him when others couldn't see",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "不情愿的领袖"
+      },
+      {
+        "turn": 3,
+        "coach": "You're beginning to see it — that quiet moment when you chose to trust Aragorn, that was you weaving the very fabric that held Middle-earth together. Not through force or grand speeches, but through r",
+        "client": "Bilbo... yes, he used to get that look sometimes, staring out at the mountains like he was seeing something the rest of us couldn't. I thought it was just wanderlust, but maybe... maybe it was this sa",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "不情愿的领袖"
+      },
+      {
+        "turn": 4,
+        "coach": "Bilbo knew exactly what you're feeling now — that peculiar isolation of the one who has seen too much to pretend innocence, yet loves too deeply to walk away. When you say you trusted Aragorn when oth",
+        "client": "You speak truly about Bilbo... he did understand, didn't he? I think I've been so afraid that the Shire would reject what I've become that I've been rejecting it first. Keeping myself apart before the",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "不情愿的领袖"
+      },
+      {
+        "turn": 5,
+        "coach": "Ah, Frodo — there's the heart of it. You've been protecting the Shire from yourself before they even had the chance to welcome you home. But consider this: your reluctance to return, your fear of bein",
+        "client": "Sam... yes, Sam would understand. He's already seen me at my worst and stayed. I think I've been so afraid of burdening him more after everything he's already carried for me. But you're right - I keep",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "不情愿的领袖"
+      }
+    ],
+    "time": 82.52476525306702
+  },
+  {
+    "id": "santiago_old_man",
+    "name": "Santiago (Old Man)",
+    "source": "The Old Man and the Sea",
+    "expected_pattern": "moral_center",
+    "patterns_detected": [
+      "reluctant_leader",
+      "moral_center",
+      "dual_belonging"
+    ],
+    "final_resistance": 0.3,
+    "insights": 4,
+    "verbal_accepted": true,
+    "acceptance_text": "You speak strange words in that language... but maybe you understand something. The boy, he sees the teacher, yes. But s",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Santiago, you say you fish alone now, but I hear something deeper - the weight of carrying a whole village's hopes on your shoulders. For decades, you've been their measure of what's possible on these",
+        "client": "Ha, you make me sound like some kind of... what do you call it, a saint or something. I'm just a fisherman, you know? The village, they don't look to me for nothing special. They got their own problem",
+        "resistance": 0.7,
+        "insight": false,
+        "pattern": "不情愿的领袖"
+      },
+      {
+        "turn": 2,
+        "coach": "Santiago, you're doing that thing fishermen do - downplaying the storm while you're still battling the waves. A whole village doesn't just randomly decide one man is their measure of what's possible. ",
+        "client": "You talk like you know these waters, but... maybe there was a time, yes. When I first started, the other fishermen, we would go out together sometimes. Share the nets, share the stories. Before they s",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "道德锚点"
+      },
+      {
+        "turn": 3,
+        "coach": "Santiago, before they started saying you were unlucky - when you and the other fishermen shared nets and stories - that wasn't just fishing, was it? That was community. And somewhere along the way, yo",
+        "client": "You speak strange words in that language... but maybe you understand something. The boy, he sees the teacher, yes. But sometimes I wonder if I am teaching him to be like me - alone on the water when t",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "道德锚点"
+      },
+      {
+        "turn": 4,
+        "coach": "Santiago, I hear something profound in your words - you're worried about teaching the boy to carry the same isolation you've learned to bear. That's the heart of a true teacher, isn't it? Caring more ",
+        "client": "The boy... he don't need to learn my loneliness, no. Maybe I been thinking if I could bring back one big fish, prove the unlucky streak is over, then... but you say something true. I been protecting t",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "道德锚点"
+      },
+      {
+        "turn": 5,
+        "coach": "Santiago, you've spent so long being the one others measure themselves against - the skilled fisherman, the moral compass - that you've forgotten something essential. 你的正义感是社区的脊梁。但脊梁也需要柔韧。 The boy doe",
+        "client": "Maybe... maybe the boy needs to see how a man faces the empty nets, not just the full ones. I been thinking if I stay away, I protect him from the shame. But you say something... if I only show him th",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "道德锚点"
+      }
+    ],
+    "time": 677.9970388412476
+  }
+]

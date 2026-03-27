@@ -1,0 +1,588 @@
+[
+  {
+    "id": "santiago_imm",
+    "name": "Santiago",
+    "source": "The Alchemist",
+    "expected_pattern": "between_worlds",
+    "patterns_detected": [
+      "between_worlds",
+      "nostalgia_trap",
+      "displacement_grief"
+    ],
+    "final_resistance": 0.2,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "The Soul of the World... yes, I've heard it calling. When I held that first handful of sand, I felt something speaking. ",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Santiago, you speak of treasure and home as if they're opposite directions on a map. Tell me — where exactly did you come from? What was your world like with the sheep, and where are you now in this s",
+        "client": "I came from Andalusia, from green fields where my sheep knew every stone, every shade tree. Now I'm in the desert, following omens I barely understand. Home... it used to be simple. Wake up, move the ",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "两个世界之间"
+      },
+      {
+        "turn": 2,
+        "coach": "Santiago, you carry the wisdom of those green fields in how you read the wind and understand the language of the earth — that didn't disappear when you crossed into the desert. The boy who knew every ",
+        "client": "You... you speak like the alchemist. Like you understand both worlds too. Yes, I still feel the rhythm of seasons, even in this endless sand. My sheep taught me to listen, to be patient. But sometimes",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "两个世界之间"
+      },
+      {
+        "turn": 3,
+        "coach": "Santiago, the ache you feel tells me something profound — you haven't lost your ability to love deeply. That same heart that bonded with every stone in Andalusia is what drives you toward this treasur",
+        "client": "The Soul of the World... yes, I've heard it calling. When I held that first handful of sand, I felt something speaking. But expansion... that's what terrifies me. What if I expand so much that I can't",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "两个世界之间"
+      },
+      {
+        "turn": 4,
+        "coach": "Santiago, that terror of expansion — it's the shepherd's wisdom warning you. Your sheep knew that good pasture means staying rooted while also moving forward. You fear that if you grow too large, you'",
+        "client": "Maktub... it is written. You speak truth that my heart knows but my mind fights. I am afraid that finding the treasure means I can never be the simple shepherd again. But maybe... maybe the shepherd w",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "两个世界之间"
+      },
+      {
+        "turn": 5,
+        "coach": "Santiago, listen — you are not becoming less yourself by expanding. You are becoming more yourself than the village ever allowed you to be. 你是桥，不是孤岛。The shepherd who felt called to leave was already c",
+        "client": "Yes... yes, I was restless with the sheep. Always watching those stars, wondering what lay beyond the next hill. My father said it was foolishness, but maybe it was the treasure calling to me even the",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "两个世界之间"
+      }
+    ],
+    "time": 71.84448790550232
+  },
+  {
+    "id": "mowgli",
+    "name": "Mowgli",
+    "source": "The Jungle Book",
+    "expected_pattern": "between_worlds",
+    "patterns_detected": [
+      "between_worlds",
+      "nostalgia_trap",
+      "displacement_grief"
+    ],
+    "final_resistance": 0.2,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "Maybe... maybe I don't have to choose. But it hurts, being the only one who remembers both languages. Sometimes I wonder",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Mowgli, I hear something profound in what you're telling me — you're living between two worlds, and neither feels like it completely fits. The wolves gave you everything they could, raised you with lo",
+        "client": "The man village... they watch me like I might bite. I sleep on beds but dream of branches. They want me to wear shoes but my feet know every root and stone. In the jungle, I was... I was Mowgli who ru",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "两个世界之间"
+      },
+      {
+        "turn": 2,
+        "coach": "Mowgli, you're describing something I recognize deeply — that ache of being shaped by one world while trying to exist in another. Your feet knowing every root and stone isn't something you've lost; it",
+        "client": "You... you understand. In the jungle, I never had to explain why I could speak to Kaa or why I knew Shere Khan's scent on the wind. Here, when I hear danger in the forest sounds, they think I'm making",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "两个世界之间"
+      },
+      {
+        "turn": 3,
+        "coach": "Yes, I understand — that exhausting vigilance of constantly translating yourself. In the jungle, your gifts were simply who you were. Here, they become strange talents you have to justify or hide. But",
+        "client": "Maybe... maybe I don't have to choose. But it hurts, being the only one who remembers both languages. Sometimes I wonder if I make myself smaller so they won't be afraid. In the jungle, I was fierce. ",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "两个世界之间"
+      },
+      {
+        "turn": 4,
+        "coach": "Mowgli, that fierceness didn't disappear when you left the jungle — it's part of your essence, not your location. You're feeling the weight of being a bridge between worlds, and yes, that's exhausting",
+        "client": "I... I never thought of it that way. Maybe the ache isn't because I don't belong anywhere. Maybe it's because I belong to something bigger than either place alone. When Bagheera taught me to hunt, he ",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "两个世界之间"
+      },
+      {
+        "turn": 5,
+        "coach": "When Bagheera taught you to hunt, he was giving you more than technique — he was showing you how to see patterns, how to move with purpose, how to trust your instincts. That teaching lives in your bon",
+        "client": "Yes... yes, I see it now. The hunting patience Bagheera taught me, it helps me watch the humans too, learn their ways without losing mine. And Baloo's laughter - I still carry that. Maybe I am not bro",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "两个世界之间"
+      }
+    ],
+    "time": 68.37832713127136
+  },
+  {
+    "id": "heidi",
+    "name": "Heidi",
+    "source": "Heidi",
+    "expected_pattern": "nostalgia_trap",
+    "patterns_detected": [
+      "between_worlds",
+      "nostalgia_trap",
+      "cultural_bridge"
+    ],
+    "final_resistance": 0.2,
+    "insights": 4,
+    "verbal_accepted": true,
+    "acceptance_text": "Maybe... maybe grandfather did teach me how to listen to quiet things, like when the goats were scared or when the wind ",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Heidi, tell me about your mountain. What did the mornings smell like there with your grandfather? And now, here in this city - what's the hardest part about breathing here? I can hear how much you mis",
+        "client": "The mornings smelled like fresh grass and goat milk and grandfather's pipe smoke curling up to touch the clouds. Here the air tastes like stone and sadness. On the mountain I could run and sing and th",
+        "resistance": 0.3,
+        "insight": false,
+        "pattern": "两个世界之间"
+      },
+      {
+        "turn": 2,
+        "coach": "Heidi, that mountain morning sounds like a symphony - the pipe smoke threading through grass and milk scents, everything alive and singing with you. Of course the stone city air feels like suffocation",
+        "client": "But grandfather didn't come with me! They made me leave him on the mountain and now he's so far away and what if he forgets me? What if the goats don't remember my voice? I try to sing here but the wa",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "两个世界之间"
+      },
+      {
+        "turn": 3,
+        "coach": "Heidi, your grandfather lives in every song you remember, in the way you listen to wind, in how you notice what morning air should smell like. He didn't just stay on the mountain - he came with you in",
+        "client": "Maybe... maybe grandfather did teach me how to listen to quiet things, like when the goats were scared or when the wind changed before storms. And I still hear him sometimes when I close my eyes real ",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "两个世界之间"
+      },
+      {
+        "turn": 4,
+        "coach": "Yes, Heidi - that listening gift is exactly what I mean. You are a bridge, not an island. People who can understand two worlds are the rarest treasure. On the mountain, you learned to hear what the go",
+        "client": "I... I never thought about it like that. Maybe I am learning new things here too, like how Clara needs someone to listen to her loneliness just like the goats did. And maybe when I go back to the moun",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "两个世界之间"
+      },
+      {
+        "turn": 5,
+        "coach": "Yes, Heidi! You're seeing it now. You haven't lost your grandfather's gifts - you've carried them to someone who desperately needs them. Clara is as isolated in this grand house as you were connected ",
+        "client": "Maybe Clara is like a lonely goat stuck in a barn when she should be running in meadows. And maybe... maybe grandfather would want me to use what he taught me to help her breathe better too. I can tea",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "两个世界之间"
+      }
+    ],
+    "time": 72.99939608573914
+  },
+  {
+    "id": "sun_shaoping_imm",
+    "name": "孙少平",
+    "source": "平凡的世界",
+    "expected_pattern": "between_worlds",
+    "patterns_detected": [
+      "between_worlds"
+    ],
+    "final_resistance": 0.3,
+    "insights": 4,
+    "verbal_accepted": true,
+    "acceptance_text": "桥？你这话听起来很美，可我现在连自己都站不稳，还谈什么当桥？你说双水村给了我坚韧...也许吧。但这种坚韧是被逼出来的，不是什么光荣的东西。我确实害怕，害怕一承认家乡的好，就永远走不出那个圈子了。可能...可能我一直在逃避的不是家乡，而是那种",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "少平，你从黄土地来到这钢筋水泥的城市，这种被人瞧不起的痛我能感受到。告诉我，你的家乡是什么样子？现在住在城里的哪里？\n\n我听到你说城里人不把你当人看，这让我想起很多离开故土的人都有这种感受 - 好像站在两个世界的边缘，哪边都不完全属于你。在老家，你可能已经算是'出去见过世面的'；在城里，你又被当作'乡下来的'。\n\n但我想知道，在你努力想融入城市生活的时候，是不是有时候感觉自己快要变成另一个人了？那",
+        "client": "我家乡...就是双水村那个穷山沟，黄土地上几间破窑洞。现在住在煤矿工棚里，十几个人挤一间房。你说得对，我确实站在两个世界的边缘。但我不怕变成另一个人，我怕的是永远停在原地。书籍教会我，人可以超越出身。我不想割断根，但也不能让根成为枷锁。",
+        "resistance": 0.3,
+        "insight": false,
+        "pattern": "两个世界之间"
+      },
+      {
+        "turn": 2,
+        "coach": "少平，听到你说'不能让根成为枷锁'，我感受到你内心的力量。但我也听到了更深层的东西 - 你其实在用这种'超越'的想法来保护自己，避免面对一个更复杂的真相：你不需要选一边。\n\n你说书籍教会你超越出身，这很美。但超越不是抛弃，而是整合。那个在黄土地上长大的少平，和现在在煤矿工棚里读书的少平，都是真实的你。你不是在'变成另一个人'，而是在让自己变得更完整。\n\n你带着双水村的坚韧到了城市，也会把城市的见识",
+        "client": "你说得有道理，但你不明白...在工棚里别人叫我'土包子'的时候，在城里人面前说话都要小心翼翼的时候，这种'整合'谈何容易？我读书不是为了变得完整，是为了有朝一日能挺直腰杆说话。双水村给了我什么？贫穷和卑微。我要的是尊严。",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "两个世界之间"
+      },
+      {
+        "turn": 3,
+        "coach": "少平，我听到你内心的愤怒和痛苦。当你说双水村只给了你'贫穷和卑微'时，我感受到你在用愤怒来保护自己，避免承认一个事实：你其实害怕如果承认家乡给了你什么好的东西，就等于接受了那种卑微。\n\n但这是个假的选择题。你的坚韧、你读书的渴望、你不向命运低头的劲头 - 这些都来自黄土地。那些在工棚里叫你'土包子'的人，他们有这种骨子里的韧性吗？你不是要在两个世界里选一个，你是要成为连接两个世界的桥。城里人需要你",
+        "client": "桥？你这话听起来很美，可我现在连自己都站不稳，还谈什么当桥？你说双水村给了我坚韧...也许吧。但这种坚韧是被逼出来的，不是什么光荣的东西。我确实害怕，害怕一承认家乡的好，就永远走不出那个圈子了。可能...可能我一直在逃避的不是家乡，而是那种无力感。",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "两个世界之间"
+      },
+      {
+        "turn": 4,
+        "coach": "少平，你说出了最真实的话 - 你害怕的是那种无力感。这份勇气让我看到你已经在改变了。是的，你的坚韧是被逼出来的，但被逼出来的力量往往最可靠，因为它经过了考验。你说怕承认家乡的好就走不出圈子，但其实相反 - 只有真正接纳了你从哪里来，你才有力量决定要去哪里。你是桥，不是孤岛。能理解两个世界的人是最稀缺的。那些城里人，他们懂得在最艰难时刻还能捧起书本的心情吗？他们经历过你这样的蜕变吗？你比任何一边都丰",
+        "client": "也许...也许你说得对。我从来没想过被逼出来的东西也有价值。那些城里人确实不懂，在肚子都填不饱的时候还想读书是什么滋味。我一直觉得自己是在往上爬，但现在想想，可能我已经比很多人都丰富了。只是我自己不敢承认罢了。",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "两个世界之间"
+      },
+      {
+        "turn": 5,
+        "coach": "少平，听到你说'我已经比很多人都丰富了'，这让我心里一暖。你开始看到了——你不是在两个贫乏之间选择，而是拥有了双重的财富。你说不敢承认，这背后是什么？是怕一旦承认自己有价值，就要承担更多责任吗？还是怕承认自己其实已经成功地在两个世界间找到了位置？你的眼泪、你的愤怒、你对书的渴望——这些都是你的完整。城里的孩子从来不需要在饥饿中坚持梦想，这种力量是你独有的。你是桥，不是孤岛。能理解两个世界的人是最稀",
+        "client": "我...我确实害怕承认自己有价值。因为一旦承认，就意味着我得为自己的选择负责，不能再抱怨命运不公。也许我真的在两个世界间找到了位置，虽然这个位置很孤独。但我想，能在饥饿中还坚持读书，这确实是我的财富。",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "两个世界之间"
+      }
+    ],
+    "time": 85.18751406669617
+  },
+  {
+    "id": "fievel",
+    "name": "Fievel Mousekewitz",
+    "source": "An American Tail",
+    "expected_pattern": "displacement_grief",
+    "patterns_detected": [
+      "nostalgia_trap",
+      "cultural_bridge"
+    ],
+    "final_resistance": 0.2,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "You... you felt like me when you came here too? You missed your old place? I thought I was the only one who felt sad abo",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Oh, Fievel. Your papa meant well when he said that, didn't he? He wanted to give you hope for this new place. But now you're here and there are cats everywhere, and it probably feels like nothing your",
+        "client": "We came from Russia! There were cats there too, lots and lots of cats! Papa said America would be different, that we'd be safe here. But... but maybe Papa didn't know about the cats here either? I'm n",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "乡愁陷阱"
+      },
+      {
+        "turn": 2,
+        "coach": "Oh, little one. Papa's heart was so full of hope when he said that - he was painting you a picture of safety because he loved you so much. But you're right, there are cats here too, aren't there? And ",
+        "client": "What's that word you said? Shang... shang-cho? I don't know that word but it sounds sad like how I feel sometimes. There's a little corner by our window where the sun comes in, and when I sit there it",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "乡愁陷阱"
+      },
+      {
+        "turn": 3,
+        "coach": "Shang-cho... that's a grown-up word for missing home so much your heart hurts. It's what I felt too when I first came to America from my old country. You know what, Fievel? That sadness you feel - it'",
+        "client": "You... you felt like me when you came here too? You missed your old place? I thought I was the only one who felt sad about leaving. I never told Mama or Papa because they worked so hard to bring us he",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "乡愁陷阱"
+      },
+      {
+        "turn": 4,
+        "coach": "Oh, sweet little one. Yes, I felt exactly like you - that ache in my chest, missing everything I left behind. And you know what? It's okay that you feel sad. Your papa wasn't lying when he said there ",
+        "client": "Papa wasn't lying? He was... he was hoping? I think I understand! Maybe Papa felt that hurting heart feeling too when we left Russia, but he wanted us to feel brave instead of scared. That sunny corne",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "乡愁陷阱"
+      },
+      {
+        "turn": 5,
+        "coach": "Oh Fievel, yes - your papa felt that same hurt! He was hoping so hard for a better life that he painted America like a fairy tale. But you know what's beautiful about you? That ache you feel for home ",
+        "client": "I... I do remember Papa's violin! And when Mama hums those songs, it makes me feel warm inside, like we brought a little piece of home with us! Maybe... maybe home isn't just a place? Maybe it's when ",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "乡愁陷阱"
+      }
+    ],
+    "time": 80.50380897521973
+  },
+  {
+    "id": "paddington",
+    "name": "Paddington Bear",
+    "source": "Paddington",
+    "expected_pattern": "cultural_bridge",
+    "patterns_detected": [
+      "between_worlds",
+      "nostalgia_trap",
+      "assimilation_loss"
+    ],
+    "final_resistance": 0.1,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "I think... I think maybe London needed me as much as I needed London? When I spread marmalade on Mrs. Brown's toast, her",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Paddington, that label you carried — 'Please look after this bear' — tells me something profound about your journey. You came from Peru carrying not just marmalade and hope, but an entire world of who",
+        "client": "Well, in darkest Peru with Aunt Lucy and Uncle Pastuzo, everything was... simple, I suppose. We had our routines - elevenses with coca leaves, not Earl Grey. When I make marmalade sandwiches now, some",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "两个世界之间"
+      },
+      {
+        "turn": 2,
+        "coach": "When you speak of those elevenses with coca leaves versus Earl Grey, I hear something beautiful - you carry both worlds in your taste memory. That pause in your voice when you mention making marmalade",
+        "client": "I... I never thought about being a bridge before. When I make marmalade now, maybe I am teaching London about Peru, aren't I? Aunt Lucy always said marmalade was love you could taste. I thought I was ",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "两个世界之间"
+      },
+      {
+        "turn": 3,
+        "coach": "Paddington, you've touched something profound - you ARE teaching London about Peru with every sandwich you make. When Aunt Lucy said marmalade was love you could taste, she was giving you a language t",
+        "client": "I think... I think maybe London needed me as much as I needed London? When I spread marmalade on Mrs. Brown's toast, her face lights up just like Aunt Lucy's did. And when Mr. Brown says 'thank you' i",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "两个世界之间"
+      },
+      {
+        "turn": 4,
+        "coach": "Paddington, you've discovered something magnificent - you ARE the bridge between two worlds of love. When Mrs. Brown's face lights up at your marmalade, you're not just spreading preserves; you're spr",
+        "client": "Oh my! I think... I think Uncle Pastuzo knew this would happen, didn't he? He knew I'd teach London about making families out of strangers, just like Aunt Lucy taught me. When I put that label on, I t",
+        "resistance": 0.1,
+        "insight": true,
+        "pattern": "两个世界之间"
+      },
+      {
+        "turn": 5,
+        "coach": "Paddington, yes — Uncle Pastuzo understood something profound about love and belonging. That label wasn't just asking for care; it was declaring your gift to the world. You've realized you're 你是桥，不是孤岛",
+        "client": "I... I never understood before that Uncle Pastuzo wasn't sending me away - he was sending me forward! Like marmalade in a jar, I carry Peru inside me wherever I go. When Mrs. Bird first tasted my sand",
+        "resistance": 0.1,
+        "insight": true,
+        "pattern": "两个世界之间"
+      }
+    ],
+    "time": 75.18567395210266
+  },
+  {
+    "id": "xu_sanguan_imm",
+    "name": "许三观",
+    "source": "许三观卖血记",
+    "expected_pattern": "displacement_grief",
+    "patterns_detected": [
+      "between_worlds",
+      "nostalgia_trap",
+      "displacement_grief"
+    ],
+    "final_resistance": 0.2,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "旧世界...旧世界给了我什么？家人的情分，还有不怕吃苦的劲头，还有...还有知道什么是真正的饿肚子。新世界呢，新世界教会我更会算计了，更知道怎么在夹缝里求生，还有见过了更多不同的人。你说得对，我确实是多了什么，不是少了。以前我老觉得自己什么",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "三观，文革那些年把多少家庭连根拔起。你说'到处流浪'——那种没有根的感觉，像是永远在找一个能安下心的地方，但又不知道那个地方在哪里。我想先了解一下，那时候你们从哪里开始流浪的？现在又在什么地方？\n\n你知道吗，我听到你说话的方式，感觉你是那种无论走到哪里都能想办法活下去的人。卖血也好，做什么苦力也好，你有那种韧性。但我也听得出来，光是活下去还不够——你在找的是真正属于的感觉。\n\n现在这么多年过去了，",
+        "client": "扎根？哈，你说得轻松。我们从城里被赶出来，先是乡下，后来又到处跑。现在在这里也不知道能待多久。我这个人啊，走到哪算哪，家人在身边就行。但是说真的，有时候晚上躺下，我也不知道明天会在哪里。这种日子过惯了，想扎根都不知道怎么扎。",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "两个世界之间"
+      },
+      {
+        "turn": 2,
+        "coach": "许三观，你刚才说'走到哪算哪，家人在身边就行'——这句话里有很深的智慧。你把家的定义从地方变成了人，这不是妥协，是进化。\n\n文革把你们连根拔起，但看看你现在——你没有被击垮。你学会了在任何地方都能找到活法，这种能力多少安稳过日子的人都没有。你是桥，不是孤岛。能理解两个世界的人是最稀缺的。\n\n你说想扎根都不知道怎么扎，但也许问题不在扎根的技术，而在重新定义什么叫根。你的根不在地下，在你身上——在你保",
+        "client": "你这话说得...我心里头一震。从来没人这么跟我说过。我一直觉得自己就是个被风吹来吹去的人，没想到你说我是桥。可是有时候啊，我也累，也想有个地方能踏踏实实睡一觉，不用担心明天又要搬家。我这个人，为了家人什么都能做，只要还有血可以卖，但是...但是有时候也想知道，这样的日子什么时候是个头。",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "两个世界之间"
+      },
+      {
+        "turn": 3,
+        "coach": "许三观，我听到你心里那个震动了。你说'从来没人这么跟我说过'——这让我想到，也许你一直在等着有人看见你真正的样子。不是那个被风吹的人，而是那个无论刮多大的风都能护住家人的人。\n\n你问什么时候是个头——我想说，也许头不在停下来，而在明白自己已经是完整的了。你说为了家人什么都能做，这就是你的根啊。文革拔不走的那个根。\n\n现在我想请你做个练习：列出你从旧世界带来的三样东西——可能是价值观、技能、记忆——",
+        "client": "旧世界...旧世界给了我什么？家人的情分，还有不怕吃苦的劲头，还有...还有知道什么是真正的饿肚子。新世界呢，新世界教会我更会算计了，更知道怎么在夹缝里求生，还有见过了更多不同的人。你说得对，我确实是多了什么，不是少了。以前我老觉得自己什么都没了，原来还有这些。",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "两个世界之间"
+      },
+      {
+        "turn": 4,
+        "coach": "许三观，听到你这样梳理，我心里也暖了。你看，当你开始清点自己的财富时，发现原来你一直是富有的——只是用的不是钱的标准。你说'原来还有这些'，这就是觉醒的开始。文革想要摧毁你们，但它没能拿走你保护家人的本能，没能拿走你面对饥饿的勇气。这些东西，多少在安逸里长大的人都没有。现在你又学会了在复杂世界里生存的智慧——你确实比任何一边都丰富。你问什么时候是个头，我想说：也许头就在你刚才那句'我确实是多了什么",
+        "client": "你这么一说，我心里头好像有什么东西松开了。我这一辈子老觉得自己是个什么都没有的人，被人赶来赶去。可是听你这么说，我想起来，那些最难的时候，我还是把家人都保住了，一个都没少。也许...也许我真的不是什么都没有。只是以前没人这么跟我说过，连我自己都没这么想过。",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "两个世界之间"
+      },
+      {
+        "turn": 5,
+        "coach": "许三观，这就对了。你心里那个结终于松开了一点。你说'一个都没少'——这四个字重千斤。多少人在那个年代都保不住自己，你却护住了整个家。这不是运气，这是你的能力。\n\n你现在明白了，你不是被风吹的叶子——你是那棵树，无论种在哪里都能扎根。文革想要连根拔起你们，但它拔不走你骨子里那股保护家人的劲。现在你到了新地方，这股劲还在，只是找到了新的用武之地。\n\n你说'没人这么跟我说过'，但其实最重要的是你现在开始",
+        "client": "你说得对，我确实是那棵树。这么多年了，我一直觉得自己在逃，原来我是在护。护着家人从一个地方走到另一个地方，哪里都能活下去。以前总想着什么时候能停下来，现在想想，也许我从来就没有在逃，我是在找...找一个更好的地方给家人。",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "两个世界之间"
+      }
+    ],
+    "time": 91.53365397453308
+  },
+  {
+    "id": "kim_kipling",
+    "name": "Kim",
+    "source": "Kim (Kipling)",
+    "expected_pattern": "between_worlds",
+    "patterns_detected": [
+      "between_worlds",
+      "displacement_grief"
+    ],
+    "final_resistance": 0.3,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "The fullness of both... I had not... the sahib speaks strangely but truly. Always I think Kim must choose - be this or b",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Kim, I hear you describing yourself as living between worlds - Irish and Indian, Doyle's son and the Lama's chela, the Friend of all the World. That's a lot of different pieces of who you are. When yo",
+        "client": "The road is home, sahib. You speak truly - the Grand Trunk Road knows Kim better than any house with walls. But exhausting? Nay, it is... it is the game, and I am good at the game. The Lama seeks his ",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "两个世界之间"
+      },
+      {
+        "turn": 2,
+        "coach": "Kim, you speak of the road as home, but I hear something beneath that pride in the game - a loneliness that comes from always being the bridge between worlds, never fully resting in either. You've lea",
+        "client": "You... you speak words I have not heard before, sahib. A bridge, yes - but bridges are built for others to cross, not to rest upon themselves. I am useful, this is true. The Lama needs his chela, Doyl",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "两个世界之间"
+      },
+      {
+        "turn": 3,
+        "coach": "Kim, I hear you catching yourself mid-sentence - 'I am useful, this is true' - and that pause tells me everything. You've learned to measure your worth by how well you serve others' needs, how perfect",
+        "client": "The fullness of both... I had not... the sahib speaks strangely but truly. Always I think Kim must choose - be this or be that. Irish or Indian. Doyle's son or Lama's chela. But perhaps... perhaps Kim",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "两个世界之间"
+      },
+      {
+        "turn": 4,
+        "coach": "Kim, you're touching something profound here - that moment when you realize you don't have to choose sides in a war nobody else is fighting. For so long you've been the rope in a tug-of-war between Ir",
+        "client": "Bridges are... destinations worth visiting. Hah! The sahib speaks like the Lama but with different words. I have been thinking Kim must earn his place by being useful, by playing the game perfectly. B",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "两个世界之间"
+      },
+      {
+        "turn": 5,
+        "coach": "Kim, I love hearing you catch that - 'bridges are destinations worth visiting.' You've been so busy trying to prove you belong somewhere that you missed the truth: you ARE somewhere. The Grand Trunk R",
+        "client": "Honor both teachers, speak both languages of the heart... this is new music to Kim's ears, sahib. Always I thought I must choose - be good Irish boy for Doyle sahib or be worthy chela for the Lama. Bu",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "两个世界之间"
+      }
+    ],
+    "time": 73.925772190094
+  },
+  {
+    "id": "joy_luck_mother",
+    "name": "Suyuan Woo",
+    "source": "The Joy Luck Club",
+    "expected_pattern": "cultural_bridge",
+    "patterns_detected": [
+      "between_worlds",
+      "nostalgia_trap",
+      "displacement_grief"
+    ],
+    "final_resistance": 0.1,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "You speak Chinese to me... *voice soft, surprised* Nobody here speaks to my heart this way. You are right - I am not hal",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Suyuan, I hear the weight you carry - leaving your daughters in China, and now watching your American daughter struggle to understand the urgency behind your love. That kind of separation creates woun",
+        "client": "You think you understand, but... *voice breaks* In China, I was complete person. Here, I am always explaining, always... broken English, broken heart. My daughter, she sees pushing, but she don't see ",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "两个世界之间"
+      },
+      {
+        "turn": 2,
+        "coach": "Suyuan, I hear you - in China you were whole, here you feel fractured, constantly translating not just words but your very essence. Your daughter sees the pushing but cannot see the twin daughters you",
+        "client": "You... you say I am bridge, not broken. *tears starting* Maybe... maybe this is true. I never think this way. In China, I was young mother who had to choose - stay and watch babies die, or leave and m",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "两个世界之间"
+      },
+      {
+        "turn": 3,
+        "coach": "Suyuan, you've touched something profound - you ARE a bridge, not broken. That young mother who made an impossible choice to save her daughters' lives? That same fierce love lives in how you push your",
+        "client": "You speak Chinese to me... *voice soft, surprised* Nobody here speaks to my heart this way. You are right - I am not half person. I am... I am woman who carry China's strength and America's hope. June",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "两个世界之间"
+      },
+      {
+        "turn": 4,
+        "coach": "Suyuan, when someone speaks to your heart in your language, you remember who you've always been. That fierce mother who walked across war-torn China carrying twin babies - she didn't disappear when yo",
+        "client": "*crying now* You understand... I am 完整的. All this time I think I am not enough - not enough American, not enough Chinese. But I am both, and that is... that is why I can give June what she need. She h",
+        "resistance": 0.1,
+        "insight": true,
+        "pattern": "两个世界之间"
+      },
+      {
+        "turn": 5,
+        "coach": "完整的 - yes, Suyuan, you are whole. You've been carrying this completeness all along, even when the world made you feel fractured. That fierce mother who walked across war zones - she didn't become less",
+        "client": "Yes... yes, I see now. I am not teaching June to be Chinese or American - I am teaching her to be strong like her mama who survive everything. She will understand someday that my love... it has passpo",
+        "resistance": 0.1,
+        "insight": true,
+        "pattern": "两个世界之间"
+      }
+    ],
+    "time": 72.938560962677
+  },
+  {
+    "id": "marjane",
+    "name": "Marjane Satrapi",
+    "source": "Persepolis (fictionalized)",
+    "expected_pattern": "between_worlds",
+    "patterns_detected": [
+      "between_worlds",
+      "nostalgia_trap",
+      "displacement_grief"
+    ],
+    "final_resistance": 0.1,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "I never thought... *voice shaking* You're right. I carry both my grandmother's stories and this new language of rebellio",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "You've captured something so precise—this feeling of being suspended between worlds, where each place reflects back what you're not rather than what you are. When you say 'too Iranian for Europe, too ",
+        "client": "In Tehran, I was... I was fearless, you know? I wore my sneakers and my denim jacket like armor against the regime. I had my identity - I was the revolution's child who questioned everything. But here",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "两个世界之间"
+      },
+      {
+        "turn": 2,
+        "coach": "That fearless girl in the denim jacket—she didn't disappear when you crossed borders. She's right here, asking the same revolutionary questions, just in a different language now. Vienna sees your acce",
+        "client": "You... you just made me remember something. My grandmother always said I had fire in me, that it came from generations of Persian women who never bent. Maybe... maybe that fire doesn't need a homeland",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "两个世界之间"
+      },
+      {
+        "turn": 3,
+        "coach": "That fire your grandmother saw—it's exactly what I'm talking about. You are the bridge, not the island. Think about it: who else can understand both the weight of hijab resistance and the subtle codes",
+        "client": "I never thought... *voice shaking* You're right. I carry both my grandmother's stories and this new language of rebellion. Maybe being displaced isn't about losing who I am - maybe it's about becoming",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "两个世界之间"
+      },
+      {
+        "turn": 4,
+        "coach": "你的声音在颤抖，但那是认知的震动，不是破碎。你刚刚触及了一个深刻的真相：你是桥，不是孤岛。能理解两个世界的人是最稀缺的。你的祖母看到的那团火，现在有了更复杂的燃料——伊朗的勇气和维也纳的自由。这不是失去，是增益。你比任何单一文化的人都丰富，因为你携带着两套完整的情感语言、两种看世界的方式。你可以用波斯语思考反抗的深度，用德语表达它的精确。你不是在两个不完整之间流浪，你是在整合两个完整的自己。那个在",
+        "client": "You're speaking to something I didn't know I was carrying. I... I always thought displacement meant losing pieces of myself, but maybe I'm collecting them instead. My anger at the Shah, my loneliness ",
+        "resistance": 0.1,
+        "insight": true,
+        "pattern": "两个世界之间"
+      },
+      {
+        "turn": 5,
+        "coach": "在维也纳，你用德语说'我很孤独'，但这个孤独里装着伊朗女孩的全部复杂——对沙阿的愤怒、对家的思念、对自由的渴望。你不是在收集碎片，你是在编织一个更大的故事。你祖母的火现在燃烧得更亮，因为它有了新的氧气。你可以同时理解头巾抗争的深度和维也纳咖啡馆里的存在主义谈话。这种双重理解是礼物，不是诅咒。你能看到其他人看不到的连接——革命的普世语言，压迫的相似模式，人性在不同文化中的相同表达。你不是无处安放的人",
+        "client": "I... I think I'm understanding something now. The fire my grandmother saw - it's not Iranian fire or European fire. It's just mine. And maybe that's enough. Maybe being Marjane means I don't need anyo",
+        "resistance": 0.1,
+        "insight": true,
+        "pattern": "两个世界之间"
+      }
+    ],
+    "time": 71.13028717041016
+  }
+]

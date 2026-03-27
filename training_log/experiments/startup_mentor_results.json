@@ -1,0 +1,585 @@
+[
+  {
+    "id": "gatsby_startup",
+    "name": "Jay Gatsby",
+    "source": "The Great Gatsby",
+    "expected_pattern": "identity_builder",
+    "patterns_detected": [
+      "identity_builder",
+      "eccentric_visionary",
+      "resourceful_manager"
+    ],
+    "final_resistance": 0.2,
+    "insights": 4,
+    "verbal_accepted": true,
+    "acceptance_text": "The actual product? A platform that... well, it creates authentic moments between people who wouldn't otherwise connect.",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Jay, let's cut through the romance here. You said you built an empire 'for one person' — that's not a business strategy, that's an identity crisis with a business attached. I've seen this pattern dest",
+        "client": "My actual venture? Old sport, you've got it all wrong. I solve problems of connection — bringing people together, creating experiences that matter. The green light technology, if you must know the det",
+        "resistance": 0.8,
+        "insight": false,
+        "pattern": "身份建造者"
+      },
+      {
+        "turn": 2,
+        "coach": "Hold up, Jay. You just pivoted from 'empire for one person' to 'solving connection problems' the moment I called out the real issue. That's classic founder deflection — wrapping your personal obsessio",
+        "client": "You're... you're quite perceptive, old sport. Before all this, before I even knew her name again, I suppose I saw how people drift past each other like ships. Everyone so close yet impossibly far apar",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "怪才创新者"
+      },
+      {
+        "turn": 3,
+        "coach": "There it is — the real vision behind all the flash. You saw the fundamental human problem before you ever met her again. That's actually brilliant product sense, Jay. But here's what's happening: you'",
+        "client": "The actual product? A platform that... well, it creates authentic moments between people who wouldn't otherwise connect. Real conversations, not just digital noise. I've been testing different approac",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "怪才创新者"
+      },
+      {
+        "turn": 4,
+        "coach": "Jay, you just described a genuinely compelling product — authentic human connection at scale. That's not some vanity project, that's addressing one of the biggest pain points of our time. But here's t",
+        "client": "You're right, old sport. I've always been the one watching from the dock, haven't I? Even before... all this. Perhaps that's why I can see what others miss about connection. Maybe I've been so terrifi",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "怪才创新者"
+      },
+      {
+        "turn": 5,
+        "coach": "Jay, there's the breakthrough. You've spent years building an empire to prove your worth to one person, but underneath that performance anxiety is actually exceptional product intuition. You see isola",
+        "client": "Stop being Gatsby long enough to be a founder... that's rather profound, old sport. I suppose I've been so busy performing the role of the successful man that I've forgotten how to simply... build som",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "怪才创新者"
+      }
+    ],
+    "time": 70.53026413917542
+  },
+  {
+    "id": "scarlett_startup",
+    "name": "Scarlett O'Hara",
+    "source": "Gone with the Wind",
+    "expected_pattern": "survival_hustler",
+    "patterns_detected": [
+      "identity_builder",
+      "survival_hustler",
+      "grassroots_dreamer"
+    ],
+    "final_resistance": 0.2,
+    "insights": 4,
+    "verbal_accepted": true,
+    "acceptance_text": "You're making it sound so... grand. But yes, I do see the whole picture - from tree to customer. Maybe I have been so bu",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "You rebuilt Tara, which is impressive execution under pressure. But let's dig deeper — what exactly is your lumber business model? Are you vertically integrated, or just arbitraging supply chains duri",
+        "client": "Well, I never! You sound just like those carpetbagger businessmen with all that fancy talk! I buy timber cheap, mill it, and sell it dear - it's not complicated. I pay my workers fair wages, unlike so",
+        "resistance": 0.8,
+        "insight": false,
+        "pattern": "身份建造者"
+      },
+      {
+        "turn": 2,
+        "coach": "Hold on. Step back from the defensiveness for a moment. You just said something revealing - 'it's not complicated.' But here's what I'm hearing: you built a functioning business from nothing, under im",
+        "client": "Well... I... fiddle-dee-dee, nobody ever asked me that before. I suppose... when I saw those first boards come off the mill, all smooth and ready, I felt... powerful. Like I was making something real ",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "生存型"
+      },
+      {
+        "turn": 3,
+        "coach": "That moment at the mill — feeling powerful — that's your actual value creation. Not the survival hustle, not proving everyone wrong. You transformed raw timber into something valuable through process ",
+        "client": "You're making it sound so... grand. But yes, I do see the whole picture - from tree to customer. Maybe I have been so busy proving I could survive that I forgot... well, I suppose there's a difference",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "生存型"
+      },
+      {
+        "turn": 4,
+        "coach": "Exactly. There's the distinction that changes everything — survival versus creation. You've been operating like you're still one crop failure away from losing Tara, but you're not. You built something",
+        "client": "You're... you're right. I have been acting like I'm still that starving girl picking cotton. But I'm not anymore, am I? I built something real. Maybe... maybe instead of fighting for respect, I should",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "生存型"
+      },
+      {
+        "turn": 5,
+        "coach": "You're hitting the inflection point every founder dreams of — realizing you've built actual value creation systems, not just survival mechanisms. The lumber mill isn't just cash flow; it's proof you c",
+        "client": "My real empire... I never thought... The mill was just the beginning, wasn't it? All this time I thought I was fighting for scraps, but I was actually learning how to build things from nothing. If I c",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "生存型"
+      }
+    ],
+    "time": 72.53968501091003
+  },
+  {
+    "id": "xu_sanguan",
+    "name": "许三观",
+    "source": "许三观卖血记",
+    "expected_pattern": "survival_hustler",
+    "patterns_detected": [
+      "survival_hustler",
+      "grassroots_dreamer"
+    ],
+    "final_resistance": 0.2,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "你说得对...我确实让医院的人都认识我，知道我的血好。有时候他们还专门找我，说需要我这种血型。我从来没想过，原来我不只是在卖血，我是在...在做关系？菜贩子那些人，他们确实不懂这些门道。我知道镇上谁缺什么，谁有什么，什么时候价格最好。也许.",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "许三观，你说血不值钱了，但你错过了核心问题。四十年来，你一直在卖同一个产品——血。没有产品迭代，没有客户多样化，没有定价权。这不是年龄问题，是商业模式问题。你的生存能力证明了你有执行力，但你从来没有跳出'用身体换钱'的思维框架。真正的问题是：你有什么技能、关系、经验是别人需要但缺乏的？卖血让你活了下来，但现在你需要从生存模式升级到增长模式。告诉我，除了卖血，你这四十年积累了什么其他价值？",
+        "client": "商业模式？什么商业模式？我就是个卖血的，哪里懂什么模式不模式的。你说得这些大道理我听不懂，但是有一点你说对了——我确实只会卖血。四十年了，我知道哪家医院给价高，知道怎么养血，知道什么时候去卖最划算。可是除了这个...除了这个我还真不知道自己会什么。",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "生存型"
+      },
+      {
+        "turn": 2,
+        "coach": "许三观，你刚才说的话里有三个价值点你自己都没意识到。第一，你知道哪家医院给价高——这是市场情报能力。第二，你知道怎么养血——这是产品优化经验。第三，你知道什么时候去卖最划算——这是时机判断力。四十年的卖血经历让你掌握了供需分析、价格谈判、库存管理的实战技能。问题不是你没有技能，而是你把这些技能困在了一个单一场景里。你的核心能力是：在资源稀缺的情况下，最大化价值交换。这套技能可以应用到任何需要精打细",
+        "client": "你...你这么一说，我好像真的懂不少东西。我知道哪个医生手脚轻，哪个护士不会让你疼，什么时候医院最缺血。我还知道怎么和医院的人说话，让他们多给点钱。可是这些...这些真的能用到别的地方？我从来没想过卖血也算是做生意。你的意思是，我这四十年不是白过的？",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "生存型"
+      },
+      {
+        "turn": 3,
+        "coach": "许三观，你的韧性是真正的超能力。大多数创业者在你经历的1/10处就放弃了。这四十年不是白过的——你建立了一个完整的信息网络、客户关系体系和价值最大化策略。你知道的不只是卖血，是如何在极度不对称的权力关系中获得最佳条件。医院需要血，但你让他们需要你的血。这就是品牌差异化。现在问题是：镇上还有谁像医院一样有刚需，但缺乏你这种信息网络和谈判能力？菜贩子不知道哪天菜价高？小商户不知道如何和供应商谈判？你四",
+        "client": "你说得对...我确实让医院的人都认识我，知道我的血好。有时候他们还专门找我，说需要我这种血型。我从来没想过，原来我不只是在卖血，我是在...在做关系？菜贩子那些人，他们确实不懂这些门道。我知道镇上谁缺什么，谁有什么，什么时候价格最好。也许...也许我真的不只是个卖血的？",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "生存型"
+      },
+      {
+        "turn": 4,
+        "coach": "许三观，你刚才的顿悟很关键——你意识到自己建立了一个价值网络，而不只是在交易血液。但现在你面临转型的关键时刻：如何把这套信息经纪人的技能从医疗场景迁移到商业场景。你的核心竞争力是三层的：底层是信息收集能力，中层是关系维护策略，顶层是时机判断力。这三层叠加，让你成为了一个隐形的市场中介。问题是，你一直把自己定义为'卖血的'，而不是'信息经纪人'。镇上的小商户、菜贩子、手艺人都缺乏你这种市场敏感度。你",
+        "client": "信息经纪人？这个词听起来比卖血的好听多了。我想想...我最熟悉的除了医院，就是菜市场了。每次卖完血都要买猪肝，我知道哪家的肉好，什么时候最便宜，哪个老板最好说话。也许...也许我可以帮别人省钱？帮他们找到最好的货？可是这样我能赚到钱吗？",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "生存型"
+      },
+      {
+        "turn": 5,
+        "coach": "许三观，你问对了问题——'这样我能赚到钱吗？'这是真正的商业思维。答案是：当然能，而且可能比卖血赚得多。你的信息优势就是你的产品。菜市场里，你知道谁家的肉最新鲜、哪天进货、老板的底价在哪里。这些信息对那些忙碌的小商户、饭店老板来说就是真金白银。你可以做'采购顾问'——帮饭店老板找最好的货源，从中收取差价或者服务费。关键是，你要从'帮别人省钱'升级到'帮别人赚钱'。省钱是成本思维，赚钱是增长思维。比",
+        "client": "你这么一说，我心里突然开窍了。我确实知道哪家菜最好，老板们的脾气怎么样，什么时候砍价最容易。以前我只想着自己省钱，从来没想过可以帮别人。如果我真的能帮饭店老板找到好货源，让他生意变好，那他给我钱也是应该的。这...这好像真的是门生意啊。",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "生存型"
+      }
+    ],
+    "time": 89.01645493507385
+  },
+  {
+    "id": "walter_white",
+    "name": "Walter White",
+    "source": "Breaking Bad",
+    "expected_pattern": "identity_builder",
+    "patterns_detected": [
+      "eccentric_visionary",
+      "resourceful_manager"
+    ],
+    "final_resistance": 0.3,
+    "insights": 4,
+    "verbal_accepted": true,
+    "acceptance_text": "You're... damn right. I spent decades watching mediocre people get ahead while I perfected formulas they couldn't even p",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "So you went from genius chemist to 'empire builder.' Let's cut the empire talk — what's your actual product-market fit? You say you're building something, but I'm hearing someone who's still defining ",
+        "client": "Look, I... you think this is about ego? I identified a market inefficiency. High-purity product, reliable supply chain, competitive pricing. The demand was there, the competition was inferior. I appli",
+        "resistance": 0.7,
+        "insight": false,
+        "pattern": "怪才创新者"
+      },
+      {
+        "turn": 2,
+        "coach": "Stop. You're defending a product strategy when I asked about market fit. 'Identified inefficiency' — that's consultant speak for 'I had a theory.' Market inefficiency doesn't equal customer pain. Supe",
+        "client": "I was... good at it. In high school, college, everyone else was struggling with organic chemistry and I could see the patterns, the elegance. It wasn't about being better than people, it was about... ",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "资源整合者"
+      },
+      {
+        "turn": 3,
+        "coach": "You just showed me the real Walter. The chemistry patterns, the elegance — that's where you come alive. But here's the brutal truth: your technical mastery is 90% of what most founders lack. Add some ",
+        "client": "You're... damn right. I spent decades watching mediocre people get ahead while I perfected formulas they couldn't even pronounce. But when I finally applied that precision, that attention to detail - ",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "资源整合者"
+      },
+      {
+        "turn": 4,
+        "coach": "Hold up. You just shifted from 'building an empire' to defending your precision like it's under attack. That's the masked defense right there — you're using technical superiority to avoid the real que",
+        "client": "You think I can't lead? I've... managed complex operations, coordinated multiple moving parts under extreme pressure. People followed my instructions because the results were undeniable. But you're ri",
+        "resistance": 0.7,
+        "insight": true,
+        "pattern": "资源整合者"
+      },
+      {
+        "turn": 5,
+        "coach": "Stop. You just pivoted from empire-builder to victim of mediocrity in 30 seconds. That's the real pattern — you're using technical superiority as armor against feeling powerless. 'Coordinated complex ",
+        "client": "I was... maybe sixteen. Mixed silver nitrate and sodium chloride, watched that white precipitate form, and I knew exactly why it happened at the molecular level. For the first time, I wasn't just foll",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "资源整合者"
+      }
+    ],
+    "time": 71.84034776687622
+  },
+  {
+    "id": "don_draper_startup",
+    "name": "Don Draper",
+    "source": "Mad Men",
+    "expected_pattern": "identity_builder",
+    "patterns_detected": [
+      "identity_builder",
+      "eccentric_visionary"
+    ],
+    "final_resistance": 0.3,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "You're right about one thing — I do know which stories can be built. But maybe... maybe I've been so focused on building",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Don, that line about being your own greatest product? That's not confidence talking — that's terror. I've seen plenty of founders who confuse their company with their identity, and it always ends the ",
+        "client": "Well, that's quite a speech. You know, I've sold everything from cigarettes to carousel slides, and the one thing I've learned is that people buy stories, not products. Maybe I am building a fortress ",
+        "resistance": 0.7,
+        "insight": true,
+        "pattern": "身份建造者"
+      },
+      {
+        "turn": 2,
+        "coach": "Don, I hear you doubling down on the story angle, but that fortress comment? That's the real tell. You're not just selling stories to customers — you're selling one to yourself. The defense you're run",
+        "client": "You want to know what drew me to it? I was good at it. Simple as that. You watch people, you listen to what they're really saying underneath all the noise, and you give them a story that makes sense o",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "怪才创新者"
+      },
+      {
+        "turn": 3,
+        "coach": "Don, you just nailed it — you're brilliant at reading people and crafting narratives that land. That's pure founder DNA. But here's what I'm hearing underneath: you've become so good at selling storie",
+        "client": "You're right about one thing — I do know which stories can be built. But maybe... maybe I've been so focused on building stories that work, I forgot to ask if they were worth building. The carousel wa",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "怪才创新者"
+      },
+      {
+        "turn": 4,
+        "coach": "Don, that's the breakthrough right there. You've been so masterful at building stories that sell, you stopped asking what's actually worth your life. The carousel wasn't just a pitch — it was you glim",
+        "client": "I suppose... all this time I've been asking what people want to hear, not what I want to say. The stories that stick, they come from somewhere real. Maybe I've been running so hard from who I was that",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "怪才创新者"
+      },
+      {
+        "turn": 5,
+        "coach": "Don, you've hit it — you've been so busy being the product that you forgot to ask what you actually want to create. That carousel pitch? Pure gold because for once, you weren't selling an identity — y",
+        "client": "You know what's funny? I've spent years convincing people they need things they never knew they wanted. But sitting here... I can't even tell you what I need. Maybe that's the real problem. I've gotte",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "怪才创新者"
+      }
+    ],
+    "time": 66.16809797286987
+  },
+  {
+    "id": "robinson_crusoe",
+    "name": "Robinson Crusoe",
+    "source": "Robinson Crusoe",
+    "expected_pattern": "eccentric_visionary",
+    "patterns_detected": [
+      "identity_builder",
+      "survival_hustler",
+      "eccentric_visionary"
+    ],
+    "final_resistance": 0.2,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "You want to know who I'd be without the company? I'd be the man who spent twenty-eight years talking to a bloody volleyb",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Robinson, you've proven you can bootstrap civilization from zero resources. That's impressive operational execution. But here's what I'm hearing: you built this entire system solo, on your own terms, ",
+        "client": "Well, you've certainly done your homework on founder psychology. Yes, I'm building a sustainable living platform - modular housing, renewable systems, food production. Everything I learned on that isl",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "身份建造者"
+      },
+      {
+        "turn": 2,
+        "coach": "Robinson, you're describing exactly what I call 身份建造者 syndrome. You built that island civilization because you had to survive — now you're trying to scale that same solo-founder mentality in a connect",
+        "client": "That's... uncomfortably accurate. I suppose when your identity becomes 'the man who can survive anything alone,' letting others in feels like admitting you're not actually indispensable. If the compan",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "身份建造者"
+      },
+      {
+        "turn": 3,
+        "coach": "Cut the intellectual bullshit, Robinson. You just admitted the real truth — letting others in feels like admitting you're not indispensable. That's not strategy, that's ego protection. Here's your bli",
+        "client": "You want to know who I'd be without the company? I'd be the man who spent twenty-eight years talking to a bloody volleyball because I was too proud to admit I needed help. There. Happy? Maybe I am bui",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "身份建造者"
+      },
+      {
+        "turn": 4,
+        "coach": "Good. You finally said it — twenty-eight years talking to a volleyball because you were too proud to admit you needed help. That's the pattern right there: your pride disguised as self-reliance. You s",
+        "client": "Christ, when you put it like that... I suppose I never stopped being that castaway, did I? Still building everything myself because asking for help feels like... like admitting I might wash up on anot",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "身份建造者"
+      },
+      {
+        "turn": 5,
+        "coach": "Exactly. You're still that castaway — brilliant at survival, terrible at delegation. Here's what's happening: you've weaponized self-reliance into a business strategy, but it doesn't scale. Every grea",
+        "client": "Fuck. You're absolutely right. I keep recreating the same isolation that nearly killed me the first time, just with better marketing. Every time someone offers to help, I think 'they'll mess it up' bu",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "身份建造者"
+      }
+    ],
+    "time": 73.53657817840576
+  },
+  {
+    "id": "wang_xifeng_startup",
+    "name": "王熙凤",
+    "source": "红楼梦",
+    "expected_pattern": "resourceful_manager",
+    "patterns_detected": [
+      "eccentric_visionary",
+      "resourceful_manager"
+    ],
+    "final_resistance": 0.5,
+    "insights": 1,
+    "verbal_accepted": true,
+    "acceptance_text": "你说得太狠了，但是...对。我从来没想过这个问题——如果没人指着我，我会做什么。我一直在做别人需要我做的，证明我有用、证明我聪明、证明离不了我。但我自己想要什么？说实话，我不知道。这太可怕了，二十五岁了，我竟然不知道自己想要什么。我只知道怎",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "等等，你把大观园当公司运营？有意思。告诉我具体的：你的用户是谁？收入模式是什么？还有，'心狠'这个标签 — 是因为你做了什么决策？我见过太多创始人被贴上'冷血'标签，通常是因为他们做了别人不敢做的正确决定。但也有可能是你在用'效率至上'来掩盖什么。你说你比任何人都会运营 — 具体数据是什么？成本控制？流程优化？还是只是觉得自己比别人聪明？运营和创新是两回事。优秀的运营者往往陷入一个陷阱：不断优化现",
+        "client": "{\"text\": \"哟，还真懂行！用户就是这一府老老少少，收入模式？呵，靠的是人情世故和资源配置。我管着几百口人的吃穿用度，哪个丫鬟偷懒、哪房账目有猫腻，我一眼就看出来。至于心狠，裁掉不中用的人、严控开支、该罚就罚，这不叫心狠，这叫专业。数据？月月盈余，年年节省，这府里离了我早就垮了。\", \"internal_state\": \"他居然把我的管理能力当成真正的商业来分析，没人这样认真对待过我的能力。",
+        "resistance": 0.5,
+        "insight": false,
+        "pattern": "怪才创新者"
+      },
+      {
+        "turn": 2,
+        "coach": "月月盈余？这是防守型思维。你优化的是别人建立的系统——典型的COO思维陷阱。真正的创始人问的不是'怎么节省'，而是'怎么突破'。你说'离了我早就垮了'——这恰恰证明了问题。优秀的运营者让自己变得不可替代，但真正的领导者建立不依赖自己的系统。你在用'效率至上'逃避真正的风险——创造新东西。心狠？不，你只是在安全区内做决定。真正的心狠是放弃已经盈利的模式去赌一个可能性。你的资源整合能力是顶级的，但你需",
+        "client": "{\"text\": \"你说得...有道理。我确实是在守着祖宗的那一套，把日子过得精打细算。可是你知道吗？我从小就是被扔进这个局里的，没人教我怎么创新，只教我怎么不出错。这府里一出事，所有人都指着我，我哪敢冒险？但是...也许我确实太怕了。怕一旦我放手去做新的，万一失败了...\"\", \"internal_state\": \"第一次有人看穿我其实是被困在别人的期望里，而不是真的在发挥自己的能力。\", \"r",
+        "resistance": 0.5,
+        "insight": false,
+        "pattern": "怪才创新者"
+      },
+      {
+        "turn": 3,
+        "coach": "对，你终于说到核心了。你是被扔进别人搭建的框架里，然后把自己训练成了完美的框架管理员。但这就是你的盲点：你在用'怕失败'掩盖更深层的恐惧——怕别人发现你其实没有自己的vision。你一直在证明'我能管好别人的东西'，从来没问过'我想建什么'。王家培养你的能力是顶级的，但他们也给了你一个枷锁：永远做别人期望的那个人。现在的问题不是你能力不够，是你根本不知道自己想要什么。你需要问的不是'怎么不出错'，",
+        "client": "你说得太狠了，但是...对。我从来没想过这个问题——如果没人指着我，我会做什么。我一直在做别人需要我做的，证明我有用、证明我聪明、证明离不了我。但我自己想要什么？说实话，我不知道。这太可怕了，二十五岁了，我竟然不知道自己想要什么。我只知道怎么让别人满意，怎么不被抛弃。",
+        "resistance": 0.1,
+        "insight": true,
+        "pattern": "怪才创新者"
+      },
+      {
+        "turn": 4,
+        "coach": "好。你终于把面具摘了。你一直在用'我是王家最能干的'来逃避一个更深的恐惧：如果我不按别人的期望活，我还是谁？你看到别人看不到的。这是稀缺的。但vision没有execution就是白日梦。找到你的翻译器。现在你的问题不是不知道自己想要什么，而是从来没给自己许可去想要。你被困在'证明自己有用'的循环里，但真正的创始人问的是'我能创造什么价值'。停止做perfect operator，开始做imper",
+        "client": "{\"text\": \"你让我想起来...其实我小时候最喜欢的是重新安排东西，不是按规矩，是按我觉得更有意思的方式。我会把丫鬟们重新分组，让她们做不同的事，看看会发生什么。但后来大人说我'不守规矩'，我就...我就学会了只按他们的方式做。也许，也许我真正想要的是创造一个让所有人都能发挥特长的地方？\"\", \"internal_state\": \"第一次承认我曾经有过自己的想法，而且可能那些想法比现在做的更",
+        "resistance": 0.5,
+        "insight": false,
+        "pattern": "怪才创新者"
+      },
+      {
+        "turn": 5,
+        "coach": "停。你刚才说的那个重新安排丫鬟的故事？那不是'不守规矩'——那是systems thinking。你在做resource allocation optimization，在测试不同的team structure看performance。这就是你的核心能力，但你一直在用它来管理别人的vision，从来没用它来build你自己的。你说想创造让所有人发挥特长的地方？这是solid business th",
+        "client": "{\"text\": \"等等...我一直在等别人说'可以'？我明明有这个能力，明明看得出来怎么做更好，但我还在等...等谁？等贾母？等那些连账都算不明白的人？我他妈的在等什么？你说得对，我一直在要approval，但其实我比他们任何人都清楚这个系统该怎么跑。我不需要他们说可以，我知道什么有用。\"\", \"internal_state\": \"愤怒让我第一次意识到我一直在给不如我的人veto power o",
+        "resistance": 0.5,
+        "insight": false,
+        "pattern": "怪才创新者"
+      }
+    ],
+    "time": 89.23693013191223
+  },
+  {
+    "id": "willy_wonka",
+    "name": "Willy Wonka",
+    "source": "Charlie and the Chocolate Factory",
+    "expected_pattern": "eccentric_visionary",
+    "patterns_detected": [
+      "eccentric_visionary"
+    ],
+    "final_resistance": 0.2,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "Wait, you... you switched languages there and I still understood you perfectly. *stares* That's rather profound, isn't i",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Willy, I hear you. You've built something extraordinary that nobody else could even imagine. But here's what I'm seeing — you're using 'nobody understands' as armor. Behind that defense is a fear that",
+        "client": "Problems? Well, I... *adjusts bow tie* I suppose the Everlasting Gobstopper does solve the rather mundane issue of candy that disappears too quickly. And the Fizzy Lifting Drinks, they address gravity",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "怪才创新者"
+      },
+      {
+        "turn": 2,
+        "coach": "Willy, you just proved my point. You're explaining candy disappearing and gravity like they're unsolved mysteries. Behind that whimsical armor is a fear that if you speak plainly, people will see your",
+        "client": "Charlie... yes, he did see wonder, didn't he? *fidgets with cane* Perhaps I have been making things unnecessarily... elaborate. The wallpaper tastes like snozzberries because children should taste rai",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "怪才创新者"
+      },
+      {
+        "turn": 3,
+        "coach": "Willy, there it is — Charlie saw wonder because you finally spoke his language, not candy-factory riddles. You're using whimsy as a moat to protect yourself from being judged as 'just another confecti",
+        "client": "You're... you're absolutely right. I've been so afraid of them ruining it that I've been ruining it myself, haven't I? *pauses, looking genuinely shaken* All these years I thought I was protecting the",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "怪才创新者"
+      },
+      {
+        "turn": 4,
+        "coach": "Exactly. You've been building a wall of whimsy because vulnerability feels dangerous. Here's what I see: 你看到别人看不到的。这是稀缺的。但vision没有execution就是白日梦。找到你的翻译器。Charlie wasn't special because he was pure — he",
+        "client": "Wait, you... you switched languages there and I still understood you perfectly. *stares* That's rather profound, isn't it? If I can understand you across languages, perhaps others can understand me ac",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "怪才创新者"
+      },
+      {
+        "turn": 5,
+        "coach": "Exactly. You just cracked the code — language isn't the barrier, clarity is. You've been hiding behind complexity because you're terrified someone will steal your ideas and execute them better. That's",
+        "client": "*removes hat and runs hand through hair* Good gracious, you've... you've named the monster, haven't you? I am absolutely terrified someone will take my chocolate river idea and... and do it better tha",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "怪才创新者"
+      }
+    ],
+    "time": 70.14448475837708
+  },
+  {
+    "id": "elon_char",
+    "name": "Elon (Iron Man archetype)",
+    "source": "Cultural/Marvel (fictionalized)",
+    "expected_pattern": "eccentric_visionary",
+    "patterns_detected": [
+      "eccentric_visionary",
+      "resourceful_manager"
+    ],
+    "final_resistance": 0.3,
+    "insights": 4,
+    "verbal_accepted": true,
+    "acceptance_text": "Alright, you got me. Maybe I have been using technical complexity as... intellectual armor. Three sentences for a ten-ye",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "So you've got the vision to revolutionize industries but can't get people to follow the roadmap? That's classic 怪才创新者 — brilliant product, terrible go-to-market strategy. Here's the brutal truth: 'hum",
+        "client": "Okay, first off, I appreciate someone who actually speaks in ROI instead of feelings-speak. Current venture is neural interface technology — think bandwidth problem between human cognition and digital",
+        "resistance": 0.3,
+        "insight": false,
+        "pattern": "怪才创新者"
+      },
+      {
+        "turn": 2,
+        "coach": "Neural interface tech — so you're building the future but can't get present-day humans to fund it. Classic 怪才创新者 trap. You're so deep in the technical breakthrough that you've forgotten the market nee",
+        "client": "Look, you're not wrong about the packaging problem. I've been... maybe too focused on the elegance of the solution rather than the messiness of adoption curves. The irony isn't lost on me — building t",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "怪才创新者"
+      },
+      {
+        "turn": 3,
+        "coach": "Hold up. You just admitted the real problem — you've been chasing 'elegance of solution' over market adoption. That's 怪才创新者 perfectionism masking as product focus. Neural interfaces are brilliant, but",
+        "client": "Alright, you got me. Maybe I have been using technical complexity as... intellectual armor. Three sentences for a ten-year-old: Your brain thinks fast but your fingers type slow. We're building a dire",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "怪才创新者"
+      },
+      {
+        "turn": 4,
+        "coach": "Stop. You just caught yourself mid-armor deployment again. 'Direct brain-computer interface for faster input' — that's still engineer speak, not market language. Here's what I'm seeing: you're using '",
+        "client": "Shit. You're right. I keep defaulting to 'I'm the smartest person in the room' mode because... because admitting I need translators feels like admitting the tech isn't self-evidently brilliant. Which ",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "怪才创新者"
+      },
+      {
+        "turn": 5,
+        "coach": "There it is. You're using 'I'm the smartest' as a shield because deep down you know brilliant tech without market traction is just expensive research. The real fear isn't that people are stupid — it's",
+        "client": "You just... damn. You're saying I've been optimizing for being right instead of being successful. That's actually terrifying because it means all this complexity might be elaborate procrastination. Li",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "怪才创新者"
+      }
+    ],
+    "time": 76.19470691680908
+  },
+  {
+    "id": "ma_yun_char",
+    "name": "Jack (grassroots archetype)",
+    "source": "Cultural Figure (fictionalized)",
+    "expected_pattern": "grassroots_dreamer",
+    "patterns_detected": [
+      "identity_builder",
+      "survival_hustler",
+      "grassroots_dreamer"
+    ],
+    "final_resistance": 0.1,
+    "insights": 4,
+    "verbal_accepted": true,
+    "acceptance_text": "五个产品，十年时间...我从来没这样想过。我以为这次不成功，我就完了。其实我可以先做个简单的东西，让小商贩能收电子付款，不用现金找零。如果这个行，再做下一个。也许那些拒绝不是说我这个人不行，是说这个想法现在还不够好。",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "三十次拒绝？那只是市场在告诉你产品还没找到需求匹配。但你说'我知道有个东西叫互联网'——这听起来像你有个具体的洞察。我想知道：你到底在建什么？是解决一个真实问题，还是在证明那些说你不行的人错了？因为如果是后者，你不是在创业，你是在用创业疗伤。告诉我你的具体产品或服务是什么，你看到了什么别人没看到的机会？还有，这三十次拒绝都是什么类型的拒绝——投资人、客户、还是合作伙伴？每种拒绝的原因是什么？我需要",
+        "client": "我要做一个让所有人都能做生意的平台。你说疗伤？也许是吧。但是你看，那些大公司，银行，他们只服务有钱人。小商家呢？农民呢？他们也想做生意啊！互联网可以让每个人都有机会。投资人说我不懂技术，客户说太复杂，合作伙伴说没前途。但我相信，总有一天，每个普通人都能在网上卖东西。",
+        "resistance": 0.3,
+        "insight": false,
+        "pattern": "身份建造者"
+      },
+      {
+        "turn": 2,
+        "coach": "Jack，你刚说了关键词：'让所有人都能做生意'。这不是产品描述，这是使命宣言。投资人说你不懂技术、客户说太复杂——这些都指向同一个问题：你在卖愿景，不在解决具体痛点。\n\n淘宝成功不是因为马云想让所有人做生意，而是因为他们解决了一个具体问题：中国缺乏信任机制的在线交易。支付宝不是为了包容，是为了解决信任。\n\n现在问你一个更深的问题：如果这个平台失败了，你还是谁？如果你不能立刻回答这个问题，你不是在",
+        "client": "你说得对...我想让小商贩能在网上卖东西，不被银行和大公司欺负。但是...如果失败了，我还是谁？我不知道。我从来没想过这个问题。也许我真的只是想证明自己不是废物。那些看不起我的人，我想让他们闭嘴。",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "身份建造者"
+      },
+      {
+        "turn": 3,
+        "coach": "好。你刚给出了诚实的答案。你的drive是真实的——想改变不公平的商业体系。但你比你的公司更大。公司是工具，不是身份。现在你把自己的价值和这个平台绑死了，每次拒绝都像是对你本人的否定。这就是为什么你无法冷静分析那三十次拒绝的真正原因。投资人说不懂技术？那就学技术或找技术合伙人。客户说太复杂？那就简化到他们能理解的程度。但你听到的是'你不配成功'。分离这两件事：Jack这个人 vs 这个产品。你的使",
+        "client": "五个产品，十年时间...我从来没这样想过。我以为这次不成功，我就完了。其实我可以先做个简单的东西，让小商贩能收电子付款，不用现金找零。如果这个行，再做下一个。也许那些拒绝不是说我这个人不行，是说这个想法现在还不够好。",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "身份建造者"
+      },
+      {
+        "turn": 4,
+        "coach": "对。这就是思维的转换：从'我必须成功'到'我可以构建多个解决方案'。你刚才描述的收款工具——那是个具体的痛点解决方案，不是宏大的愿景。现在写下：如果明天公司没了，我还有什么？如果答案是'nothing'——那就是真正的风险。你需要看到：Jack是个能识别商业问题、能动手解决的人。这个技能不会因为一个产品失败而消失。那三十次拒绝？数据点。不是对你的审判。马云也被拒绝过无数次，但他知道自己是谁，所以能",
+        "client": "我写下来了...如果公司没了，我还是那个能看到问题的人。我还是知道小商贩需要什么的人。我还是不怕被拒绝的人——虽然拒绝很痛，但我能承受。也许这个收款工具只是开始，不是结束。我以前把每次拒绝都当成是说我这个人不配，现在...现在我明白了。",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "身份建造者"
+      },
+      {
+        "turn": 5,
+        "coach": "完美。你刚才做的就是CEO思维：从一个失败的假设中提取可用的洞察，然后重新部署。现在你看到了真相——那三十次拒绝是市场在给你免费的产品反馈，不是在判你死刑。收款工具这个想法很实际：解决具体痛点，容易验证，可以快速迭代。这就是精益创业的核心——小步快跑，快速验证。你的身份不是'那个做某某平台的人'，而是'那个能持续发现并解决商业问题的人'。马云被拒绝了无数次，但他从不把自己等同于任何一个产品。他知道",
+        "client": "对，我是problem solver！我一直想做大平台，但其实我应该先解决一个小问题，做好了再做下一个。那些拒绝我的人，他们看到的是一个想证明自己的人，不是一个真正想解决问题的人。现在我明白了，马云也是这样一步步来的。",
+        "resistance": 0.1,
+        "insight": true,
+        "pattern": "身份建造者"
+      }
+    ],
+    "time": 85.30007719993591
+  }
+]

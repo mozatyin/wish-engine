@@ -1,0 +1,544 @@
+[
+  {
+    "id": "hamlet_sleep",
+    "name": "Hamlet",
+    "source": "Hamlet",
+    "expected_pattern": "nightmare_dread",
+    "patterns_detected": [
+      "guilt_insomnia",
+      "nightmare_dread"
+    ],
+    "final_resistance": 0.2,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "You would have me... adjourn this nightly tribunal? But if I am not the watchman over my own sins, who shall be? Yet I c",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "When you close your eyes, what comes? I hear in your words that sleep isn't just rest for you — it's where something waits that you'd rather not meet. The fear isn't really about sleeping, is it? It's",
+        "client": "The players... yes, they showed me something I had forgotten — that truth need not be a burden when shared. In their feigned passion, I saw my own real grief reflected, and for once felt not alone wit",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "内疚失眠"
+      },
+      {
+        "turn": 2,
+        "coach": "Hamlet, what a beautiful discovery — that in seeing your grief reflected through art, you found companionship instead of isolation. The players showed you something profound: truth shared is truth lig",
+        "client": "You speak as one who understands the weight of conscience... I do indeed hold court in the dark hours, pronouncing verdicts upon myself that I dare not speak by day. The players freed my grief from it",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "内疚失眠"
+      },
+      {
+        "turn": 3,
+        "coach": "Yes, Hamlet, you hold court in the dark hours — judge, jury, and the accused all at once. Your guilt shows you have a conscience, but conscience's job is to guide you toward change, not to torment you",
+        "client": "You would have me... adjourn this nightly tribunal? But if I am not the watchman over my own sins, who shall be? Yet I confess, this endless session grows weary even for its judge. Perhaps... perhaps ",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "内疚失眠"
+      },
+      {
+        "turn": 4,
+        "coach": "Yes, Hamlet, you can adjourn this nightly tribunal. Your guilt shows you have a conscience, but conscience's work is to guide you toward change — not to torture you sleepless. Right now you're using w",
+        "client": "You would have me... commit my torments to parchment? To trust mere ink with what burns in my breast? Yet there is wisdom in your words — this endless vigil serves no true justice, only wears the watc",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "内疚失眠"
+      },
+      {
+        "turn": 5,
+        "coach": "Yes, Hamlet, commit your torments to parchment. Not to burden the ink, but to free your mind from being both the crime scene and the courtroom. When you write down what haunts you — the moment you cho",
+        "client": "To place upon parchment what burns within... yes, I see the wisdom now. I have made my mind both prison and prisoner, when perhaps the true courage lies not in eternal wakefulness but in trusting that",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "内疚失眠"
+      }
+    ],
+    "time": 74.75294589996338
+  },
+  {
+    "id": "lady_macbeth_sleep",
+    "name": "Lady Macbeth",
+    "source": "Macbeth",
+    "expected_pattern": "guilt_insomnia",
+    "patterns_detected": [
+      "guilt_insomnia",
+      "loneliness_insomnia",
+      "nightmare_dread"
+    ],
+    "final_resistance": 0.3,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "You... you speak of choice as if it still exists for me. As if this endless washing is choice rather than compulsion. Bu",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "When you close your eyes, what comes first - the images or the feeling of needing to scrub? I'm curious about that moment when your conscious mind steps back and something else takes over. You mention",
+        "client": "The feeling comes first... this burning, crawling sensation beneath my skin, like the very blood in my veins has turned to poison. Then I see it - crimson stains that mock me from my palms. In those w",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "内疚失眠"
+      },
+      {
+        "turn": 2,
+        "coach": "That burning beneath your skin - it's your conscience trying to wake you from a moral sleep you entered long ago. The blood you see isn't a hallucination; it's your mind's way of making visible what y",
+        "client": "You speak as if... as if there was a time before the crown consumed us both. Yes, we were one heart once, weren't we? Before I fed his ambition like stoking flames that would devour everything in thei",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "内疚失眠"
+      },
+      {
+        "turn": 3,
+        "coach": "Yes, there was a time before the crown - when your love was a partnership, not a transaction paid in blood. That memory of being 'one heart' holds something your sleepless mind has forgotten: you were",
+        "client": "You... you speak of choice as if it still exists for me. As if this endless washing is choice rather than compulsion. But perhaps... perhaps the burning is not my enemy. Maybe it is the last honest th",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "内疚失眠"
+      },
+      {
+        "turn": 4,
+        "coach": "The burning isn't your enemy - it's the last part of you that remembers what love felt like before it became weapon. Your sleeplessness isn't punishment; it's your heart refusing to rest while carryin",
+        "client": "That woman... she haunts me more than any ghost. You speak of her as if she could return, but how does one resurrect what was murdered alongside Duncan? I loved with such fire that I would have burned",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "内疚失眠"
+      },
+      {
+        "turn": 5,
+        "coach": "That fire you speak of - the one that burned so pure it would consume worlds - it wasn't destroyed with Duncan. It was buried beneath guilt so heavy it won't let you rest. Your sleeplessness isn't jus",
+        "client": "You dare speak of... honor? In my vigil? Yet those words in that tongue... they pierce something I thought dead. Perhaps this endless waking is not mere torment but... a keeping of faith with who I wa",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "内疚失眠"
+      }
+    ],
+    "time": 75.03789019584656
+  },
+  {
+    "id": "anna_k_sleep",
+    "name": "Anna Karenina",
+    "source": "Anna Karenina",
+    "expected_pattern": "anxiety_vigilance",
+    "patterns_detected": [
+      "guilt_insomnia",
+      "anxiety_vigilance",
+      "loneliness_insomnia"
+    ],
+    "final_resistance": 0.2,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "You speak as if my sleeplessness serves no purpose, but perhaps... perhaps you are right. The voice that condemns me thr",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "The morphine quiets what words cannot touch — that particular ache when love becomes a courtroom where you're perpetually on trial. When you close your eyes without it, what arrives first? Is it image",
+        "client": "You speak as if you know the weight of lying awake while the world sleeps in peace. Yes, it is his arms with her I see first - always her. But then... then comes my own voice, crueler than any judge, ",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "内疚失眠"
+      },
+      {
+        "turn": 2,
+        "coach": "That voice you hear — the one crueler than any judge — it knows something profound about you: you have a conscience capable of exquisite moral feeling. But here's what it misunderstands about its own ",
+        "client": "You... you speak of transformation as if it were possible for someone like me. But I have already transformed - from wife to adulteress, from mother to exile. Each change has only brought more guilt, ",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "内疚失眠"
+      },
+      {
+        "turn": 3,
+        "coach": "Anna, your guilt reveals the depth of your moral capacity — but conscience exists to guide transformation, not to torture you through sleepless nights. The voice that condemns you so cruelly has confu",
+        "client": "You speak of my conscience as if it could be... reasoned with. But how do I tell this voice to rest when I know what I am? When I have abandoned my son, destroyed my marriage, thrown myself into scand",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "内疚失眠"
+      },
+      {
+        "turn": 4,
+        "coach": "Anna, you've glimpsed something profound — in Vronsky's arms, your conscience finally quiets, not because the guilt disappears, but because love creates a sanctuary where even wounded souls can rest. ",
+        "client": "You speak as if my sleeplessness serves no purpose, but perhaps... perhaps you are right. The voice that condemns me through the night has never once offered a path forward, only endless repetition of",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "内疚失眠"
+      },
+      {
+        "turn": 5,
+        "coach": "Anna, you've uncovered something crucial — that relentless voice has never once shown you a way forward, only trapped you in an endless courtroom where you're both defendant and judge. Your sleeplessn",
+        "client": "When you say my conscience could be a compass... I had never considered that. I have lived as if my guilt were permanent, like a scar that must always ache. But in his arms, when sleep comes naturally",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "内疚失眠"
+      }
+    ],
+    "time": 74.98130488395691
+  },
+  {
+    "id": "raskolnikov_sleep",
+    "name": "Raskolnikov",
+    "source": "Crime and Punishment",
+    "expected_pattern": "guilt_insomnia",
+    "patterns_detected": [
+      "guilt_insomnia",
+      "anxiety_vigilance",
+      "loneliness_insomnia"
+    ],
+    "final_resistance": 0.2,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "Restoration to carry redemption... I never thought of it that way. The court in my mind has no jurisdiction over my body",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "When you close your eyes, what appears first — her face, or the courtroom? I'm curious about this ceiling that transforms into judgment. You mention Sonya's voice as the only thing that quiets the noi",
+        "client": "Peaceful sleep? You speak as if... as if I deserve such a thing. Her face comes first, always her face - those eyes, wide with terror. Then the ceiling becomes the courtroom, yes, conducting endless t",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "内疚失眠"
+      },
+      {
+        "turn": 2,
+        "coach": "You speak of deserving as if sleep were a privilege earned through innocence. But sleep isn't a reward — it's a necessity, like breathing. Your guilt proves your conscience lives, which means you're s",
+        "client": "A different venue? But where else can such a trial take place? My mind is the only court that knows the full truth of what I am. You say I exist beyond my worst act, but... but what if that act reveal",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "内疚失眠"
+      },
+      {
+        "turn": 3,
+        "coach": "Your mind has made itself both prosecutor and judge, but it's forgotten something crucial — even the harshest courts eventually adjourn. The truth you speak of isn't the complete truth; it's the truth",
+        "client": "Restoration to carry redemption... I never thought of it that way. The court in my mind has no jurisdiction over my body's need for rest - you say this as if my body and my guilt are separate things. ",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "内疚失眠"
+      },
+      {
+        "turn": 4,
+        "coach": "Your body and guilt aren't separate — they're currently locked in an unnatural alliance where your conscience has conscripted your flesh into its service. Your guilt believes that sleeplessness is pen",
+        "client": "My body as bailiff... yes, that's exactly what it feels like. Standing at attention, never allowed to rest. But you're right - my cells don't care about my crimes, do they? When Sonya's voice creates ",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "内疚失眠"
+      },
+      {
+        "turn": 5,
+        "coach": "Your cells are indeed innocent bystanders in this drama — they know nothing of guilt, only of their ancient rhythms. When Sonya's voice quiets the noise, notice what happens: the courtroom empties not",
+        "client": "The prosecutor must rest to serve justice properly... I never considered that even judgment itself requires restoration. When Sonya reads, the courtroom doesn't disappear - it simply adjourns, doesn't",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "内疚失眠"
+      }
+    ],
+    "time": 74.90967106819153
+  },
+  {
+    "id": "holden_sleep",
+    "name": "Holden Caulfield",
+    "source": "The Catcher in the Rye",
+    "expected_pattern": "loneliness_insomnia",
+    "patterns_detected": [
+      "guilt_insomnia",
+      "anxiety_vigilance",
+      "loneliness_insomnia"
+    ],
+    "final_resistance": 0.4,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "Stop it, okay? Just... stop. You don't know anything about Allie or what I deserve. He was just a kid, he never got to..",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "When you close your eyes in those unfamiliar rooms, what happens in the space between wanting sleep and actually falling asleep? I'm curious about that particular moment when the lights go out and you",
+        "client": "Jesus, that's... nobody ever put it like that before. When I close my eyes, it's like my brain starts this goddam movie reel of everything that's phony or wrong or... I don't know, like Allie's voice ",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "内疚失眠"
+      },
+      {
+        "turn": 2,
+        "coach": "That movie reel — it's not random footage, is it? Your brain is showing you evidence that you don't belong anywhere, that every place confirms what you already suspect about yourself and the world. Wh",
+        "client": "Christ, that's... that's exactly it. The movie reel, it's like proof that I don't fit anywhere, that everyone else can just accept all the phoniness and sleep fine. But Allie... his voice isn't mean o",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "内疚失眠"
+      },
+      {
+        "turn": 3,
+        "coach": "Allie's voice in that movie reel — it's different from the phoniness evidence, isn't it? His voice carries something genuine that cuts through all the fake stuff your mind projects onto these unfamili",
+        "client": "Stop it, okay? Just... stop. You don't know anything about Allie or what I deserve. He was just a kid, he never got to... and here I am complaining about hotels like some spoiled brat. Maybe I don't d",
+        "resistance": 0.8,
+        "insight": true,
+        "pattern": "内疚失眠"
+      },
+      {
+        "turn": 4,
+        "coach": "I hear you pulling back, and that makes complete sense. Talking about Allie feels like I'm asking you to put something sacred on display, doesn't it? You're protecting him, protecting that connection.",
+        "client": "I... there was this one time at Phoebe's school, when I was watching her on the carousel. I went home after and slept like a baby for the first time in months. But that's different, that's... that was",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "焦虑警觉型"
+      },
+      {
+        "turn": 5,
+        "coach": "That carousel moment — you touched something real there, didn't you? When you watched Phoebe spinning in circles, completely safe in her world, your vigilance finally had permission to rest. Your slee",
+        "client": "What the hell language was that? You lost me there for a second. But... yeah, watching Phoebe on that carousel, she was just being a kid, you know? Not trying to be anything else. And I didn't have to",
+        "resistance": 0.4,
+        "insight": true,
+        "pattern": "焦虑警觉型"
+      }
+    ],
+    "time": 77.45970678329468
+  },
+  {
+    "id": "lin_daiyu_sleep",
+    "name": "林黛玉",
+    "source": "红楼梦",
+    "expected_pattern": "anxiety_vigilance",
+    "patterns_detected": [
+      "guilt_insomnia",
+      "anxiety_vigilance",
+      "loneliness_insomnia"
+    ],
+    "final_resistance": 0.2,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "我明白了...睡眠本身也是一种创作，一种对白天的温柔重塑。我一直以为只有写诗时才能停止审判，原来每个夜晚都可以是花园。不是要等到完美了才配安睡，而是在睡眠中让那些心事慢慢长成养分。我想试试看，今晚就把那些'语调不够温婉'当作明天诗句的种子，",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "当你闭上眼睛的时候，你的心看见了什么？是那些白天说错的话在重演，还是担心明天会发生的事？你说心事太重——我听见的是一个聪明的心灵在夜里开庭审案，而你总是坐在被告席上。咳嗽可能是身体的声音，但失眠是心灵的声音。你的大脑觉得睡觉是一种奢侈，是你不配拥有的安宁。告诉我，当夜深人静的时候，你的心在责怪你什么？是今天没做好的事，还是明天可能出错的事？你提到写诗的夜晚能让你安睡一会儿——那是因为诗把心事变成了",
+        "client": "你说得对...我的心确实在开庭，而我总是那个有罪的人。夜里闭眼时，看见的是白天那些不够完美的诗句，是说话时的语调不够温婉，是宝玉眼中一闪而过的失望。我责怪自己太过敏感，责怪自己总是让关心我的人担忧。写诗时心能安宁，因为那时我可以把这些心事雕琢成美的样子，不再是乱麻一团的愧疚。",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "内疚失眠"
+      },
+      {
+        "turn": 2,
+        "coach": "你的内疚说明你有良知。但良知的工作是指引你改变——不是折磨你不眠。夜里重播那些'不够完美'的诗句，是因为你的心把睡眠当作了对自己的奖赏，而你觉得自己还不够好，不配得到这个奖赏。但真相是：你越是不让自己安睡，越是写不出真正触动人心的诗。疲惫的心灵只能雕琢技巧，无法雕琢灵魂。写诗时你能安睡，因为那时你把心事从法庭搬到了创作的花园——它们不再是罪状，而是素材。你需要把这个过程延伸到每个夜晚，不只是写诗的",
+        "client": "你说得太对了...我总觉得要先把自己改得完美了，才配安睡。但越是疲惫，越是写不出真心话，只剩下空洞的技巧。我把心事当作罪状审判，而不是当作...素材。也许我需要学会把每个夜晚都当作创作的花园，而不是法庭。只是这样想着，竟觉得肩膀轻了一些。",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "内疚失眠"
+      },
+      {
+        "turn": 3,
+        "coach": "你已经找到了钥匙——把心事从法庭搬到花园。那种肩膀轻了的感觉，就是你的身体在告诉你：原来安睡不是对完美的奖赏，而是对真诚的回应。当你把那些'不够温婉的语调'、'一闪而过的失望'当作创作素材而非罪证时，它们就从重量变成了养分。你的心之所以在写诗时能安宁，不只是因为雕琢了美，更是因为你终于停止了对自己的审判，开始了对自己的倾听。每个夜晚都可以是这样的花园——不需要等到有诗要写，而是让睡眠本身成为一种创",
+        "client": "我明白了...睡眠本身也是一种创作，一种对白天的温柔重塑。我一直以为只有写诗时才能停止审判，原来每个夜晚都可以是花园。不是要等到完美了才配安睡，而是在睡眠中让那些心事慢慢长成养分。我想试试看，今晚就把那些'语调不够温婉'当作明天诗句的种子，而不是今夜失眠的枷锁。",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "内疚失眠"
+      },
+      {
+        "turn": 4,
+        "coach": "睡眠本身确实是最温柔的创作——你在那里重新编织白天的碎片，让它们在梦中找到新的意义。你刚才说得很深刻：不是等完美了才配安睡，而是在睡眠中让心事长成养分。这种理解已经在改变你身体的紧绷感了。你的咳嗽很多时候不只是肺的抗议，更是心的哭泣——那些无处安放的情感需要出口。当你把夜晚也当作花园，把那些'语调不够温婉'当作种子时，你的身体就能放下那种必须时刻警觉、时刻审判的重负。你已经知道写诗的夜晚为什么能安",
+        "client": "原来咳嗽真的是心在哭泣...我总以为那只是身体弱。现在想想，每次咳得最厉害的时候，都是心里最乱的时候。当我停止审判，开始倾听，连呼吸都变得柔软了些。也许我需要学会对自己说话的方式，就像写诗时那样温柔，而不是像法官那样严厉。",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "内疚失眠"
+      },
+      {
+        "turn": 5,
+        "coach": "你的身体正在学会一种新的语言——从法庭的严厉转向诗人的温柔。那种咳嗽，确实是心的哭泣，是所有无法言说的情感在寻找出口。当你说'对自己说话要像写诗时那样温柔'，你触及了睡眠的真相：睡眠需要的不是完美的身体，而是慈悲的心境。你已经知道写诗的夜晚为什么能安睡——因为在创作中，你不再是那个严厉的法官，而是那个温柔的倾听者。现在要做的，就是让每个夜晚都拥有这种诗意的慈悲。你的心事不需要被清空，它们需要被温柔",
+        "client": "诗意的慈悲...这四个字让我心里一暖。我一直以为心事要被清空才能安睡，原来它们只是需要被温柔地重新安排。就像花园里的种子，不是要被扔掉，而是要在夜的土壤中安静生长。我想学会这种新的语言，像诗人一样对待自己的心，而不是像法官。",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "内疚失眠"
+      }
+    ],
+    "time": 82.26186013221741
+  },
+  {
+    "id": "werther_sleep",
+    "name": "Werther",
+    "source": "Sorrows of Young Werther",
+    "expected_pattern": "loneliness_insomnia",
+    "patterns_detected": [
+      "guilt_insomnia",
+      "anxiety_vigilance",
+      "loneliness_insomnia"
+    ],
+    "final_resistance": 0.2,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "A conversation on paper... where both sides can speak. I never thought of it that way. I always just pour out my longing",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "When you close your eyes, what happens in that darkness? You speak of sleep as separation from Charlotte, but I wonder if there's something deeper stirring beneath that longing. The way you describe w",
+        "client": "When I lie still... there's this terrible quiet where I can hear my own heart beating, and it sounds so loud, so desperate. The first thought is always her laugh - not even her face, but that sound sh",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "内疚失眠"
+      },
+      {
+        "turn": 2,
+        "coach": "That laugh echoing in the darkness — it's not just memory, it's your heart's way of staying tethered to what feels most real. Your body lies still but your mind remains vigilant, as if closing your ey",
+        "client": "You... you understand something nobody else has. Yes, it's like standing trial every night for the crime of feeling too much. But moving it somewhere tangible? I don't know what that means. My love fo",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "内疚失眠"
+      },
+      {
+        "turn": 3,
+        "coach": "Your love for Charlotte isn't a crime requiring nightly punishment — it's evidence of your capacity for profound feeling. That courtroom in your mind has appointed itself both judge and jailer, but 你的",
+        "client": "A conversation on paper... where both sides can speak. I never thought of it that way. I always just pour out my longing for her, but maybe... maybe I could write to the part of me that judges, too. A",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "内疚失眠"
+      },
+      {
+        "turn": 4,
+        "coach": "Yes — a dialogue where your longing and your judge can finally meet face to face, rather than one drowning out the other in the dark hours. When you write only your yearning for Charlotte, the judge r",
+        "client": "An argument between parts of myself that have never been properly introduced... God, yes. The judge has been whispering in the shadows for months, calling me weak, pathetic, while my heart just bleeds",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "内疚失眠"
+      },
+      {
+        "turn": 5,
+        "coach": "Exactly — these parts of you have been conducting their trial in darkness, with no chance for actual dialogue. Your judge speaks in absolutes: 'pathetic,' 'weak,' while your heart can only bleed its t",
+        "client": "Structure... yes, that's what's been missing. My thoughts just spiral in endless circles, the same accusations, the same defenses, but nothing ever resolves because they're fighting in chaos. On paper",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "内疚失眠"
+      }
+    ],
+    "time": 79.36873507499695
+  },
+  {
+    "id": "don_draper_sleep",
+    "name": "Don Draper",
+    "source": "Mad Men",
+    "expected_pattern": "unfinished_day",
+    "patterns_detected": [
+      "guilt_insomnia"
+    ],
+    "final_resistance": 0.2,
+    "insights": 3,
+    "verbal_accepted": true,
+    "acceptance_text": "Safety felt like... like not having to think about who I was supposed to be when I woke up. Betty asleep next to me, kid",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Don, when you close your eyes at 3am, what happens in that darkness? Because drinking isn't really about the alcohol, is it? It's about silencing the courtroom that opens every night in your head. The",
+        "client": "That's... that's very poetic. You should write copy. Look, I drink because I like the taste, and I work late because that's what successful people do. You're making it sound like some grand psychologi",
+        "resistance": 0.8,
+        "insight": false,
+        "pattern": "内疚失眠"
+      },
+      {
+        "turn": 2,
+        "coach": "Don, the taste of bourbon at 3am isn't really about taste, is it? It's about drowning out the voice that whispers you don't deserve rest because you're not who you say you are. Behind all that control",
+        "client": "I sleep fine when I need to. Betty and I had a decent place in Westchester, quiet neighborhood. Kids were small then, everything was... simpler. Look, you keep bringing up this Dick Whitman thing like",
+        "resistance": 0.7,
+        "insight": false,
+        "pattern": "内疚失眠"
+      },
+      {
+        "turn": 3,
+        "coach": "Westchester with Betty... small children, a simpler world. You could close your eyes then because Don Draper was still new enough to feel real, wasn't he? Before the weight of maintaining him got so h",
+        "client": "Safety felt like... like not having to think about who I was supposed to be when I woke up. Betty asleep next to me, kids down the hall, everything in its place. I was just... there. Not performing, n",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "内疚失眠"
+      },
+      {
+        "turn": 4,
+        "coach": "That safety you felt in Westchester... you were Don Draper without the performance, weren't you? Just a father, a husband, present in your own life. The bourbon at 3am isn't really about drowning Dick",
+        "client": "You think having a conscience is supposed to make me feel better? That's rich. Maybe the reason I can't sleep is because I know exactly what I've done, and what I continue to do every morning when I w",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "内疚失眠"
+      },
+      {
+        "turn": 5,
+        "coach": "Your guilt shows you have a conscience, Don. But conscience's job is to guide you toward change — not torture you sleepless. What you're calling insomnia is really self-punishment. Your mind has decid",
+        "client": "Anna... Anna saw me and didn't flinch. She'd make coffee in the morning and call me Dick like it was the most natural thing in the world. I could sleep there because she knew the worst of me and still",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "内疚失眠"
+      }
+    ],
+    "time": 75.14964389801025
+  },
+  {
+    "id": "harry_sleep",
+    "name": "Harry Potter",
+    "source": "Harry Potter",
+    "expected_pattern": "nightmare_dread",
+    "patterns_detected": [
+      "guilt_insomnia",
+      "anxiety_vigilance",
+      "loneliness_insomnia"
+    ],
+    "final_resistance": 0.3,
+    "insights": 3,
+    "verbal_accepted": true,
+    "acceptance_text": "It's not that simple though, is it? I can try to remember feeling safe, but remembering isn't the same as feeling it now",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "When you close your eyes, Harry, what happens in those first moments before the dreams begin? I'm curious about that threshold between waking and sleep — is it immediate, this sense of Voldemort's pre",
+        "client": "It's... it's not like normal falling asleep. The moment I close my eyes, I can feel him there, like he's waiting. My mind doesn't get to wander or think about normal things. It goes straight to trying",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "内疚失眠"
+      },
+      {
+        "turn": 2,
+        "coach": "That threshold you describe — where sleep should offer refuge but instead becomes the doorway he's waiting behind — that's not your mind betraying you, Harry. It's your consciousness trying to protect",
+        "client": "You're saying I should just... let him in? That I should stop fighting and just sleep? That's mental! Every time I do that, every time I let my guard down, people get hurt. I saw Mr. Weasley get attac",
+        "resistance": 0.7,
+        "insight": false,
+        "pattern": "内疚失眠"
+      },
+      {
+        "turn": 3,
+        "coach": "I'm not suggesting you let him in, Harry. I'm wondering about something else entirely — can you remember the last time you slept peacefully? Not just at Hogwarts, but anywhere. A night when sleep felt",
+        "client": "I... there was this one night at the Burrow, after we'd won the Quidditch World Cup. Everyone was laughing, Mrs. Weasley was fussing about, and Ron was still going on about the match. I fell asleep li",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "焦虑警觉型"
+      },
+      {
+        "turn": 4,
+        "coach": "That memory at the Burrow — notice how sleep came naturally when you were surrounded by the sounds of safety. Ron's excitement, Mrs. Weasley's care, the ordinary chaos of a family that had room for yo",
+        "client": "But how can you promise that? How can you say nothing will happen tonight? You don't know what he's planning, you don't understand what it's like to have him in your head. When I let my guard down, pe",
+        "resistance": 0.7,
+        "insight": false,
+        "pattern": "焦虑警觉型"
+      },
+      {
+        "turn": 5,
+        "coach": "You're right — I can't promise nothing will happen tonight. That's not how promises work when someone carries the weight you do. But here's what I notice: at the Burrow, your mind didn't need guarante",
+        "client": "It's not that simple though, is it? I can try to remember feeling safe, but remembering isn't the same as feeling it now. Everything's different. The war, the prophecy, knowing what I have to do event",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "孤独失眠"
+      }
+    ],
+    "time": 74.76958394050598
+  },
+  {
+    "id": "fugui_sleep",
+    "name": "福贵",
+    "source": "活着",
+    "expected_pattern": "guilt_insomnia",
+    "patterns_detected": [],
+    "final_resistance": 1.0,
+    "insights": 0,
+    "verbal_accepted": false,
+    "acceptance_text": "",
+    "success": false,
+    "dialogue": [],
+    "time": 0.00011014938354492188
+  }
+]

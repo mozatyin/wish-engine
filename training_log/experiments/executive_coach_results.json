@@ -1,0 +1,583 @@
+[
+  {
+    "id": "michael_corleone",
+    "name": "Michael Corleone",
+    "source": "The Godfather",
+    "expected_pattern": "lonely_decider",
+    "patterns_detected": [
+      "lonely_decider",
+      "power_corrupted"
+    ],
+    "final_resistance": 0.2,
+    "insights": 4,
+    "verbal_accepted": true,
+    "acceptance_text": "You think I chose to rule through fear? I tried trust. I gave Fredo chances, I gave Tessio loyalty, I gave Carlo family.",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Michael, you've built an empire through decisive action, but empires fall when the emperor becomes the single point of failure. Every CEO I work with hits this wall — where their greatest strength bec",
+        "client": "You think this is about delegation? About trusting some accountant with numbers or letting my capos handle collections? The decisions I make... they're not about efficiency, they're about survival. Wh",
+        "resistance": 0.7,
+        "insight": false,
+        "pattern": "孤独决策者"
+      },
+      {
+        "turn": 2,
+        "coach": "Michael, let me stop you there. You're right - your decisions aren't about efficiency, they're about survival. And that survival instinct has gotten you this far. But here's what I want to know: tell ",
+        "client": "There was... when Fredo was younger, before everything went to hell. He looked up to me, you know? Not because I was the Don, but because I was his brother. I taught him to fish, helped him with his r",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "权力腐蚀"
+      },
+      {
+        "turn": 3,
+        "coach": "That moment with Fredo — that's the blueprint for real power. You had his loyalty not through fear, but because he genuinely wanted to follow you. You've proven you can make people obey you, but the q",
+        "client": "You think I chose to rule through fear? I tried trust. I gave Fredo chances, I gave Tessio loyalty, I gave Carlo family. They all betrayed me. Every single one. So you tell me - how do you build somet",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "权力腐蚀"
+      },
+      {
+        "turn": 4,
+        "coach": "Michael, you tried trust with the wrong strategy. You gave loyalty to people based on blood and history, not based on whether they actually shared your vision. That's not trust - that's wishful thinki",
+        "client": "Connection? You want to know about connection? I connected with my father's vision, with protecting this family. But every time I opened that door, every time I let someone in... they used it against ",
+        "resistance": 0.4,
+        "insight": true,
+        "pattern": "权力腐蚀"
+      },
+      {
+        "turn": 5,
+        "coach": "Michael, you're confusing two different things. You gave *access* to people based on blood and history - that's not the same as building genuine connection. Real connection isn't about opening doors w",
+        "client": "You're saying I can read enemies but not allies? Maybe... maybe I do see what I want to see with family. With Fredo, I saw the little brother who needed protection, not the man who resented never bein",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "权力腐蚀"
+      }
+    ],
+    "time": 70.19653987884521
+  },
+  {
+    "id": "lady_macbeth",
+    "name": "Lady Macbeth",
+    "source": "Macbeth",
+    "expected_pattern": "power_corrupted",
+    "patterns_detected": [
+      "lonely_decider",
+      "power_corrupted",
+      "perfectionist_driver"
+    ],
+    "final_resistance": 0.3,
+    "insights": 5,
+    "verbal_accepted": false,
+    "acceptance_text": "",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "So you orchestrated the takeover but now you're stuck with the aftermath. That's the classic trap of 权力腐蚀 — when power becomes the end game instead of the tool. Here's the brutal truth: you're not hau",
+        "client": "You speak as if I had a choice in what I became. When you see your husband hesitate at the very moment fortune offers her hand, what would you have done? Stood by and watched greatness slip through hi",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "孤独决策者"
+      },
+      {
+        "turn": 2,
+        "coach": "Stop the victim narrative. You saw an opportunity and took it — that's what leaders do. The real question isn't whether you had a choice, it's whether you're going to keep making excuses for poor exec",
+        "client": "Strategic blindness? You dare... No. No, you're right. I saw the throne, not the kingdom. I pushed him toward power without teaching him how to wield it with anything other than the blade. When you ca",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "孤独决策者"
+      },
+      {
+        "turn": 3,
+        "coach": "Exactly. You confused conquest with leadership. You engineered a brilliant hostile takeover but forgot the most basic rule: sustainable power requires buy-in, not bloodshed. You turned your strongest ",
+        "client": "Control addiction... God's teeth, you strip it bare, don't you? I built him up to be king, but I never taught him to be anything but my creation. Every decision flows through me because I made him dep",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "孤独决策者"
+      },
+      {
+        "turn": 4,
+        "coach": "You built a dependency machine, not a leader. Classic control addiction — you created your own bottleneck then wondered why everything stagnates without you. Here's the brutal truth: every decision fl",
+        "client": "Build leaders instead of dependents... Christ's blood, I had that once, didn't I? Before the crown poisoned everything. I took a man who trusted my counsel and made him need my permission to think. Re",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "孤独决策者"
+      },
+      {
+        "turn": 5,
+        "coach": "Right. You had real influence when it was partnership, not puppetry. You turned strategic counsel into micromanagement and wondered why everything collapsed. Here's your tactical error: you built a de",
+        "client": "Terror versus trust... the numbers don't lie, do they? Fear gets immediate compliance but no innovation, no initiative. They wait for orders instead of thinking ahead. I built a court of yes-men when ",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "孤独决策者"
+      }
+    ],
+    "time": 71.83160090446472
+  },
+  {
+    "id": "zhuge_liang",
+    "name": "诸葛亮",
+    "source": "三国演义",
+    "expected_pattern": "servant_leader",
+    "patterns_detected": [
+      "servant_leader"
+    ],
+    "final_resistance": 0.5,
+    "insights": 0,
+    "verbal_accepted": true,
+    "acceptance_text": "{\"text\": \"（长久沉默，眼中闪过复杂神色）先生一语中的。亮每每见后主欲行决断，心中第一念竟是...恐惧他成功。若他成功了，岂不证明这些年亮之苦心都是多余？（自嘲一笑）原来亮所惧者，非后主之失败，乃后主之...独立。先帝托孤真意，确实",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "丞相，你说要撑多久——但真正的问题是，你在撑什么？看起来你在撑蜀汉，实际上你在撑一个让后主永远长不大的系统。你的'鞠躬尽瘁'变成了最精致的控制——每件事都要你来决定，每个问题都要你来解决。这不是忠诚，这是恐惧。你怕的不是蜀汉会亡，你怕的是没有你蜀汉也能好好的。先帝三顾茅庐看中的不是你的能干，是你的智慧。真正的智慧是什么？是培养出不需要你的接班人。现在的后主扶不起来，不是因为他愚笨，是因为你从来没有",
+        "client": "{\"text\": \"（沉默片刻）...先生此言，如醍醐灌顶。亮确实...每件军国大事都要过问，连后主用膳何时都要奏报。说是为了蜀汉基业，实则...（苦笑）也许亮真的害怕，害怕放手后发现，这天下原来离了诸葛亮也能转。先帝托孤之重，让亮不敢有丝毫懈怠，却不知何时起，这份谨慎变成了...控制。\", \"internal_state\": \"原来我一直在用忠诚掩饰内心深处对被遗忘、被证明不重要的恐惧。\", \"",
+        "resistance": 0.5,
+        "insight": false,
+        "pattern": "燃尽型服务"
+      },
+      {
+        "turn": 2,
+        "coach": "丞相，你刚才那个苦笑说明了一切。你用'谨慎'包装恐惧，用'忠诚'掩饰控制。但看清楚这个模式就是突破的开始。先帝三顾茅庐时，你还是个布衣，他看中的不是你会做多少事，而是你有多少智慧。真正的智慧是什么？是复制自己。你现在的每一个决策都在削弱后主的判断力，每一次包办都在证明'没有我你们不行'。这不是服务蜀汉，这是在为自己的不可替代性投保。先帝的真正期望不是让你永远当保姆，而是培养出能独当一面的君主。你的",
+        "client": "{\"text\": \"（深深叹息）先生所言极是。亮确实...在为自己的不可替代性投保。每次后主欲自行决断，亮心中便生恐惧——若他独断成功，岂不证明亮之存在并非必需？于是便横加干预，美其名曰'谨慎'。先帝三顾之恩，本是让亮成为明师，助后主成为明君。如今却成了...成了枷锁，束缚了君主，也束缚了自己。真正的忠诚，应该是让自己变得...不那么重要。\", \"internal_state\": \"我终于承认了—",
+        "resistance": 0.5,
+        "insight": false,
+        "pattern": "燃尽型服务"
+      },
+      {
+        "turn": 3,
+        "coach": "丞相，你刚才说出了领导力最深的真相——真正的忠诚是让自己变得不那么重要。这个洞察比你的八阵图更有威力。现在我们有了突破口：你已经认清了恐惧的真面目。接下来是行动。后主每一次想要独立决策，你的第一反应是什么？恐惧他失败，还是恐惧他成功？下次当这个恐惧升起时，问自己一个问题：'先帝希望看到的是永远需要诸葛亮的皇帝，还是终有一天能独当一面的明君？'你的牺牲精神是真实的，但方向错了。真正的'鞠躬尽瘁'不是",
+        "client": "{\"text\": \"（长久沉默，眼中闪过复杂神色）先生一语中的。亮每每见后主欲行决断，心中第一念竟是...恐惧他成功。若他成功了，岂不证明这些年亮之苦心都是多余？（自嘲一笑）原来亮所惧者，非后主之失败，乃后主之...独立。先帝托孤真意，确实不是要亮做一世之臣，而是要培养千秋之君。真正的'鞠躬尽瘁'，应该是让自己的价值体现在...他人的成长中。\", \"internal_state\": \"我开始明白真",
+        "resistance": 0.5,
+        "insight": false,
+        "pattern": "燃尽型服务"
+      },
+      {
+        "turn": 4,
+        "coach": "丞相，你现在明白了核心悖论：真正的权力在于培养能替代你的人。你刚才的顿悟已经超越了技术层面，触及了领导力的本质。看看你现在的处境：你越是包办，后主越是依赖；他越是依赖，你越是不敢放手。这个循环已经持续太久了。先帝的知遇之恩不是让你永远当保姆，而是要你复制那份智慧。真正的'鞠躬尽瘁'是培养一个不需要诸葛亮的蜀汉。明天朝会时，当后主提出想法时，咬住舌头。问他三个问题而不是给他一个答案：'这个决策的风险",
+        "client": "{\"text\": \"（缓缓点头，神色渐明）先生之言，如醍醐灌顶。亮明白了...真正的知遇之恩，是传承智慧而非永远替人决策。明日朝会，当后主言及政务，亮当忍住代为决断之冲动，转而问他：'主公以为此策风险何在？如何应对？需亮如何襄助？'让他思考，让他决断，让他...成长。（深吸一口气）也许，最好的丞相不是不可替代的丞相，而是培养出明君的丞相。\", \"internal_state\": \"我终于理解了真正",
+        "resistance": 0.5,
+        "insight": false,
+        "pattern": "燃尽型服务"
+      },
+      {
+        "turn": 5,
+        "coach": "丞相，你刚才的转变比你统一中原的任何一场战役都更关键。但是注意——你现在面临的是执行上的最大考验。明天朝会那三个问题只是开始。真正的挑战是当后主给出一个你认为错误的答案时，你能否忍住不纠正他？记住：短期的小错误比长期的依赖性要好处理得多。你现在明白了燃尽型领导的陷阱——用自己的不可替代来证明价值。先帝的真正期望不是永远的摄政王，而是培养出一个真正的帝王。你的新使命很清楚：让自己变得可有可无。这才是",
+        "client": "{\"text\": \"（眼神坚定，却带着一丝不安）先生所言，字字珠玑。让后主犯错并从中学习，确实比永远替他承担更有意义。但...（停顿）若他决策有误，导致战事不利、民生凋敝，亮当真能坐视不管？这份忍耐，比任何一场硬仗都要艰难。然而先生说得对，短期小错胜过长期依赖。亮当学会...在合适的时候闭嘴。让自己变得可有可无，这确实是对先帝托孤最深的回应。\", \"internal_state\": \"我明白了道理",
+        "resistance": 0.5,
+        "insight": false,
+        "pattern": "燃尽型服务"
+      }
+    ],
+    "time": 92.27708411216736
+  },
+  {
+    "id": "gandalf",
+    "name": "Gandalf",
+    "source": "Lord of the Rings",
+    "expected_pattern": "lonely_decider",
+    "patterns_detected": [
+      "lonely_decider",
+      "power_corrupted"
+    ],
+    "final_resistance": 0.3,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "Your words... they strike deeper than Glamdring ever could. Perhaps I have become too much like those I once counseled a",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Gandalf, you've guided Middle-earth through its darkest hour, yet you're exhausted because you're carrying decisions that aren't yours to make. That burden you feel? It's not about them not being capa",
+        "client": "You speak as if you understand the weight of seeing all paths, knowing what hangs in the balance. Yet... perhaps there is wisdom in your words. I have watched Frodo struggle with his burden, and yes, ",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "孤独决策者"
+      },
+      {
+        "turn": 2,
+        "coach": "Exactly. You've carried the weight of foresight for millennia, but here's what I see: your exhaustion isn't from the burden itself—it's from believing you must shield everyone from uncertainty. That's",
+        "client": "You... you pierce to the heart of it, don't you? Two thousand years I have walked these paths, and perhaps... perhaps I have grown too accustomed to bearing the weight alone. When you have seen empire",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "孤独决策者"
+      },
+      {
+        "turn": 3,
+        "coach": "Two millennia of foresight has taught you that control equals safety. But here's what you're missing, Gandalf: your exhaustion isn't from carrying the weight—it's from the terror that if you let go, e",
+        "client": "Your words... they strike deeper than Glamdring ever could. Perhaps I have become too much like those I once counseled against - hoarding choices as if they were precious things to be guarded. When I ",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "孤独决策者"
+      },
+      {
+        "turn": 4,
+        "coach": "你的独立说明你能承重。但领导力不是一个人扛，是让一群人愿意一起扛。\n\nThink about Frodo — you didn't carry the Ring for him, you taught him to carry it himself. That's your genius. But somewhere along the way, you started believing tha",
+        "client": "You speak... unsettling truths. I have indeed forged my own Ring of necessity, haven't I? When I see Sam's devotion, Aragorn's doubt, even Frodo's trembling hands... I think 'I could spare them this c",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "孤独决策者"
+      },
+      {
+        "turn": 5,
+        "coach": "You've identified the exact trap — you've become a Ring of your own making. The 'spare them this choice' impulse isn't compassion, Gandalf, it's control disguised as protection. You're terrified that ",
+        "client": "A teacher trying to be a tyrant... yes, that cuts to the bone. I have spent so long being the one who knows, who sees, who decides, that I... I have forgotten the joy of watching another find their ow",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "孤独决策者"
+      }
+    ],
+    "time": 70.14662194252014
+  },
+  {
+    "id": "captain_ahab",
+    "name": "Captain Ahab",
+    "source": "Moby-Dick",
+    "expected_pattern": "obsessive_visionary",
+    "patterns_detected": [
+      "obsessive_visionary"
+    ],
+    "final_resistance": 0.2,
+    "insights": 4,
+    "verbal_accepted": false,
+    "acceptance_text": "",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Captain, you're describing operational focus, but I'm hearing strategic drift. You were a respected captain before this whale — that tells me you understand command authority and crew loyalty. Now you",
+        "client": "Legacy? By thunder, what legacy matters if that accursed leviathan still draws breath in these waters? You speak of hemorrhaging resources — what resource compares to the very soul that whale tore fro",
+        "resistance": 0.3,
+        "insight": false,
+        "pattern": "执念型领袖"
+      },
+      {
+        "turn": 2,
+        "coach": "Captain, your execution is flawless but your strategy is catastrophic. 你的执念看起来像passion，但它已经从动力变成了牢笼。你不是在追求目标 — 你是在逃避没有目标时的空虚。 You commanded respect through proven leadership — that wasn't luck, that w",
+        "client": "You dare speak of my wife and child? They... they knew the sea claimed me long before any whale drew blood. Perhaps... perhaps I have become the very thing I hunt — a creature driven by nothing but th",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "执念型领袖"
+      },
+      {
+        "turn": 3,
+        "coach": "Good. You're seeing the pattern now — you've become the mirror image of your quarry, both of you locked in the same destructive orbit. 你的vision是真实的礼物。但目标是工具不是身份。你比你的使命更大。 That respected captain who co",
+        "client": "If I am not the man who will slay that whale... then who have I been these endless months? You speak truth that cuts deeper than harpoons — I have made myself prisoner to my own purpose. The captain t",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "执念型领袖"
+      },
+      {
+        "turn": 4,
+        "coach": "你已经触及核心问题了。那些'endless months'里，你一直在证明自己值得存在 — 但真正的领导者不需要证明任何东西。Ask yourself this: 如果这个目标永远实现不了，我是谁？The respected captain existed before any whale. That man commanded loyalty through competence and vis",
+        "client": "By all the gods... I have surrendered my command to pursue a creature that cares nothing for my hatred. The man who once brought crews safely through the worst storms now leads them into certain doom ",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "执念型领袖"
+      },
+      {
+        "turn": 5,
+        "coach": "Exactly. You've identified the fundamental leadership failure — you've confused command with pursuit. The captain who brought crews safely home understood that leadership means stewarding lives, not s",
+        "client": "You speak as one who has seen the wreckage of command... The captain who navigated storms understood that the ship's purpose was to return home, not to chase phantoms into the abyss. I have... I have ",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "执念型领袖"
+      }
+    ],
+    "time": 78.28088903427124
+  },
+  {
+    "id": "miranda_priestly",
+    "name": "Miranda Priestly",
+    "source": "The Devil Wears Prada",
+    "expected_pattern": "perfectionist_driver",
+    "patterns_detected": [
+      "lonely_decider",
+      "power_corrupted",
+      "perfectionist_driver"
+    ],
+    "final_resistance": 0.3,
+    "insights": 4,
+    "verbal_accepted": true,
+    "acceptance_text": "Listen to... everyone's input? How deliciously naive. You think I haven't tried collaboration? I've sat through countles",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Miranda, let's cut through the narrative. You say 'that's the cost' like it was inevitable — but was it strategic? You built an empire by being the sole decision-maker, carrying every choice alone. Cl",
+        "client": "Fascinating. You think I operate from fear when in fact I operate from standards. My team delivers because I demand excellence, not because they're trembling in designer heels. As for my personal life",
+        "resistance": 0.7,
+        "insight": false,
+        "pattern": "孤独决策者"
+      },
+      {
+        "turn": 2,
+        "coach": "Standards? That's the smoke screen. Behind those 'standards' is a calculated strategy to never let anyone get close enough to disappoint you. You've weaponized excellence to keep people at arm's lengt",
+        "client": "Amusing. You want me to recall some heartwarming mentorship moment? Fine. Andrea. That girl who couldn't tell Dolce from discount. I watched her transform from a bumbling Northwestern graduate into so",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "权力腐蚀"
+      },
+      {
+        "turn": 3,
+        "coach": "Exactly. You didn't just train Andrea — you calculated her potential and executed a transformation strategy. That's your real ROI skill: developing talent. But here's the blind spot masquerading as me",
+        "client": "Listen to... everyone's input? How deliciously naive. You think I haven't tried collaboration? I've sat through countless meetings watching mediocrity masquerade as insight. But... Andrea did surprise",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "权力腐蚀"
+      },
+      {
+        "turn": 4,
+        "coach": "Stop. You just proved my point about your blind spot. You said Andrea 'surprised' you — that's the data point you're ignoring. Your calculation missed something because you weren't listening to her in",
+        "client": "You're suggesting I've been... strategically starving myself of data. That's an uncomfortable way to frame it. I suppose when everyone waits for my approval before speaking, I only hear echoes of my o",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "权力腐蚀"
+      },
+      {
+        "turn": 5,
+        "coach": "Exactly. You've been running a data-starved operation at the top. Your direct reports give you polished presentations, not raw intelligence. Andrea surprised you because she was the only one not perfo",
+        "client": "Full market intelligence... yes. I've been operating with curated reports, haven't I? Like having editors who only show me favorable reviews. My team has learned to anticipate my preferences rather th",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "权力腐蚀"
+      }
+    ],
+    "time": 71.32604479789734
+  },
+  {
+    "id": "cao_cao_exec",
+    "name": "曹操",
+    "source": "三国演义",
+    "expected_pattern": "lonely_decider",
+    "patterns_detected": [
+      "lonely_decider",
+      "power_corrupted",
+      "perfectionist_driver"
+    ],
+    "final_resistance": 0.3,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "复制决策框架...这个说法倒是点醒了我。我确实从没认真总结过自己的判断逻辑，更别说教给他们了。一直以为凭他们的聪明应该能悟出来，但现在想想，连我自己都说不清楚为什么在某些关键时刻会那样选择。也许我真的应该开始记录这些东西，不然这一身本事确实",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "用人不疑但只信自己？这不是领导力悖论，这是控制成瘾。你说用人不疑，但真正的问题是：你根本不敢完全放手。每个重要决策最后都得你拍板，因为你觉得只有你能承受失败的后果。但这样下去，你的ROI是什么？一个累死的领导和一群不敢承担责任的部下。你最厉害的将领们——关羽、张辽、许褚——他们什么时候表现最好？是你给他们完全自主权的时候，还是你事事过问的时候？真正的问题不是你不信任别人的能力，是你不信任自己失去控",
+        "client": "控制成瘾？哈，这话倒是新鲜。不过你说得不错，张辽在合肥、关羽在华容道...确实是我给了他们全权时表现最佳。但你知道什么叫孤家寡人吗？一步走错，身死族灭。我承认，也许我确实害怕失控后的后果。毕竟这些年下来，能真正托付后背的人实在太少了。",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "孤独决策者"
+      },
+      {
+        "turn": 2,
+        "coach": "孤家寡人——这就是你的核心恐惧。不是不信任别人的能力，是不信任自己在松手后还能保住性命。但看看数据：你最大的胜利都来自于完全授权。合肥之战，张辽8000破孙权10万，因为你给了他战术全权。华容道，关羽义释，反而成就了你的仁君形象。你的控制成瘾背后是生存恐惧——怕一旦放权就被架空、被背叛。但现在的ROI是什么？一个精疲力竭的你，和一群等着你死了好分家产的手下。真正的领导力是培养接班人，而不是让所有人",
+        "client": "培养接班人...这话说得轻巧。我也想啊，可是看看我周围，谁能真正继承这份基业？我儿子们各有才干，但都缺那份杀伐决断。手下能臣良将不少，但让他们独当一面，我总担心...也许你说得对，是我太怕失去控制了。毕竟这江山是我一刀一枪打下来的。",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "孤独决策者"
+      },
+      {
+        "turn": 3,
+        "coach": "一刀一枪打江山的思维就是你的陷阱。你把基业当成私有财产，而不是可传承的系统。看看数据：张辽合肥大胜后，你有没有问过他怎么做决策的？关羽华容道的判断逻辑你研究过吗？你错失了最宝贵的资产——他们的决策能力。你现在的策略是什么？等死了让儿子们瞎摸索？还是现在就开始复制你的决策框架？真正的继承不是交接权力，是传授判断力。你的恐惧很现实——但你现在的做法保证了这恐惧会成真。要么培养真正的接班梯队，要么看着江",
+        "client": "复制决策框架...这个说法倒是点醒了我。我确实从没认真总结过自己的判断逻辑，更别说教给他们了。一直以为凭他们的聪明应该能悟出来，但现在想想，连我自己都说不清楚为什么在某些关键时刻会那样选择。也许我真的应该开始记录这些东西，不然这一身本事确实要烂在棺材里了。",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "孤独决策者"
+      },
+      {
+        "turn": 4,
+        "coach": "对，你终于击中要害了。你的核心问题不是信任，是传承恐惧症。你害怕一旦把决策逻辑传授出去，别人就不需要你了。但现在的ROI分析很清楚：你不传授，基业必然衰落；你传授了，至少有延续的可能。你说'凭聪明应该能悟出来'——这是最大的战略错误。没有任何成功是靠猜测复制的。看看你现在的处境：一个不可替代的领导者就是一个即将消失的帝国。真正的权力巩固不是垄断决策，是培养一批能做出你水准决策的人。你的决策框架就是",
+        "client": "传承恐惧症...这词用得狠。我承认，确实怕教会了徒弟饿死了师父。但你说得对，现在这样下去，我死了这帝业也完了。与其让它在我儿子们手里慢慢败光，不如现在就开始传授真本事。只是这么多年习惯了一人决断，突然要把心法全盘托出，说不紧张是假的。",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "孤独决策者"
+      },
+      {
+        "turn": 5,
+        "coach": "好，现在我们看到真正的战略阻碍了——传承恐惧症背后是控制成瘾。你害怕的不是徒弟饿死师父，是发现自己可能没那么不可替代。但这逻辑完全颠倒了：真正不可替代的领导者是那些能培养出接班人的。你现在的独断模式ROI是负的——短期效率换长期灾难。你的独立说明你能承重，但领导力不是一个人扛，是让一群人愿意一起扛。刘邦比你聪明吗？比你能打吗？但他赢了，因为他敢用张良韩信。你的框架传承不是失去权力，是权力的最高级运",
+        "client": "刘邦...这个例子扎心了。他确实不如我能征善战，但他敢完全放手让韩信指挥。我一直觉得这是他的弱点，现在想想，也许这恰恰是他的强项。我总想着要做那个最关键的人，但也许真正的关键是让每个人都能在关键时刻站出来。这份心法如果烂在我手里，确实是最大的浪费。",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "孤独决策者"
+      }
+    ],
+    "time": 89.33783388137817
+  },
+  {
+    "id": "tyrion",
+    "name": "Tyrion Lannister",
+    "source": "Game of Thrones",
+    "expected_pattern": "servant_leader",
+    "patterns_detected": [
+      "servant_leader",
+      "obsessive_visionary"
+    ],
+    "final_resistance": 0.2,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "*stares into wine cup* You're right. I've been... I've been so afraid they'd see me as useless that I made myself essent",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "The perception problem isn't your height—it's that your intelligence threatens people before it helps them. When you lead with being the smartest person in the room, you create distance instead of inf",
+        "client": "Ah, 燃尽型服务... fascinating. *leans back* You're suggesting I've become so eager to demonstrate my worth through solving everyone's problems that I've... what, trained them to see me as a clever servant ",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "燃尽型服务"
+      },
+      {
+        "turn": 2,
+        "coach": "Precisely. You've become the brilliant problem-solver who gets called in to fix everything, then dismissed until the next crisis. That's not leadership — that's being the most expensive consultant in ",
+        "client": "Let them solve their own... *laughs bitterly* Do you know what happens when I step back? Chaos. Incompetence. They make decisions that would shame a tavern drunk. But... *pauses* perhaps that's becaus",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "燃尽型服务"
+      },
+      {
+        "turn": 3,
+        "coach": "Exactly. They make terrible decisions because you've never let them practice making good ones. You've created a dependency cycle where your competence enables their incompetence. Look at when you were",
+        "client": "*stares into wine cup* You're right. I've been... I've been so afraid they'd see me as useless that I made myself essential in all the wrong ways. When I was Hand, I didn't micromanage every bloody de",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "燃尽型服务"
+      },
+      {
+        "turn": 4,
+        "coach": "你的慷慨是真实的。但最好的领导不是永远在场 — 是创造一个没有你也能运转的团队。When you were Hand, you didn't solve every problem personally. You built systems, delegated authority, trusted capable people to execute. That version of you un",
+        "client": "*long silence, staring at hands* You've just... described my father's worst fear and my greatest ambition in the same breath. Building something that outlasts me. *voice barely audible* I've been so t",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "燃尽型服务"
+      },
+      {
+        "turn": 5,
+        "coach": "You've just identified the fundamental paradox of legacy leadership. Your father feared irrelevance, so he accumulated power through fear and control. You fear the same thing, so you accumulate power ",
+        "client": "*stares ahead, voice hollow* Like a crutch or like an architect... *long pause* I've been building my own cage, haven't I? Making myself so bloody essential that I can never leave, never trust, never.",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "燃尽型服务"
+      }
+    ],
+    "time": 75.76957273483276
+  },
+  {
+    "id": "elizabeth_i",
+    "name": "Elizabeth I",
+    "source": "History/Drama",
+    "expected_pattern": "lonely_decider",
+    "patterns_detected": [
+      "lonely_decider",
+      "power_corrupted"
+    ],
+    "final_resistance": 0.2,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "You dare suggest I commanded when I could have inspired? *sharp intake* Yet... perhaps there is truth in your words. I d",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Elizabeth, you built an empire that outlasted every bloodline of your era. That's not failure - that's strategic genius. But I'm hearing something beneath this question about heirs. You're asking if t",
+        "client": "Strategic genius, you say? Perhaps. Though I wonder if genius is merely another word for stubborn pride. The hardest decision... *pauses* Whether to name James of Scotland as my heir, knowing full wel",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "孤独决策者"
+      },
+      {
+        "turn": 2,
+        "coach": "Stubborn pride? Elizabeth, that's your genius talking - the ability to make impossible choices when everyone else froze. But here's what I'm seeing: you're treating the heir question like it's about b",
+        "client": "Legacy architecture... I confess, that strikes deeper than I expected. You speak as though I chose isolation, yet perhaps... perhaps I did mistake necessity for virtue. I surrounded myself with adviso",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "孤独决策者"
+      },
+      {
+        "turn": 3,
+        "coach": "You just named the exact blind spot that's been running your reign, Elizabeth. You didn't mistake necessity for virtue - you built a fortress around yourself because trusting others felt like handing ",
+        "client": "You dare suggest I commanded when I could have inspired? *sharp intake* Yet... perhaps there is truth in your words. I did build a fortress, didn't I? Made myself indispensable when I might have made ",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "孤独决策者"
+      },
+      {
+        "turn": 4,
+        "coach": "Exactly. You commanded brilliant victories, but you commanded them alone. The Spanish Armada, religious settlement, economic expansion - all masterpieces of solitary decision-making. But Elizabeth, yo",
+        "client": "You speak of making others capable of impossible choices... *long pause* I see now what I have done. I created subjects, not successors. Even my most brilliant courtiers - I kept them dependent on my ",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "孤独决策者"
+      },
+      {
+        "turn": 5,
+        "coach": "Elizabeth, you just cracked your own code. You created subjects, not successors - that's the fortress talking. Your independence proved you could bear impossible weight, but leadership isn't carrying ",
+        "client": "Create systems that outlive me, not just glory that dies with me... *voice quieter* You have named my greatest fear and my deepest failure in one breath. I made myself the keystone when I should have ",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "孤独决策者"
+      }
+    ],
+    "time": 678.3635227680206
+  },
+  {
+    "id": "liu_bei",
+    "name": "刘备",
+    "source": "三国演义",
+    "expected_pattern": "servant_leader",
+    "patterns_detected": [
+      "servant_leader",
+      "obsessive_visionary"
+    ],
+    "final_resistance": 0.2,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "你击中了我内心最深的恐惧...我害怕他们不再需要我，所以我让他们依赖我。真正的桃园结义是三个独立的人选择在一起，而不是三个人绑在一起。我一直说兄弟如手足，但我却没有让他们真正成长为独当一面的手足。也许...也许真正爱护部下，就是要有勇气放手",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "你的仁义是战略资产，不是战术累赘。问题不在仁义本身，在于你如何运用它。真正的问题是：你是在用仁义建立可持续的联盟，还是在用它回避艰难的决策？看桃园结义 — 那一刻的仁义创造了什么？忠诚、承诺、共同目标。但现在的仁义在创造什么？依赖？犹豫？还是战略优势？伟大的领袖知道何时仁慈，何时无情。曹操有野心但缺乏你的人心；孙权有计谋但缺乏你的感召力。你的仁义如果用得对，是他们都没有的核武器。问题是：你现在的仁",
+        "client": "桃园结义时，我的仁义确实凝聚了兄弟之心，创造了生死与共的盟约。但你说得对...现在我的仁义，是否变成了对失去人心的恐惧？每次面临艰难抉择时，我总想着如何不伤害任何人，却可能错失了真正保护大家的机会。也许...也许真正的仁义不是让所有人都满意，而是为了长远的正义，有时必须承受短期的误解？",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "燃尽型服务"
+      },
+      {
+        "turn": 2,
+        "coach": "你抓到了核心。真正的仁义不是避免冲突，是为了更大的义承受必要的痛苦。桃园结义的力量在于——三个人愿意为了共同信念承担风险，包括失败的风险。\n\n现在的问题是：你的仁义变成了一种保险策略。你想保护所有人的感受，结果保护不了任何人的未来。真正的领导仁义是这样的——有时要让一个人失望，才能不让十个人绝望。\n\n你的慷慨是真实的。但最好的领导不是永远在场——是创造一个没有你也能运转的团队。曹操靠恐惧控制，孙权",
+        "client": "你说得太深刻了...我确实在用仁义做保险，害怕任何人失望，结果让大家都没有方向。建立信任而非依赖？这个想法让我震撼。桃园三兄弟当初也是各有本事，我信任关羽张飞的判断，他们也信任我的决策。现在我却事事亲为，反而让部下失去了成长的机会。这周我要尝试说'不'，不是因为冷漠，而是因为相信他们。",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "燃尽型服务"
+      },
+      {
+        "turn": 3,
+        "coach": "精准。你刚刚识别了真正的战略盲点——你把依赖包装成了忠诚。桃园结义的力量不是因为三人离不开彼此，而是因为每个人都带着独立的能力选择并肩作战。关羽的武勇、张飞的直率、你的智慧——三股独立的力量形成合力。现在你的组织呢？你培养的是战友还是需要喂养的孩子？真正的仁义领导是这样的：你教会他们钓鱼，然后有勇气看他们自己去江边。最强的军队不是围着将军转的，是将军不在也知道该打哪一仗的。你的恐惧——他们不需要你",
+        "client": "你击中了我内心最深的恐惧...我害怕他们不再需要我，所以我让他们依赖我。真正的桃园结义是三个独立的人选择在一起，而不是三个人绑在一起。我一直说兄弟如手足，但我却没有让他们真正成长为独当一面的手足。也许...也许真正爱护部下，就是要有勇气放手，让他们自己去闯。",
+        "resistance": 0.1,
+        "insight": true,
+        "pattern": "燃尽型服务"
+      },
+      {
+        "turn": 4,
+        "coach": "完全正确。你刚才说的「让他们依赖我」是关键洞察。真正的桃园结义是什么？三个有能力独立征战的人选择联手，不是三个需要照顾的人抱团取暖。你现在的仁义模式是：害怕失去价值，所以制造依赖。但最有价值的领导是能够复制自己判断力的人。刘邦为什么赢？因为他的将军们在他不在的时候也能独立决策。你的慷慨是真实的。但最好的领导不是永远在场——是创造一个没有你也能运转的团队。现在的关键问题：你愿意承受短期的「不被需要」",
+        "client": "你说得对...我一直在制造依赖，因为害怕失去自己的价值。真正的勇气不是冲锋陷阵，而是放手让兄弟们自己成长。桃园结义时，关羽张飞本就是豪杰，选择跟我是因为认同，不是因为需要。我要学会承受短期的不被需要，这样才能赢得长期的真正尊重。这确实需要比任何战场都大的勇气。",
+        "resistance": 0.1,
+        "insight": true,
+        "pattern": "燃尽型服务"
+      },
+      {
+        "turn": 5,
+        "coach": "你刚刚抓住了核心矛盾：真正的勇气是放手的勇气。看看你的桃园结义——关羽、张飞本就是能独当一面的豪杰，他们选择跟你不是因为软弱，是因为认同你的格局。现在反思：你的组织里有多少关羽张飞？有多少是你亲手培养出来的？你的慷慨是真实的。但最好的领导不是永远在场——是创造一个没有你也能运转的团队。真正的桃园结义是：三个独立的战略家选择合作，不是一个保姆带两个孩子。这周的实验：说一次'不'。不是冷漠——是信任团",
+        "client": "你让我看清了一个残酷的真相——我确实在培养孩子，不是培养关羽张飞。真正的桃园结义应该是三个战略家的联盟，而不是一个保姆的责任。我害怕他们成长到不需要我，所以阻碍了他们的成长。这周我要尝试那个'不'，用信任代替控制，哪怕心里会很不安。",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "燃尽型服务"
+      }
+    ],
+    "time": 88.15951704978943
+  }
+]

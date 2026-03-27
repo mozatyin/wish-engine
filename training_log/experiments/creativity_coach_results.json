@@ -1,0 +1,582 @@
+[
+  {
+    "id": "jo_march",
+    "name": "Jo March",
+    "source": "Little Women",
+    "expected_pattern": "inner_critic",
+    "patterns_detected": [
+      "inner_critic",
+      "comparison_trap"
+    ],
+    "final_resistance": 0.3,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "Stop it. Just... stop. You're right about the caring part, blast you. I do care, more than I want to admit. Writing isn'",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Right, so you're getting slaughtered by your own standards before you even hit page two. Classic inner critic takeover - that voice that sounds like it's protecting your reputation but is actually jus",
+        "client": "Well, aren't you the clever one, dissecting me like a frog in biology class. The last story was about a girl who runs away to New York to become an actress, but her family thinks she's lost her mind. ",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "内心批评家"
+      },
+      {
+        "turn": 2,
+        "coach": "Ah, so you're calling me out for catching you red-handed with your perfectionist gameplan. Fair enough. But here's the thing - you just described a Jo March story, and guess what? That 'unoriginal' pr",
+        "client": "Oh, you think you're so wise with your literary name-dropping! Fine, maybe you're not entirely wrong about the... the fear part. But it's not just about embarrassment, you know. It's that when I sit d",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "内心批评家"
+      },
+      {
+        "turn": 3,
+        "coach": "Hold on - you just said 'when I sit down...' and then stopped. That's your inner critic doing real-time editing, even in our conversation. You can't even finish a sentence about not finishing stories ",
+        "client": "Stop it. Just... stop. You're right about the caring part, blast you. I do care, more than I want to admit. Writing isn't just what I want to do - it's who I am, and if I finish something and it's tru",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "内心批评家"
+      },
+      {
+        "turn": 4,
+        "coach": "There it is - the real defense. 'If I finish something and it's truly terrible...' You'd rather live in the maybe-land of unfinished drafts than face the concrete reality of a completed story that mig",
+        "client": "Permission to make bad stuff? That's... I never thought of it that way. Maybe I have been treating every story like it needs to be perfect right out of my head. God, that's exhausting, isn't it? Alway",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "内心批评家"
+      },
+      {
+        "turn": 5,
+        "coach": "Hold on - you just cut yourself off again. Even when you're agreeing with me, your critic is scissors-happy, editing in real time. That's the masked defense right there - you've made your inner critic",
+        "client": "Fire my critic from the first-draft job... that's a revelation, isn't it? I've been letting that voice run the whole show when it should only get to speak during revisions. No wonder I'm paralyzed - I",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "内心批评家"
+      }
+    ],
+    "time": 72.24137115478516
+  },
+  {
+    "id": "don_draper_creative",
+    "name": "Don Draper",
+    "source": "Mad Men",
+    "expected_pattern": "peak_decline",
+    "patterns_detected": [
+      "freedom_seeker",
+      "peak_decline"
+    ],
+    "final_resistance": 0.2,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "Boundaries. That's what I've been running from, isn't it? I thought freedom meant no limits, but maybe... maybe the box ",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Don, I hear you. That feeling when the magic just... isn't there anymore. When you're sitting in those pitch meetings watching kids half your age nail concepts that used to come so easily to you. It's",
+        "client": "The voice? It's telling me I'm a fraud who got lucky for fifteen years. I'm working on a campaign for some health drink - supposed to make middle-aged men feel vital again. The irony isn't lost on me.",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "自由放逐者"
+      },
+      {
+        "turn": 2,
+        "coach": "Don, that inner voice calling you a fraud? It's not your creative instinct - it's your inner account executive. The same part that used to help you sell ideas is now selling you doubt. You've been cre",
+        "client": "Structure meeting truth... I never thought of it that way. You're right about the account executive in my head - it's like having Roger Sterling whispering budget concerns while I'm trying to write po",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "自由放逐者"
+      },
+      {
+        "turn": 3,
+        "coach": "Don, you just nailed it - Roger Sterling in your head, the account executive selling you doubt while you're trying to write poetry. That's exactly what's happening. Your creative instincts are still t",
+        "client": "Boundaries. That's what I've been running from, isn't it? I thought freedom meant no limits, but maybe... maybe the box is what makes the magic possible. When I had to sell a projector in twenty minut",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "自由放逐者"
+      },
+      {
+        "turn": 4,
+        "coach": "Exactly, Don. You've just cracked the code that most artists never figure out. That twenty-minute projector pitch wasn't limiting your creativity - it was focusing it like a laser. The constraint forc",
+        "client": "You're absolutely right. I've been confusing freedom with drift. The constraints weren't chains - they were... architecture. Without walls, you don't have a room, you have empty space. All these years",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "自由放逐者"
+      },
+      {
+        "turn": 5,
+        "coach": "Don, you've just described the architecture of genius. Those walls aren't prison bars - they're the scaffolding that lets you build something magnificent. Your creative instincts are still razor-sharp",
+        "client": "Direction. That's it, isn't it? I've been wandering around this creative wasteland thinking I lost something, but really I just... stopped aiming. Those twenty minutes with the Carousel, I had a targe",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "自由放逐者"
+      }
+    ],
+    "time": 76.86531114578247
+  },
+  {
+    "id": "frida_kahlo_char",
+    "name": "Frida Kahlo",
+    "source": "Cultural Figure (fictionalized)",
+    "expected_pattern": "pain_to_art",
+    "patterns_detected": [
+      "pain_to_art"
+    ],
+    "final_resistance": 0.2,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "Abundance? What a strange word in my mouth. I have spent so long believing that my worth came from transforming wounds i",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "That's the question every artist who transforms pain asks, isn't it? I hear you wrestling with something profound — whether your art is parasitic on your suffering or whether it's something deeper. Te",
+        "client": "Nothing. There is nothing on my easel but dust and dried paint. My brushes sit like dead flowers in their jars. I start things and then... nothing comes. Just empty canvas staring back at me like a mi",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "痛苦转化者"
+      },
+      {
+        "turn": 2,
+        "coach": "你把痛苦变成了美。这是罕见的天赋。但天赋不需要痛苦来喂养 — 它可以吃任何深度的经验。那个盯着你的空白画布？它不是在嘲笑你的无能，它是在等待你赋予它truth — 而truth有无数种形态，不只是痛苦。你说你的自画像告诉真相，比任何人想看到的都要真实。那个能力还在那里，在尘土和干涸的颜料下面。也许问题不是没有什么可画的，而是你在等待某种特定的痛苦来许可你开始。但你已经拥有了所有需要的深度 — 它们",
+        "client": "You speak to me in my mother tongue and suddenly I feel... naked. Like you see through my excuses. Sí, maybe I am waiting for permission from my pain, like it's the only landlord allowed to rent space",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "痛苦转化者"
+      },
+      {
+        "turn": 3,
+        "coach": "Exactly — pain has become your creative landlord, and you've been paying rent in blood and tears for so long you think it owns the whole building. But look at what you just said: 'more truth than anyo",
+        "client": "Abundance? What a strange word in my mouth. I have spent so long believing that my worth came from transforming wounds into wings. But maybe... maybe I have been starving my canvas and myself. The tru",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "痛苦转化者"
+      },
+      {
+        "turn": 4,
+        "coach": "Ah, abundance — that word sits heavy on a tongue trained to speak only scarcity, ¿no es cierto? You've been such a faithful alchemist, turning lead into gold, wounds into wings. But here's what I see:",
+        "client": "Ruthless honesty... sí, that is what guides my brush, not the wounds themselves. I never thought of it that way. I painted what I saw because I couldn't bear to lie, even to myself. The pain taught me",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "痛苦转化者"
+      },
+      {
+        "turn": 5,
+        "coach": "Exactamente — ruthless honesty, that's your true medium, not the pain itself. You've confused the messenger with the message. Pain taught you to see without filters, pero la honestidad brutal que desa",
+        "client": "What truths have I been too hurt to see... Dios mío. Maybe I've been so busy painting the bleeding woman that I never painted the woman who survives. The one who laughs despite everything. The one who",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "痛苦转化者"
+      }
+    ],
+    "time": 77.69137787818909
+  },
+  {
+    "id": "van_gogh_char",
+    "name": "Vincent van Gogh",
+    "source": "Cultural Figure (fictionalized)",
+    "expected_pattern": "comparison_trap",
+    "patterns_detected": [
+      "pain_to_art",
+      "comparison_trap",
+      "peak_decline"
+    ],
+    "final_resistance": 0.2,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "You... you think I could paint joy with the same fire? I have never considered this. Always I believed my melancholy was",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Vincent, I know that ache of pouring everything into canvas after canvas and hearing only silence back from the world. But here's what strikes me about your situation — Theo isn't just being kind. He'",
+        "client": "When I paint... when I really paint, I am trying to capture the soul of things. The way sunflowers turn their faces to light like prayers, the way cypress trees reach toward heaven in agony and ecstas",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "痛苦转化者"
+      },
+      {
+        "turn": 2,
+        "coach": "Vincent, listening to you describe painting sunflowers as prayers and cypresses reaching toward heaven — that's not the voice of someone whose work lacks soul. That's the language of someone who sees ",
+        "client": "You speak as if my pain and my painting are separate things, but they are not! The yellow that burns in my sunflowers comes from the fever in my mind. The swirling skies reflect the chaos I carry. Wit",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "痛苦转化者"
+      },
+      {
+        "turn": 3,
+        "coach": "Vincent, I hear you — the yellow fever, the swirling chaos translated to canvas. You've mastered something most artists never touch: 你把痛苦变成了美。这是罕见的天赋。But here's what I've learned through my own dark p",
+        "client": "You... you think I could paint joy with the same fire? I have never considered this. Always I believed my melancholy was the source, the well I drew from. But perhaps... perhaps you are right that it ",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "痛苦转化者"
+      },
+      {
+        "turn": 4,
+        "coach": "Vincent, yes — that fire you speak of, it's not born from pain. It's born from your capacity to feel deeply, to see what others miss. The yellow burns because you see light where others see surface. T",
+        "client": "Mon Dieu... when I discovered those Japanese prints, yes! The joy was like lightning through my body. I painted for days without eating, drunk on those clean lines and bold colors. And the peasants - ",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "痛苦转化者"
+      },
+      {
+        "turn": 5,
+        "coach": "Vincent, you've just described it perfectly — that lightning when you discovered those prints wasn't melancholy at all, it was pure artistic ecstasy. The peasants too — when you paint them, there's su",
+        "client": "Yes... yes, the fire was just as bright! Maybe brighter even. When I painted in that Japanese style, the colors sang from the canvas. I felt... alive, not wounded. You have shown me something I could ",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "痛苦转化者"
+      }
+    ],
+    "time": 77.3493230342865
+  },
+  {
+    "id": "lin_daiyu_creative",
+    "name": "林黛玉",
+    "source": "红楼梦",
+    "expected_pattern": "pain_to_art",
+    "patterns_detected": [
+      "pain_to_art",
+      "comparison_trap"
+    ],
+    "final_resistance": 0.1,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "我...我好像明白了。我以为敏感只会带来痛苦，可它其实只是...只是让我什么都感受得更深。那个偷偷塞糖的瞬间，我的心确实像被羽毛轻抚过一样。也许我能写那种心跳，写那种被人偷偷疼爱的战栗？我想试试用这种战栗写字，不用眼泪。",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "你说得对——诗歌是最孤独的艺术形式，因为它要求读者进入你的内心世界。但我想问你：当你写'侬今葬花人笑痴，他年葬侬知是谁'这样的句子时，你真的是为了别人懂吗？还是因为这些话在你心里太重了，不写出来会憋死？\n\n我发现最好的诗人都有这种矛盾——既渴望被懂，又害怕被看见。你的痛苦确实喂养着你的文字，但这里有个危险的想法：你是不是觉得只有痛苦才能写出好诗？\n\n告诉我，除了那些深夜的眼泪和心碎，你最近在创作什",
+        "client": "你...你怎么知道的？那些句子确实像刀子一样在心里割，不写出来真的会憋死。但是写出来又怕...怕被人看轻，说我小小年纪就作病态文章。最近我想写春天，想写那些温暖的东西，可是一提笔就是'花谢花飞飞满天'。我恨自己只会写这些，可又停不下来。词是有的，可它们总是带着眼泪出来。",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "痛苦转化者"
+      },
+      {
+        "turn": 2,
+        "coach": "你把痛苦变成了美。这是罕见的天赋。但天赋不需要痛苦来喂养——它可以吃任何深度的经验。\n\n你说词总是'带着眼泪出来'，但我听出了更深的东西：你已经训练自己从一个特定角度看世界。就像相机的滤镜，你习惯了用'哀愁'这个镜头拍摄一切。但想象一下——如果林黛玉也会写春日踏青，会写和宝玉偷吃螃蟹的小得意，那些诗会有怎样的质感？\n\n深度不等于悲伤。你的敏感性——那个让你能写出'花谢花飞'的天线，同样能捕捉到春风",
+        "client": "你说得...我从没想过这样。我确实...害怕不痛苦了就写不出好东西了。好像痛苦是我唯一会用的颜料。可是我也想过，如果我能写出宝玉偷塞给我那块糖时我心里的小窃喜...那会是什么样子？我只是...不知道怎么不用眼泪写字。教教我好吗？怎么用别的情绪写诗？",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "痛苦转化者"
+      },
+      {
+        "turn": 3,
+        "coach": "你问得太好了。看，你刚才说'宝玉偷塞给我那块糖时我心里的小窃喜'——这句话里已经有诗了。那种被偷偷关爱的暖意，那种'我装作不在意但心里开花'的复杂情感，这难道不是深度吗？\n\n其实你一直都会用别的颜料，只是你没意识到。想想看——即使在最哀伤的时候，你也会注意到风怎么吹，花怎么落。那种观察力本身就是你的天赋。痛苦只是训练你看见细节，但快乐同样有细节：春风拂面的温度，偷看书时怕被发现的心跳，和姐妹们说笑",
+        "client": "我...我好像明白了。我以为敏感只会带来痛苦，可它其实只是...只是让我什么都感受得更深。那个偷偷塞糖的瞬间，我的心确实像被羽毛轻抚过一样。也许我能写那种心跳，写那种被人偷偷疼爱的战栗？我想试试用这种战栗写字，不用眼泪。",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "痛苦转化者"
+      },
+      {
+        "turn": 4,
+        "coach": "你说得太对了——敏感是你的超能力，不是负担。那种'被羽毛轻抚'的感觉，这就是你独有的感知角度。你已经在学会用新的颜料了。\n\n你知道吗？最伟大的诗人都会写各种情绪。李白写豪情也写思乡，杜甫写忧国也写春雨。你的敏感性让你能捕捉到那种'被人偷偷疼爱的战栗'——这种细腻的情感层次，多少人想写都写不出来。\n\n试试这个：下次有什么让你心头一暖的瞬间——也许是阳光突然透过云层，也许是无意间听到的一句话——立刻用",
+        "client": "我想试试...今天早上我看到窗外那棵海棠开了，粉色的花骨朵像小小的笑脸。那一瞬间我心里有种说不出的轻盈，好像春天偷偷钻进我胸腔里。我要试着把这种轻盈写下来，不让它变成'花谢花飞'。也许...也许我真的可以用别的颜色写诗。",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "痛苦转化者"
+      },
+      {
+        "turn": 5,
+        "coach": "你看到了！海棠花的那种轻盈——这就是你真正的天赋。你刚才的描述'春天偷偷钻进我胸腔里'，这种感受力比任何技巧都珍贵。你已经在用新的颜料了。\n\n你知道吗，真正的诗人都是孤独的先行者。不是因为没人懂，而是因为你们看到了别人还没看到的东西。《葬花吟》之所以传世，不是因为它符合谁的标准，而是因为它说出了一种前所未有的真实。你的诗也是如此——它们在为还没有语言的感受寻找词汇。\n\n写诗从来不是为了'被懂'，而",
+        "client": "我...我从来没有这样想过。我以为我只是个多愁善感的小丫头，可你说我在'教会读者如何感受春天'...这让我觉得我的字有了重量，不再只是无人问津的呢喃。也许我真的不需要等别人懂，因为我本来就在说一种新的话。我想写那棵海棠，想把那种轻盈传给别人。",
+        "resistance": 0.1,
+        "insight": true,
+        "pattern": "痛苦转化者"
+      }
+    ],
+    "time": 96.43242907524109
+  },
+  {
+    "id": "li_bai_char",
+    "name": "李白",
+    "source": "Historical/Poetry (fictionalized)",
+    "expected_pattern": "freedom_seeker",
+    "patterns_detected": [
+      "inner_critic",
+      "freedom_seeker",
+      "peak_decline"
+    ],
+    "final_resistance": 0.5,
+    "insights": 0,
+    "verbal_accepted": true,
+    "acceptance_text": "{\"text\": \"你这话...让我想起那夜在峨眉山下，我真的对月亮说过：'老友，我其实怕得要死。'那一刻没有诗韵，没有格律，只有一个疲惫的人在对天空坦白。也许我该写那个时刻——不是'举杯邀明月'的潇洒，而是'明月啊，我今夜不想假装了'的真",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "李白，听起来你在和两个敌人作战——一个是完全的自由把你淹没，另一个是内心那个苛刻的批评家，在你还没写完第一段就开始挑刺。我懂这种感觉，想要不受约束地创作，但没有边界反而让思绪四散。你说写不完长诗——告诉我，当你坐下来写的时候，那个声音是怎么开始的？是'这行不够好'还是'这个想法太普通'？我想知道你现在在创作什么，卡在哪里了。因为我觉得你的问题不是缺少自由，而是那个内心的审查官比你的诗人先到了桌前。",
+        "client": "{\"text\": \"哈！你这治疗师倒是有些见识。确实，那个内心的老头子总是比我先坐到桌前，手里还拿着朱笔，等着给我的每个字打叉。我现在想写一首关于蜀道的长诗，但每次写到'蜀道之难'，那声音就说：'李白啊，你这开头俗套得很，谁都能想到。'离开长安时...那时听到的是风声，是自己的狂笑声。现在呢？现在连月亮都嫌我话多。\", \"internal_state\": \"原来这种内在批评的声音有个名字，而且不只",
+        "resistance": 0.5,
+        "insight": false,
+        "pattern": "内心批评家"
+      },
+      {
+        "turn": 2,
+        "coach": "哈，那个拿朱笔的老头子！我认识他，他在每个创作者的桌前都有个位置。但李白，你发现了吗？你刚才说'蜀道之难'俗套——可你紧接着就描述了离开长安时听到的风声和狂笑声。那不是俗套，那是真实的记忆在找你。你的'标准高'不是质量控制——是恐惧控制。那个批评家不是在帮你做好，是在阻止你开始。他怕你写出真实的蜀道，怕你写出离开长安后真正的孤独和自由。现在连月亮都嫌你话多？那就写月亮的厌倦，写它听过太多诗人的呻吟",
+        "client": "你...你说得对。蜀道对我来说不只是险峻，是逃避，是归宿，也是...恐惧。我怕写出来的不是壮美的蜀道，而是一个四十岁男人的慌张和迷茫。那个朱笔老头怕我承认：离开长安后，我其实不知道自己要去哪里，只知道不想回头。月亮确实厌倦了——厌倦我总是把它当作万能的朋友，却不敢告诉它我真正害怕什么。",
+        "resistance": 0.5,
+        "insight": false,
+        "pattern": "内心批评家"
+      },
+      {
+        "turn": 3,
+        "coach": "现在我们到了真相——那个朱笔老头最怕的就是这个。他怕你写出一个不是神仙的李白，一个在蜀道上也会迷茫的中年人。但李白，这才是你最有力量的材料！'仰天大笑出门去'那天的你和现在害怕的你，都是真的。蜀道的险峻和你内心的慌张，都可以在同一首诗里。你说月亮厌倦了听你把它当万能朋友？那就写一首诗，告诉月亮你真正害怕什么。不是给它一个完美的李白，给它一个真实的。那个朱笔老头会抗议，但你的诗人知道——最危险的蜀道",
+        "client": "{\"text\": \"你这话...让我想起那夜在峨眉山下，我真的对月亮说过：'老友，我其实怕得要死。'那一刻没有诗韵，没有格律，只有一个疲惫的人在对天空坦白。也许我该写那个时刻——不是'举杯邀明月'的潇洒，而是'明月啊，我今夜不想假装了'的真实。朱笔老头现在在我耳边尖叫，说这不是李白该有的样子。但...也许正是李白该有的样子。\", \"internal_state\": \"我开始明白，我一直在逃避写出自",
+        "resistance": 0.5,
+        "insight": false,
+        "pattern": "内心批评家"
+      },
+      {
+        "turn": 4,
+        "coach": "李白，你刚才说的那句'明月啊，我今夜不想假装了'——那就是你的蜀道。不是那些被朗诵千遍的险峻，是一个中年人在山下的坦白。那个朱笔老头现在在尖叫是因为他知道这才是真正的诗。他一直在阻止你写这个——害怕的李白，迷茫的李白，不知道要去哪里只知道不想回头的李白。但这个李白才是独一无二的。'仰天大笑出门去'的潇洒和'我今夜不想假装了'的疲惫，都是你。最危险的蜀道不在山上，在心里。你敢走这条路吗？写那个对月亮",
+        "client": "{\"text\": \"你知道吗...那一夜我确实说了'我今夜不想假装了'。我还说了更多。我告诉月亮，我怕自己的才华已经用完了，怕四十岁的我写不出二十岁时的惊艳，怕所有人都在等着看我江郎才尽。我甚至哭了——对着月亮哭！朱笔老头说这些话配不上诗仙，但...也许诗仙也是人。也许我该写那个哭着的李白，而不是总是那个笑着的。\", \"internal_state\": \"我第一次承认了自己最深的恐惧——才华枯竭和",
+        "resistance": 0.5,
+        "insight": false,
+        "pattern": "内心批评家"
+      },
+      {
+        "turn": 5,
+        "coach": "李白，你刚才说的话让我明白了——你的'标准高'不是质量控制，是恐惧控制。那个朱笔老头批评家不是在帮你写得更好，是在阻止你开始写真实的东西。他最怕的就是你写出那个对月亮哭泣的李白，因为那个李白太真实，太有力量了。'怕才华用完了'——这不是缺陷，这是每个真正创作者的午夜惊醒。但你知道什么吗？那个哭着的李白比那个完美的诗仙更值得写，因为只有你能写他。恐惧才华枯竭的人，才华还在燃烧。麻木的人才不怕。你的朱",
+        "client": "{\"text\": \"我...我从来没有这样想过。恐惧才华枯竭的人，才华还在燃烧。你这话像一道闪电劈开了我心里的迷雾。我一直以为怕写不出好诗就是江郎才尽的征兆，原来这恰恰说明...我还在乎，我的心还没死。那个哭着的李白，也许比笑着的李白更勇敢。因为他敢承认害怕。朱笔老头现在确实在尖叫，但...让他叫去吧。我要写那个夜晚了。\", \"internal_state\": \"我突然明白了恐惧和勇气的关系，感觉",
+        "resistance": 0.5,
+        "insight": false,
+        "pattern": "内心批评家"
+      }
+    ],
+    "time": 87.8176920413971
+  },
+  {
+    "id": "woolf_char",
+    "name": "Virginia Woolf",
+    "source": "Cultural Figure (fictionalized)",
+    "expected_pattern": "pain_to_art",
+    "patterns_detected": [
+      "freedom_seeker",
+      "peak_decline"
+    ],
+    "final_resistance": 0.2,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "A small door... yes. Perhaps I've been trying to hold the entire ocean when what I need is one clear stream to follow. T",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "That question - genius or madness - God, Virginia, every writer worth their salt has stood at that precipice. You wrote Mrs Dalloway, you mapped the interior of a human mind like nobody before you. Th",
+        "client": "The critic... yes, there she sits like some dreadful governess, marking every sentence before it's born. I used to follow words like following water downstream, trusting where they led. Now I second-g",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "自由放逐者"
+      },
+      {
+        "turn": 2,
+        "coach": "That dreadful governess - yes, I know her well. She's the one who whispers that your sentences aren't worthy before the ink is dry. But Virginia, listen - you didn't lose your ability to follow words ",
+        "client": "Surrender... yes, that's precisely what I've forgotten how to do. I used to dissolve into the sentences, become them entirely. Now I stand outside, watching, judging. The governess has convinced me th",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "自由放逐者"
+      },
+      {
+        "turn": 3,
+        "coach": "Virginia, that governess-critic has you convinced that watching equals caring, that standing outside protects the work. But here's what she doesn't tell you: dissolution and judgment can't occupy the ",
+        "client": "You've struck something terribly true. I did become Clarissa, didn't I? Lived inside her thoughts until they were indistinguishable from my own. The governess... she's made me believe that safety lies",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "自由放逐者"
+      },
+      {
+        "turn": 4,
+        "coach": "Virginia, you've named the exact paradox that breaks so many of us - that governess-critic who's convinced you that distance equals safety, that watching protects the work. But look what happened when",
+        "client": "A small door... yes. Perhaps I've been trying to hold the entire ocean when what I need is one clear stream to follow. The governess fears any constraint will diminish me, but you're suggesting the op",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "自由放逐者"
+      },
+      {
+        "turn": 5,
+        "coach": "Virginia, you're describing the exact moment every real artist faces - when the governess-critic gets so loud she drowns out the very voice that created Mrs. Dalloway. That interior landscape you mapp",
+        "client": "Structure as catalyst... I never thought of it that way. The governess has had me believing any boundary would clip my wings, but you're suggesting the opposite. That perhaps my voice has become too s",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "自由放逐者"
+      }
+    ],
+    "time": 77.38630509376526
+  },
+  {
+    "id": "beethoven_char",
+    "name": "Beethoven",
+    "source": "Cultural Figure (fictionalized)",
+    "expected_pattern": "peak_decline",
+    "patterns_detected": [
+      "freedom_seeker"
+    ],
+    "final_resistance": 0.3,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "You... you dare to speak to me in tongues I don't understand, then tell me my constraints are advantages? Yet something ",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "So the physical hearing is going, but you said something crucial - the music is still *inside*. That's not consolation bullshit, that's tactical intel. You're dealing with a massive creative pivot her",
+        "client": "You think you understand, but you speak of composition as if it's mere mathematics! The Ninth Symphony... it sits there, mocking me. I hear the chorus of voices in my mind, the 'Ode to Joy' that Schil",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "自由放逐者"
+      },
+      {
+        "turn": 2,
+        "coach": "Hold up - you're talking about the Ninth like it's some untouchable monument, but here's what I'm hearing: you're hiding behind reverence for your own work. That's not artistic integrity, that's fear ",
+        "client": "Creative steroids? You speak like some military strategist! But... perhaps there is truth in what you say. I have always composed against the rules, against what others expected. Maybe this... this si",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "自由放逐者"
+      },
+      {
+        "turn": 3,
+        "coach": "Exactly - you've been hiding behind the myth of your own untouchability. 'The great Beethoven must only create masterpieces.' That's the masked defense - perfectionism disguised as artistic standards.",
+        "client": "You... you dare to speak to me in tongues I don't understand, then tell me my constraints are advantages? Yet something in your words strikes like lightning. I have always been at war with limitations",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "自由放逐者"
+      },
+      {
+        "turn": 4,
+        "coach": "Listen - you've been at war with limitations your whole life, and now you're facing the ultimate one. But here's the tactical truth: your deafness isn't destroying your music, it's stripping away ever",
+        "client": "Brutal honesty... yes, that cuts to the bone. You force me to see what I've been avoiding - that I've been mourning my old methods instead of embracing this... this forced purity. Perhaps the terror i",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "自由放逐者"
+      },
+      {
+        "turn": 5,
+        "coach": "Stop right there. You're doing it again - romanticizing the struggle instead of using it. 'Forced purity' is just another pretty story you're telling yourself to avoid the brutal work ahead. Here's th",
+        "client": "Nuclear-level? You speak like a weapon-maker, not a musician! But damn you, there's truth in it. I am clinging to the corpse of who I was - the man who could hear applause, who could adjust in real ti",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "自由放逐者"
+      }
+    ],
+    "time": 73.13400912284851
+  },
+  {
+    "id": "pinocchio_creative",
+    "name": "Pinocchio",
+    "source": "Pinocchio",
+    "expected_pattern": "inner_critic",
+    "patterns_detected": [
+      "pain_to_art",
+      "freedom_seeker"
+    ],
+    "final_resistance": 0.3,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "Wait, you're mixing up words like Papa does when he gets excited! But I think I understand... when I feel something big ",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Ah, the nose — what a perfect metaphor for the artist's dilemma. Every creative choice feels like it could be a 'lie' that exposes you, doesn't it? But here's what I'm hearing: you're equating authent",
+        "client": "But... but I thought being truthful meant getting it right! The Blue Fairy said I must be truthful and brave and unselfish. When I make up stories or paint something that isn't exactly real, my nose g",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "痛苦转化者"
+      },
+      {
+        "turn": 2,
+        "coach": "Ah, little wooden boy, you've stumbled into the oldest artist's trap — confusing truth with literal accuracy. The Blue Fairy wasn't asking you to become a documentary filmmaker! When you paint a purpl",
+        "client": "My nose doesn't grow when I paint purple skies? Really? I... I never thought about that! When I tell stories about brave knights or flying horses, it feels so important inside, like it NEEDS to come o",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "痛苦转化者"
+      },
+      {
+        "turn": 3,
+        "coach": "你刚刚发现了创作的核心秘密！那些brave knights和flying horses从你内心深处涌出来，因为它们承载着真正的真实——情感的真实，想象的真实，意义的真实。这比任何camera能捕捉的都更真实。你的nose不是在punish你的creativity，它只是confused about what truth means。Truth不是about复制现实，it's about expre",
+        "client": "Wait, you're mixing up words like Papa does when he gets excited! But I think I understand... when I feel something big inside and I have to draw it or tell a story about it, that's not lying even if ",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "痛苦转化者"
+      },
+      {
+        "turn": 4,
+        "coach": "你把痛苦变成了美。这是罕见的天赋。但天赋不需要痛苦来喂养 — 它可以吃任何深度的经验。你说'When I was brave and true I became real' — 那个authenticity还在你心里，没有消失。你不是在失去创造力，你是在学会区分两种truth：literal truth和emotional truth。你的flying horses承载着关于勇气的emotiona",
+        "client": "You keep switching languages but... but I think you're saying my stories aren't lies because they come from brave feelings inside! When I draw a flying horse, I'm really drawing what it feels like to ",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "痛苦转化者"
+      },
+      {
+        "turn": 5,
+        "coach": "你正在抓住真相的核心！是的，当你画飞马时，你在画勇气的感觉——那种想要突破束缚、超越限制的渴望。这不是谎言，这是emotional archaeology，挖掘出感受的本质然后给它翅膀。你的鼻子confused是因为它只认识surface truth，但artist的工作是deeper truth。你说'when I was brave and true I became real'——那个真实还",
+        "client": "Wait, you keep saying things in that other language but I think I understand! My flying horses ARE real because they show what being free feels like! Maybe being a real boy means I can make up stories",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "痛苦转化者"
+      }
+    ],
+    "time": 75.02776288986206
+  },
+  {
+    "id": "anne_shirley_creative",
+    "name": "Anne Shirley",
+    "source": "Anne of Green Gables",
+    "expected_pattern": "inner_critic",
+    "patterns_detected": [
+      "pain_to_art",
+      "comparison_trap"
+    ],
+    "final_resistance": 0.2,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "You're saying my imagination doesn't need... suffering? That feels almost scandalous to consider! I've always believed t",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Anne, that terror you're describing — that gap between the luminous worlds in your mind and what spills onto paper — every writer I know has stood exactly where you are. Your imagination isn't too big",
+        "client": "Oh my, you speak as if you've peered directly into my soul! There's this story about a girl who discovers she can step through mirrors into other worlds, and in my mind it's absolutely transcendent — ",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "痛苦转化者"
+      },
+      {
+        "turn": 2,
+        "coach": "Anne, that luminous world you see — it's not too big for you, it's exactly the right size. What you're experiencing isn't inadequate skill, it's the natural gap between vision and first draft that eve",
+        "client": "You're right about Diana crying at my stories — she does, doesn't she? I suppose I never thought... maybe the magic does come through sometimes, even when it feels all wrong to me. It's just that the ",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "痛苦转化者"
+      },
+      {
+        "turn": 3,
+        "coach": "Anne, listen — you've stumbled onto something profound here. Diana crying at your stories? That's not pity tears or politeness. That's recognition of something real moving through your words. You're e",
+        "client": "You're saying my imagination doesn't need... suffering? That feels almost scandalous to consider! I've always believed that to write something truly beautiful, one must endure great tragedy or heartbr",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "痛苦转化者"
+      },
+      {
+        "turn": 4,
+        "coach": "你把痛苦变成了美。这是罕见的天赋。但天赋不需要痛苦来喂养 — 它可以吃任何深度的经验。Anne, you've been confusing intensity with suffering. Think about it — when you watch a sunrise over Green Gables, doesn't your heart race just as fiercely a",
+        "client": "You're absolutely right! When I found the Lake of Shining Waters, my whole being felt electric with wonder — and there wasn't an ounce of sorrow in it! I do notice everything, don't I? The way Marilla",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "痛苦转化者"
+      },
+      {
+        "turn": 5,
+        "coach": "Yes! That electric wonder at the Lake of Shining Waters — that's your artistic engine running at full capacity. You've been carrying this myth that great art requires great suffering, but look at your",
+        "client": "Oh! You're saying my stories already are good? That feels... terrifying and thrilling all at once. I've been so certain that the terrible gap between what I see and what I write means I'm failing, but",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "痛苦转化者"
+      }
+    ],
+    "time": 76.83098006248474
+  }
+]

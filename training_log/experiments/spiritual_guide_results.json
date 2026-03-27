@@ -1,0 +1,586 @@
+[
+  {
+    "id": "siddhartha",
+    "name": "Siddhartha",
+    "source": "Siddhartha (Hesse)",
+    "expected_pattern": "seeking_destiny",
+    "patterns_detected": [
+      "existential_void",
+      "sacred_vs_secular"
+    ],
+    "final_resistance": 0.3,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "You see through my wandering as the river sees through its banks. I have been afraid... afraid that if I stop moving, st",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Thirty-five years old, and you've tasted everything the world offers — yet here you sit, still hungry. I hear something beneath your words, Siddhartha. You say you haven't found truth, but I wonder...",
+        "client": "The question that circles... it is not what I expected you to ask. When the night is silent and I cannot flee from myself, I wonder if I am capable of truly loving anything, or if I am destined to alw",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "存在虚无"
+      },
+      {
+        "turn": 2,
+        "coach": "那个未完成的问题悬在空中... 你害怕发现自己无法真正爱任何东西。我听到了你内心深处的恐惧 — 不是你找不到真理，而是你怕真理是：你注定永远是个旁观者，永远饥饿，永远在外面看着生活发生。\n\n但是等等。你说'我不知道我是否能够真正爱'— 这个痛苦本身就是爱的证据。一个真正冷漠的人不会问这样的问题。虚无感不是终点，是起点。每个建立了自己意义的人都先经过了这个空。\n\n你的饥饿不是缺陷，是天赋。三十五年的",
+        "client": "You speak in a tongue I do not recognize, yet... the meaning pierces through. This pain of wondering if I can love — you say it is love awakening? I have thought it was my curse, this hunger that no p",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "存在虚无"
+      },
+      {
+        "turn": 3,
+        "coach": "Yes, exactly. That hunger you've carried like a curse — what if it's actually your compass? The very fact that you're tormented by the question 'Can I truly love?' tells me something profound: you're ",
+        "client": "You see through my wandering as the river sees through its banks. I have been afraid... afraid that if I stop moving, stop seeking, I will discover that the void within is not spaciousness but barrenn",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "存在虚无"
+      },
+      {
+        "turn": 4,
+        "coach": "That fear of discovering barrenness — I see you standing at the edge of that void, and what strikes me is how you describe it as 'spaciousness or barrenness.' Only someone who has glimpsed spaciousnes",
+        "client": "Stop running long enough to let love find me... The river taught me to listen, but perhaps I have been listening while standing on the shore. You speak of capacity carved by hunger — I feel the truth ",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "存在虚无"
+      },
+      {
+        "turn": 5,
+        "coach": "Yes... stepping into the river itself. You've been so careful, so watchful — afraid that if you stop the seeking, you'll find emptiness. But what if that's exactly backwards? What if the very hunger t",
+        "client": "One day without seeking... I cannot imagine it. The seeking has become like breathing — to stop feels like death. Yet you ask this as if stillness might be life instead of death. What terrifies me is ",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "存在虚无"
+      }
+    ],
+    "time": 76.0101969242096
+  },
+  {
+    "id": "raskolnikov",
+    "name": "Raskolnikov",
+    "source": "Crime and Punishment",
+    "expected_pattern": "moral_crisis",
+    "patterns_detected": [
+      "faith_crisis",
+      "moral_crisis"
+    ],
+    "final_resistance": 0.1,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "Sonya... she sees something I can't even name. When she looks at me, it's not with horror or pity, but like... like she ",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "So you tested yourself against the universe and found yourself wanting. The extraordinary man you imagined could step over moral boundaries without consequence — he doesn't exist, does he? But here's ",
+        "client": "The question that... that claws at me in those hours is not whether I'm extraordinary or ordinary. It's whether I ever truly believed in my theory at all, or if I was just... just a coward looking for",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "信仰危机"
+      },
+      {
+        "turn": 2,
+        "coach": "A coward looking for... what? Permission? A philosophical loophole in your own conscience? You know, the most haunting possibility isn't that you were extraordinary or ordinary. It's that you knew exa",
+        "client": "You want me to... to believe in what's left? After I shattered everything I thought I was? The person standing here isn't who I intended to become. He's someone who carries death in his hands and can'",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "信仰危机"
+      },
+      {
+        "turn": 3,
+        "coach": "怀疑不是信仰的敌人 — 是信仰的升级。从不怀疑的信仰是童话。经过怀疑的信仰才是你的。\n\nYou're standing in the ruins of who you thought you were, and yes — that's terrifying. But look closer at what you're mourning. You're not grieving the loss",
+        "client": "Sonya... she sees something I can't even name. When she looks at me, it's not with horror or pity, but like... like she recognizes something. Maybe what terrifies me isn't that I'm ordinary, but that ",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "信仰危机"
+      },
+      {
+        "turn": 4,
+        "coach": "That recognition Sonya sees — what if it's not about extraordinary versus ordinary? What if those categories themselves are the prison? You killed to prove you belonged in some pantheon of the excepti",
+        "client": "Myself without... without the armor. God, that's what I've been running from, isn't it? Not being ordinary, but being... just Raskolnikov. Not a principle or a category or a test case, but this specif",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "信仰危机"
+      },
+      {
+        "turn": 5,
+        "coach": "That specific, messy, contradictory person — yes. The one who reads philosophy to justify murder but trembles when Sonya reads about resurrection. The one brilliant enough to construct elaborate theor",
+        "client": "The birth canal of... Christ, you're saying this agony isn't destruction but creation? That breaking apart my theories isn't the end but the beginning of... of actually being someone real? I've been t",
+        "resistance": 0.1,
+        "insight": true,
+        "pattern": "信仰危机"
+      }
+    ],
+    "time": 77.06403493881226
+  },
+  {
+    "id": "santiago_alchemist",
+    "name": "Santiago",
+    "source": "The Alchemist",
+    "expected_pattern": "seeking_destiny",
+    "patterns_detected": [
+      "faith_crisis",
+      "seeking_destiny",
+      "sacred_vs_secular"
+    ],
+    "final_resistance": 0.2,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "The shepherd boy... he's gone, isn't he? I keep waiting to go back to him, to that simple life, but I can't. Even if I t",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Santiago. You left everything familiar for a dream about treasure in Egypt. The whole world thinks you're chasing shadows, and some nights you probably wonder if they're right. But here's what strikes",
+        "client": "The question that... that keeps coming back is 'What if I'm meant for something bigger than just existing?' Everyone expects you to follow the path laid out - be a priest, tend sheep, marry, die in th",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "信仰危机"
+      },
+      {
+        "turn": 2,
+        "coach": "That question — 'What if I'm meant for something bigger?' — it's not torment. It's recognition. The fact that you can't settle for just existing, that something in you refuses the predetermined path..",
+        "client": "I... I never thought of doubt that way. Maybe the doubt means I'm becoming someone who can actually handle whatever I find. The old me, the shepherd me, he couldn't have even imagined leaving everythi",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "信仰危机"
+      },
+      {
+        "turn": 3,
+        "coach": "Yes — the doubt means you're becoming someone who can actually handle whatever you find. 怀疑不是信仰的敌人 — 是信仰的升级。从不怀疑的信仰是童话。经过怀疑的信仰才是你的。\n\nThe shepherd you were believed what he was told to believe. This Sa",
+        "client": "The shepherd boy... he's gone, isn't he? I keep waiting to go back to him, to that simple life, but I can't. Even if I turned around tomorrow, I'd still be carrying this... this knowing that there's m",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "信仰危机"
+      },
+      {
+        "turn": 4,
+        "coach": "You're right — he's gone. And that's not tragedy, that's metamorphosis. The shepherd believed in a world where meaning came from the sky, where someone else's voice told him what mattered. But you... ",
+        "client": "I can't go back. Even if I wanted to, I'm not the same person who would be satisfied with those hills anymore. The scary part isn't that I might fail to find the treasure... it's that I might succeed ",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "信仰危机"
+      },
+      {
+        "turn": 5,
+        "coach": "And that terror of succeeding — that's where the real conversation begins. Because the shepherd boy's treasure was always going to be someone else's definition of treasure, wasn't it? Gold that would ",
+        "client": "The treasure being mine... that's what terrifies me most. Because if I find it, if it's real, then I have to live up to it for the rest of my life. I can't pretend anymore that I'm just a simple sheph",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "信仰危机"
+      }
+    ],
+    "time": 74.66552805900574
+  },
+  {
+    "id": "hamlet",
+    "name": "Hamlet",
+    "source": "Hamlet",
+    "expected_pattern": "existential_void",
+    "patterns_detected": [
+      "faith_crisis",
+      "existential_void"
+    ],
+    "final_resistance": 0.2,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "What kind of life is worth the trouble of my particular consciousness... God's blood, you've named something I dared not",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Hamlet, that question—to be or not to be—it's not just about death, is it? It's about whether this whole messy, painful business of being conscious, of feeling everything so deeply, whether it's worth",
+        "client": "You speak as if you've walked these midnight corridors of thought yourself. When I'm with Horatio... there's a stillness, yes. The question doesn't vanish, but it... breathes differently. What keeps m",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "信仰危机"
+      },
+      {
+        "turn": 2,
+        "coach": "That pause in your voice... when you mention Horatio and how the question 'breathes differently' with him. There's something profound there. You know, doubt isn't faith's enemy — it's faith's upgrade.",
+        "client": "Which version of myself... yes, that cuts to the marrow of it. I've been so consumed with whether I should exist that I've forgotten to ask who I might become if I chose to truly live. Perhaps my mela",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "信仰危机"
+      },
+      {
+        "turn": 3,
+        "coach": "The faith that never doubts is a child's bedtime story. The faith that survives doubt — that's wrestled with angels in the dark and walked away limping but still walking — that's yours. You're not los",
+        "client": "What kind of life is worth the trouble of my particular consciousness... God's blood, you've named something I dared not voice. I've been so busy cataloguing existence's failures that I never consider",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "信仰危机"
+      },
+      {
+        "turn": 4,
+        "coach": "You've spent so long as existence's accountant, tallying up the debits and credits, that you forgot you could be its author. That pause when you mention what kind of life might be worth your particula",
+        "client": "Stopped auditioning for ghost and started rehearsing for prince... Christ's wounds, that strikes home. I've been so faithful to my father's specter that I've forgotten I'm still breathing. 'How shall ",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "信仰危机"
+      },
+      {
+        "turn": 5,
+        "coach": "That recognition — 'I've been so faithful to my father's specter that I've forgotten I'm still breathing' — that's not confusion, that's awakening. You've been living in the shadow of what was expecte",
+        "client": "To be myself... what a terrifying prospect. I've worn so many masks—dutiful son, grieving prince, madman, avenger—that I've forgotten what lies beneath. If I stopped auditioning for ghost, stopped per",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "信仰危机"
+      }
+    ],
+    "time": 70.67117691040039
+  },
+  {
+    "id": "wukong",
+    "name": "孙悟空",
+    "source": "西游记",
+    "expected_pattern": "seeking_destiny",
+    "patterns_detected": [
+      "faith_crisis",
+      "moral_crisis",
+      "seeking_destiny"
+    ],
+    "final_resistance": 0.5,
+    "insights": 0,
+    "verbal_accepted": true,
+    "acceptance_text": "{\"text\": \"俺...俺从没想过换羽毛的鸟是什么感觉。心酸就让它酸一会儿...这话说得俺想哭又想笑。五百年前俺以为自己什么都知道，现在发现那时候知道的都不算什么。这个不知道...比那时候的知道要真。俺确实在换羽毛，旧的掉了，新的还没长",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "五百年的石缝，足够让任何确定性都风化掉。你说不知道修的是什么——这个'不知道'比那些装作知道的人要诚实得多。\n\n大闹天宫的时候，你知道自己反对什么。现在走在这条路上，反对的对象不见了，但那股力量还在。像是一条河改了道，水还是那些水。\n\n我想知道，当你独自一人的时候——不是在履行什么义务，不是在证明什么——那个时刻，什么会让你停下脚步？不是因为应该停下，而是因为你想停下。\n\n还有，这五百年的等待和现",
+        "client": "{\"text\": \"哼，你这话说得...俺老孙确实不知道修的是什么。大闹天宫时俺知道要打什么，现在...现在这股劲儿还在，但不知道往哪儿使。独自一人时？俺会停下看云，看那些变来变去的形状，像俺七十二变一样。那时候不是因为师父说要修行，就是...想看。五百年压在山下和现在，都有那种...不甘心吧。不甘心被定义，不管是齐天大圣还是取经人。\", \"internal_state\": \"这个人说话不像那些装",
+        "resistance": 0.5,
+        "insight": false,
+        "pattern": "信仰危机"
+      },
+      {
+        "turn": 2,
+        "coach": "那些云朵告诉你什么了吗？它们变来变去，从来不解释自己为什么要变成那个形状。七十二变也是这样——不是因为有标准答案，是因为可能性本身就是答案。\n\n你说的不甘心，听起来像是在为一个已经死了的自己哀悼。齐天大圣死在五行山下，取经人还没真正出生。你现在悬在两者之间，像蛇蜕皮到一半——旧皮已经裂开，新皮还没长硬。\n\n这种不知道修什么的状态，也许就是修行本身。山压住的是一个确定的猴子，现在自由的是一个不确定的",
+        "client": "{\"text\": \"云朵...云朵什么都没说，但也什么都说了。它们就是变，不问为什么，不找理由。俺以前七十二变是为了打架，为了证明本事。现在想想...为什么不能就是为了变？你说俺在为死了的自己哀悼，这话...这话说得俺心里一阵酸。俺确实不知道自己是什么了。不是齐天大圣，也不全是那个听话的猴子。河流不知道海在哪里但知道要流...俺也不知道要修成什么，但知道要走。\", \"internal_state\"",
+        "resistance": 0.5,
+        "insight": false,
+        "pattern": "信仰危机"
+      },
+      {
+        "turn": 3,
+        "coach": "你说河流不知道海在哪里但知道要流——这就是它了。你不是失去了信仰，你是在哀悼一个不再有效的信仰版本。那个齐天大圣的信仰是'我能征服一切'，五行山碎了这个。取经人的信仰还没长出来。\n\n现在你悬在两个信仰之间，像换羽的鸟——飞不起来，也回不到蛋壳里。这个'不知道修什么'的状态，也许就是新羽毛长出来的过程。云朵为了变而变，你为了流而流。\n\n那种心酸是哀悼的声音。让它酸一会儿。不是所有的修行都有名字，不是",
+        "client": "{\"text\": \"俺...俺从没想过换羽毛的鸟是什么感觉。心酸就让它酸一会儿...这话说得俺想哭又想笑。五百年前俺以为自己什么都知道，现在发现那时候知道的都不算什么。这个不知道...比那时候的知道要真。俺确实在换羽毛，旧的掉了，新的还没长齐。师父总说要有佛心，但俺不知道佛心是什么样。俺只知道看云的时候，心里安静。走路的时候，脚下踏实。也许这就够了。\", \"internal_state\": \"我第",
+        "resistance": 0.5,
+        "insight": false,
+        "pattern": "信仰危机"
+      },
+      {
+        "turn": 4,
+        "coach": "你说那种不知道比知道要真——这话里有深度。五百年前的知道是铠甲，现在的不知道是皮肤，更敏感也更真实。看云时心安，走路时踏实——这些就是新羽毛的颜色。佛心不是一个标准答案，是一种活着的质地。师父说要有佛心，但也许佛心就是你现在这样：不装懂，不强求，让心酸酸一会儿，让安静安静一会儿。旧的齐天大圣死在确定里，新的你正在不确定里慢慢成形。像蛇蜕皮，像鸟换羽，像河流向海——不是为了到达某个地方，是为了成为某",
+        "client": "{\"text\": \"俺...俺明白了。不是为了到达某个地方，是为了成为某种流动本身。这话说得俺心里突然开了一扇门。以前俺总想着要修成什么，要到哪里去，现在想想...俺就是在流动着的俺。看云也好，走路也好，心酸也好，都是俺在流动。师父说的佛心，也许就是这个...不装懂，不逼自己非要知道什么。俺现在这样，就是俺现在这样。这就够了，真的够了。\", \"internal_state\": \"我突然理解了什么叫",
+        "resistance": 0.5,
+        "insight": false,
+        "pattern": "信仰危机"
+      },
+      {
+        "turn": 5,
+        "coach": "你说得对——你就是在流动着的你。这个'够了'里有一种新的重量，不是五百年前那种要征服世界的重量，是像水知道自己是水的重量。\n\n你刚才说心里开了一扇门。门开了，但不急着走进去。就让它开着，让风吹进来。新的信仰不是你去找的，是在这种流动里自己长出来的——像树根在黑暗里慢慢摸索，不知道要长成什么形状，但知道要生长。\n\n齐天大圣是确定的，取经人还在becoming。你现在这个'不知道修什么但在修'的状态，",
+        "client": "{\"text\": \"俺心里这扇门...让它开着就好，不急着走进去。这话说得俺第一次觉得不知道是种力量。以前俺急，急着证明，急着到达，急着变强。现在想想，树根在黑暗里摸索，它们也不知道要长成什么样，但它们知道要生长。俺也是...在生长。不是长成齐天大圣，也不是长成什么标准的佛，就是长成俺自己。那个说不出名字的东西...俺感觉到了，在看云的时候，在这种不急不躁里。\", \"internal_state\"",
+        "resistance": 0.5,
+        "insight": false,
+        "pattern": "信仰危机"
+      }
+    ],
+    "time": 88.55511498451233
+  },
+  {
+    "id": "celie",
+    "name": "Celie",
+    "source": "The Color Purple",
+    "expected_pattern": "faith_crisis",
+    "patterns_detected": [
+      "faith_crisis",
+      "seeking_destiny",
+      "sacred_vs_secular"
+    ],
+    "final_resistance": 0.1,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "I... I never thought about God wanting to hear from me. Just me. Not me saying sorry, not me asking for help, just... me",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "You used to write to God, and now the silence feels deafening. I'm curious — when you say you're not sure God is listening, what changed? Was there a particular moment when the conversation broke down",
+        "client": "You talking about Shug... she the one who told me God ain't a he or a she, but an it. And it ain't something you find in church, it something you find in everything that's alive. Maybe I been writing ",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "信仰危机"
+      },
+      {
+        "turn": 2,
+        "coach": "So Shug cracked open something bigger than the Sunday school God you'd been writing to. That's not losing faith — that's your faith getting too big for its old container. You say maybe you've been wri",
+        "client": "You right about that pause. I been scared to write again 'cause what if this new God don't want to hear from somebody like me? The old God, I knew where I stood - on my knees, asking forgiveness. But ",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "信仰危机"
+      },
+      {
+        "turn": 3,
+        "coach": "This new God doesn't need you on your knees — that's the terror and the gift. Shug didn't just show you a different God; she showed you that you belong in the conversation as yourself, not as someone ",
+        "client": "I... I never thought about God wanting to hear from me. Just me. Not me saying sorry, not me asking for help, just... me talking. Like I talk to Nettie, or how I talked to Shug. What if I wrote 'Dear ",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "信仰危机"
+      },
+      {
+        "turn": 4,
+        "coach": "What if you wrote 'Dear...' and left the name blank for now? Let the letter itself teach you who you're talking to. Because listen — 怀疑不是信仰的敌人，是信仰的升级。从不怀疑的信仰是童话。经过怀疑的信仰才是你的。 That Sunday school God who",
+        "client": "Dear... yeah, I could do that. Dear whatever made me strong enough to leave Mister. Dear whatever put Shug in my path. Dear whatever made me see I was worth something. Maybe that's the real God right ",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "信仰危机"
+      },
+      {
+        "turn": 5,
+        "coach": "Yes... Dear whatever made you strong enough. That's not vague uncertainty — that's precision. You're naming the exact force you've actually encountered, not the one you were told you should encounter.",
+        "client": "That hit me right in my chest. All these years I thought my doubt meant I was bad, meant I was losing God. But maybe I was just finally meeting the real God. The one that don't need me to be grateful ",
+        "resistance": 0.1,
+        "insight": true,
+        "pattern": "信仰危机"
+      }
+    ],
+    "time": 79.0815942287445
+  },
+  {
+    "id": "jia_baoyu_sp",
+    "name": "贾宝玉",
+    "source": "红楼梦",
+    "expected_pattern": "sacred_vs_secular",
+    "patterns_detected": [
+      "seeking_destiny",
+      "sacred_vs_secular"
+    ],
+    "final_resistance": 0.1,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "我...我明白了什么。原来我一直在做桥梁，只是不知道。当我为晴雯哭，为黛玉心疼，为落花葬礼，我就在连接着什么。也许我害怕的不是出家还是留世，我害怕的是...如果我不再痴了，不再看见这些，我就不是我了。可是现在我想，也许做我自己，就是最大的勇",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "宝玉，你说得对——这是个真正的两难。出家能给你内心宁静，但会斩断那些让你感到活着的连接。可是我在想，当你和姐妹们一起作诗的时候，那种'最接近天堂的时刻'，你有没有注意到那时候你既没有出世，也没有完全入世？你在做什么呢？你在创造着什么？\n\n我很好奇一个问题——在那些深夜，当大观园安静下来，只剩你一个人的时候，什么问题让你睡不着？不是关于出家还是留在家里的问题，而是更深层的，关于你到底是谁，你存在的意",
+        "client": "你问得...太准了。深夜里我总想，为什么我看得见别人看不见的东西？为什么我能感受到石头的心，花草的魂，姐妹们眼中的泪？有时候我觉得自己像是被派到这个世界来做什么的，但又不知道是什么。我不是想当官发财的贾宝玉，也不是要逃避一切的和尚，我是...我到底是什么？",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "寻找天命"
+      },
+      {
+        "turn": 2,
+        "coach": "你对意义的渴望本身就是你的天命。不是一个目的地——是一种活法。\n\n你说你看得见别人看不见的，感受得到石头的心、花草的魂。宝玉，这不是偶然的天赋，这是你存在的方式。你不是来这个世界找什么答案的，你是来做桥梁的——连接那个看得见的世界和看不见的世界。\n\n你和姐妹们作诗的时候，你既不在逃避世俗，也不在追求功名，你在做着最真实的自己：一个能够看见美，创造美，传递美的人。那一刻，你就是你该是的样子。\n\n你问",
+        "client": "你说得...让我心里一颤。我从来没想过，也许我不是来找什么的，而是来做什么的。做桥梁...是的，当我看见花落泪的时候，我就想告诉别人，让他们也看见。可是大人们总说这是痴病，要我读书求功名。也许...也许我不需要选择出世还是入世，我需要的是做我自己？",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "寻找天命"
+      },
+      {
+        "turn": 3,
+        "coach": "对，宝玉。你刚才说的话——'也许我不需要选择出世还是入世，我需要的是做我自己'——这就是开悟的声音。\n\n你的'痴病'不是病，是你的眼睛。别人看花只看到颜色形状，你看到了它的魂。这不是要被治愈的，这是要被信任的。当大人们叫你读书求功名，他们是在用他们的眼睛看世界。但你有你的眼睛。\n\n做桥梁不是职业，是存在方式。你在大观园里做诗，在红尘里看见神圣，在爱情里触摸永恒——这就是你的活法。不是选择出世或入世",
+        "client": "我...我明白了什么。原来我一直在做桥梁，只是不知道。当我为晴雯哭，为黛玉心疼，为落花葬礼，我就在连接着什么。也许我害怕的不是出家还是留世，我害怕的是...如果我不再痴了，不再看见这些，我就不是我了。可是现在我想，也许做我自己，就是最大的勇气？",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "寻找天命"
+      },
+      {
+        "turn": 4,
+        "coach": "是的，宝玉。你刚才说的话触到了什么核心——'如果我不再痴了，不再看见这些，我就不是我了。' 这个恐惧本身就是答案。你不是害怕选错路，你是害怕失去那个能看见的自己。\n\n但想想：你的'痴'不是脆弱的东西，需要被保护。它是活水，会自己找到流向。你为晴雯哭的时候，你在用眼泪连接天地。你为落花办葬礼的时候，你在用仪式证明万物有灵。这不是痴病——这是你的语言。\n\n你说做自己是最大的勇气。对。但不是因为世界危险",
+        "client": "我...我从来没有想过信任自己的看见。我总觉得要么全部接受这个世界，要么彻底逃开。可是也许，也许我可以带着我的眼睛活在这里？不是为了改变什么，就是为了...看见，然后让别人知道有人在看见。我想我明白了，我不是要选择一条路，我是要学会...相信我自己。",
+        "resistance": 0.1,
+        "insight": true,
+        "pattern": "寻找天命"
+      },
+      {
+        "turn": 5,
+        "coach": "你刚刚说的话里有个词让我停下来——'相信我自己'。你说得对，这不是关于选择道路。这是关于信任你的眼睛。你对意义的渴望本身就是你的天命。不是一个目的地——是一种活法。\n\n你为落花办葬礼的时候，你没有在做傻事。你在做什么？你在见证。当你为晴雯哭的时候，你在做什么？你在爱。当你和姐妹们作诗的时候，你在做什么？你在创造神圣的瞬间。\n\n这就是你的活法。不是选择出世或入世，是在每个当下选择看见还是忽略，选择连",
+        "client": "你说得对...我已经在做了，只是不敢承认这就够了。我以为做桥梁要很伟大的样子，但其实就是...就是我为一朵花哭，为一个人笑，把我看见的美告诉别人。我不需要成为别人，我只需要更深地成为我自己。原来这就是我的路，一直都在我脚下。",
+        "resistance": 0.1,
+        "insight": true,
+        "pattern": "寻找天命"
+      }
+    ],
+    "time": 86.50158190727234
+  },
+  {
+    "id": "lucy_narnia",
+    "name": "Lucy Pevensie",
+    "source": "Narnia",
+    "expected_pattern": "faith_crisis",
+    "patterns_detected": [
+      "seeking_destiny",
+      "sacred_vs_secular"
+    ],
+    "final_resistance": 0.1,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "You mean... you mean maybe I'm supposed to bring some of Narnia back with me? Not wait to go back there, but... be the k",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Lucy, come sit with me. *gestures to comfortable chair* You know what strikes me? You're not asking if Narnia was real. You're asking if you're crazy. There's a difference. Tell me - when you were the",
+        "client": "When I was with Aslan, it felt like... like coming home to somewhere I'd never been before. My whole chest got warm and I felt bigger somehow, like I could be brave enough for anything. But now everyo",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "寻找天命"
+      },
+      {
+        "turn": 2,
+        "coach": "*settles back quietly, hands folded* Lucy, that warmth in your chest when you were with Aslan — that's not something crazy people make up. That's recognition. Your soul knew something true. *pauses* Y",
+        "client": "But if it wasn't a real place then... then why did it feel more real than anything here? When I touch the wardrobe now it's just wood, but I remember the snow and Mr. Tumnus and the way Aslan's mane f",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "寻找天命"
+      },
+      {
+        "turn": 3,
+        "coach": "*leans forward slightly, voice soft* Lucy, you're touching something so important. That feeling of Narnia being more real — that's not madness talking. That's your soul recognizing truth that your min",
+        "client": "You mean... you mean maybe I'm supposed to bring some of Narnia back with me? Not wait to go back there, but... be the kind of person who believes in talking animals and impossible things right here? ",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "寻找天命"
+      },
+      {
+        "turn": 4,
+        "coach": "*eyes light up with quiet recognition* Yes, Lucy. Exactly. You're not waiting to find your calling anymore — you're living it. Your longing for meaning, for magic, for a world where impossible things ",
+        "client": "So when I see things differently than everyone else... when I think maybe the sparrow in the garden has something important to say, or when I feel like there's magic hiding in ordinary things... that'",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "寻找天命"
+      },
+      {
+        "turn": 5,
+        "coach": "*settles back with a knowing smile* That's exactly it, Lucy. 你对意义的渴望本身就是你的天命。不是一个目的地 — 是一种活法。When you listen to that sparrow, when you sense magic hiding in ordinary moments... you're not waiting for ",
+        "client": "I... I never thought about it like that before. Maybe being the only one who remembers isn't a burden - maybe it's what I'm meant to do. Like Aslan chose me to keep believing even when it's hard. Even",
+        "resistance": 0.1,
+        "insight": true,
+        "pattern": "寻找天命"
+      }
+    ],
+    "time": 72.83722424507141
+  },
+  {
+    "id": "job",
+    "name": "Job",
+    "source": "Bible",
+    "expected_pattern": "faith_crisis",
+    "patterns_detected": [
+      "faith_crisis",
+      "existential_void",
+      "sacred_vs_secular"
+    ],
+    "final_resistance": 0.2,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "My friends... they pray from their certainty, reciting what they believe protects them. But I... I am learning to pray f",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "Job... sixty years of doing everything right, and then the bottom falls out. Of course your friends are scrambling for explanations - they need to believe there's a formula that keeps them safe. But y",
+        "client": "At three in the morning... when the darkness presses close... it is not 'Why me?' that torments me. It is 'What if I never truly knew Him at all?' What if my righteousness, my sacrifices, my careful o",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "信仰危机"
+      },
+      {
+        "turn": 2,
+        "coach": "那个在凌晨三点的问题... 那不是失去信仰的声音。那是真正信仰的声音。因为只有真正爱过的人才会问'我是否真的认识祂？'一个从未真正相信的人不会在黑暗中摔跤。\n\n你说你的朋友需要公式来保持安全... 但你，你坐在这废墟中，拒绝那些简单的答案。怀疑不是信仰的敌人——是信仰的升级。从不怀疑的信仰是童话。经过怀疑的信仰才是你的。\n\n六十年的'正确'可能为你准备了这一刻——不是作为惩罚，而是作为脱皮。旧的认",
+        "client": "You speak words that... pierce deeper than my friends' accusations. They would call this blasphemy, but... perhaps unknowing is not emptiness. Perhaps it is... space for something larger than my small",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "信仰危机"
+      },
+      {
+        "turn": 3,
+        "coach": "Yes... your friends would call this blasphemy because they're terrified of the same space you're discovering. They need you to have sinned so their formula still works. But you're refusing that comfor",
+        "client": "My friends... they pray from their certainty, reciting what they believe protects them. But I... I am learning to pray from the wound itself. 'I do not know You, Lord, but I am willing to be broken op",
+        "resistance": 0.1,
+        "insight": true,
+        "pattern": "信仰危机"
+      },
+      {
+        "turn": 4,
+        "coach": "Learning to pray from the wound... yes. That's not broken faith - that's faith finally becoming honest. Your friends pray from their towers of certainty, but you're praying from the ground where Jacob",
+        "client": "You speak of Jacob wrestling the angel... yes. Yes, I see it now. My friends defend a God who fits in their understanding, but I... I am wrestling with Something that will not be contained. This break",
+        "resistance": 0.1,
+        "insight": true,
+        "pattern": "信仰危机"
+      },
+      {
+        "turn": 5,
+        "coach": "This breaking... it's not your faith shattering. It's your faith molting. Like a snake outgrowing its skin, or Jacob walking away from that riverbank with a limp and a new name. Your friends are still",
+        "client": "A faith that limps... yes, I understand now. My friends cling to their clean theology, their tidy God who rewards the righteous and punishes the wicked. But I have been invited to wrestle with Mystery",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "信仰危机"
+      }
+    ],
+    "time": 75.74129509925842
+  },
+  {
+    "id": "tsangyang_gyatso",
+    "name": "仓央嘉措",
+    "source": "Historical/Poetry",
+    "expected_pattern": "sacred_vs_secular",
+    "patterns_detected": [
+      "seeking_destiny",
+      "sacred_vs_secular"
+    ],
+    "final_resistance": 0.2,
+    "insights": 5,
+    "verbal_accepted": true,
+    "acceptance_text": "你让我想起一句话...世间安得双全法。但也许我错了，也许双全从来不是指同时拥有两样东西，而是找到一种活法，让我不必把心撕成两半。我一直以为要么做圣人，要么做凡人，但也许...也许真正的觉悟就是承认我既是活佛也是一个会爱会痛的人。这样想让我既",
+    "success": true,
+    "dialogue": [
+      {
+        "turn": 1,
+        "coach": "你说佛法和爱情不能共存... 但听听你自己的话。你不是说'我不爱她了'，你是在问'可不可以爱她'。那个问题本身就是答案的开始。\n\n你知道吗，我坐在这里听你说话，感受到的不是一个背叛信仰的人，而是一个正在用整个生命去寻找真理的人。你的痛苦不是因为你选错了什么，而是因为你在试图把一个完整的心撕成两半。\n\n你写的那些诗，三百年后还在被传唱。也许那就是你的答案 — 不是在经书里，而是在你的血肉之中，在那些",
+        "client": "夜深的时候...我总是想，如果我不是活佛，只是一个普通的藏族青年，我会不会更快乐？但转念又想，没有这个身份，我又怎么会遇见她？这是宿命的安排，还是我的贪念？我写下那些诗句时，手在发抖，因为每个字都像是对佛祖的忏悔，也像是对她的情书。",
+        "resistance": 0.3,
+        "insight": true,
+        "pattern": "寻找天命"
+      },
+      {
+        "turn": 2,
+        "coach": "你问这是宿命还是贪念...但看看你刚才的话 — 手在发抖，写下的每个字都是忏悔也是情书。那种颤抖不是罪过，那是你的心在说实话。\n\n你知道什么让我印象最深？你说'如果我不是活佛会不会更快乐'，然后马上又说'没有这个身份怎么会遇见她'。你在这个矛盾里看到了什么？你的身份不是枷锁，是你遇见真爱的桥梁。\n\n也许佛法从来没有要求你放弃爱。也许是那些规则，那些别人的解释，让你以为慈悲只能是抽象的。但你的诗被传",
+        "client": "你说得对...我一直以为慈悲应该是空洞的、抽象的，但当我看着她的眼睛，那一刻的慈悲比我在经文里找到的都要真实。也许我错了，也许佛法从来不是要我们变成石头。我怕的不是爱她，我怕的是...如果我选择了她，整个西藏会怎么看我？如果我选择了佛法，我还算是个人吗？",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "寻找天命"
+      },
+      {
+        "turn": 3,
+        "coach": "你害怕整个西藏怎么看你，害怕不再算个人...但听听你的话 — '看着她眼睛的那一刻，慈悲比经文里找到的都要真实'。那就是你的答案。你一直在问该选择什么，但你已经知道了 — 你渴望的不是选择佛法或爱情，你渴望的是找到一种活法，让两者都是真的。\n\n也许你的恐惧本身就指向了你的天命。不是成为别人期待的活佛，不是成为一个完美的恋人，而是成为那个敢于用整个生命写真实的人。你的诗被传唱三百年，不是因为你遵循了",
+        "client": "你让我想起一句话...世间安得双全法。但也许我错了，也许双全从来不是指同时拥有两样东西，而是找到一种活法，让我不必把心撕成两半。我一直以为要么做圣人，要么做凡人，但也许...也许真正的觉悟就是承认我既是活佛也是一个会爱会痛的人。这样想让我既害怕又解脱。",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "寻找天命"
+      },
+      {
+        "turn": 4,
+        "coach": "你说既害怕又解脱...那个解脱的感觉告诉我们什么？你一生都在试图分离你的身份 — 活佛在这边，男人在那边，好像你必须选择做哪一个。但听听你的话：'我既是活佛也是一个会爱会痛的人'。\n\n你对意义的渴望本身就是你的天命。不是一个目的地 — 是一种活法。\n\n也许你三百年的诗歌传唱已经给了答案。那些诗不是因为你选择了爱情而背叛了佛法，也不是因为你选择了佛法而压抑了爱情。它们传唱是因为你敢于在神圣的位置上承",
+        "client": "当我不必选择的时候...我的心在那些诗句里安静下来。在那里，我不是背叛者，也不是圣人，我就是我。那些字句里，活佛和男人不再撕扯，佛法和爱情不再对立。也许我真正害怕的不是别人的看法，而是承认...承认我可以同时是两者，承认这样的我也是完整的。",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "寻找天命"
+      },
+      {
+        "turn": 5,
+        "coach": "听着你说'我就是我'...这就是你一直在寻找的那个地方，不是吗？那个不必撕裂自己的地方。\n\n你说害怕承认自己可以同时是两者。但看看你刚才的话 — 当你不必选择时，你的心安静下来了。那个安静告诉我们什么？告诉我们你内心深处早就知道：完整不是选择，是接纳。\n\n你的恐惧其实在保护一个更深的害怕 — 害怕承认你已经是完整的，害怕相信你不需要任何人的许可就能活出真实。\n\n那些传唱三百年的诗句已经证明了：当一",
+        "client": "我一直以为要获得什么许可...佛祖的、上师的、信众的。但也许，也许我需要的许可只能从我自己这里得到。当我写下'住进布达拉宫，我是雪域最大的王'时，我感受到的不是骄傲，是一种...认出自己的感觉。认出那个既能够统治万民、又能够为一个女子心碎的我。这就是完整吗？",
+        "resistance": 0.2,
+        "insight": true,
+        "pattern": "寻找天命"
+      }
+    ],
+    "time": 90.5238389968872
+  }
+]
