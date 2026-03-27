@@ -32,6 +32,8 @@ from wish_engine.marketplace import Marketplace, Match, MatchState, Request, Age
 from wish_engine.match_reason import generate_match_reason
 from wish_engine.l2_fulfiller import fulfill_l2, L2Fulfiller, PersonalityFilter
 from wish_engine.l2_places import PlaceFulfiller
+from wish_engine.apis.places_api import nearby_search as places_nearby_search, is_available as places_api_available
+from wish_engine.apis.places_personality import enrich_place, enrich_places, wish_to_search_params
 from wish_engine.l2_books import BookFulfiller
 from wish_engine.l2_courses import CourseFulfiller
 from wish_engine.l2_career import CareerFulfiller
@@ -140,6 +142,12 @@ __all__ = [
     "DialogueScanner",
     "save_vault",
     "load_vault",
+    # Google Places API
+    "places_nearby_search",
+    "places_api_available",
+    "enrich_place",
+    "enrich_places",
+    "wish_to_search_params",
     # Constants
     "WISH_TYPES",
     "FULFILLMENT_STRATEGIES",

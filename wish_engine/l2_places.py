@@ -7,6 +7,8 @@ PersonalityFilter scores and ranks candidates.
 
 from __future__ import annotations
 
+from wish_engine.apis import places_api
+from wish_engine.apis import places_personality
 from wish_engine.l2_fulfiller import L2Fulfiller
 from wish_engine.models import (
     ClassifiedWish,
@@ -433,7 +435,34 @@ class PlaceFulfiller(L2Fulfiller):
         self,
         wish: ClassifiedWish,
         detector_results: DetectorResults,
+        location: tuple[float, float] | None = None,
     ) -> L2FulfillmentResult:
+        # Try Google Places API first (requires API key + location)
+        if location and places_api.is_available():
+            search_params = places_personality.wish_to_search_params(wish.wish_text)
+            raw_places = places_api.nearby_search(
+                lat=location[0],
+                lng=location[1],
+                place_type=search_params.get("place_type"),
+                keyword=search_params.get("keyword"),
+            )
+            if raw_places:
+                candidates = places_personality.enrich_places(raw_places)
+                recs = self._build_recommendations(
+                    candidates, detector_results, max_results=3,
+                )
+                if recs:
+                    primary = recs[0].category
+                    return L2FulfillmentResult(
+                        recommendations=recs,
+                        map_data=MapData(place_type=primary, radius_km=5.0),
+                        reminder_option=ReminderOption(
+                            text="Want a reminder to visit?",
+                            delay_hours=48,
+                        ),
+                    )
+
+        # Fallback: static catalog
         # 1. Match categories from wish text
         matched_categories = _match_categories(wish.wish_text)
 
