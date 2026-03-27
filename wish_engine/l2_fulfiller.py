@@ -238,6 +238,26 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     from wish_engine.l2_confidence import ConfidenceFulfiller
     from wish_engine.l2_eq_training import EQTrainingFulfiller
     from wish_engine.l2_identity_exploration import IdentityExplorationFulfiller
+    from wish_engine.l2_kids_activities import KidsActivityFulfiller
+    from wish_engine.l2_elderly_care import ElderlyCareFulfiller
+    from wish_engine.l2_family_dining import FamilyDiningFulfiller
+    from wish_engine.l2_wedding import WeddingFulfiller
+    from wish_engine.l2_neighborhood import NeighborhoodFulfiller
+    from wish_engine.l2_memory_map import MemoryMapFulfiller
+    from wish_engine.l2_gratitude import GratitudeFulfiller
+    from wish_engine.l2_moving import MovingFulfiller
+    from wish_engine.l2_intergenerational import IntergenerationalFulfiller
+    from wish_engine.l2_pet_training import PetTrainingFulfiller
+    from wish_engine.l2_games import GameFulfiller
+    from wish_engine.l2_photo_spots import PhotoSpotFulfiller
+    from wish_engine.l2_seasonal_wellness import SeasonalWellnessFulfiller
+    from wish_engine.l2_fashion import FashionFulfiller
+    from wish_engine.l2_weekend_planner import WeekendPlannerFulfiller
+    from wish_engine.l2_seasonal_activities import SeasonalActivityFulfiller
+    from wish_engine.l2_birthday_planning import BirthdayPlannerFulfiller
+    from wish_engine.l2_documentaries import DocumentaryFulfiller
+    from wish_engine.l2_collecting import CollectingFulfiller
+    from wish_engine.l2_astro_fun import AstroFunFulfiller
 
     text_lower = wish_text.lower()
 
@@ -310,6 +330,82 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     }
     if any(kw in text_lower for kw in identity_keywords):
         return IdentityExplorationFulfiller()
+
+    # Check for game/play keywords
+    game_keywords = {
+        "游戏", "game", "play", "桌游", "board game", "لعبة",
+        "chess", "象棋", "mahjong", "麻将", "trivia", "escape room", "密室",
+    }
+    if any(kw in text_lower for kw in game_keywords):
+        return GameFulfiller()
+
+    # Check for photography keywords
+    photo_keywords = {
+        "拍照", "photo", "photography", "摄影", "تصوير", "instagram", "打卡",
+    }
+    if any(kw in text_lower for kw in photo_keywords):
+        return PhotoSpotFulfiller()
+
+    # Check for seasonal wellness keywords
+    seasonal_wellness_keywords = {
+        "节气", "二十四节气", "seasonal wellness", "养生", "فصل",
+        "ramadan", "رمضان", "斋月", "monsoon", "dust storm", "沙尘暴",
+    }
+    if any(kw in text_lower for kw in seasonal_wellness_keywords):
+        return SeasonalWellnessFulfiller()
+
+    # Check for fashion/style keywords
+    fashion_keywords = {
+        "穿搭", "fashion", "style", "衣服", "clothing", "أزياء", "outfit",
+    }
+    if any(kw in text_lower for kw in fashion_keywords):
+        return FashionFulfiller()
+
+    # Check for weekend planner keywords
+    weekend_keywords = {
+        "周末", "weekend", "عطلة", "what to do",
+    }
+    if any(kw in text_lower for kw in weekend_keywords):
+        return WeekendPlannerFulfiller()
+
+    # Check for seasonal activity keywords
+    seasonal_activity_keywords = {
+        "当季", "seasonal", "spring", "summer", "autumn", "winter",
+        "春", "夏", "秋", "冬", "cherry blossom", "樱花",
+        "picnic", "野餐", "camping", "露营", "skating", "溜冰",
+    }
+    if any(kw in text_lower for kw in seasonal_activity_keywords):
+        return SeasonalActivityFulfiller()
+
+    # Check for birthday planning keywords
+    birthday_keywords = {
+        "生日", "birthday", "عيد ميلاد", "party", "派对", "celebrate", "庆祝",
+    }
+    if any(kw in text_lower for kw in birthday_keywords):
+        return BirthdayPlannerFulfiller()
+
+    # Check for documentary keywords
+    documentary_keywords = {
+        "纪录片", "documentary", "وثائقي", "doc",
+    }
+    if any(kw in text_lower for kw in documentary_keywords):
+        return DocumentaryFulfiller()
+
+    # Check for collecting/hobby keywords
+    collecting_keywords = {
+        "收藏", "collect", "collection", "vintage", "黑胶",
+        "vinyl", "stamp", "邮票", "古董", "antique",
+    }
+    if any(kw in text_lower for kw in collecting_keywords):
+        return CollectingFulfiller()
+
+    # Check for astrology/fun quiz keywords
+    astro_fun_keywords = {
+        "星座", "astrology", "zodiac", "塔罗", "tarot", "أبراج",
+        "horoscope", "运势", "生肖", "spirit animal", "灵魂动物",
+    }
+    if any(kw in text_lower for kw in astro_fun_keywords):
+        return AstroFunFulfiller()
 
     # Check for prayer keywords (cross-cuts multiple wish types)
     prayer_keywords = {
@@ -671,6 +767,76 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     }
     if any(kw in text_lower for kw in startup_keywords):
         return StartupResourceFulfiller()
+
+    # Check for kids activity keywords
+    kids_activity_keywords = {
+        "孩子", "kids", "children", "亲子", "أطفال", "带娃",
+    }
+    if any(kw in text_lower for kw in kids_activity_keywords):
+        return KidsActivityFulfiller()
+
+    # Check for elderly care keywords
+    elderly_keywords = {
+        "长辈", "elderly", "老人", "senior", "كبار السن", "爸妈",
+    }
+    if any(kw in text_lower for kw in elderly_keywords):
+        return ElderlyCareFulfiller()
+
+    # Check for family dining keywords
+    family_dining_keywords = {
+        "聚餐", "family dinner", "家庭", "大桌", "包间", "عائلة",
+    }
+    if any(kw in text_lower for kw in family_dining_keywords):
+        return FamilyDiningFulfiller()
+
+    # Check for wedding keywords
+    wedding_keywords_check = {
+        "婚礼", "wedding", "结婚", "marriage", "زفاف", "bridal",
+    }
+    if any(kw in text_lower for kw in wedding_keywords_check):
+        return WeddingFulfiller()
+
+    # Check for neighborhood / community keywords
+    neighborhood_kw = {
+        "邻里", "جيران",
+    }
+    if any(kw in text_lower for kw in neighborhood_kw):
+        return NeighborhoodFulfiller()
+
+    # Check for memory map keywords
+    memory_map_keywords = {
+        "回忆", "纪念", "remember", "ذكرى", "special place",
+    }
+    if any(kw in text_lower for kw in memory_map_keywords):
+        return MemoryMapFulfiller()
+
+    # Check for gratitude keywords
+    gratitude_keywords = {
+        "感恩", "gratitude", "感谢", "شكر", "appreciate",
+    }
+    if any(kw in text_lower for kw in gratitude_keywords):
+        return GratitudeFulfiller()
+
+    # Check for moving / relocation keywords
+    moving_kw = {
+        "搬家", "relocate", "نقل", "new home",
+    }
+    if any(kw in text_lower for kw in moving_kw):
+        return MovingFulfiller()
+
+    # Check for intergenerational keywords
+    intergenerational_kw = {
+        "代际", "intergenerational", "跨代", "传承", "أجيال", "generations",
+    }
+    if any(kw in text_lower for kw in intergenerational_kw):
+        return IntergenerationalFulfiller()
+
+    # Check for pet training keywords
+    pet_training_kw = {
+        "训犬", "dog training", "تدريب", "pet behavior", "pet training",
+    }
+    if any(kw in text_lower for kw in pet_training_kw):
+        return PetTrainingFulfiller()
 
     _FULFILLER_MAP: dict[WishType, L2Fulfiller] = {
         WishType.FIND_PLACE: PlaceFulfiller(),
