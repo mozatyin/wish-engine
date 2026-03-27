@@ -1,0 +1,217 @@
+[
+  {
+    "case": "Conflict Avoidance Insight",
+    "card_type": "insight",
+    "word_count": 188,
+    "related_stars": [
+      "conflict:avoiding",
+      "attachment:anxious-preoccupied",
+      "dimension:anxiety",
+      "dimension:conflict_avoidance",
+      "dimension:belonging",
+      "dimension:approval-seeking",
+      "dimension:Hidden_Depths",
+      "dimension:safe_silence",
+      "dimension:INFJ",
+      "dimension:anxious-preoccupied"
+    ],
+    "issues": [],
+    "quality": "GOOD",
+    "text_preview": "You'd rather swallow your words than watch someone's face crumple when you disagree. Your anxiety whispers that conflict equals rejection, so you bite your tongue and call it peacekeeping. But here's ...",
+    "latency_ms": 9813
+  },
+  {
+    "case": "Relationship Fight Analysis",
+    "card_type": "relationship_analysis",
+    "word_count": 201,
+    "related_stars": [
+      "conflict:competing",
+      "love_language:quality_time",
+      "dimension:competing conflict style",
+      "dimension:anxious-preoccupied attachment",
+      "dimension:direct-emotional communication"
+    ],
+    "issues": [],
+    "quality": "GOOD",
+    "text_preview": "You fight like someone who's terrified of being left behind. Your competing conflict style means you'd rather escalate than retreat — you dig in harder when things get heated because backing down feel...",
+    "latency_ms": 10019
+  },
+  {
+    "case": "Letter to Self",
+    "card_type": "self_dialogue",
+    "word_count": 162,
+    "related_stars": [
+      "fragility:open",
+      "dimension:fragility",
+      "dimension:emotions",
+      "dimension:soul_type"
+    ],
+    "issues": [
+      "LOW PERSONALIZATION: no profile-specific references found"
+    ],
+    "quality": "NEEDS_REVIEW",
+    "text_preview": "Dear Me,\n\nI know you're tired of being the person everyone comes to when they need someone to really listen, then watching them drift away when life gets easier for them. Your openness feels like a su...",
+    "latency_ms": 6946
+  },
+  {
+    "case": "Soul Portrait",
+    "card_type": "soul_portrait",
+    "word_count": 233,
+    "related_stars": [
+      "mbti:ENFP",
+      "values:self-direction",
+      "dimension:MBTI",
+      "dimension:soul_type",
+      "dimension:conflict_style",
+      "dimension:EQ",
+      "dimension:values",
+      "dimension:communication",
+      "dimension:attachment",
+      "dimension:tensions"
+    ],
+    "issues": [],
+    "quality": "GOOD",
+    "text_preview": "You are a **Spark Seeker** who lights up when ideas collide and possibilities unfold. Your **ENFP** soul thrives on connection and potential — you see what could be in every conversation, every projec...",
+    "latency_ms": 10380
+  },
+  {
+    "case": "Anger Origin Trace",
+    "card_type": "emotion_trace",
+    "word_count": 197,
+    "related_stars": [
+      "emotion:anger",
+      "emotion:frustration",
+      "dimension:attachment",
+      "dimension:fragility",
+      "dimension:patterns"
+    ],
+    "issues": [],
+    "quality": "GOOD",
+    "text_preview": "Your anger feels like it comes from nowhere because you've trained yourself not to notice the smaller hits. You're the person who shrugs off slights, who'd rather cut people off than call them out, wh...",
+    "latency_ms": 9525
+  },
+  {
+    "case": "EN: Why I Push People Away",
+    "card_type": "insight",
+    "word_count": 220,
+    "related_stars": [
+      "conflict:avoiding",
+      "attachment:dismissive-avoidant",
+      "dimension:emotional_intelligence",
+      "dimension:conflict_style",
+      "dimension:attachment",
+      "dimension:emotions",
+      "dimension:soul_type",
+      "dimension:patterns",
+      "dimension:values",
+      "dimension:tensions"
+    ],
+    "issues": [],
+    "quality": "GOOD",
+    "text_preview": "You read rooms like other people read text messages — fast and without trying. You can sense exactly when someone's about to need more from you, when they're getting too close, when a conversation is ...",
+    "latency_ms": 9935
+  },
+  {
+    "case": "EN: Process Grief",
+    "card_type": "emotion_trace",
+    "word_count": 193,
+    "related_stars": [
+      "emotion:grief",
+      "emotion:sadness",
+      "dimension:conflict_style",
+      "dimension:attachment",
+      "dimension:values",
+      "dimension:soul_type"
+    ],
+    "issues": [],
+    "quality": "GOOD",
+    "text_preview": "Your grief runs deeper because you're wired to put everyone else's comfort first. While others were falling apart after your dad's death, you became the steady one — managing logistics, checking on fa...",
+    "latency_ms": 9670
+  },
+  {
+    "case": "EN: Express Feelings",
+    "card_type": "self_dialogue",
+    "word_count": 161,
+    "related_stars": [
+      "fragility:suppression",
+      "dimension:anxious-preoccupied",
+      "dimension:suppression"
+    ],
+    "issues": [],
+    "quality": "GOOD",
+    "text_preview": "Dear Me,\n\nI know you're tired of being everyone's calm harbor while your own waters churn underneath. You've spent so long making sure everyone else feels steady that you forgot to ask if you're okay ...",
+    "latency_ms": 7663
+  },
+  {
+    "case": "EN: Understand Relationship",
+    "card_type": "relationship_analysis",
+    "word_count": 193,
+    "related_stars": [
+      "conflict:compromising",
+      "love_language:words_of_affirmation",
+      "dimension:compromising conflict style",
+      "dimension:anxious-preoccupied attachment",
+      "dimension:Hidden Depths soul type"
+    ],
+    "issues": [],
+    "quality": "GOOD",
+    "text_preview": "You're stuck in a pattern where your anxious-preoccupied attachment keeps pulling you toward resolution while your compromising style makes you bend until you're unrecognizable. You feel every relatio...",
+    "latency_ms": 9173
+  },
+  {
+    "case": "ZH: Let Go of Ex",
+    "card_type": "emotion_trace",
+    "word_count": 203,
+    "related_stars": [
+      "emotion:longing",
+      "emotion:sadness",
+      "dimension:attachment",
+      "dimension:fragility",
+      "dimension:soul_type"
+    ],
+    "issues": [],
+    "quality": "GOOD",
+    "text_preview": "That anxious-preoccupied attachment of yours? It's like having emotional Velcro — everything sticks, especially the stuff that hurts. When relationships end, your brain doesn't file it under 'finished...",
+    "latency_ms": 9967
+  },
+  {
+    "case": "ZH: People Pleasing",
+    "card_type": "insight",
+    "word_count": 190,
+    "related_stars": [
+      "conflict:accommodating",
+      "attachment:anxious-preoccupied",
+      "dimension:anxious-preoccupied attachment",
+      "dimension:accommodating conflict style",
+      "dimension:approval-seeking fragility",
+      "dimension:anxiety",
+      "dimension:shame",
+      "dimension:EQ",
+      "dimension:conformity",
+      "dimension:benevolence",
+      "dimension:Warm Current soul type"
+    ],
+    "issues": [],
+    "quality": "GOOD",
+    "text_preview": "You're caught in an exhausting loop: your anxious attachment makes you desperate for closeness, but your accommodating style means you always give more than you get. You read emotional cues like a pro...",
+    "latency_ms": 8979
+  },
+  {
+    "case": "AR: Understand Self",
+    "card_type": "insight",
+    "word_count": 198,
+    "related_stars": [
+      "dimension:MBTI",
+      "dimension:Emotions",
+      "dimension:Soul type",
+      "dimension:Values",
+      "dimension:Distress"
+    ],
+    "issues": [
+      "LOW PERSONALIZATION: no profile-specific references found"
+    ],
+    "quality": "NEEDS_REVIEW",
+    "text_preview": "Your curiosity is pulling you toward self-understanding, but that confusion you're feeling? It's not a bug in your system — it's a feature. As an INTJ, you're wired to see patterns and build framework...",
+    "latency_ms": 9901
+  }
+]

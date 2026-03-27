@@ -191,6 +191,18 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     from wish_engine.l2_progress_groups import ProgressGroupFulfiller
     from wish_engine.l2_emotion_weather import EmotionWeatherFulfiller
     from wish_engine.l2_virtual_companion import VirtualCompanionFulfiller
+    from wish_engine.l2_medical import MedicalFulfiller
+    from wish_engine.l2_pet_friendly import PetFriendlyFulfiller
+    from wish_engine.l2_ev_charging import EVChargingFulfiller
+    from wish_engine.l2_services import LocalServiceFulfiller
+    from wish_engine.l2_parking import ParkingFulfiller
+    from wish_engine.l2_late_night import LateNightFulfiller
+    from wish_engine.l2_hometown_food import HometownFoodFulfiller
+    from wish_engine.l2_coworking import CoworkingFulfiller
+    from wish_engine.l2_secondhand import SecondhandFulfiller
+    from wish_engine.l2_free_activities import FreeActivityFulfiller
+    from wish_engine.l2_finance import FinanceFulfiller
+    from wish_engine.l2_housing import HousingFulfiller
 
     text_lower = wish_text.lower()
 
@@ -263,6 +275,14 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     if any(kw in text_lower for kw in deals_keywords):
         return DealsFulfiller()
 
+    # Check for hometown food keywords (before generic food)
+    hometown_food_keywords = {
+        "家乡", "hometown", "正宗", "authentic", "家的味道",
+        "بلدي", "وطني",
+    }
+    if any(kw in text_lower for kw in hometown_food_keywords):
+        return HometownFoodFulfiller()
+
     # Check for food keywords (cross-cuts multiple wish types)
     food_keywords = {
         "吃饭", "餐厅", "美食", "comfort food", "hungry", "مطعم",
@@ -289,6 +309,87 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     }
     if any(kw in text_lower for kw in event_keywords):
         return EventFulfiller()
+
+    # Check for medical keywords
+    medical_keywords = {
+        "医院", "doctor", "clinic", "医生", "看病", "طبيب", "مستشفى",
+        "pharmacy", "药", "hospital", "dental", "dentist",
+    }
+    if any(kw in text_lower for kw in medical_keywords):
+        return MedicalFulfiller()
+
+    # Check for pet-friendly keywords
+    pet_keywords = {
+        "宠物", "pet", "dog", "cat", "狗", "猫", "حيوان أليف",
+    }
+    if any(kw in text_lower for kw in pet_keywords):
+        return PetFriendlyFulfiller()
+
+    # Check for EV charging / gas keywords
+    ev_keywords = {
+        "充电", "charging", "加油", "gas", "电动", "شحن",
+        "ev", "charger", "supercharger",
+    }
+    if any(kw in text_lower for kw in ev_keywords):
+        return EVChargingFulfiller()
+
+    # Check for local service keywords
+    service_keywords = {
+        "打印", "print", "快递", "courier", "寄存", "storage",
+        "修", "repair", "洗衣", "laundry",
+    }
+    if any(kw in text_lower for kw in service_keywords):
+        return LocalServiceFulfiller()
+
+    # Check for parking keywords
+    parking_keywords = {
+        "停车", "parking", "park my car", "泊车", "موقف",
+    }
+    if any(kw in text_lower for kw in parking_keywords):
+        return ParkingFulfiller()
+
+    # Check for coworking keywords
+    coworking_keywords = {
+        "工作", "办公", "cowork", "workspace", "cafe", "写代码", "办公空间",
+    }
+    if any(kw in text_lower for kw in coworking_keywords):
+        return CoworkingFulfiller()
+
+    # Check for secondhand keywords
+    secondhand_keywords = {
+        "二手", "闲置", "exchange", "swap", "旧物", "secondhand", "مستعمل",
+    }
+    if any(kw in text_lower for kw in secondhand_keywords):
+        return SecondhandFulfiller()
+
+    # Check for free activity keywords
+    free_activity_keywords = {
+        "免费", "free", "低价", "budget", "مجاني", "no cost",
+    }
+    if any(kw in text_lower for kw in free_activity_keywords):
+        return FreeActivityFulfiller()
+
+    # Check for finance keywords
+    finance_keywords = {
+        "理财", "finance", "money", "投资", "存钱", "مال",
+    }
+    if any(kw in text_lower for kw in finance_keywords):
+        return FinanceFulfiller()
+
+    # Check for housing keywords
+    housing_keywords = {
+        "租房", "housing", "合租", "roommate", "neighborhood", "搬家", "سكن",
+    }
+    if any(kw in text_lower for kw in housing_keywords):
+        return HousingFulfiller()
+
+    # Check for late-night / 24h keywords
+    late_night_keywords = {
+        "药店", "24小时", "24h", "便利店", "convenience",
+        "late night", "半夜", "صيدلية", "深夜", "凌晨",
+    }
+    if any(kw in text_lower for kw in late_night_keywords):
+        return LateNightFulfiller()
 
     _FULFILLER_MAP: dict[WishType, L2Fulfiller] = {
         WishType.FIND_PLACE: PlaceFulfiller(),

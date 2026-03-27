@@ -1,0 +1,84 @@
+{
+  "annotated_100": {
+    "total": 100,
+    "detected": 0,
+    "detection_rate": 0.0,
+    "avg_confidence": 0,
+    "type_distribution": {},
+    "level_distribution": {},
+    "high_distress_wish_rate": 0.0,
+    "high_distress_total": 27,
+    "examples": []
+  },
+  "multi_turn_30": {
+    "total_sessions": 30,
+    "total_turns": 425,
+    "wishes_found": 3,
+    "sessions_with_wishes": 1,
+    "avg_wishes_per_session": 0.1,
+    "wish_per_turn_rate": 0.007
+  },
+  "critical_584": {
+    "total": 584,
+    "detected": 6,
+    "detection_rate": 0.01,
+    "avg_confidence": 0.8,
+    "type_distribution": {
+      "emotional_processing": 2,
+      "career_direction": 2,
+      "self_understanding": 1,
+      "learn_skill": 1
+    },
+    "level_distribution": {
+      "L1": 3,
+      "L2": 3
+    },
+    "high_distress_wish_rate": 0.013,
+    "high_distress_total": 298,
+    "examples": [
+      {
+        "text": "I want to make myself strong",
+        "type": "self_understanding",
+        "level": "L1",
+        "confidence": 0.65,
+        "distress": 0.55
+      },
+      {
+        "text": "I'm scared that I'll remain average in life and not be able to should my mom's b",
+        "type": "emotional_processing",
+        "level": "L1",
+        "confidence": 0.65,
+        "distress": 0.62
+      },
+      {
+        "text": "In my world, I attract what I want to see and that works for me, but in the real",
+        "type": "career_direction",
+        "level": "L2",
+        "confidence": 0.85,
+        "distress": 0.25
+      },
+      {
+        "text": "No she's not asking me to support her studies..I want to study so she said to he",
+        "type": "learn_skill",
+        "level": "L2",
+        "confidence": 0.9,
+        "distress": 0.6
+      },
+      {
+        "text": "Anything is fine but I want to work in AI field",
+        "type": "career_direction",
+        "level": "L2",
+        "confidence": 0.85,
+        "distress": 0.1
+      },
+      {
+        "text": "So bad sharma.i wish I could do without the anxiety",
+        "type": "emotional_processing",
+        "level": "L1",
+        "confidence": 0.9,
+        "distress": 0.55
+      }
+    ]
+  },
+  "overall_rate": 0.008
+}
