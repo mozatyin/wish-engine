@@ -166,7 +166,7 @@ class L2Fulfiller(ABC):
         ]
 
 
-def _get_fulfiller(wish_type: WishType) -> L2Fulfiller:
+def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     """Get the fulfiller instance for a wish type.
 
     Lazy imports to avoid circular dependencies and allow incremental
@@ -177,6 +177,17 @@ def _get_fulfiller(wish_type: WishType) -> L2Fulfiller:
     from wish_engine.l2_courses import CourseFulfiller
     from wish_engine.l2_career import CareerFulfiller
     from wish_engine.l2_wellness import WellnessFulfiller
+    from wish_engine.l2_events import EventFulfiller
+
+    # Check for event keywords first (cross-cuts multiple wish types)
+    event_keywords = {
+        "演出", "表演", "concert", "exhibition", "展览", "市集", "festival",
+        "comedy", "opera", "ballet", "theater", "theatre", "话剧", "歌剧",
+        "meetup", "聚会", "workshop", "工作坊", "film", "电影", "volunteer",
+        "志愿者",
+    }
+    if any(kw in wish_text.lower() for kw in event_keywords):
+        return EventFulfiller()
 
     _FULFILLER_MAP: dict[WishType, L2Fulfiller] = {
         WishType.FIND_PLACE: PlaceFulfiller(),
@@ -202,5 +213,5 @@ def fulfill_l2(
     if wish.level != WishLevel.L2:
         raise ValueError(f"L2Fulfiller only handles L2 wishes, got {wish.level}")
 
-    fulfiller = _get_fulfiller(wish.wish_type)
+    fulfiller = _get_fulfiller(wish.wish_type, wish_text=wish.wish_text)
     return fulfiller.fulfill(wish, detector_results)

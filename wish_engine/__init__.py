@@ -38,6 +38,9 @@ from wish_engine.l2_books import BookFulfiller
 from wish_engine.l2_courses import CourseFulfiller
 from wish_engine.l2_career import CareerFulfiller
 from wish_engine.l2_wellness import WellnessFulfiller
+from wish_engine.l2_events import EventFulfiller
+from wish_engine.apis.events_api import search_all as events_search_all, is_available as events_api_available
+from wish_engine.apis.events_personality import enrich_event as events_enrich_event
 from wish_engine.deduplicator import deduplicate
 from wish_engine.engine import WishEngine, WishEngineResult
 from wish_engine.queue import WishQueue, WishPriority, QueuedWish
@@ -142,6 +145,11 @@ __all__ = [
     "DialogueScanner",
     "save_vault",
     "load_vault",
+    # Event Discovery
+    "EventFulfiller",
+    "events_search_all",
+    "events_api_available",
+    "events_enrich_event",
     # Google Places API
     "places_nearby_search",
     "places_api_available",
