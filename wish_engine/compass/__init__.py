@@ -16,6 +16,8 @@ from wish_engine.compass.trigger import TriggerEngine
 from wish_engine.compass.revelation import RevelationRenderer, Revelation, RevelationStyle
 from wish_engine.compass.star_render import render_shell_star, CompassStarOutput
 from wish_engine.compass.compass import WishCompass, ScanResult
+from wish_engine.compass.scanner import DialogueScanner
+from wish_engine.compass.persistence import save_vault, load_vault
 
 __all__ = [
     "Shell",
@@ -36,4 +38,7 @@ __all__ = [
     "CompassStarOutput",
     "WishCompass",
     "ScanResult",
+    "DialogueScanner",
+    "save_vault",
+    "load_vault",
 ]

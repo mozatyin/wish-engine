@@ -55,6 +55,9 @@ from wish_engine.compass import (
     RevelationStyle,
     CompassStarOutput,
     render_shell_star,
+    DialogueScanner,
+    save_vault,
+    load_vault,
 )
 
 __all__ = [
@@ -134,6 +137,9 @@ __all__ = [
     "RevelationStyle",
     "CompassStarOutput",
     "render_shell_star",
+    "DialogueScanner",
+    "save_vault",
+    "load_vault",
     # Constants
     "WISH_TYPES",
     "FULFILLMENT_STRATEGIES",

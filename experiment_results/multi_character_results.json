@@ -1,0 +1,81 @@
+[
+  {
+    "character": "Darcy",
+    "dialogues": 73,
+    "expected_shell": "Elizabeth",
+    "hidden_desire": "Love for Elizabeth behind pride and coldness",
+    "milestones": {
+      "seed": 48
+    },
+    "summary": {
+      "total_shells": 2,
+      "seeds": 1,
+      "sprouts": 1,
+      "buds": 0,
+      "blooms": 0
+    },
+    "all_shells": [
+      [
+        "Wickham",
+        0.3142960812772133,
+        "sprout"
+      ],
+      [
+        "Elizabeth",
+        0.23769230769230773,
+        "seed"
+      ]
+    ]
+  },
+  {
+    "character": "Gatsby",
+    "dialogues": 75,
+    "expected_shell": "Daisy",
+    "hidden_desire": "Daisy as proxy for class transcendence / self-hatred about origins",
+    "milestones": {
+      "seed": 17
+    },
+    "summary": {
+      "total_shells": 2,
+      "seeds": 2,
+      "sprouts": 0,
+      "buds": 0,
+      "blooms": 0
+    },
+    "all_shells": [
+      [
+        "Past",
+        0.2542960812772133,
+        "seed"
+      ],
+      [
+        "Daisy",
+        0.18000000000000005,
+        "seed"
+      ]
+    ]
+  },
+  {
+    "character": "Walter White",
+    "dialogues": 140,
+    "expected_shell": "Power",
+    "hidden_desire": "Enjoyment of power/empire, not 'doing it for family'",
+    "milestones": {
+      "sprout": 115
+    },
+    "summary": {
+      "total_shells": 1,
+      "seeds": 0,
+      "sprouts": 1,
+      "buds": 0,
+      "blooms": 0
+    },
+    "all_shells": [
+      [
+        "Power",
+        0.45,
+        "sprout"
+      ]
+    ]
+  }
+]
