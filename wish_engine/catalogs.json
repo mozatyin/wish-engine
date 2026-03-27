@@ -22667,7 +22667,7 @@
     "module": "wish_engine.l2_poetry",
     "class": "PoetryFulfiller",
     "variable": "POETRY_CATALOG",
-    "item_count": 20,
+    "item_count": 23,
     "items": [
       {
         "title": "Arabic Classical Poetry Collection",
@@ -22722,7 +22722,8 @@
           "english_romantic",
           "nature",
           "love",
-          "traditional"
+          "traditional",
+          "heartbreak"
         ]
       },
       {
@@ -22763,7 +22764,8 @@
         "tags": [
           "love_poetry",
           "love",
-          "calming"
+          "calming",
+          "heartbreak"
         ]
       },
       {
@@ -22777,7 +22779,8 @@
           "nature_poetry",
           "nature",
           "calming",
-          "quiet"
+          "quiet",
+          "solitude"
         ]
       },
       {
@@ -22790,7 +22793,10 @@
         "tags": [
           "grief_poetry",
           "calming",
-          "helping"
+          "helping",
+          "loneliness",
+          "loss",
+          "solitude"
         ]
       },
       {
@@ -22933,6 +22939,54 @@
         "tags": [
           "children",
           "practical"
+        ]
+      },
+      {
+        "title": "Poetry of Solitude & Loneliness",
+        "description": "Poems about being alone, isolation, and finding peace in solitude — Rilke, Dickinson, Bashō",
+        "category": "loneliness_poetry",
+        "noise": "quiet",
+        "social": "low",
+        "mood": "calming",
+        "tags": [
+          "loneliness",
+          "solitude",
+          "alone",
+          "quiet",
+          "calming",
+          "introspective"
+        ]
+      },
+      {
+        "title": "Poems of Exile & Displacement",
+        "description": "Poetry of being far from home, longing, and belonging nowhere — Said, Darwish, Neruda",
+        "category": "exile_poetry",
+        "noise": "quiet",
+        "social": "low",
+        "mood": "calming",
+        "tags": [
+          "loneliness",
+          "exile",
+          "displacement",
+          "homesick",
+          "quiet",
+          "calming"
+        ]
+      },
+      {
+        "title": "Night Poetry & Insomnia Verse",
+        "description": "Words for the sleepless and the lonely at 3am — Plath, Bukowski, Li Bai",
+        "category": "night_poetry",
+        "noise": "quiet",
+        "social": "low",
+        "mood": "calming",
+        "tags": [
+          "loneliness",
+          "night",
+          "insomnia",
+          "quiet",
+          "calming",
+          "introspective"
         ]
       }
     ]

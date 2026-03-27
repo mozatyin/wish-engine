@@ -147,5 +147,10 @@ def personalize_reason(
     if not parts:
         return f"Recommended for you: {recommendation_title}"
 
-    # Take the 2 most relevant parts
-    return ". ".join(parts[:2])
+    # Distribute different reasons across recommendations
+    # Use title hash to pick a DIFFERENT part for each recommendation
+    # This prevents all 3 recs from having the same reason
+    title_hash = sum(ord(c) for c in recommendation_title) % max(len(parts), 1)
+    selected = parts[title_hash % len(parts)]
+
+    return f"{recommendation_title} — {selected}"

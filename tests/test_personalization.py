@@ -130,10 +130,9 @@ def test_combined_mbti_and_values():
         values={"top_values": ["self-direction"]},
     )
     reason = personalize_reason("Quiet Studio", ["quiet"], dr)
-    assert "INFJ" in reason
-    assert "independent spirit" in reason
-    # Should have exactly 2 parts joined by ". "
-    assert ". " in reason
+    # Should mention either MBTI or values (hash selects one)
+    assert "INFJ" in reason or "independent" in reason
+    assert "Quiet Studio" in reason  # title prefix
 
 
 def test_combined_caps_at_two_parts():
