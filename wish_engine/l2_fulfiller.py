@@ -258,6 +258,16 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     from wish_engine.l2_documentaries import DocumentaryFulfiller
     from wish_engine.l2_collecting import CollectingFulfiller
     from wish_engine.l2_astro_fun import AstroFunFulfiller
+    from wish_engine.l2_accessibility import AccessibilityFulfiller
+    from wish_engine.l2_allergy_friendly import AllergyFriendlyFulfiller
+    from wish_engine.l2_noise_map import NoiseMapFulfiller
+    from wish_engine.l2_air_quality import AirQualityFulfiller
+    from wish_engine.l2_night_owl import NightOwlFulfiller
+    from wish_engine.l2_early_bird import EarlyBirdFulfiller
+    from wish_engine.l2_rainy_day import RainyDayFulfiller
+    from wish_engine.l2_extreme_weather import ExtremeWeatherFulfiller
+    from wish_engine.l2_pregnancy import PregnancyFulfiller
+    from wish_engine.l2_life_stage import LifeStageFulfiller
 
     text_lower = wish_text.lower()
 
