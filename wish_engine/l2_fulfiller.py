@@ -268,6 +268,15 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     from wish_engine.l2_extreme_weather import ExtremeWeatherFulfiller
     from wish_engine.l2_pregnancy import PregnancyFulfiller
     from wish_engine.l2_life_stage import LifeStageFulfiller
+    from wish_engine.l2_caregiver_respite import CaregiverRespiteFulfiller
+    from wish_engine.l2_remote_care import RemoteCareFulfiller
+    from wish_engine.l2_caregiver_support import CaregiverSupportFulfiller
+    from wish_engine.l2_caregiver_emotional import CaregiverEmotionalFulfiller
+    from wish_engine.l2_legal_aid import LegalAidFulfiller
+    from wish_engine.l2_labor_rights import LaborRightsFulfiller
+    from wish_engine.l2_tenant_rights import TenantRightsFulfiller
+    from wish_engine.l2_immigration import ImmigrationFulfiller
+    from wish_engine.l2_anti_discrimination import AntiDiscriminationFulfiller
 
     text_lower = wish_text.lower()
 
@@ -926,6 +935,98 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     }
     if any(kw in text_lower for kw in life_stage_kw):
         return LifeStageFulfiller()
+
+    # Check for caregiver respite keywords
+    caregiver_respite_kw = {
+        "照护", "caregiver", "respite", "看护", "رعاية", "relief", "喘息",
+    }
+    if any(kw in text_lower for kw in caregiver_respite_kw):
+        # Disambiguate among caregiver sub-fulfillers
+        emotional_kw = {"情绪", "emotion", "guilt", "内疚", "burnout", "疲惫", "anger", "breathing"}
+        support_kw = {"支持", "support group", "互助", "therapy", "training", "forum"}
+        remote_kw = {"远程", "remote", "monitor", "监护", "sensor", "gps", "fall detection"}
+
+        if any(kw in text_lower for kw in emotional_kw):
+            return CaregiverEmotionalFulfiller()
+        if any(kw in text_lower for kw in support_kw):
+            return CaregiverSupportFulfiller()
+        if any(kw in text_lower for kw in remote_kw):
+            return RemoteCareFulfiller()
+        return CaregiverRespiteFulfiller()
+
+    # Check for remote care keywords (standalone)
+    remote_care_kw = {
+        "远程看护", "remote care", "监护", "مراقبة", "elderly tech",
+    }
+    if any(kw in text_lower for kw in remote_care_kw):
+        return RemoteCareFulfiller()
+
+    # Check for caregiver support keywords (standalone)
+    caregiver_support_kw = {
+        "照护者支持", "caregiver support", "互助", "دعم مقدمي الرعاية",
+    }
+    if any(kw in text_lower for kw in caregiver_support_kw):
+        return CaregiverSupportFulfiller()
+
+    # Check for caregiver emotional keywords (standalone)
+    caregiver_emotional_kw = {
+        "照护者情绪", "caregiver emotion",
+    }
+    if any(kw in text_lower for kw in caregiver_emotional_kw):
+        return CaregiverEmotionalFulfiller()
+
+    # Check for legal aid keywords
+    legal_aid_kw = {
+        "法律", "legal", "律师", "lawyer", "محامي", "rights", "权益", "法援",
+    }
+    if any(kw in text_lower for kw in legal_aid_kw):
+        # Disambiguate: labor, tenant, immigration, or general legal
+        labor_kw = {"劳动", "labor", "加班", "overtime", "欠薪", "wage", "عمال", "worker rights",
+                     "harassment", "fired", "union", "gig"}
+        tenant_kw = {"租客", "tenant", "房东", "landlord", "إيجار", "rent", "eviction",
+                      "deposit", "lease", "sublet"}
+        immigration_kw = {"移民", "immigration", "签证", "visa", "هجرة", "refugee", "难民",
+                          "居留", "asylum"}
+        discrimination_kw = {"歧视", "discrimination", "反歧视", "تمييز", "racism", "bias", "平等",
+                             "hate crime"}
+
+        if any(kw in text_lower for kw in labor_kw):
+            return LaborRightsFulfiller()
+        if any(kw in text_lower for kw in tenant_kw):
+            return TenantRightsFulfiller()
+        if any(kw in text_lower for kw in immigration_kw):
+            return ImmigrationFulfiller()
+        if any(kw in text_lower for kw in discrimination_kw):
+            return AntiDiscriminationFulfiller()
+        return LegalAidFulfiller()
+
+    # Check for labor rights keywords (standalone)
+    labor_rights_kw = {
+        "劳动", "labor", "加班", "overtime", "欠薪", "wage", "عمال", "worker rights",
+    }
+    if any(kw in text_lower for kw in labor_rights_kw):
+        return LaborRightsFulfiller()
+
+    # Check for tenant rights keywords (standalone)
+    tenant_rights_kw = {
+        "租客", "tenant", "房东", "landlord", "إيجار", "eviction",
+    }
+    if any(kw in text_lower for kw in tenant_rights_kw):
+        return TenantRightsFulfiller()
+
+    # Check for immigration keywords (standalone)
+    immigration_kw = {
+        "移民", "immigration", "签证", "visa", "هجرة", "refugee", "难民", "居留",
+    }
+    if any(kw in text_lower for kw in immigration_kw):
+        return ImmigrationFulfiller()
+
+    # Check for anti-discrimination keywords (standalone)
+    anti_discrimination_kw = {
+        "歧视", "discrimination", "反歧视", "تمييز", "racism", "bias", "平等",
+    }
+    if any(kw in text_lower for kw in anti_discrimination_kw):
+        return AntiDiscriminationFulfiller()
 
     _FULFILLER_MAP: dict[WishType, L2Fulfiller] = {
         WishType.FIND_PLACE: PlaceFulfiller(),
