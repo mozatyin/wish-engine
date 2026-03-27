@@ -223,6 +223,11 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     from wish_engine.l2_solo_friendly import SoloFriendlyFulfiller
     from wish_engine.l2_deep_social import DeepSocialFulfiller
     from wish_engine.l2_startup_resources import StartupResourceFulfiller
+    from wish_engine.l2_poetry import PoetryFulfiller
+    from wish_engine.l2_crafts import CraftsFulfiller
+    from wish_engine.l2_volunteer import VolunteerFulfiller
+    from wish_engine.l2_nature_healing import NatureHealingFulfiller
+    from wish_engine.l2_reviews import ReviewsFulfiller
 
     text_lower = wish_text.lower()
 
@@ -544,6 +549,41 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     }
     if any(kw in text_lower for kw in deep_social_keywords):
         return DeepSocialFulfiller()
+
+    # Check for poetry / literature keywords
+    poetry_keywords = {
+        "诗", "poetry", "poem", "文学", "literature", "شعر",
+    }
+    if any(kw in text_lower for kw in poetry_keywords):
+        return PoetryFulfiller()
+
+    # Check for crafts / handwork keywords
+    crafts_keywords = {
+        "手工", "craft", "陶艺", "pottery", "木工", "diy", "حرف",
+    }
+    if any(kw in text_lower for kw in crafts_keywords):
+        return CraftsFulfiller()
+
+    # Check for volunteer / charity keywords
+    volunteer_keywords = {
+        "志愿", "volunteer", "公益", "charity", "متطوع",
+    }
+    if any(kw in text_lower for kw in volunteer_keywords):
+        return VolunteerFulfiller()
+
+    # Check for nature healing keywords
+    nature_healing_keywords = {
+        "自然", "nature", "森林", "forest", "海边", "beach", "طبيعة", "healing",
+    }
+    if any(kw in text_lower for kw in nature_healing_keywords):
+        return NatureHealingFulfiller()
+
+    # Check for review / rating keywords
+    review_keywords = {
+        "评价", "review", "评分", "rating", "推荐", "تقييم",
+    }
+    if any(kw in text_lower for kw in review_keywords):
+        return ReviewsFulfiller()
 
     # Check for startup resource keywords
     startup_keywords = {
