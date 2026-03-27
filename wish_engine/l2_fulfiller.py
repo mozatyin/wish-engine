@@ -203,6 +203,16 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     from wish_engine.l2_free_activities import FreeActivityFulfiller
     from wish_engine.l2_finance import FinanceFulfiller
     from wish_engine.l2_housing import HousingFulfiller
+    from wish_engine.l2_habit_tracker import HabitTrackerFulfiller
+    from wish_engine.l2_skill_exchange import SkillExchangeFulfiller
+    from wish_engine.l2_micro_challenge import MicroChallengeFulfiller
+    from wish_engine.l2_mindfulness import MindfulnessFulfiller
+    from wish_engine.l2_writing import WritingFulfiller
+    from wish_engine.l2_podcast import PodcastFulfiller
+    from wish_engine.l2_course_tracker import CourseTrackerFulfiller
+    from wish_engine.l2_health_sync import HealthSyncFulfiller
+    from wish_engine.l2_focus_mode import FocusModeFulfiller
+    from wish_engine.l2_bucket_list import BucketListFulfiller
 
     text_lower = wish_text.lower()
 
@@ -390,6 +400,76 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     }
     if any(kw in text_lower for kw in late_night_keywords):
         return LateNightFulfiller()
+
+    # Check for habit tracker keywords
+    habit_keywords = {
+        "习惯", "habit", "打卡", "track", "追踪", "عادة",
+    }
+    if any(kw in text_lower for kw in habit_keywords):
+        return HabitTrackerFulfiller()
+
+    # Check for skill exchange keywords
+    skill_exchange_keywords = {
+        "技能交换", "skill exchange", "互换", "teach me", "swap skills", "تبادل",
+    }
+    if any(kw in text_lower for kw in skill_exchange_keywords):
+        return SkillExchangeFulfiller()
+
+    # Check for micro-challenge keywords
+    challenge_keywords = {
+        "挑战", "challenge", "试试", "dare", "تحدي", "push myself",
+    }
+    if any(kw in text_lower for kw in challenge_keywords):
+        return MicroChallengeFulfiller()
+
+    # Check for mindfulness/meditation keywords
+    mindfulness_keywords = {
+        "冥想", "正念", "mindfulness", "meditation", "静心", "تأمل", "calm",
+    }
+    if any(kw in text_lower for kw in mindfulness_keywords):
+        return MindfulnessFulfiller()
+
+    # Check for writing/journal keywords
+    writing_keywords = {
+        "写", "write", "日记", "journal", "diary", "记录", "كتابة",
+    }
+    if any(kw in text_lower for kw in writing_keywords):
+        return WritingFulfiller()
+
+    # Check for podcast/audiobook keywords
+    podcast_keywords = {
+        "播客", "podcast", "有声书", "audiobook", "听", "listen", "بودكاست",
+    }
+    if any(kw in text_lower for kw in podcast_keywords):
+        return PodcastFulfiller()
+
+    # Check for course tracker keywords
+    course_tracker_keywords = {
+        "课程进度", "course", "学习进度", "progress", "完成", "continue",
+    }
+    if any(kw in text_lower for kw in course_tracker_keywords):
+        return CourseTrackerFulfiller()
+
+    # Check for health sync keywords
+    health_sync_keywords = {
+        "健康", "health", "sleep", "步数", "steps", "心率", "heartrate", "صحة",
+    }
+    if any(kw in text_lower for kw in health_sync_keywords):
+        return HealthSyncFulfiller()
+
+    # Check for focus mode keywords
+    focus_keywords = {
+        "专注", "focus", "集中", "deep work", "productivity", "تركيز",
+    }
+    if any(kw in text_lower for kw in focus_keywords):
+        return FocusModeFulfiller()
+
+    # Check for bucket list keywords
+    bucket_list_keywords = {
+        "清单", "bucket list", "想做的事", "life list", "实验", "try", "قائمة أمنيات",
+    }
+    if any(kw in text_lower for kw in bucket_list_keywords):
+        return BucketListFulfiller()
 
     _FULFILLER_MAP: dict[WishType, L2Fulfiller] = {
         WishType.FIND_PLACE: PlaceFulfiller(),
