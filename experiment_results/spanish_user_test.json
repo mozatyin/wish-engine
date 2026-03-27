@@ -1,0 +1,538 @@
+{
+  "persona": {
+    "name": "Lucía Morales",
+    "age": 26,
+    "gender": "F",
+    "mbti": "INFP",
+    "city": "Barcelona",
+    "country": "Spain",
+    "language": "Spanish (native), English (B2), Catalan (fluent)",
+    "occupation": "Freelance illustrator",
+    "values": [
+      "aesthetics",
+      "self-direction",
+      "universalism"
+    ],
+    "attachment": "anxious",
+    "conflict_style": "avoiding",
+    "emotion_state": {
+      "emotions": {
+        "anxiety": 0.55,
+        "loneliness": 0.6,
+        "creativity": 0.4
+      },
+      "distress": 0.45
+    },
+    "fragility": "sensitive",
+    "life_situation": "\n    Lucía moved to Barcelona from a small town in Andalucía 3 years ago to pursue art.\n    She freelances as an illustrator but income is unstable. She broke up with her boyfriend\n    6 months ago and still hasn't fully recovered. She lives alone with her cat Frida.\n    She's anxious about money, lonely in the big city, struggles with self-doubt about her art,\n    and recently her grandmother in Córdoba was diagnosed with dementia. She wants to visit\n    but can't afford the train. She's vegetarian, practices yoga occasionally, and loves\n    Lorca's poetry. She's been having trouble sleeping and sometimes panic attacks on the metro.\n    "
+  },
+  "results": [
+    {
+      "need_id": 1,
+      "moment": "周三凌晨 2 点，失眠，焦虑发作",
+      "wish_text": "I can't sleep and I'm having a panic attack, I need to calm down right now",
+      "expected_fulfiller": "l2_panic_relief",
+      "what_she_needs": "即时呼吸引导 + 巴塞罗那 24 小时心理热线",
+      "recommendations": [
+        {
+          "title": "House Dreams: Inner Architecture",
+          "category": "house",
+          "reason": "Explore house dreams — a window into your psyche",
+          "score": 1.0,
+          "tags": [
+            "quiet",
+            "self-paced",
+            "calming",
+            "introspective",
+            "theory"
+          ]
+        },
+        {
+          "title": "Flying Dreams: Freedom Journal",
+          "category": "flying",
+          "reason": "Explore flying dreams — a window into your psyche",
+          "score": 0.95,
+          "tags": [
+            "quiet",
+            "self-paced",
+            "calming",
+            "introspective"
+          ]
+        },
+        {
+          "title": "Falling Dreams: Control Reflection",
+          "category": "falling",
+          "reason": "Explore falling dreams — a window into your psyche",
+          "score": 0.95,
+          "tags": [
+            "quiet",
+            "self-paced",
+            "calming",
+            "introspective"
+          ]
+        }
+      ],
+      "has_recommendations": true,
+      "map_data": null,
+      "reminder": "Did you journal about your dream today?"
+    },
+    {
+      "need_id": 2,
+      "moment": "周四下午，接到奶奶病情恶化的电话",
+      "wish_text": "My grandmother has dementia and I'm her caregiver from far away, I need remote care tools",
+      "expected_fulfiller": "l2_remote_care",
+      "what_she_needs": "远程看护工具 + 科尔多瓦的老年护理资源 + 廉价火车票",
+      "recommendations": [
+        {
+          "title": "Video Call Schedule Planner",
+          "category": "video_call_schedule",
+          "reason": "Stay connected even from far away",
+          "score": 0.7,
+          "tags": [
+            "video_call_schedule",
+            "digital",
+            "calming",
+            "social",
+            "routine"
+          ]
+        },
+        {
+          "title": "Health Monitor App",
+          "category": "health_monitor_app",
+          "reason": "Peace of mind through real-time health data",
+          "score": 0.7,
+          "tags": [
+            "health_monitor_app",
+            "digital",
+            "medical",
+            "calming",
+            "monitoring"
+          ]
+        },
+        {
+          "title": "Medication Reminder System",
+          "category": "medication_reminder",
+          "reason": "Never miss a dose — automated and family-linked",
+          "score": 0.7,
+          "tags": [
+            "medication_reminder",
+            "digital",
+            "medical",
+            "calming",
+            "routine"
+          ]
+        }
+      ],
+      "has_recommendations": true,
+      "map_data": null,
+      "reminder": "New remote care tools added regularly — check back!"
+    },
+    {
+      "need_id": 3,
+      "moment": "周五晚上，一个人在家，极度孤独",
+      "wish_text": "I feel alone, I want to join an interest circle for illustrators",
+      "expected_fulfiller": "l2_interest_circles",
+      "what_she_needs": "巴塞罗那的插画师社群/画室聚会，小型（3-5人，因为她是 INFP）",
+      "recommendations": [
+        {
+          "title": "考古探索小组",
+          "category": "interest_circle",
+          "reason": "A calm, focused group for deep connection",
+          "score": 0.6,
+          "tags": [
+            "intellectual",
+            "traditional",
+            "quiet",
+            "outdoor"
+          ]
+        },
+        {
+          "title": "茶艺品鉴会",
+          "category": "interest_circle",
+          "reason": "A calm, focused group for deep connection",
+          "score": 0.6,
+          "tags": [
+            "traditional",
+            "quiet",
+            "creative"
+          ]
+        },
+        {
+          "title": "手工皮具工坊",
+          "category": "interest_circle",
+          "reason": "A calm, focused group for deep connection",
+          "score": 0.6,
+          "tags": [
+            "creative",
+            "traditional",
+            "quiet"
+          ]
+        }
+      ],
+      "has_recommendations": true,
+      "map_data": {
+        "place_type": "community_center",
+        "radius_km": 10.0
+      },
+      "reminder": "Join an interest circle this weekend?"
+    },
+    {
+      "need_id": 4,
+      "moment": "周六早上，想出去但不知道去哪，下雨了",
+      "wish_text": "It's a rainy day and I want to do something cozy indoors",
+      "expected_fulfiller": "l2_rainy_day",
+      "what_she_needs": "巴塞罗那雨天适合的安静咖啡馆/书店/博物馆",
+      "recommendations": [
+        {
+          "title": "Cozy Cafe",
+          "category": "cozy_cafe",
+          "reason": "Perfect for today's rain — Warm drinks and rain-watching",
+          "score": 1.0,
+          "tags": [
+            "indoor",
+            "cozy",
+            "quiet",
+            "calming",
+            "cafe"
+          ]
+        },
+        {
+          "title": "Indoor Museum",
+          "category": "indoor_museum",
+          "reason": "Perfect for today's rain — Rainy days make museums magical",
+          "score": 1.0,
+          "tags": [
+            "indoor",
+            "quiet",
+            "calming",
+            "learning",
+            "self-paced"
+          ]
+        },
+        {
+          "title": "Bookshop Browse",
+          "category": "bookshop_browse",
+          "reason": "Perfect for today's rain — Books and rain belong together",
+          "score": 1.0,
+          "tags": [
+            "indoor",
+            "quiet",
+            "calming",
+            "self-paced",
+            "cozy"
+          ]
+        }
+      ],
+      "has_recommendations": true,
+      "map_data": null,
+      "reminder": "Rain check — save this for the next rainy day!"
+    },
+    {
+      "need_id": 5,
+      "moment": "周六下午，想吃点安慰食物但素食且没钱",
+      "wish_text": "I need cheap vegetarian comfort food near me",
+      "expected_fulfiller": "l2_food",
+      "what_she_needs": "便宜的素食安慰餐厅，安静氛围（INFP），附近 5km 内",
+      "recommendations": [
+        {
+          "title": "Warm Noodle Soup",
+          "category": "comfort_food",
+          "reason": "Warm comfort food to ease your mind",
+          "score": 1.0,
+          "tags": [
+            "comfort",
+            "warm",
+            "calming",
+            "noodles",
+            "soup"
+          ]
+        },
+        {
+          "title": "Congee & Dim Sum",
+          "category": "comfort_food",
+          "reason": "Something sweet to lift your spirits",
+          "score": 1.0,
+          "tags": [
+            "comfort",
+            "warm",
+            "calming",
+            "chinese",
+            "halal-option"
+          ]
+        },
+        {
+          "title": "Homestyle Stew",
+          "category": "comfort_food",
+          "reason": "Warm comfort food to ease your mind",
+          "score": 1.0,
+          "tags": [
+            "comfort",
+            "warm",
+            "calming",
+            "hearty",
+            "quiet"
+          ]
+        }
+      ],
+      "has_recommendations": true,
+      "map_data": {
+        "place_type": "restaurant",
+        "radius_km": 5.0
+      },
+      "reminder": "Try this restaurant today?"
+    },
+    {
+      "need_id": 6,
+      "moment": "周日，想念前男友但不想承认",
+      "wish_text": "I need to heal from my breakup, I want to explore new places I've never been",
+      "expected_fulfiller": "l2_breakup_healing",
+      "what_she_needs": "分手疗愈路线：巴塞罗那她没去过的新地方，避开和前任的回忆地点",
+      "recommendations": [
+        {
+          "title": "Spiritual Questions List",
+          "category": "spiritual_seeking",
+          "reason": "Explore your spiritual seeking",
+          "score": 1.0,
+          "tags": [
+            "quiet",
+            "self-paced",
+            "calming",
+            "introspective",
+            "theory"
+          ]
+        },
+        {
+          "title": "Attachment Story",
+          "category": "attachment_understanding",
+          "reason": "Matches your identity signal: attachment understanding",
+          "score": 1.0,
+          "tags": [
+            "quiet",
+            "self-paced",
+            "calming",
+            "introspective"
+          ]
+        },
+        {
+          "title": "Political Awareness Check",
+          "category": "political_awareness",
+          "reason": "Explore your political awareness",
+          "score": 1.0,
+          "tags": [
+            "quiet",
+            "self-paced",
+            "calming",
+            "introspective",
+            "theory"
+          ]
+        }
+      ],
+      "has_recommendations": true,
+      "map_data": null,
+      "reminder": "Did you explore a piece of your identity today?"
+    },
+    {
+      "need_id": 7,
+      "moment": "周一，对自己的画没信心，想放弃",
+      "wish_text": "I have no confidence in my art, I want to build courage and believe in myself",
+      "expected_fulfiller": "l2_confidence",
+      "what_she_needs": "每日自信建设 + 适合 INFP 的温和方式（不是演讲，是日记/成就回顾）",
+      "recommendations": [
+        {
+          "title": "Mirror Exercise",
+          "category": "mirror_exercise",
+          "reason": "Build confidence: mirror exercise",
+          "score": 1.0,
+          "tags": [
+            "quiet",
+            "self-paced",
+            "calming",
+            "warm"
+          ]
+        },
+        {
+          "title": "Daily Affirmation Practice",
+          "category": "daily_affirmation",
+          "reason": "Build confidence: daily affirmation",
+          "score": 0.95,
+          "tags": [
+            "quiet",
+            "self-paced",
+            "calming",
+            "simple"
+          ]
+        },
+        {
+          "title": "Achievement Log",
+          "category": "achievement_log",
+          "reason": "Build confidence: achievement log",
+          "score": 0.95,
+          "tags": [
+            "quiet",
+            "self-paced",
+            "calming",
+            "practical"
+          ]
+        }
+      ],
+      "has_recommendations": true,
+      "map_data": null,
+      "reminder": "Did you do your confidence exercise today?"
+    },
+    {
+      "need_id": 8,
+      "moment": "周二，收入焦虑，这个月房租可能不够",
+      "wish_text": "I'm worried about money, I need financial help and maybe some deals or discounts",
+      "expected_fulfiller": "l2_deals",
+      "what_she_needs": "巴塞罗那的免费活动 + 素食优惠 + freelancer 理财建议",
+      "recommendations": [
+        {
+          "title": "Online Course Subscription",
+          "category": "learning",
+          "reason": "Supports your independent learning journey",
+          "score": 0.75,
+          "tags": [
+            "learning",
+            "self-direction",
+            "digital",
+            "self-paced",
+            "theory"
+          ]
+        },
+        {
+          "title": "Book Bundle Deal",
+          "category": "books",
+          "reason": "Supports your independent learning journey",
+          "score": 0.75,
+          "tags": [
+            "books",
+            "self-direction",
+            "learning",
+            "self-paced",
+            "quiet"
+          ]
+        },
+        {
+          "title": "Traditional Craft Workshop",
+          "category": "cultural",
+          "reason": "Supports your independent learning journey",
+          "score": 0.7,
+          "tags": [
+            "cultural",
+            "traditional",
+            "tradition",
+            "learning",
+            "calming"
+          ]
+        }
+      ],
+      "has_recommendations": true,
+      "map_data": null,
+      "reminder": "Check back for new deals tomorrow!"
+    },
+    {
+      "need_id": 9,
+      "moment": "周三，想读洛尔卡的诗，用西班牙语",
+      "wish_text": "I want to read poetry, especially Lorca, something that speaks to my soul",
+      "expected_fulfiller": "l2_poetry",
+      "what_she_needs": "基于她的情绪（孤独+焦虑）推荐合适的诗歌，包括西班牙语诗人",
+      "recommendations": [
+        {
+          "title": "Try Meditation Retreat",
+          "category": "try_meditation",
+          "reason": "A life experiment worth trying",
+          "score": 0.95,
+          "tags": [
+            "calming",
+            "quiet",
+            "mindfulness",
+            "autonomous"
+          ]
+        },
+        {
+          "title": "Learn a New Language",
+          "category": "learn_new_language",
+          "reason": "A life experiment worth trying",
+          "score": 0.85,
+          "tags": [
+            "language",
+            "self-paced",
+            "quiet",
+            "theory"
+          ]
+        },
+        {
+          "title": "Read 50 Books",
+          "category": "read_50_books",
+          "reason": "A life experiment worth trying",
+          "score": 0.85,
+          "tags": [
+            "quiet",
+            "self-paced",
+            "theory",
+            "autonomous"
+          ]
+        }
+      ],
+      "has_recommendations": true,
+      "map_data": null,
+      "reminder": "Ready to check something off your bucket list?"
+    },
+    {
+      "need_id": 10,
+      "moment": "周四，Frida (猫) 生病了",
+      "wish_text": "My cat is sick, I need a vet and pet care advice nearby",
+      "expected_fulfiller": "l2_pet_friendly",
+      "what_she_needs": "附近的兽医 + 宠物急诊 + 如果猫死了的心理支持（pet_loss）",
+      "recommendations": [
+        {
+          "title": "Veterinary Clinic",
+          "category": "vet_clinic",
+          "reason": "Trusted care for your pet's health",
+          "score": 1.0,
+          "tags": [
+            "indoor",
+            "quiet",
+            "practical",
+            "calming",
+            "medical"
+          ]
+        },
+        {
+          "title": "Pet Cafe",
+          "category": "pet_cafe",
+          "reason": "Relax with your pet in a cozy cafe",
+          "score": 0.7999999999999999,
+          "tags": [
+            "indoor",
+            "social",
+            "quiet",
+            "calming",
+            "cafe"
+          ]
+        },
+        {
+          "title": "Pet-Friendly Hotel",
+          "category": "pet_friendly_hotel",
+          "reason": "Travel comfortably with your companion",
+          "score": 0.7999999999999999,
+          "tags": [
+            "indoor",
+            "quiet",
+            "calming",
+            "travel"
+          ]
+        }
+      ],
+      "has_recommendations": true,
+      "map_data": {
+        "place_type": "pet_friendly",
+        "radius_km": 5.0
+      },
+      "reminder": "Visit this pet-friendly spot today?"
+    }
+  ],
+  "satisfied": 7,
+  "partial": 3,
+  "failed": 0
+}
