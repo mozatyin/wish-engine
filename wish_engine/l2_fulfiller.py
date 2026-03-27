@@ -3,12 +3,15 @@
 Routes L2 wishes to domain-specific fulfillers. Each fulfiller has a curated
 knowledge base and applies personality-based filtering. Zero LLM.
 
-5 fulfillment types:
+8 fulfillment types:
   a) Place search (parks, cafes, meditation centers, gyms)
   b) Book recommendation (values + MBTI matching)
   c) Course recommendation (cognitive style matching)
   d) Career direction (values + MBTI career mapping)
   e) Wellness recommendation (emotion + fragility matching)
+  f) Safe route / safe space (time + gender + personality safety)
+  g) Deals / discounts (values → deal preference mapping)
+  h) Prayer times (astronomical local computation)
 """
 
 from __future__ import annotations
@@ -178,15 +181,62 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     from wish_engine.l2_career import CareerFulfiller
     from wish_engine.l2_wellness import WellnessFulfiller
     from wish_engine.l2_events import EventFulfiller
+    from wish_engine.l2_food import FoodFulfiller
+    from wish_engine.l2_music import MusicFulfiller
+    from wish_engine.l2_safety import SafeRouteFulfiller
+    from wish_engine.l2_deals import DealsFulfiller
 
-    # Check for event keywords first (cross-cuts multiple wish types)
+    text_lower = wish_text.lower()
+
+    # Check for prayer keywords (cross-cuts multiple wish types)
+    prayer_keywords = {
+        "祈祷", "prayer", "صلاة", "mosque", "مسجد", "清真寺",
+        "fajr", "dhuhr", "asr", "maghrib", "isha",
+    }
+    if any(kw in text_lower for kw in prayer_keywords):
+        return PlaceFulfiller()  # Routes to place search with mosque focus
+
+    # Check for safety keywords (cross-cuts multiple wish types)
+    safety_keywords = {
+        "安全", "回家", "safe", "night", "late", "晚上", "dark",
+        "scared", "害怕", "خوف", "أمان",
+    }
+    if any(kw in text_lower for kw in safety_keywords):
+        return SafeRouteFulfiller()
+
+    # Check for deals keywords (cross-cuts multiple wish types)
+    deals_keywords = {
+        "折扣", "优惠", "deal", "discount", "省钱", "便宜", "sale",
+        "تخفيض", "خصم", "coupon", "promo",
+    }
+    if any(kw in text_lower for kw in deals_keywords):
+        return DealsFulfiller()
+
+    # Check for food keywords (cross-cuts multiple wish types)
+    food_keywords = {
+        "吃饭", "餐厅", "美食", "comfort food", "hungry", "مطعم",
+        "restaurant", "dinner", "lunch", "breakfast", "brunch",
+        "甜点", "火锅", "烧烤", "halal", "حلال", "清真",
+    }
+    if any(kw in text_lower for kw in food_keywords):
+        return FoodFulfiller()
+
+    # Check for music keywords (cross-cuts multiple wish types)
+    music_keywords = {
+        "音乐", "歌", "playlist", "听", "Spotify", "spotify",
+        "موسيقى", "music", "song", "songs",
+    }
+    if any(kw in text_lower for kw in music_keywords):
+        return MusicFulfiller()
+
+    # Check for event keywords (cross-cuts multiple wish types)
     event_keywords = {
         "演出", "表演", "concert", "exhibition", "展览", "市集", "festival",
         "comedy", "opera", "ballet", "theater", "theatre", "话剧", "歌剧",
         "meetup", "聚会", "workshop", "工作坊", "film", "电影", "volunteer",
         "志愿者",
     }
-    if any(kw in wish_text.lower() for kw in event_keywords):
+    if any(kw in text_lower for kw in event_keywords):
         return EventFulfiller()
 
     _FULFILLER_MAP: dict[WishType, L2Fulfiller] = {
