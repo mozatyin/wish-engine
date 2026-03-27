@@ -434,16 +434,17 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     if any(kw in text_lower for kw in growth_keywords):
         return PersonalityGrowthFulfiller()
 
-    # Check for emotion calendar keywords
+    # Check for emotion calendar keywords (no "mood" alone — too generic)
     emotion_calendar_keywords = {
-        "情绪日历", "emotion", "mood", "calendar", "日历", "مزاج",
+        "情绪日历", "emotion calendar", "mood calendar", "mood tracker",
+        "mood journal", "日历", "مزاج يومي",
     }
     if any(kw in text_lower for kw in emotion_calendar_keywords):
         return EmotionCalendarFulfiller()
 
-    # Check for dream journal keywords
+    # Check for dream journal keywords (no "sleep" — that routes to SleepEnv)
     dream_keywords = {
-        "梦", "dream", "حلم", "nightmare", "sleep", "梦境",
+        "梦", "dream", "حلم", "nightmare", "梦境", "dream journal",
     }
     if any(kw in text_lower for kw in dream_keywords):
         return DreamJournalFulfiller()
@@ -462,9 +463,10 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     if any(kw in text_lower for kw in brand_keywords):
         return PersonalBrandFulfiller()
 
-    # Check for public speaking keywords
+    # Check for public speaking keywords (no "talk" alone — too generic)
     speaking_keywords = {
-        "演讲", "speaking", "public", "speech", "خطاب", "talk",
+        "演讲", "public speaking", "speech", "خطاب", "give a talk",
+        "presentation", "ted talk", "stage fright",
     }
     if any(kw in text_lower for kw in speaking_keywords):
         return PublicSpeakingFulfiller()
@@ -479,6 +481,8 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     # Check for confidence keywords
     confidence_keywords = {
         "自信", "confidence", "勇气", "courage", "ثقة", "brave",
+        "believe in myself", "self-doubt", "social anxiety", "not ready",
+        "not confident", "lack confidence", "self-esteem",
     }
     if any(kw in text_lower for kw in confidence_keywords):
         return ConfidenceFulfiller()
@@ -581,10 +585,52 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     if any(kw in text_lower for kw in prayer_keywords):
         return PlaceFulfiller()  # Routes to place search with mosque focus
 
-    # Check for emotion weather keywords (before safety to avoid "mood" clash)
+    # Check for volunteer keywords (BEFORE medical to avoid "clinic" collision)
+    volunteer_keywords_early = {
+        "志愿", "volunteer", "公益", "charity", "متطوع",
+    }
+    if any(kw in text_lower for kw in volunteer_keywords_early):
+        return VolunteerFulfiller()
+
+    # Check for focus mode keywords (BEFORE health_sync to avoid "sleep" stealing focus wishes)
+    focus_keywords_early = {
+        "专注", "focus", "集中", "deep work", "productivity", "تركيز",
+        "can't concentrate", "concentration", "adhd", "distracted",
+        "quiet place to study", "place to study", "study space",
+    }
+    if any(kw in text_lower for kw in focus_keywords_early):
+        return FocusModeFulfiller()
+
+    # Check for virtual companion keywords (BEFORE solo_friendly to catch "alone"+"talk")
+    companion_keywords_early = {
+        "陪伴", "companion", "陪我", "虚拟", "مرافق",
+        "buddy", "陪", "someone to talk", "talk to someone",
+        "need someone", "lonely and need",
+    }
+    if any(kw in text_lower for kw in companion_keywords_early):
+        return VirtualCompanionFulfiller()
+
+    # Check for bucket list / purpose keywords (BEFORE generic fallback)
+    purpose_keywords = {
+        "清单", "bucket list", "想做的事", "life list", "قائمة أمنيات",
+        "purpose", "find purpose", "lose hope", "lost hope", "meaning of life",
+        "find meaning", "what to do with my life",
+    }
+    if any(kw in text_lower for kw in purpose_keywords):
+        return BucketListFulfiller()
+
+    # Check for sleep environment keywords (BEFORE health_sync to catch insomnia)
+    sleep_keywords_early = {
+        "睡眠", "insomnia", "失眠", "نوم", "bedtime", "rest",
+        "can't sleep", "trouble sleeping", "sleep problem",
+    }
+    if any(kw in text_lower for kw in sleep_keywords_early):
+        return SleepEnvFulfiller()
+
+    # Check for emotion weather keywords (narrow — no "mood" alone)
     emotion_weather_keywords = {
-        "情绪天气", "mood", "atmosphere", "氛围", "مزاج",
-        "vibe", "emotion weather",
+        "情绪天气", "emotion weather", "mood of the city",
+        "氛围", "local mood", "neighborhood vibe",
     }
     if any(kw in text_lower for kw in emotion_weather_keywords):
         return EmotionWeatherFulfiller()
@@ -598,9 +644,12 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
         return SafeSpaceFulfiller()
 
     # Check for safety keywords (cross-cuts multiple wish types)
+    # Avoid single "night" (catches "tonight") — use "at night", "walk home"
     safety_keywords = {
-        "安全", "回家", "safe", "night", "late", "晚上", "dark",
-        "scared", "害怕", "خوف", "أمان",
+        "安全", "回家", "safe route", "safe walk", "at night", "late at night",
+        "walk home", "晚上", "dark street", "dark alley",
+        "scared", "害怕", "خوف", "أمان", "feel unsafe", "safety",
+        "unsafe area", "dangerous",
     }
     if any(kw in text_lower for kw in safety_keywords):
         return SafeRouteFulfiller()
@@ -616,6 +665,8 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     # Check for mentor keywords
     mentor_keywords = {
         "导师", "mentor", "前辈", "指导", "مرشد", "guidance", "coach",
+        "connect with other", "find people who understand",
+        "people in my field", "professionals like me",
     }
     if any(kw in text_lower for kw in mentor_keywords):
         return MentorFulfiller()
@@ -645,7 +696,10 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     # Check for hometown food keywords (before generic food)
     hometown_food_keywords = {
         "家乡", "hometown", "正宗", "authentic", "家的味道",
-        "بلدي", "وطني",
+        "بلدي", "وطني", "miss home", "想家", "from my country",
+        "kenyan", "filipino", "pakistani", "lebanese", "egyptian",
+        "nigerian", "ghanaian", "indian food", "chinese food",
+        "mexican food", "thai food", "korean food", "japanese food",
     }
     if any(kw in text_lower for kw in hometown_food_keywords):
         return HometownFoodFulfiller()
@@ -668,11 +722,11 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
         return MusicFulfiller()
 
     # Check for event keywords (cross-cuts multiple wish types)
+    # "volunteer" removed — has dedicated VolunteerFulfiller
     event_keywords = {
         "演出", "表演", "concert", "exhibition", "展览", "市集", "festival",
         "comedy", "opera", "ballet", "theater", "theatre", "话剧", "歌剧",
-        "meetup", "聚会", "workshop", "工作坊", "film", "电影", "volunteer",
-        "志愿者",
+        "meetup", "聚会", "workshop", "工作坊", "film", "电影",
     }
     if any(kw in text_lower for kw in event_keywords):
         return EventFulfiller()
@@ -787,9 +841,10 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
     if any(kw in text_lower for kw in mindfulness_keywords):
         return MindfulnessFulfiller()
 
-    # Check for writing/journal keywords
+    # Check for writing/journal keywords (avoid "journal" matching "journalists")
     writing_keywords = {
-        "写", "write", "日记", "journal", "diary", "记录", "كتابة",
+        "写", "write", "日记", "journal entry", "my journal", "keep a journal",
+        "diary", "记录", "كتابة", "journaling",
     }
     if any(kw in text_lower for kw in writing_keywords):
         return WritingFulfiller()
@@ -1055,7 +1110,7 @@ def _get_fulfiller(wish_type: WishType, wish_text: str = "") -> L2Fulfiller:
 
     # Check for rainy day keywords
     rainy_day_kw = {
-        "下雨", "rainy day", "雨天", "مطر", "raining",
+        "下雨", "rainy day", "雨天", "مطر", "it's raining", "rain outside",
     }
     if any(kw in text_lower for kw in rainy_day_kw):
         return RainyDayFulfiller()
