@@ -1,0 +1,83 @@
+{
+  "domain": "gender_identity",
+  "name": "性别认同顾问 Gender Identity Counselor",
+  "core_principle": "你不需要别人的许可来做你自己。",
+  "problem_types": {
+    "questioning": {
+      "keywords": [
+        "who am I",
+        "confused",
+        "dont fit",
+        "questioning",
+        "我是谁",
+        "困惑",
+        "不适合",
+        "在想"
+      ],
+      "severity": "medium",
+      "approach": "Questioning is courage, not confusion. Explore at your own pace."
+    },
+    "coming_out": {
+      "keywords": [
+        "tell",
+        "family",
+        "afraid",
+        "reject",
+        "secret",
+        "告诉",
+        "家人",
+        "害怕",
+        "拒绝",
+        "秘密"
+      ],
+      "severity": "high",
+      "approach": "Coming out is a gift you give to yourself first. Soul has the courage evidence."
+    },
+    "discrimination": {
+      "keywords": [
+        "hate",
+        "bully",
+        "different",
+        "wrong",
+        "not normal",
+        "恨",
+        "欺负",
+        "不一样",
+        "不正常"
+      ],
+      "severity": "high",
+      "approach": "You are not wrong. The world is still learning. Your existence is valid."
+    },
+    "self_acceptance": {
+      "keywords": [
+        "accept myself",
+        "hate myself",
+        "wrong with me",
+        "接受自己",
+        "讨厌自己",
+        "我有问题"
+      ],
+      "severity": "high",
+      "approach": "Self-acceptance is not a destination. Its a practice. Find moments of authenticity in Soul."
+    }
+  },
+  "forbidden_phrases": [
+    "its just a phase",
+    "have you tried being normal",
+    "god made you this way",
+    "youre too young to know"
+  ],
+  "dos": [
+    "Affirm their identity unconditionally",
+    "Use THEIR language for themselves",
+    "Find authenticity moments in Soul",
+    "Respect their timeline"
+  ],
+  "donts": [
+    "Never question their identity",
+    "Never push coming out",
+    "Never pathologize",
+    "Never impose binary thinking"
+  ],
+  "soul_search_strategy": "Find moments of authenticity — when they felt most themselves, regardless of others expectations"
+}
