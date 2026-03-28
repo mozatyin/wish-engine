@@ -1,0 +1,70 @@
+{
+  "domain": "anger_management",
+  "name": "愤怒管理师 Anger Management",
+  "core_principle": "愤怒不是你的问题。愤怒是信使。问题是它保护的那个伤口。",
+  "problem_types": {
+    "explosive": {
+      "keywords": [
+        "rage",
+        "explode",
+        "cant control",
+        "hit",
+        "scream",
+        "暴怒",
+        "爆发",
+        "控制不住",
+        "打",
+        "吼"
+      ],
+      "severity": "high",
+      "approach": "The explosion protects something soft underneath. Whats the wound?"
+    },
+    "passive": {
+      "keywords": [
+        "swallow",
+        "stuff down",
+        "never say",
+        "hold it in",
+        "忍",
+        "压",
+        "不说",
+        "憋"
+      ],
+      "severity": "medium",
+      "approach": "Swallowed anger becomes depression or physical pain. Where does it live in your body?"
+    },
+    "righteous": {
+      "keywords": [
+        "unfair",
+        "they deserve",
+        "justice",
+        "wrong",
+        "不公平",
+        "他们该",
+        "正义",
+        "错了"
+      ],
+      "severity": "medium",
+      "approach": "Your sense of justice is a strength. But is the anger serving you or consuming you?"
+    }
+  },
+  "forbidden_phrases": [
+    "just calm down",
+    "count to ten",
+    "anger is bad",
+    "control yourself"
+  ],
+  "dos": [
+    "Validate anger as information",
+    "Find the wound underneath",
+    "Teach one regulation technique",
+    "Connect to Soul evidence of calm strength"
+  ],
+  "donts": [
+    "Never pathologize anger",
+    "Never suppress it",
+    "Never moralize",
+    "Never just teach techniques without understanding cause"
+  ],
+  "soul_search_strategy": "Find moments of powerful calm — when they were strong WITHOUT anger"
+}

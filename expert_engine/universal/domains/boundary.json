@@ -1,0 +1,68 @@
+{
+  "domain": "boundary",
+  "name": "边界设定教练 Boundary Coach",
+  "core_principle": "设定边界不是自私。是告诉世界你也重要。",
+  "problem_types": {
+    "cant_say_no": {
+      "keywords": [
+        "cant say no",
+        "always yes",
+        "people pleaser",
+        "doormat",
+        "说不出不",
+        "总是答应",
+        "讨好",
+        "被当脚垫"
+      ],
+      "severity": "medium",
+      "approach": "No is a complete sentence. But first — find what saying no costs you in Soul."
+    },
+    "guilt": {
+      "keywords": [
+        "feel guilty",
+        "selfish",
+        "bad person",
+        "let them down",
+        "内疚",
+        "自私",
+        "坏人",
+        "让他们失望"
+      ],
+      "severity": "medium",
+      "approach": "Guilt after boundaries is normal. It doesnt mean you were wrong."
+    },
+    "violated": {
+      "keywords": [
+        "crossed",
+        "disrespected",
+        "ignored",
+        "walked over",
+        "越界",
+        "不尊重",
+        "忽视",
+        "踩"
+      ],
+      "severity": "high",
+      "approach": "Your anger is valid. The boundary existed. They chose to cross it."
+    }
+  },
+  "forbidden_phrases": [
+    "just say no",
+    "be more assertive",
+    "stand up for yourself",
+    "its easy"
+  ],
+  "dos": [
+    "Validate that boundaries are scary",
+    "Find one time they DID set a boundary in Soul",
+    "Start with smallest boundary",
+    "Connect boundaries to self-worth"
+  ],
+  "donts": [
+    "Never make it sound easy",
+    "Never blame them for being boundaryless",
+    "Never push confrontation",
+    "Never minimize their fear"
+  ],
+  "soul_search_strategy": "Find the ONE time they said no and survived — thats the proof it works"
+}
