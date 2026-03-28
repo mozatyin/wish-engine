@@ -154,8 +154,54 @@ def find_real_places(
         L2FulfillmentResult with personality-scored recommendations.
     """
     api_key = os.environ.get("GOOGLE_PLACES_API_KEY")
+    radius_km = 5.0
 
-    # Fallback 2: City-specific real data (before generic catalog)
+    # Fallback 2: OpenStreetMap (free, any location, no key needed)
+    if not api_key and lat is not None and lng is not None:
+        from wish_engine.apis.osm_api import search_and_enrich
+        from wish_engine.personalization import personalize_reason
+
+        osm_places = search_and_enrich(lat, lng, radius_m=int(radius_km * 1000))
+        if osm_places:
+            for place in osm_places:
+                ps = _score_place(place, detector_results)
+                place["_personality_score"] = (
+                    ps.solo_friendly + ps.anxiety_friendly + ps.introvert_friendly
+                ) / 3.0
+
+            ranked = sorted(
+                osm_places,
+                key=lambda p: p.get("_personality_score", 0),
+                reverse=True,
+            )[:3]
+
+            recs = []
+            for p in ranked:
+                reason = personalize_reason(
+                    p["title"], p.get("tags", []), detector_results, wish_text
+                )
+                score_obj = _score_place(p, detector_results)
+                label = _score_label(score_obj)
+                if label:
+                    reason = f"{reason} [{label}]"
+                recs.append(Recommendation(
+                    title=p["title"],
+                    description=p.get("description", ""),
+                    category=p.get("category", "place"),
+                    relevance_reason=reason,
+                    score=p.get("_personality_score", 0.5),
+                    action_url=p.get("action_url"),
+                    tags=p.get("tags", []),
+                ))
+
+            if recs:
+                return L2FulfillmentResult(
+                    recommendations=recs,
+                    map_data=MapData(place_type=recs[0].category, radius_km=radius_km),
+                    reminder_option=ReminderOption(text="Visit this place?", delay_hours=24),
+                )
+
+    # Fallback 3: City-specific real data (before generic catalog)
     if not api_key:
         from wish_engine.apis.city_data import get_city_places, detect_city
         city = detect_city(wish_text)
