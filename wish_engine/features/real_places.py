@@ -17,7 +17,9 @@ from wish_engine.models import (
     ClassifiedWish,
     DetectorResults,
     L2FulfillmentResult,
+    MapData,
     Recommendation,
+    ReminderOption,
     WishLevel,
     WishState,
     WishType,
@@ -152,6 +154,57 @@ def find_real_places(
         L2FulfillmentResult with personality-scored recommendations.
     """
     api_key = os.environ.get("GOOGLE_PLACES_API_KEY")
+
+    # Fallback 2: City-specific real data (before generic catalog)
+    if not api_key:
+        from wish_engine.apis.city_data import get_city_places, detect_city
+        city = detect_city(wish_text)
+        if not city and lat and lng:
+            # Rough city detection from coordinates
+            if 25.0 < lat < 25.4 and 55.0 < lng < 55.5: city = "dubai"
+            elif 24.5 < lat < 25.0 and 46.5 < lng < 47.0: city = "riyadh"
+            elif 31.0 < lat < 31.5 and 121.0 < lng < 122.0: city = "shanghai"
+            elif 29.8 < lat < 30.3 and 31.0 < lng < 31.5: city = "cairo"
+            elif 41.3 < lat < 41.5 and 2.0 < lng < 2.3: city = "barcelona"
+
+        if city:
+            from wish_engine.personalization import personalize_reason
+            city_places = get_city_places(city)
+            if city_places:
+                # Score and filter
+                for place in city_places:
+                    ps = _score_place(place, detector_results)
+                    place["_solo_score"] = ps.solo_friendly
+                    place["_anxiety_score"] = ps.anxiety_friendly
+                    place["_personality_score"] = (
+                        ps.solo_friendly + ps.anxiety_friendly + ps.introvert_friendly
+                    ) / 3.0
+
+                # Sort by personality score descending
+                ranked = sorted(city_places, key=lambda p: p.get("_personality_score", 0), reverse=True)[:3]
+
+                recs = []
+                for p in ranked:
+                    reason = personalize_reason(p["title"], p.get("tags", []), detector_results, wish_text)
+                    score_obj = _score_place(p, detector_results)
+                    label = _score_label(score_obj)
+                    if label:
+                        reason = f"{reason} [{label}]"
+                    recs.append(Recommendation(
+                        title=p["title"],
+                        description=p.get("description", ""),
+                        category=p.get("category", "place"),
+                        relevance_reason=reason,
+                        score=p.get("_personality_score", 0.5),
+                        tags=p.get("tags", []),
+                    ))
+
+                if recs:
+                    return L2FulfillmentResult(
+                        recommendations=recs,
+                        map_data=MapData(place_type=recs[0].category, radius_km=5.0),
+                        reminder_option=ReminderOption(text="Visit this weekend?", delay_hours=24),
+                    )
 
     # Route to catalog-based fulfillment (always works)
     wish = ClassifiedWish(

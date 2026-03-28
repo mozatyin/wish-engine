@@ -99,6 +99,39 @@ class WishCompass:
         }
         shells = self._detector.detect(signals, self._history, known_wishes or [])
 
+        # Cross-session accumulation: entities that appear repeatedly with emotion
+        from wish_engine.compass.models import Shell, ContradictionPattern, Signal
+        for entity, hist in self._history["entity_history"].items():
+            if hist.get("session_count", 0) >= 3 and hist.get("avg_arousal", 0) > 0.35:
+                # Check if we already have a shell for this entity
+                existing = self.vault.get_by_topic(entity)
+                if not existing:
+                    # Create a new shell from accumulated evidence
+                    shell = Shell(
+                        pattern=ContradictionPattern.EMOTION_ANOMALY,
+                        topic=entity,
+                        confidence=min(hist["session_count"] * 0.03 + 0.15, 0.4),
+                        raw_signals=[Signal(
+                            signal_type="cross_session_accumulation",
+                            topic=entity,
+                            data={"session_count": hist["session_count"], "avg_arousal": hist["avg_arousal"]},
+                            session_id=session_id,
+                        )],
+                    )
+                    shells.append(shell)
+                elif existing[0].confidence < 0.5 and hist["session_count"] > 5:
+                    # Boost existing shell with accumulated evidence
+                    self.vault.add_evidence(
+                        existing[0].id,
+                        Signal(
+                            signal_type="cross_session_boost",
+                            topic=entity,
+                            data={"session_count": hist["session_count"]},
+                            session_id=session_id,
+                        ),
+                        strength=0.3,
+                    )
+
         new_count = 0
         updated_count = 0
         for shell in shells:
