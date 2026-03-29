@@ -20,6 +20,7 @@ from wish_engine.compass.compass import WishCompass
 from wish_engine.compass.models import ShellStage
 from wish_engine.apis.osm_api import search_and_enrich
 from wish_engine.soul_api_bridge import SOUL_API_MAP, get_api_actions
+from wish_engine.soul_layer_classifier import classify_layer, filter_actions_by_layer, SoulLayer
 
 
 # ── Star Types ───────────────────────────────────────────────────────────────
@@ -176,11 +177,30 @@ def generate_trisoul_stars(
     used_items = set(history or {})
 
     # ── ☄️ METEORS: Surface Soul ─────────────────────────────────────
+    # Only generate meteors for statements classified as SURFACE layer
     surface_attentions = detect_surface_attention(recent_texts)
     trigger_text = recent_texts[-1][:60] if recent_texts else ""
 
-    for attention in surface_attentions[:3]:  # Max 3 meteor triggers
+    # Classify each recent text — only surface-layer texts generate meteors
+    surface_texts = []
+    deep_texts = []
+    for text in recent_texts:
+        layer, reason = classify_layer(text)
+        if layer == SoulLayer.SURFACE:
+            surface_texts.append(text)
+        elif layer == SoulLayer.DEEP:
+            deep_texts.append(text)
+
+    # Re-detect attentions from SURFACE-only texts
+    if surface_texts:
+        surface_attentions = detect_surface_attention(surface_texts)
+    else:
+        surface_attentions = []  # No surface needs → no meteors for physical world
+
+    for attention in surface_attentions[:3]:
         actions = get_api_actions(attention)
+        # Filter: only physical-world APIs for surface layer
+        actions = filter_actions_by_layer(actions, SoulLayer.SURFACE)
 
         for action in actions:
             if len(star_map.meteors) >= 5:  # Cap total meteors
@@ -224,6 +244,41 @@ def generate_trisoul_stars(
                 distance_m=dist_m,
                 opening_hours=data.get("_opening_hours", data.get("opening_hours", "")),
             ))
+
+    # ── ☄️ DEEP METEORS: Deep statements → wisdom, not physical ────
+    # "I'll never be hungry again" → Stoic wisdom, NOT restaurant
+    for text in deep_texts[:2]:
+        # Deep statements get wisdom APIs
+        wisdom_actions = [
+            {"api": "wish_engine.apis.spiritual_apis", "fn": "daily_wisdom", "params": {},
+             "template": "🌿 {tradition}: {text} — {source}", "star": "meteor", "cat": "wisdom"},
+            {"api": "wish_engine.apis.poetry_api", "fn": "random_poem", "params": {},
+             "template": "📜 {title} by {author}", "star": "meteor", "cat": "poetry"},
+            {"api": "wish_engine.apis.advice_api", "fn": "get_advice", "params": {},
+             "template": "💭 {result}", "star": "meteor", "cat": "reflection"},
+        ]
+
+        for action in wisdom_actions:
+            if len(star_map.meteors) >= 5:
+                break
+            data = _call_api(action, lat, lng)
+            if not data:
+                continue
+            why = _format_why(action.get("template", ""), data)
+            if not why or why[:40] in used_items:
+                continue
+            used_items.add(why[:40])
+
+            star_map.meteors.append(MeteorStar(
+                text_trigger=text[:60],
+                attention="deep_reflection",
+                place_name="",
+                place_category=action.get("cat", "wisdom"),
+                why=why,
+                color="#E8A0BF",  # Rose gold for deep
+                animation="pulse_deep",
+            ))
+            break  # One wisdom per deep text
 
     # ── ⭐ STARS: Middle Soul ────────────────────────────────────────
     if topic_history:
