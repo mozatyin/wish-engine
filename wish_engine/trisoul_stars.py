@@ -15,13 +15,11 @@ from typing import Any
 from wish_engine.soul_recommender import (
     detect_surface_attention,
     detect_middle_history,
-    recommend_from_soul,
-    SoulRecommendation,
-    ATTENTION_TO_PLACES,
 )
 from wish_engine.compass.compass import WishCompass
 from wish_engine.compass.models import ShellStage
 from wish_engine.apis.osm_api import search_and_enrich
+from wish_engine.soul_api_bridge import SOUL_API_MAP, get_api_actions
 
 
 # ── Star Types ───────────────────────────────────────────────────────────────
@@ -103,6 +101,52 @@ class TriSoulStarMap:
         return " | ".join(parts) + f" — {self.total} lights in your sky"
 
 
+# ── API Caller ───────────────────────────────────────────────────────────────
+
+def _call_api(action: dict, lat: float, lng: float) -> dict | None:
+    """Call a single API from the Bridge and return the result."""
+    import importlib
+    try:
+        mod = importlib.import_module(action["api"])
+        fn = getattr(mod, action["fn"])
+
+        # Build params — inject lat/lng for location-based APIs
+        params = dict(action.get("params", {}))
+        if "lat" in fn.__code__.co_varnames and "lat" not in params:
+            params["lat"] = lat
+        if "lng" in fn.__code__.co_varnames and "lng" not in params:
+            params["lng"] = lng
+
+        result = fn(**params)
+
+        if result is None:
+            return None
+
+        # Normalize result
+        if isinstance(result, str):
+            return {"result": result}
+        if isinstance(result, list):
+            return result[0] if result else None
+        if isinstance(result, dict):
+            return result
+        return {"result": str(result)}
+    except Exception:
+        return None
+
+
+def _format_why(template: str, data: dict) -> str:
+    """Format the display template with API result data."""
+    try:
+        return template.format(**data)
+    except (KeyError, IndexError, TypeError):
+        # Fallback: just show what we have
+        useful = {k: v for k, v in data.items() if isinstance(v, (str, int, float)) and v and not k.startswith("_")}
+        if useful:
+            first_key = next(iter(useful))
+            return str(useful[first_key])
+        return ""
+
+
 # ── Main Generator ───────────────────────────────────────────────────────────
 
 def generate_trisoul_stars(
@@ -113,149 +157,156 @@ def generate_trisoul_stars(
     compass: WishCompass | None = None,
     history: set[str] | None = None,
 ) -> TriSoulStarMap:
-    """Generate the complete TriSoul star map.
+    """Generate the complete TriSoul star map via Soul API Bridge.
+
+    For each Soul signal, calls ALL mapped APIs (not just OSM).
+    A meteor might be a real recipe, a breathing exercise, AND a nearby park.
 
     Args:
-        recent_texts: User's recent messages (last few turns)
+        recent_texts: User's recent messages
         lat, lng: Current GPS
-        topic_history: Historical topic counts {topic: mention_count}
-        compass: WishCompass instance with accumulated shells
-        history: Set of already-shown place names (dedup)
+        topic_history: Historical topic counts
+        compass: WishCompass with accumulated shells
+        history: Set of already-shown items (dedup)
 
     Returns:
-        TriSoulStarMap with meteors, stars, and earths.
+        TriSoulStarMap with meteors, stars, and earths — each backed by real API data.
     """
-    import math
     star_map = TriSoulStarMap()
-    used_places = set(history or {})
+    used_items = set(history or {})
 
-    # ── ☄️ METEORS: Surface Soul — what they just said ────────────────
+    # ── ☄️ METEORS: Surface Soul ─────────────────────────────────────
     surface_attentions = detect_surface_attention(recent_texts)
+    trigger_text = recent_texts[-1][:60] if recent_texts else ""
 
-    for attention in surface_attentions[:2]:  # Max 2 meteors
-        spec = ATTENTION_TO_PLACES.get(attention)
-        if not spec:
-            continue
+    for attention in surface_attentions[:3]:  # Max 3 meteor triggers
+        actions = get_api_actions(attention)
 
-        places = search_and_enrich(lat, lng, radius_m=2000, place_types=spec["osm"])
-        if not places:
-            places = search_and_enrich(lat, lng, radius_m=5000, place_types=spec["osm"])
+        for action in actions:
+            if len(star_map.meteors) >= 5:  # Cap total meteors
+                break
 
-        for place in places:
-            name = place.get("title", "")
-            if not name or name in used_places:
+            data = _call_api(action, lat, lng)
+            if not data:
                 continue
-            used_places.add(name)
 
-            why = spec["why"].format(place=name)
-            p_lat = place.get("_lat") or 0
-            p_lng = place.get("_lng") or 0
+            # Build display text
+            why = _format_why(action.get("template", ""), data)
+            if not why:
+                continue
+
+            # Dedup by content
+            dedup_key = why[:40]
+            if dedup_key in used_items:
+                continue
+            used_items.add(dedup_key)
+
+            # Extract place info if available
+            place_name = data.get("title") or data.get("name") or action.get("cat", "")
+            p_lat = data.get("_lat") or data.get("lat")
+            p_lng = data.get("_lng") or data.get("lng")
+
+            import math
             dist_m = 0
-            if p_lat and p_lng:
+            if p_lat and p_lng and isinstance(p_lat, (int, float)):
                 dlat = (p_lat - lat) * 111000
                 dlng = (p_lng - lng) * 111000 * math.cos(math.radians(lat))
                 dist_m = math.sqrt(dlat**2 + dlng**2)
-                if dist_m < 500:
-                    why += f"，就在{int(dist_m)}米外"
-                elif dist_m < 2000:
-                    why += f"，{dist_m/1000:.1f}公里"
-
-            # Find what they actually said that triggered this
-            trigger_text = ""
-            for t in recent_texts:
-                if any(kw in t.lower() for kw in ATTENTION_TO_PLACES.get(attention, {}).get("osm", [])):
-                    trigger_text = t[:60]
-                    break
-            if not trigger_text:
-                trigger_text = recent_texts[-1][:60] if recent_texts else ""
 
             star_map.meteors.append(MeteorStar(
                 text_trigger=trigger_text,
                 attention=attention,
-                place_name=name,
-                place_category=place.get("category", ""),
+                place_name=place_name,
+                place_category=action.get("cat", ""),
                 why=why,
-                lat=p_lat or None,
-                lng=p_lng or None,
+                lat=p_lat if isinstance(p_lat, (int, float)) else None,
+                lng=p_lng if isinstance(p_lng, (int, float)) else None,
                 distance_m=dist_m,
-                opening_hours=place.get("_opening_hours", ""),
+                opening_hours=data.get("_opening_hours", data.get("opening_hours", "")),
             ))
-            break
 
-    # ── ⭐ STARS: Middle Soul — recurring interests ───────────────────
+    # ── ⭐ STARS: Middle Soul ────────────────────────────────────────
     if topic_history:
         middle_attentions = detect_middle_history(topic_history)
-        # Don't duplicate surface attentions
         middle_attentions = [a for a in middle_attentions if a not in surface_attentions]
 
-        for attention in middle_attentions[:2]:  # Max 2 stars
-            spec = ATTENTION_TO_PLACES.get(attention)
-            if not spec:
-                continue
+        for attention in middle_attentions[:2]:
+            actions = get_api_actions(attention)
 
-            places = search_and_enrich(lat, lng, radius_m=3000, place_types=spec["osm"])
-            for place in places:
-                name = place.get("title", "")
-                if not name or name in used_places:
+            # Find the recurring topic name
+            topic_name = ""
+            for topic, count in sorted(topic_history.items(), key=lambda x: -x[1]):
+                if count >= 3:
+                    topic_name = topic
+                    break
+
+            for action in actions[:2]:  # Max 2 API calls per star
+                data = _call_api(action, lat, lng)
+                if not data:
                     continue
-                used_places.add(name)
 
-                # Find the original topic that maps to this attention
-                topic_name = ""
-                for topic, count in sorted(topic_history.items(), key=lambda x: -x[1]):
-                    if count >= 3:
-                        topic_name = topic
-                        break
+                why = _format_why(action.get("template", ""), data)
+                if not why:
+                    continue
 
-                p_lat = place.get("_lat") or 0
-                p_lng = place.get("_lng") or 0
-                dist_m = 0
-                if p_lat and p_lng:
-                    dlat = (p_lat - lat) * 111000
-                    dlng = (p_lng - lng) * 111000 * math.cos(math.radians(lat))
-                    dist_m = math.sqrt(dlat**2 + dlng**2)
+                dedup_key = why[:40]
+                if dedup_key in used_items:
+                    continue
+                used_items.add(dedup_key)
 
-                why = f"你已经连续聊了{topic_history.get(topic_name, 0)}次关于{topic_name}的话题 — {name}可能是你一直在找的地方"
+                place_name = data.get("title") or data.get("name") or topic_name
 
                 star_map.stars.append(StarStar(
                     recurring_topic=topic_name,
                     mention_count=topic_history.get(topic_name, 0),
-                    place_name=name,
-                    place_category=place.get("category", ""),
-                    why=why,
-                    lat=p_lat or None,
-                    lng=p_lng or None,
-                    distance_m=dist_m,
-                    opening_hours=place.get("_opening_hours", ""),
+                    place_name=place_name,
+                    place_category=action.get("cat", ""),
+                    why=f"你一直在关注{topic_name} — {why}",
+                    lat=data.get("_lat") or data.get("lat"),
+                    lng=data.get("_lng") or data.get("lng"),
+                    distance_m=0,
+                    opening_hours=data.get("_opening_hours", ""),
                 ))
-                break
+                break  # One result per attention for stars
 
-    # ── 🌍 EARTHS: Deep Soul — Compass hidden desires ────────────────
+    # ── 🌍 EARTHS: Deep Soul (Compass) ───────────────────────────────
     if compass:
         for shell in compass.vault.all_shells:
             if shell.confidence < 0.3:
                 continue
 
-            # Find a quiet place nearby for contemplation
-            quiet_places = search_and_enrich(lat, lng, radius_m=2000, place_types=["park", "garden", "library", "cafe"])
+            # Try to find a quiet place via Bridge
+            quiet_data = _call_api(
+                {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+                 "params": {"place_types": ["park", "garden", "library", "cafe"]}},
+                lat, lng,
+            )
+
             place_name = ""
-            place_cat = ""
+            place_cat = "contemplation"
             p_lat = None
             p_lng = None
 
-            for place in quiet_places:
-                name = place.get("title", "")
-                if name and name not in used_places:
-                    used_places.add(name)
+            if quiet_data and isinstance(quiet_data, dict):
+                name = quiet_data.get("title", "")
+                if name and name not in used_items:
+                    used_items.add(name)
                     place_name = name
-                    place_cat = place.get("category", "")
-                    p_lat = place.get("_lat")
-                    p_lng = place.get("_lng")
-                    break
+                    place_cat = quiet_data.get("category", "contemplation")
+                    p_lat = quiet_data.get("_lat")
+                    p_lng = quiet_data.get("_lng")
 
             if not place_name:
                 place_name = "a quiet corner"
-                place_cat = "contemplation"
+
+            # Also get wisdom for the Earth star
+            wisdom_data = _call_api(
+                {"api": "wish_engine.apis.spiritual_apis", "fn": "daily_wisdom", "params": {}},
+                lat, lng,
+            )
+            wisdom_text = ""
+            if wisdom_data:
+                wisdom_text = f"\n🌿 {wisdom_data.get('tradition', '')}: {wisdom_data.get('text', '')}"
 
             # Why text depends on maturity
             if shell.stage == ShellStage.SEED:
@@ -263,9 +314,9 @@ def generate_trisoul_stars(
             elif shell.stage == ShellStage.SPROUT:
                 why = f"你有没有注意到，每次聊到{shell.topic}，你的感受和聊其他话题时不一样？"
             elif shell.stage == ShellStage.BUD:
-                why = f"你对{shell.topic}的在意，可能比你意识到的更深。{place_name}是个安静的地方，也许可以想一想"
+                why = f"你对{shell.topic}的在意，可能比你意识到的更深。{place_name}是个安静的地方，也许可以想一想{wisdom_text}"
             else:  # BLOOM
-                why = f"你的星星替你发现了一件事：关于{shell.topic}，你内心的感受远超你表达的。是时候面对了"
+                why = f"你的星星替你发现了一件事：关于{shell.topic}，你内心的感受远超你表达的。是时候面对了{wisdom_text}"
 
             star_map.earths.append(EarthStar(
                 compass_topic=shell.topic,
