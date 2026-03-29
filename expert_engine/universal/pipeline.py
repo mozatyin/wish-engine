@@ -63,6 +63,29 @@ class ProblemClassifier:
         return best or ClassifiedProblem("general", "low",
             f"Explore using: {config.core_principle}", [])
 
+    def classify_multi(self, message: str, all_configs: dict[str, DomainConfig]) -> list[ClassifiedProblem]:
+        """Classify across ALL domains — returns all matching problems sorted by severity."""
+        low = message.lower()
+        # Safety first
+        for kw in _SAFETY_KW:
+            if kw in low:
+                return [ClassifiedProblem("safety_crisis", "critical",
+                    "STOP. Validate. Professional referral.", [kw], True)]
+
+        hits = []
+        for domain_name, config in all_configs.items():
+            for pt in config.problem_types:
+                matched = [k for k in pt.keywords if k in low]
+                if matched:
+                    hits.append(ClassifiedProblem(
+                        f"{domain_name}:{pt.name}", pt.severity,
+                        f"[{config.name}] {pt.approach}", matched))
+
+        # Sort: critical > high > medium > low
+        severity_order = {"critical": 0, "high": 1, "medium": 2, "low": 3}
+        hits.sort(key=lambda h: severity_order.get(h.severity, 4))
+        return hits or [ClassifiedProblem("general", "low", "Listen and explore.", [])]
+
 
 # ─── Module 2: SoulSearcher ────────────────────────────────────
 
@@ -206,15 +229,24 @@ _POS_SIGNALS = ["maybe", "perhaps", "could try", "never thought", "thank", "feel
                 "你说得对", "没想到", "第一次", "有道理", "承认"]
 
 
+_REJECTION_SIGNALS = ["whatever", "dont care", "shut up", "leave me alone", "pointless",
+                      "go away", "useless", "waste of time", "无所谓", "别管我", "闭嘴", "没用"]
+
+
 class EffectivenessChecker:
     def check(self, client_text: str, expert_text: str, config: DomainConfig,
               soul_lever: str = "") -> Effectiveness:
         ct, et = client_text.lower(), expert_text.lower()
-        engaged = len(client_text) > 30
-        felt = any(s in ct for s in _POS_SIGNALS)
+
+        # Detect full rejection — overrides engagement
+        is_rejecting = any(s in ct for s in _REJECTION_SIGNALS)
+        engaged = len(client_text) > 30 and not is_rejecting
+
+        felt = any(s in ct for s in _POS_SIGNALS) and not is_rejecting
         soul = bool(soul_lever) and any(w in et for w in soul_lever.lower().split()[:3])
         clean = not any(fp.lower() in et for fp in config.forbidden_phrases)
-        return Effectiveness(engaged, felt, soul, clean, engaged and (felt or soul) and clean)
+        return Effectiveness(engaged, felt, soul, clean,
+                             engaged and (felt or soul) and clean and not is_rejecting)
 
 
 # ─── Universal Session ──────────────────────────────────────────
