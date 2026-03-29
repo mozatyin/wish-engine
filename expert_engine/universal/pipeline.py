@@ -199,7 +199,11 @@ class Effectiveness:
 
 
 _POS_SIGNALS = ["maybe", "perhaps", "could try", "never thought", "thank", "feel better",
-                "也许", "试试", "从来没想过", "谢谢", "好多了", "原来", "对啊"]
+                "you're right", "never named", "never considered", "diagnosed", "accurate",
+                "i see", "i suppose", "fair point", "interesting", "that's true",
+                "i admit", "you've", "i didn't realize", "first time",
+                "也许", "试试", "从来没想过", "谢谢", "好多了", "原来", "对啊",
+                "你说得对", "没想到", "第一次", "有道理", "承认"]
 
 
 class EffectivenessChecker:
