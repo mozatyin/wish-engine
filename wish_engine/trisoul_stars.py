@@ -20,7 +20,9 @@ from wish_engine.compass.compass import WishCompass
 from wish_engine.compass.models import ShellStage
 from wish_engine.apis.osm_api import search_and_enrich
 from wish_engine.soul_api_bridge import SOUL_API_MAP, get_api_actions
-from wish_engine.soul_layer_classifier import classify_layer, filter_actions_by_layer, SoulLayer
+from wish_engine.soul_layer_classifier import classify_layer, filter_actions_by_layer, SoulLayer, VowSuppressor
+from wish_engine.narrative_tracker import NarrativeTracker, LifePhase
+from wish_engine.star_feedback import StarFeedbackStore
 
 
 # ── Star Types ───────────────────────────────────────────────────────────────
@@ -157,6 +159,9 @@ def generate_trisoul_stars(
     topic_history: dict[str, int] | None = None,
     compass: WishCompass | None = None,
     history: set[str] | None = None,
+    vow_suppressor: VowSuppressor | None = None,
+    narrative: NarrativeTracker | None = None,
+    feedback: StarFeedbackStore | None = None,
 ) -> TriSoulStarMap:
     """Generate the complete TriSoul star map via Soul API Bridge.
 
@@ -169,6 +174,9 @@ def generate_trisoul_stars(
         topic_history: Historical topic counts
         compass: WishCompass with accumulated shells
         history: Set of already-shown items (dedup)
+        vow_suppressor: Cross-layer suppressor (blocks food after "never hungry again")
+        narrative: Life narrative tracker (shapes weights by life phase)
+        feedback: Star engagement feedback store (boosts high-CTR attentions)
 
     Returns:
         TriSoulStarMap with meteors, stars, and earths — each backed by real API data.
@@ -176,12 +184,17 @@ def generate_trisoul_stars(
     star_map = TriSoulStarMap()
     used_items = set(history or {})
 
+    # ── Update narrative phase ────────────────────────────────────────
+    if narrative and recent_texts:
+        narrative.update(recent_texts)
+
     # ── ☄️ METEORS: Surface Soul ─────────────────────────────────────
     # Only generate meteors for statements classified as SURFACE layer
     surface_attentions = detect_surface_attention(recent_texts)
     trigger_text = recent_texts[-1][:60] if recent_texts else ""
 
     # Classify each recent text — only surface-layer texts generate meteors
+    # Deep statements → record vow suppression, generate wisdom meteors instead
     surface_texts = []
     deep_texts = []
     for text in recent_texts:
@@ -190,6 +203,19 @@ def generate_trisoul_stars(
             surface_texts.append(text)
         elif layer == SoulLayer.DEEP:
             deep_texts.append(text)
+            # Register vow: duration depends on narrative phase
+            # Survival → 12h (user is in crisis, may still need food soon)
+            # Meaning   → 168h (deep commitment, suppress for a week)
+            # Default   → 72h
+            if vow_suppressor:
+                vow_duration = 72
+                if narrative:
+                    phase_val = narrative.current_phase.value
+                    if phase_val == "survival":
+                        vow_duration = 12
+                    elif phase_val == "meaning":
+                        vow_duration = 168
+                vow_suppressor.record(text, layer, hours=vow_duration)
 
     # Re-detect attentions from SURFACE-only texts
     if surface_texts:
@@ -197,14 +223,55 @@ def generate_trisoul_stars(
     else:
         surface_attentions = []  # No surface needs → no meteors for physical world
 
+    # Apply narrative weights to generation caps
+    # surface_weight → meteors, middle_weight → stars, deep_weight → earths
+    max_meteors = 5
+    max_stars = 2
+    max_earths = 6  # Compass shells are unbounded by default
+
+    if narrative:
+        w = narrative.weights
+        sw = w.get("surface_weight", 1.0)
+        mw = w.get("middle_weight", 1.0)
+        dw = w.get("deep_weight", 1.0)
+        max_meteors = max(1, min(5, round(sw * 3)))   # 0.5→2, 1.0→3, 2.0→5
+        max_stars   = max(1, min(4, round(mw * 2)))   # 0.3→1, 1.0→2, 1.5→3
+        max_earths  = max(0, min(6, round(dw * 3)))   # 0.2→1, 1.0→3, 2.0→6
+
+    # Apply feedback signals to boost narrative phase scoring
+    # If user consistently clicks growth/learning content → nudge narrative toward growth
+    if feedback and narrative:
+        top = feedback.top_attentions(n=3)
+        growth_cats = {"learning", "books", "courses", "skill", "exercise", "social"}
+        wisdom_cats = {"wisdom", "poetry", "reflection", "meaning", "mindfulness"}
+        growth_clicks = sum(1 for att, _ in top if att in growth_cats)
+        wisdom_clicks = sum(1 for att, _ in top if att in wisdom_cats)
+        if growth_clicks >= 2:
+            narrative.update(["learn", "course", "improve", "skill", "goal"])
+        elif wisdom_clicks >= 2:
+            narrative.update(["meaning", "believe", "who am i", "reflect"])
+
     for attention in surface_attentions[:3]:
         actions = get_api_actions(attention)
         # Filter: only physical-world APIs for surface layer
         actions = filter_actions_by_layer(actions, SoulLayer.SURFACE)
+        # Re-rank by feedback engagement weight
+        if feedback:
+            actions = feedback.sort_actions_by_weight(
+                [{**a, "attention": attention} for a in actions]
+            )
+
+        # Record impression for feedback tracking
+        if feedback:
+            feedback.impression(attention)
 
         for action in actions:
-            if len(star_map.meteors) >= 5:  # Cap total meteors
+            if len(star_map.meteors) >= max_meteors:
                 break
+
+            # Cross-layer suppression: skip if a Deep vow suppresses this category
+            if vow_suppressor and vow_suppressor.is_suppressed(action.get("cat", "")):
+                continue
 
             data = _call_api(action, lat, lng)
             if not data:
@@ -259,7 +326,7 @@ def generate_trisoul_stars(
         ]
 
         for action in wisdom_actions:
-            if len(star_map.meteors) >= 5:
+            if len(star_map.meteors) >= max_meteors:
                 break
             data = _call_api(action, lat, lng)
             if not data:
@@ -285,7 +352,7 @@ def generate_trisoul_stars(
         middle_attentions = detect_middle_history(topic_history)
         middle_attentions = [a for a in middle_attentions if a not in surface_attentions]
 
-        for attention in middle_attentions[:2]:
+        for attention in middle_attentions[:max_stars]:
             actions = get_api_actions(attention)
 
             # Find the recurring topic name
@@ -329,6 +396,8 @@ def generate_trisoul_stars(
         for shell in compass.vault.all_shells:
             if shell.confidence < 0.3:
                 continue
+            if len(star_map.earths) >= max_earths:
+                break
 
             # Try to find a quiet place via Bridge
             quiet_data = _call_api(

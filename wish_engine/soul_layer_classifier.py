@@ -24,6 +24,7 @@ The key test:
 from __future__ import annotations
 
 import re
+import time
 from typing import Any
 
 
@@ -190,3 +191,85 @@ def classify_and_filter(text: str, actions: list[dict], topic_history: dict[str,
     layer, reason = classify_layer(text, topic_history)
     filtered = filter_actions_by_layer(actions, layer)
     return layer, reason, filtered
+
+
+# ── Cross-Layer Suppression ───────────────────────────────────────────────────
+
+# When a Deep vow fires, these Surface categories are suppressed for N hours.
+# "I'll never be hungry again" → suppress food/drink/restaurant for 72h
+_VOW_TOPIC_CATEGORIES: dict[str, set[str]] = {
+    "food":         {"food", "drink"},
+    "love":         {"social", "dating"},
+    "pain":         {"fun", "celebration", "party"},
+    "money":        {"shopping", "luxury", "finance"},
+    "anger":        {"calm", "mindfulness"},   # anger vow → don't soothe, empower
+    "identity":     {"place", "utility"},      # "who am I" → no quick errands
+}
+
+# Keyword → vow topic mapping
+_VOW_TOPIC_KEYWORDS: dict[str, list[str]] = {
+    "food":     ["hungry", "hunger", "food", "eat", "eating", "starving", "fed", "fed up", "饥饿", "吃", "挨饿", "饿"],
+    "love":     ["love", "loved", "lover", "heart", "him", "her", "rhett", "ashley", "relationship",
+                 "爱", "他", "她", "感情"],
+    "pain":     ["hurt", "pain", "cry", "tears", "grief", "loss", "die", "dead", "suffer", "痛", "哭"],
+    "money":    ["money", "poor", "rich", "dollar", "afford", "debt", "broke", "钱", "穷", "富"],
+    "anger":    ["pay", "revenge", "hate", "fury", "furious", "make them", "恨", "报复"],
+    "identity": ["who i am", "who am i", "myself", "person i", "我是谁", "我自己"],
+}
+
+
+def _extract_vow_topic(text: str) -> str | None:
+    """Extract the primary topic of a Deep vow statement."""
+    text_lower = text.lower()
+    for topic, keywords in _VOW_TOPIC_KEYWORDS.items():
+        if any(kw in text_lower for kw in keywords):
+            return topic
+    return None
+
+
+class VowSuppressor:
+    """Tracks active Deep vows and blocks conflicting Surface API categories.
+
+    When "I'll never be hungry again" fires as a Deep vow, food and drink
+    recommendations are suppressed for 72 hours — Scarlett doesn't need a
+    restaurant suggestion right after making her life-defining vow.
+    """
+
+    def __init__(self, default_hours: int = 72):
+        self._default_hours = default_hours
+        # topic → unix expiry timestamp
+        self._suppressions: dict[str, float] = {}
+
+    def record(self, text: str, layer: str, hours: int | None = None) -> str | None:
+        """If layer is DEEP, extract topic and start suppression. Returns topic or None."""
+        if layer != SoulLayer.DEEP:
+            return None
+        topic = _extract_vow_topic(text)
+        if topic:
+            duration = hours if hours is not None else self._default_hours
+            self._suppressions[topic] = time.time() + duration * 3600
+        return topic
+
+    def is_suppressed(self, cat: str) -> bool:
+        """Return True if this API category is currently blocked by an active vow."""
+        now = time.time()
+        expired = [t for t, exp in self._suppressions.items() if exp < now]
+        for t in expired:
+            del self._suppressions[t]
+
+        for topic, expiry in self._suppressions.items():
+            if expiry >= now and cat in _VOW_TOPIC_CATEGORIES.get(topic, set()):
+                return True
+        return False
+
+    def active_suppressions(self) -> dict[str, float]:
+        """Return {topic: hours_remaining} for active suppressions."""
+        now = time.time()
+        return {
+            topic: (expiry - now) / 3600
+            for topic, expiry in self._suppressions.items()
+            if expiry > now
+        }
+
+    def clear(self) -> None:
+        self._suppressions.clear()

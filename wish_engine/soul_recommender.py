@@ -63,6 +63,26 @@ ATTENTION_TO_PLACES: dict[str, dict] = {
     # Career needs
     "want_work": {"osm": ["cafe", "library"], "why": "想找地方工作 — {place}安静、有WiFi"},
     "want_learn": {"osm": ["library", "community_centre"], "why": "想学东西 — {place}可能有课程或资源"},
+
+    # Context-aware (time, location)
+    "bored":       {"osm": ["museum", "gallery", "park", "arts_centre"], "why": "有点无聊 — {place}可能有意思"},
+    "morning":     {"osm": ["cafe"], "why": "早安 — {place}可以开始新的一天"},
+    "evening":     {"osm": ["park", "cafe"], "why": "傍晚了 — {place}很适合放松"},
+    "weekend":     {"osm": ["museum", "park", "arts_centre"], "why": "周末探索 — {place}值得去看看"},
+    "new_place":   {"osm": ["museum", "community_centre"], "why": "探索新地方 — {place}"},
+    "insomnia":    {"osm": ["pharmacy", "park"], "why": "睡不着 — {place}可能有帮助"},
+
+    # Self-improvement
+    "confidence":  {"osm": ["gym", "community_centre"], "why": "需要振作 — {place}可以帮你找回状态"},
+    "reflection":  {"osm": ["park", "garden", "library"], "why": "你在思考 — {place}是个安静的地方"},
+
+    # Missing life needs
+    "celebrating": {"osm": ["restaurant", "cafe", "arts_centre"], "why": "值得庆祝 — {place}是个好地方"},
+    "homesick":    {"osm": ["community_centre", "place_of_worship"], "why": "想家了 — {place}可能有同乡"},
+    "headache":    {"osm": ["pharmacy"], "why": "头疼 — {place}离你最近"},
+    "overwhelmed": {"osm": ["park", "garden"], "why": "需要喘息 — {place}很安静"},
+    "want_outdoor":{"osm": ["park", "garden", "nature_reserve"], "why": "想去户外 — {place}离你不远"},
+    "want_create": {"osm": ["arts_centre", "library", "community_centre"], "why": "想创作 — {place}有空间和工具"},
 }
 
 
@@ -104,6 +124,23 @@ def detect_surface_attention(recent_texts: list[str]) -> list[str]:
         "want_music": ["music", "concert", "sing", "音乐", "唱"],
         "want_work": ["work", "productive", "focus", "deadline", "工作", "写代码"],
         "want_learn": ["learn", "study", "course", "学", "课"],
+        # Context-aware
+        "bored":       ["bored", "boring", "nothing to do", "kill time", "无聊", "ممل"],
+        "morning":     ["good morning", "this morning", "just woke up", "早上好", "刚起床", "صباح الخير"],
+        "evening":     ["tonight", "this evening", "after work", "winding down", "晚上了", "مساء"],
+        "weekend":     ["weekend", "saturday", "sunday", "周末", "星期六", "星期天", "نهاية الأسبوع"],
+        "new_place":   ["new here", "just moved", "just arrived", "visiting", "tourist", "刚来", "陌生的地方", "وصلت"],
+        "insomnia":    ["can't sleep", "insomnia", "wide awake", "lying awake", "失眠", "睡不着", "أرق"],
+        # Self-improvement
+        "confidence":  ["not confident", "insecure", "worthless", "can't do it", "nobody likes", "没信心", "不自信", "لا أستطيع"],
+        "reflection":  ["reflecting on", "looking back", "in hindsight", "i wonder why", "i've been reflecting", "回想起来", "反思"],
+        # Missing life needs
+        "celebrating": ["celebrating", "birthday", "anniversary", "promotion", "good news", "庆祝", "生日", "升职", "احتفال"],
+        "homesick":    ["homesick", "miss home", "miss my family", "far from home", "想家", "思乡", "أشتاق للبيت"],
+        "headache":    ["headache", "migraine", "head hurts", "头疼", "头痛", "صداع"],
+        "overwhelmed": ["overwhelmed", "too much", "can't handle", "falling apart", "不知所措", "崩溃了", "مرهق"],
+        "want_outdoor":["outdoors", "nature", "fresh air", "hike", "hiking", "户外", "大自然", "الطبيعة"],
+        "want_create": ["want to create", "creative", "make something", "draw", "paint", "craft", "创作", "画画", "أبدع"],
     }
 
     import re
@@ -130,21 +167,59 @@ def detect_middle_history(topic_counts: dict[str, int]) -> list[str]:
     Returns top recurring interests that map to real-world services.
     """
     interest_to_attention = {
-        "yoga": "need_exercise",
-        "meditation": "need_quiet",
-        "coffee": "hungry",  # they keep talking about coffee → café
-        "food": "hungry",
-        "exercise": "need_exercise",
-        "art": "want_art",
-        "music": "want_music",
-        "books": "want_read",
-        "reading": "want_read",
-        "work": "want_work",
-        "prayer": "need_pray",
-        "friends": "want_friends",
-        "loneliness": "lonely",
-        "anxiety": "anxious",
-        "career": "want_work",
+        # Physical / health
+        "yoga":         "need_exercise",
+        "meditation":   "need_quiet",
+        "running":      "need_exercise",
+        "swimming":     "need_exercise",
+        "fitness":      "need_exercise",
+        "gym":          "need_exercise",
+        "hiking":       "want_outdoor",
+        "nature":       "want_outdoor",
+        "outdoors":     "want_outdoor",
+        "garden":       "want_outdoor",
+        # Food
+        "coffee":       "hungry",
+        "food":         "hungry",
+        "cooking":      "hungry",
+        "baking":       "hungry",
+        "recipes":      "hungry",
+        # Creative
+        "art":          "want_art",
+        "drawing":      "want_create",
+        "painting":     "want_create",
+        "photography":  "want_art",
+        "writing":      "want_create",
+        "crafts":       "want_create",
+        "design":       "want_create",
+        # Learning
+        "books":        "want_read",
+        "reading":      "want_read",
+        "language":     "want_learn",
+        "coding":       "want_work",
+        "podcast":      "want_learn",
+        "study":        "want_learn",
+        # Social / emotional
+        "friends":      "want_friends",
+        "loneliness":   "lonely",
+        "anxiety":      "anxious",
+        "family":       "homesick",
+        "home":         "homesick",
+        # Career / productivity
+        "work":         "want_work",
+        "career":       "want_work",
+        "startup":      "want_work",
+        "project":      "want_work",
+        # Spiritual
+        "prayer":       "need_pray",
+        "faith":        "need_pray",
+        "spirituality": "need_meaning",
+        # Entertainment
+        "music":        "want_music",
+        "film":         "want_art",
+        "gaming":       "bored",
+        "games":        "bored",
+        "travel":       "new_place",
     }
 
     # Only topics mentioned 3+ times count as recurring
