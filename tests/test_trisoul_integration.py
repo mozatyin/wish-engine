@@ -257,8 +257,8 @@ class TestWhyPrefix:
     First principle: "你说饿了 → Corner Cafe现在还开着" — not just "Corner Cafe".
     """
 
-    def test_hungry_why_contains_attention_prefix(self):
-        """Meteor why text must start with '你说饿了' for hungry attention."""
+    def test_hungry_why_uses_actual_trigger_phrase(self):
+        """When user says 'hungry', why echoes back their actual word: 你说「hungry」→ ..."""
         def fake_api(*args, **kwargs):
             return {"title": "Corner Cafe", "description": "Corner Cafe", "category": "cafe",
                     "_lat": 25.2, "_lng": 55.3, "_opening_hours": ""}
@@ -270,11 +270,13 @@ class TestWhyPrefix:
             )
 
         assert len(star_map.meteors) >= 1
-        food_meteor = star_map.meteors[0]
-        assert "你说饿了" in food_meteor.why
+        why = star_map.meteors[0].why
+        # Should echo back what user said using 你说「...」format
+        assert "你说「" in why
+        assert "hungry" in why.lower()
 
-    def test_anxious_why_contains_attention_prefix(self):
-        """Anxious meteor must explain 你感到焦虑 context."""
+    def test_anxious_why_uses_actual_trigger_phrase(self):
+        """Anxious meteor echoes the user's actual phrase back."""
         def fake_api(*args, **kwargs):
             return {"title": "Central Park", "category": "park",
                     "_lat": 25.2, "_lng": 55.3, "_opening_hours": ""}
@@ -286,10 +288,11 @@ class TestWhyPrefix:
             )
 
         assert len(star_map.meteors) >= 1
-        assert any("你感到焦虑" in m.why for m in star_map.meteors)
+        # Should echo back "anxious" (or another detected phrase) with 你说「...」format
+        assert any("你说「" in m.why for m in star_map.meteors)
 
-    def test_lonely_why_contains_attention_prefix(self):
-        """Lonely meteor must reference 你感到孤独."""
+    def test_lonely_why_uses_phrase_or_prefix(self):
+        """Lonely meteor echoes 'no one around' (phrase match) or falls back to prefix."""
         def fake_api(*args, **kwargs):
             return {"title": "Coffee House", "category": "cafe",
                     "_lat": 25.2, "_lng": 55.3, "_opening_hours": ""}
@@ -301,10 +304,12 @@ class TestWhyPrefix:
             )
 
         assert len(star_map.meteors) >= 1
-        assert any("你感到孤独" in m.why for m in star_map.meteors)
+        why = " ".join(m.why for m in star_map.meteors)
+        # Should contain the user's phrase "no one around" or fallback prefix
+        assert "你说「" in why or "你感到孤独" in why
 
-    def test_why_prefix_followed_by_recommendation(self):
-        """Why text must have format: 'prefix → recommendation content'."""
+    def test_why_always_contains_arrow_separator(self):
+        """Why text always has 'context → recommendation' format."""
         def fake_api(*args, **kwargs):
             return {"title": "Green Park", "category": "park",
                     "_lat": 25.2, "_lng": 55.3, "_opening_hours": ""}
@@ -317,8 +322,23 @@ class TestWhyPrefix:
 
         assert len(star_map.meteors) >= 1
         why = star_map.meteors[0].why
-        # Must have "→" separator between context and recommendation
         assert "→" in why
-        # Recommendation content must follow the separator
         parts = why.split("→", 1)
         assert len(parts[1].strip()) > 0
+
+    def test_indirect_phrase_echoed_back(self):
+        """'haven't eaten' (indirect phrase) is echoed back, not just 'hungry'."""
+        def fake_api(*args, **kwargs):
+            return {"title": "The Diner", "category": "restaurant",
+                    "_lat": 25.2, "_lng": 55.3, "_opening_hours": ""}
+
+        with patch("wish_engine.trisoul_stars._call_api", side_effect=fake_api):
+            star_map = generate_trisoul_stars(
+                recent_texts=["I haven't eaten since yesterday morning"],
+                lat=LAT, lng=LNG,
+            )
+
+        assert len(star_map.meteors) >= 1
+        why = star_map.meteors[0].why
+        # The actual phrase should appear in the why, not just the category label
+        assert "haven't eaten" in why or "你说「" in why

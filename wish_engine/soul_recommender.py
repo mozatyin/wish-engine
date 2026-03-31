@@ -343,6 +343,72 @@ def detect_surface_attention(recent_texts: list[str]) -> list[str]:
     return attentions
 
 
+# ── Trigger phrase lookup ────────────────────────────────────────────────────
+# Subset of keywords per attention — the most RECOGNISABLE phrases to echo back.
+# Priority order: multi-word phrases first (more specific), then single words.
+# Used by _find_trigger_phrase() to find what the user ACTUALLY SAID.
+_TRIGGER_PHRASES: dict[str, list[str]] = {
+    "hungry":           ["haven't eaten", "havent eaten", "nothing to eat", "skipped breakfast",
+                         "stomach is growling", "starving", "famished", "hungry", "没吃东西"],
+    "thirsty":          ["nothing to drink", "dying for a drink", "thirsty", "dehydrated"],
+    "tired":            ["running on empty", "burnt out", "can barely function", "running on fumes",
+                         "exhausted", "drained", "tired"],
+    "cold":             ["shivering", "freezing", "cold"],
+    "hot":              ["sweltering", "burning up", "boiling", "hot"],
+    "sad":              ["can't get out of bed", "nothing matters", "feel empty inside", "hopeless",
+                         "numb", "crying", "sad"],
+    "angry":            ["lost my temper", "got into a fight", "just argued", "blew up at",
+                         "heated argument", "furious", "angry"],
+    "anxious":          ["heart is racing", "can't calm down", "can't stop worrying", "stomach in knots",
+                         "filled with dread", "anxious", "nervous"],
+    "lonely":           ["nobody to talk to", "eating alone", "all by myself", "no one around",
+                         "disconnected", "isolated", "lonely"],
+    "scared":           ["freaking out", "something is wrong", "terrified", "scared"],
+    "panicking":        ["panic attack", "heart is pounding", "shaking uncontrollably", "can't breathe"],
+    "grieving":         ["can't believe they're gone", "passed away", "they're gone", "lost them"],
+    "guilty":           ["feel like a burden", "let everyone down", "all my fault", "i ruined"],
+    "headache":         ["head is killing me", "splitting headache", "head is pounding",
+                         "throbbing in my head", "headache", "migraine"],
+    "insomnia":         ["staring at the ceiling", "been up all night", "wide awake at",
+                         "awake since", "couldn't sleep", "can't sleep"],
+    "overwhelmed":      ["drowning in", "too much on my plate", "can't cope", "can't keep up",
+                         "overwhelmed", "falling apart"],
+    "heartbreak":       ["my heart is broken", "she left", "he left", "broke up", "heartbroken"],
+    "missing_someone":  ["can't stop thinking about", "missing him", "missing her", "miss him", "miss her"],
+    "relationship_pain":["emotional manipulation", "toxic relationship", "won't let me", "controlling"],
+    "need_money":       ["i'm broke", "flat broke", "out of cash", "no money", "can't afford"],
+    "need_medicine":    ["need a doctor", "feel awful physically"],
+    "need_talk":        ["no one to talk to", "nobody to talk to", "need someone to talk to"],
+    "need_pray":        ["time for prayer", "it's prayer time"],
+    "bored":            ["nothing to do", "killing time", "bored"],
+    "celebrating":      ["just got promoted", "just got the job", "celebrating", "birthday"],
+    "homesick":         ["miss home", "miss my family", "wish i was home", "homesick"],
+    "confidence":       ["hate myself", "feel useless", "worthless", "not good enough"],
+    "want_outdoor":     ["fresh air", "need to get outside", "go for a walk"],
+    "panicking":        ["panic attack", "heart is pounding"],
+}
+
+
+def _find_trigger_phrase(texts: list[str], attention: str) -> str | None:
+    """Find the exact phrase the user said that triggered this attention signal.
+
+    Returns the original-case snippet from the user's text, or None.
+    Used to build "你说「haven't eaten」→ Corner Cafe" instead of generic "你说饿了 →".
+    """
+    original = " ".join(texts)
+    combined = original.lower()
+    for phrase in _TRIGGER_PHRASES.get(attention, []):
+        if any(ord(c) > 127 for c in phrase):
+            idx = combined.find(phrase)
+            if idx >= 0:
+                return original[idx:idx + len(phrase)]
+        else:
+            m = _re.search(r'\b' + _re.escape(phrase) + r'\b', combined)
+            if m:
+                return original[m.start():m.end()]
+    return None
+
+
 # ── Middle Soul: topic accumulator ──────────────────────────────────────────
 
 # Topic → detection keywords (used by update_topic_history)

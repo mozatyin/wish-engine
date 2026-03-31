@@ -15,6 +15,7 @@ from typing import Any
 from wish_engine.soul_recommender import (
     detect_surface_attention,
     detect_middle_history,
+    _find_trigger_phrase,
 )
 from wish_engine.compass.compass import WishCompass
 from wish_engine.compass.models import ShellStage
@@ -201,6 +202,80 @@ def _format_why(template: str, data: dict) -> str:
         return ""
 
 
+# ── Compound Need Synthesis ───────────────────────────────────────────────────
+# When two needs fire simultaneously, find ONE place that addresses both.
+# Added BEFORE individual attention meteors — compound meteor always ranks first.
+# Each entry: (frozenset of attentions, synthesis config)
+_COMPOUND_NEEDS: list[tuple[frozenset, dict]] = [
+    (frozenset({"hungry", "lonely"}), {
+        "place_types": ["community_centre", "cafe"],
+        "why_prefix": "你既饿了又孤独",
+        "why_suffix": "这里有吃的，也有人陪",
+    }),
+    (frozenset({"hungry", "need_money"}), {
+        "place_types": ["community_centre"],
+        "why_prefix": "你饿了，又缺钱",
+        "why_suffix": "可能有免费餐食或帮助",
+    }),
+    (frozenset({"sad", "lonely"}), {
+        "place_types": ["cafe", "community_centre"],
+        "why_prefix": "你心情低落，又很孤独",
+        "why_suffix": "有人在旁边，可能会好受一点",
+    }),
+    (frozenset({"anxious", "lonely"}), {
+        "place_types": ["cafe", "library"],
+        "why_prefix": "你焦虑又孤独",
+        "why_suffix": "有人在旁边，但不用说话",
+    }),
+    (frozenset({"tired", "cold"}), {
+        "place_types": ["cafe", "library"],
+        "why_prefix": "你又冷又累",
+        "why_suffix": "暖和，可以坐下来歇一歇",
+    }),
+    (frozenset({"scared", "lonely"}), {
+        "place_types": ["library", "cafe", "place_of_worship"],
+        "why_prefix": "你害怕，又一个人",
+        "why_suffix": "安全的地方，有人在",
+    }),
+    (frozenset({"overwhelmed", "need_quiet"}), {
+        "place_types": ["park", "garden", "library"],
+        "why_prefix": "你不堪重负，需要安静",
+        "why_suffix": "离开一切，找个安静的地方",
+    }),
+    (frozenset({"headache", "need_medicine"}), {
+        "place_types": ["pharmacy"],
+        "why_prefix": "你头疼，需要药",
+        "why_suffix": "最近的药店",
+    }),
+]
+
+
+# ── Fallback Text ─────────────────────────────────────────────────────────────
+# When ALL APIs fail for an attention (no network, OSM empty, etc.), show this
+# instead of silence. A text-only meteor is always better than nothing.
+_ATTENTION_FALLBACK_TEXT: dict[str, str] = {
+    "hungry":       "附近暂时没找到餐厅，可以搜索外卖",
+    "thirsty":      "找不到咖啡馆，便利店可以买水",
+    "tired":        "找个地方坐下来，哪怕只是路边的椅子",
+    "cold":         "找找室内的地方：商场、便利店、任何有顶的地方",
+    "hot":          "商场或室内任何有空调的地方",
+    "anxious":      "深呼吸：吸气4秒 — 屏气7秒 — 呼气8秒，重复3次",
+    "panicking":    "现在开始：吸气4秒 — 屏气7秒 — 呼气8秒",
+    "sad":          "你不需要做任何事，就这样待着也可以",
+    "angry":        "走出去走一走，哪怕只是绕着街区走一圈",
+    "lonely":       "给一个老朋友发一条消息，哪怕只是「最近怎么样」",
+    "scared":       "找一个人多的地方待着，不需要说话",
+    "grieving":     "这时候不需要做任何事，允许自己难过",
+    "headache":     "喝一杯水，闭眼休息一会儿",
+    "insomnia":     "4-7-8 呼吸：吸4秒 — 屏7秒 — 呼8秒，重复3次",
+    "overwhelmed":  "把所有事情写下来，先只做第一件",
+    "heartbreak":   "哭出来也没关系，这是你应得的空间",
+    "need_medicine":"搜索附近的「药店」或「医院」",
+    "need_money":   "联系银行客服，或者找家人帮忙",
+    "need_talk":    "心理援助热线：随时都可以拨打",
+}
+
+
 # ── Main Generator ───────────────────────────────────────────────────────────
 
 def generate_trisoul_stars(
@@ -302,7 +377,49 @@ def generate_trisoul_stars(
         elif wisdom_clicks >= 2:
             narrative.update(["meaning", "believe", "who am i", "reflect"])
 
+    # ── Compound need synthesis: one place for two simultaneous needs ────────
+    attention_set = set(surface_attentions)
+    for need_pair, synthesis in _COMPOUND_NEEDS:
+        if not need_pair.issubset(attention_set):
+            continue
+        if len(star_map.meteors) >= max_meteors:
+            break
+        compound_action = {
+            "api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+            "params": {"place_types": synthesis["place_types"]}, "cat": "place",
+        }
+        data = _call_api(compound_action, lat, lng)
+        if not data:
+            continue
+        place_name = data.get("title", "")
+        dedup_key = f"compound_{place_name[:20]}"
+        if dedup_key in used_items:
+            continue
+        used_items.add(dedup_key)
+        why = f"{synthesis['why_prefix']} → {place_name} — {synthesis['why_suffix']}"
+        p_lat = data.get("_lat")
+        p_lng = data.get("_lng")
+        dist_m = 0
+        if p_lat and p_lng and isinstance(p_lat, (int, float)):
+            import math as _math
+            dlat = (p_lat - lat) * 111000
+            dlng = (p_lng - lng) * 111000 * _math.cos(_math.radians(lat))
+            dist_m = _math.sqrt(dlat**2 + dlng**2)
+        star_map.meteors.append(MeteorStar(
+            text_trigger=trigger_text,
+            attention="+".join(sorted(need_pair)),
+            place_name=place_name,
+            place_category="place",
+            why=why,
+            lat=p_lat if isinstance(p_lat, (int, float)) else None,
+            lng=p_lng if isinstance(p_lng, (int, float)) else None,
+            distance_m=dist_m,
+            opening_hours=data.get("_opening_hours", ""),
+        ))
+        break  # One compound meteor maximum
+
     for attention in surface_attentions[:3]:
+        meteors_before = len(star_map.meteors)
         actions = get_api_actions(attention)
         # Filter: only physical-world APIs for surface layer
         actions = filter_actions_by_layer(actions, SoulLayer.SURFACE)
@@ -331,13 +448,18 @@ def generate_trisoul_stars(
             if not data:
                 continue
 
-            # Build display text — always prefix with "你说X → " so user sees WHY
+            # Build display text — use the user's ACTUAL WORDS when possible.
+            # "你说「haven't eaten」→ Corner Cafe" beats "你说饿了 → Corner Cafe"
             why = _format_why(action.get("template", ""), data)
             if not why:
                 continue
-            prefix = _ATTENTION_WHY_PREFIX.get(attention, "")
-            if prefix:
-                why = f"{prefix} → {why}"
+            trigger = _find_trigger_phrase(recent_texts, attention)
+            if trigger:
+                why = f"你说「{trigger}」→ {why}"
+            else:
+                prefix = _ATTENTION_WHY_PREFIX.get(attention, "")
+                if prefix:
+                    why = f"{prefix} → {why}"
 
             # Dedup by content
             dedup_key = why[:40]
@@ -368,6 +490,24 @@ def generate_trisoul_stars(
                 distance_m=dist_m,
                 opening_hours=data.get("_opening_hours", data.get("opening_hours", "")),
             ))
+
+        # ── Fallback: if ALL APIs failed for this attention, never leave user with nothing
+        if len(star_map.meteors) == meteors_before and len(star_map.meteors) < max_meteors:
+            fallback_text = _ATTENTION_FALLBACK_TEXT.get(attention)
+            if fallback_text:
+                trigger = _find_trigger_phrase(recent_texts, attention)
+                if trigger:
+                    fallback_why = f"你说「{trigger}」→ {fallback_text}"
+                else:
+                    prefix = _ATTENTION_WHY_PREFIX.get(attention, "")
+                    fallback_why = f"{prefix} → {fallback_text}" if prefix else fallback_text
+                star_map.meteors.append(MeteorStar(
+                    text_trigger=trigger_text,
+                    attention=attention,
+                    place_name="",
+                    place_category="text",
+                    why=fallback_why,
+                ))
 
     # ── ☄️ DEEP METEORS: Deep statements → wisdom, not physical ────
     # "I'll never be hungry again" → Stoic wisdom, NOT restaurant
