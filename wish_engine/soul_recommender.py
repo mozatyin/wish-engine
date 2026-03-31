@@ -104,13 +104,13 @@ def detect_surface_attention(recent_texts: list[str]) -> list[str]:
     keyword_map = {
         "hungry": ["hungry", "starving", "饿", "没吃", "food", "eat", "جائع"],
         "thirsty": ["thirsty", "渴", "drink", "water"],
-        "tired": ["tired", "exhausted", "累", "疲", "متعب", "can't move"],
+        "tired": ["tired", "exhausted", "drained", "burnt out", "burnout", "no energy", "depleted", "累", "疲", "متعب", "can't move"],
         "cold": ["cold", "freezing", "冷"],
         "hot": ["hot", "burning", "热", "حر"],
-        "anxious": ["anxious", "worried", "nervous", "can't breathe", "panic", "焦虑", "紧张", "قلق"],
-        "sad": ["sad", "crying", "tears", "depressed", "伤心", "哭", "难过", "حزين"],
+        "anxious": ["anxious", "worried", "nervous", "can't breathe", "panic", "restless", "uneasy", "on edge", "焦虑", "紧张", "قلق"],
+        "sad": ["sad", "crying", "tears", "depressed", "numb", "hopeless", "feel low", "feeling low", "lost all hope", "breaking down", "down lately", "伤心", "哭", "难过", "حزين"],
         "angry": ["angry", "furious", "rage", "hate", "damn", "生气", "愤怒", "غاضب"],
-        "lonely": ["lonely", "alone", "nobody", "no one", "孤独", "一个人", "وحيد"],
+        "lonely": ["lonely", "alone", "nobody", "no one", "isolated", "disconnected", "no friends", "feel invisible", "孤独", "一个人", "وحيد"],
         "scared": ["scared", "afraid", "terrified", "害怕", "恐惧", "خائف"],
         "panicking": ["panic attack", "can't breathe", "help me", "恐慌发作"],
         "grieving": ["died", "dead", "funeral", "loss", "去世", "死", "失去", "وفاة"],
@@ -122,7 +122,7 @@ def detect_surface_attention(recent_texts: list[str]) -> list[str]:
         "need_exercise": ["exercise", "gym", "run", "workout", "运动", "锻炼", "رياضة"],
         "need_pray": ["pray", "prayer", "mosque", "church", "temple", "祈祷", "صلاة", "مسجد"],
         "need_meaning": ["meaning", "purpose", "why am i", "意义", "目的"],
-        "need_talk": ["talk to someone", "need someone", "想说话", "need to talk"],
+        "need_talk": ["talk to someone", "need someone", "想说话", "need to talk", "confused about my", "don't know what to do", "need advice", "don't know who to talk"],
         "want_friends": ["friends", "meet people", "交朋友", "认识人"],
         "want_art": ["art", "gallery", "exhibition", "画", "展览"],
         "want_read": ["book", "read", "library", "书", "读", "图书馆"],
@@ -137,13 +137,13 @@ def detect_surface_attention(recent_texts: list[str]) -> list[str]:
         "new_place":   ["new here", "just moved", "just arrived", "visiting", "tourist", "刚来", "陌生的地方", "وصلت"],
         "insomnia":    ["can't sleep", "insomnia", "wide awake", "lying awake", "失眠", "睡不着", "أرق"],
         # Self-improvement
-        "confidence":  ["not confident", "insecure", "worthless", "can't do it", "nobody likes", "没信心", "不自信", "لا أستطيع"],
+        "confidence":  ["not confident", "insecure", "worthless", "can't do it", "nobody likes", "feel useless", "i'm a failure", "not good enough", "hate myself", "没信心", "不自信", "لا أستطيع"],
         "reflection":  ["reflecting on", "looking back", "in hindsight", "i wonder why", "i've been reflecting", "回想起来", "反思"],
         # Missing life needs
         "celebrating": ["celebrating", "birthday", "anniversary", "promotion", "good news", "庆祝", "生日", "升职", "احتفال"],
         "homesick":    ["homesick", "miss home", "miss my family", "far from home", "想家", "思乡", "أشتاق للبيت"],
         "headache":    ["headache", "migraine", "head hurts", "头疼", "头痛", "صداع"],
-        "overwhelmed": ["overwhelmed", "too much", "can't handle", "falling apart", "不知所措", "崩溃了", "مرهق"],
+        "overwhelmed": ["overwhelmed", "too much", "can't handle", "falling apart", "can't cope", "can't take it", "stuck and", "不知所措", "崩溃了", "مرهق"],
         "want_outdoor":["outdoors", "nature", "fresh air", "hike", "hiking", "户外", "大自然", "الطبيعة"],
         "want_create": ["want to create", "creative", "make something", "draw", "paint", "craft", "创作", "画画", "أبدع"],
         # Relationship / emotional pain (from real data)
@@ -167,6 +167,87 @@ def detect_surface_attention(recent_texts: list[str]) -> list[str]:
                     break
 
     return attentions
+
+
+# ── Middle Soul: topic accumulator ──────────────────────────────────────────
+
+# Topic → detection keywords (used by update_topic_history)
+_TOPIC_KEYWORDS: dict[str, list[str]] = {
+    "yoga":         ["yoga"],
+    "meditation":   ["meditat", "mindful"],
+    "running":      ["running", "jogging"],
+    "swimming":     ["swimming", "swim"],
+    "gym":          ["gym", "weightlift", "lifting"],
+    "fitness":      ["fitness", "workout", "exercise"],
+    "hiking":       ["hiking", "hike", "trail"],
+    "nature":       ["nature", "forest", "outdoors"],
+    "garden":       ["garden", "gardening"],
+    "coffee":       ["coffee", "espresso", "cappuccino"],
+    "cooking":      ["cooking", "cook", "recipe", "baking", "bake"],
+    "food":         ["food", "eating", "restaurant", "meal"],
+    "art":          ["art", "museum", "gallery", "exhibition"],
+    "drawing":      ["drawing", "draw", "sketch", "illustration"],
+    "painting":     ["painting", "paint", "watercolor"],
+    "photography":  ["photo", "photography", "camera", "shoot"],
+    "writing":      ["writing", "write", "story", "blog", "journal"],
+    "crafts":       ["craft", "knit", "sew", "pottery"],
+    "design":       ["design", "ui", "ux", "figma"],
+    "books":        ["book", "reading", "novel", "fiction", "nonfiction"],
+    "language":     ["language learning", "english class", "arabic lesson", "chinese lesson", "duolingo"],
+    "coding":       ["coding", "programming", "developer", "software", "python", "javascript"],
+    "podcast":      ["podcast", "episode", "listen to"],
+    "study":        ["studying", "exam", "homework", "assignment"],
+    "music":        ["music", "song", "playlist", "concert", "band"],
+    "film":         ["movie", "film", "cinema", "documentary", "series"],
+    "gaming":       ["gaming", "game", "playing games", "video game"],
+    "travel":       ["travel", "trip", "visited", "flight", "passport"],
+    "family":       ["family", "mom", "dad", "sister", "brother", "parents"],
+    "friends":      ["friends", "friendship", "social life", "hang out"],
+    "loneliness":   ["lonely", "alone", "isolated", "no friends"],
+    "anxiety":      ["anxiety", "anxious", "panic", "worry"],
+    "work":         ["work", "job", "career", "office", "meeting"],
+    "career":       ["career", "promotion", "interview", "resume"],
+    "startup":      ["startup", "founder", "launch", "product"],
+    "prayer":       ["prayer", "pray", "mosque", "church", "temple"],
+    "faith":        ["faith", "god", "spiritual", "religion"],
+    "home":         ["home", "house", "apartment", "hometown"],
+}
+
+
+def update_topic_history(
+    text: str,
+    history: dict[str, int] | None = None,
+    decay: float = 0.99,
+) -> dict[str, int]:
+    """Extract topics from a user message and update running topic history.
+
+    Call once per user turn. Feed the returned dict back into the next call,
+    then pass it to generate_trisoul_stars() as topic_history.
+
+    Args:
+        text:    One user message (any language).
+        history: Existing topic counts from previous turns (or None to start).
+        decay:   Multiply all existing counts by this each call (slow forgetting).
+                 Default 0.99 means a topic drops below threshold (~3) after
+                 ~500 turns of silence — effectively permanent within a session.
+
+    Returns:
+        Updated {topic: count} dict. Store and pass back next call.
+
+    Example (App integration):
+        topic_history: dict = {}
+        for user_message in conversation:
+            topic_history = update_topic_history(user_message, topic_history)
+        stars = generate_trisoul_stars(..., topic_history=topic_history)
+    """
+    result = {t: round(c * decay) for t, c in (history or {}).items() if round(c * decay) >= 1}
+    text_lower = text.lower()
+    for topic, keywords in _TOPIC_KEYWORDS.items():
+        for kw in keywords:
+            if kw in text_lower:
+                result[topic] = result.get(topic, 0) + 1
+                break  # one match per topic per message
+    return result
 
 
 def detect_middle_history(topic_counts: dict[str, int]) -> list[str]:

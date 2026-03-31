@@ -123,15 +123,11 @@ def classify_layer(text: str, topic_history: dict[str, int] | None = None) -> tu
             if count >= 3 and topic.lower() in text_lower:
                 return SoulLayer.MIDDLE, f"recurring topic '{topic}' ({count}x)"
 
-    # ── Default heuristic: short + present = Surface, long + complex = Deep ──
-    word_count = len(text.split())
-    if word_count <= 8 and any(w in text_lower for w in ["i want", "i need", "give me", "find"]):
-        return SoulLayer.SURFACE, "short request"
-
-    if word_count > 20:
-        return SoulLayer.DEEP, "long/complex statement"
-
-    return SoulLayer.SURFACE, "default (short, no markers)"
+    # ── Default: Surface unless explicit Deep markers were found above ────────
+    # Long messages are NOT Deep by default — a user describing their hunger
+    # or relationship pain in many words is still a Surface need.
+    # Deep requires explicit vow/belief language or Compass-level signals.
+    return SoulLayer.SURFACE, "default (no deep markers detected)"
 
 
 # ── Layer → API Category Rules ───────────────────────────────────────────────

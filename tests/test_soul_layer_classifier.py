@@ -142,3 +142,50 @@ class TestClassifyAndFilter:
         assert layer == SoulLayer.DEEP
         assert not any(a["cat"] == "food" for a in filtered)
         assert any(a["cat"] == "wisdom" for a in filtered)
+
+
+# ── P0: Long emotional narratives must NOT default to Deep ───────────────────
+
+class TestLongStatementNotDeep:
+    """word_count > 20 was wrongly forcing Deep. Real users describe surface needs in detail."""
+
+    def test_long_relationship_pain_is_surface(self):
+        text = (
+            "I have been having a really hard time with my boyfriend lately "
+            "he is very controlling and does not let me see my friends and it "
+            "makes me feel trapped and I do not know what to do"
+        )
+        layer, reason = classify_layer(text)
+        assert layer == SoulLayer.SURFACE, f"Long emotional text should be Surface, got {layer} ({reason})"
+
+    def test_long_hunger_description_is_surface(self):
+        text = (
+            "I have not eaten anything since yesterday morning and I am feeling "
+            "very weak and shaky and I really need to find somewhere to eat soon "
+            "because I am getting quite desperate here"
+        )
+        layer, reason = classify_layer(text)
+        assert layer == SoulLayer.SURFACE, f"Detailed hunger = Surface, got {layer} ({reason})"
+
+    def test_long_loneliness_is_surface(self):
+        text = (
+            "I moved to this city three months ago and I do not know anyone here "
+            "and I have been spending every evening alone in my apartment and it "
+            "is really affecting my mood and wellbeing"
+        )
+        layer, reason = classify_layer(text)
+        assert layer == SoulLayer.SURFACE, f"Loneliness narrative = Surface, got {layer} ({reason})"
+
+    def test_vow_in_long_text_still_deep(self):
+        """A long text WITH a vow marker should still be Deep."""
+        text = (
+            "After everything that happened with my family and the way they treated "
+            "me over so many years, I have finally decided that I will never go back "
+            "to that house again, not for any reason whatsoever"
+        )
+        layer, reason = classify_layer(text)
+        assert layer == SoulLayer.DEEP, f"Vow in long text = Deep, got {layer} ({reason})"
+
+    def test_short_vow_still_deep(self):
+        layer, _ = classify_layer("I'll never forgive them")
+        assert layer == SoulLayer.DEEP
