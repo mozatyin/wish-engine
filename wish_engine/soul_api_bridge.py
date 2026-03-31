@@ -233,6 +233,23 @@ SOUL_API_MAP: dict[str, list[dict]] = {
         {"api": "wish_engine.apis.creative_apis", "fn": "random_palette", "params": {}, "template": "🎨 今日配色: {colors[0]} {colors[1]} {colors[2]}", "star": "star", "cat": "creative"},
         {"api": "wish_engine.apis.creative_apis", "fn": "daily_motivation", "params": {}, "template": "✨ {result}", "star": "star", "cat": "creative"},
     ],
+
+    # ═══ RELATIONSHIP / EMOTIONAL PAIN (from real data) ═══
+    "heartbreak": [
+        {"api": "wish_engine.apis.poetry_api", "fn": "random_poem", "params": {}, "template": "📜 {title} by {author}\n{lines[0]}\n{lines[1]}", "star": "meteor", "cat": "healing"},
+        {"api": "wish_engine.apis.advice_api", "fn": "get_advice", "params": {}, "template": "💭 {result}", "star": "meteor", "cat": "wisdom"},
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich", "params": {"place_types": ["park", "garden"]}, "template": "{title} — 给自己一点空间和时间", "star": "meteor", "cat": "place"},
+    ],
+    "missing_someone": [
+        {"api": "wish_engine.apis.poetry_api", "fn": "random_poem", "params": {}, "template": "📜 {title} by {author}\n{lines[0]}", "star": "meteor", "cat": "healing"},
+        {"api": "wish_engine.apis.social_apis", "fn": "conversation_starter", "params": {"context": "reconnect"}, "template": "💬 想联系他们? 试试: {result}", "star": "meteor", "cat": "social"},
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich", "params": {"place_types": ["cafe", "park"]}, "template": "{title} — 一个可以安静想念的地方", "star": "meteor", "cat": "place"},
+    ],
+    "relationship_pain": [
+        {"api": "wish_engine.apis.wellness_apis", "fn": "breathing_exercise", "params": {"technique": "box"}, "template": "📦 先深呼吸: 吸4-屏4-呼4-屏4", "star": "meteor", "cat": "calm"},
+        {"api": "wish_engine.apis.advice_api", "fn": "get_advice", "params": {}, "template": "💭 {result}", "star": "meteor", "cat": "wisdom"},
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich", "params": {"place_types": ["community_centre", "library"]}, "template": "{title} — 可以找到支持的地方", "star": "meteor", "cat": "safety"},
+    ],
 }
 
 

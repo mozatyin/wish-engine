@@ -58,6 +58,10 @@ class TestBridgeCoverage:
         "cold":         "I'm so cold and freezing",
         "hot":          "I'm really hot and burning up",
         "tired":        "I'm so tired and exhausted",
+        # relationship / emotional pain (from real data)
+        "heartbreak":        "we broke up and I want her back",
+        "missing_someone":   "I'm missing him so much, can't stop thinking about him",
+        "relationship_pain": "he's so controlling and won't let me go out",
     }
 
     def test_all_bridge_keys_are_detectable(self):
@@ -80,14 +84,15 @@ class TestBridgeCoverage:
             "cold", "hot", "tired",
             "celebrating", "homesick", "headache", "overwhelmed",
             "want_outdoor", "want_create",
+            "heartbreak", "missing_someone", "relationship_pain",
         ]
         for att in new_attentions:
             actions = get_api_actions(att)
             assert len(actions) > 0, f"No bridge actions for '{att}'"
 
     def test_bridge_total_attentions_grew(self):
-        """Bridge should now have more than 32 attention types."""
-        assert len(SOUL_API_MAP) > 32
+        """Bridge should now have more than 35 attention types."""
+        assert len(SOUL_API_MAP) > 35
 
 
 # ── New Life-Need Detections ──────────────────────────────────────────────────
@@ -164,6 +169,24 @@ class TestNewAttentionDetection:
 
     def test_tired_detected(self):
         assert "tired" in detect_surface_attention(["I'm really tired and exhausted"])
+
+    def test_heartbreak_detected(self):
+        assert "heartbreak" in detect_surface_attention(["we broke up and I want her back"])
+
+    def test_heartbreak_ex(self):
+        assert "heartbreak" in detect_surface_attention(["my ex won't stop messaging me"])
+
+    def test_missing_someone_detected(self):
+        assert "missing_someone" in detect_surface_attention(["I'm missing him so much"])
+
+    def test_missing_someone_cant_stop_thinking(self):
+        assert "missing_someone" in detect_surface_attention(["I can't stop thinking about her"])
+
+    def test_relationship_pain_controlling(self):
+        assert "relationship_pain" in detect_surface_attention(["he's so controlling and won't let me go out"])
+
+    def test_relationship_pain_trapped(self):
+        assert "relationship_pain" in detect_surface_attention(["I feel trapped in this toxic relationship"])
 
 
 # ── Middle History Expansion ──────────────────────────────────────────────────

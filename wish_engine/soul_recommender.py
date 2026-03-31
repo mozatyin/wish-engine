@@ -83,6 +83,11 @@ ATTENTION_TO_PLACES: dict[str, dict] = {
     "overwhelmed": {"osm": ["park", "garden"], "why": "需要喘息 — {place}很安静"},
     "want_outdoor":{"osm": ["park", "garden", "nature_reserve"], "why": "想去户外 — {place}离你不远"},
     "want_create": {"osm": ["arts_centre", "library", "community_centre"], "why": "想创作 — {place}有空间和工具"},
+
+    # Relationship / emotional pain
+    "heartbreak":        {"osm": ["park", "garden", "cafe"], "why": "心里不好受 — {place}可以坐下来，慢慢想清楚"},
+    "missing_someone":   {"osm": ["park", "garden", "cafe"], "why": "想念一个人 — {place}安静，适合思念"},
+    "relationship_pain": {"osm": ["community_centre", "library", "place_of_worship"], "why": "关系里不容易 — {place}可以是你的安全空间"},
 }
 
 
@@ -110,7 +115,7 @@ def detect_surface_attention(recent_texts: list[str]) -> list[str]:
         "panicking": ["panic attack", "can't breathe", "help me", "恐慌发作"],
         "grieving": ["died", "dead", "funeral", "loss", "去世", "死", "失去", "وفاة"],
         "guilty": ["guilty", "fault", "wrong", "sorry", "shouldn't", "内疚", "对不起"],
-        "need_money": ["money", "broke", "can't afford", "debt", "钱", "穷", "مال"],
+        "need_money": ["money", "i'm broke", "im broke", "flat broke", "can't afford", "debt", "钱", "穷", "مال"],
         "need_medicine": ["medicine", "sick", "ill", "pain", "药", "生病", "مريض"],
         "need_wifi": ["wifi", "internet", "上网", "إنترنت"],
         "need_quiet": ["quiet", "silence", "peace", "安静", "هدوء"],
@@ -141,6 +146,10 @@ def detect_surface_attention(recent_texts: list[str]) -> list[str]:
         "overwhelmed": ["overwhelmed", "too much", "can't handle", "falling apart", "不知所措", "崩溃了", "مرهق"],
         "want_outdoor":["outdoors", "nature", "fresh air", "hike", "hiking", "户外", "大自然", "الطبيعة"],
         "want_create": ["want to create", "creative", "make something", "draw", "paint", "craft", "创作", "画画", "أبدع"],
+        # Relationship / emotional pain (from real data)
+        "heartbreak":        ["broke up", "break up", "my ex", "she left", "he left", "want her back", "want him back", "want them back", "want my person back", "my heart is broken", "heartbreak", "heartbroken", "失恋", "分手", "قلبي"],
+        "missing_someone":   ["miss him", "miss her", "miss them", "missing him", "missing her", "missing someone", "think about him", "think about her", "think about them", "can't stop thinking about", "thinking of you", "想他", "想她", "想你", "想某人"],
+        "relationship_pain": ["controlling", "won't let me", "won't allow me", "trapped", "toxic relationship", "confused in my relationship", "relationship problems", "relationship issues", "he controls", "she controls", "abusive", "can't leave", "stuck with", "affection", "caring about", "doesn't care", "مشكلة في العلاقة"],
     }
 
     import re

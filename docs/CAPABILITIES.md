@@ -18,7 +18,7 @@
 
 ---
 
-## 一、表层需求（Surface Soul）— 44 种
+## 一、表层需求（Surface Soul）— 47 种
 
 > **触发条件**：用户在最近几条消息中说了关键词。
 > **产品表现**：生成 ☄️ 流星，4小时后自动消失。
@@ -105,6 +105,18 @@
 |---|---|---|---|---|
 | **need_talk** 想倾诉 | talk to someone / need someone / 想说话 | 对话开场句 + 附近适合聊天的地方 | 本地 + OSM | ✅ |
 | **want_friends** 想认识人 | friends / meet people / 交朋友 | 附近社区活动中心 + 破冰话题 | OSM + 本地 | ✅ |
+
+---
+
+### 💔 感情痛苦（Relationship Pain）
+
+> **来源**：真实用户数据发现。覆盖恋爱失落、思念、关系困境三类信号。
+
+| 需求 | 触发关键词（样例） | 产品响应 | 调用服务 | 在线状态 |
+|---|---|---|---|---|
+| **heartbreak** 失恋/心碎 | broke up / my ex / want them back / heartbroken / 失恋 / 分手 | 治愈诗歌 + 一句建议 + 附近安静公园 | PoetryDB + Advice API + OSM | ✅ 实时 |
+| **missing_someone** 思念某人 | missing him/her / miss them / can't stop thinking about / 想他 / 想她 | 治愈诗歌 + 重新联系建议 + 安静场所 | PoetryDB + 本地 + OSM | ✅ |
+| **relationship_pain** 关系困境 | controlling / trapped / toxic relationship / won't let me / 困住了 / 关系问题 | 深呼吸引导 + 一句建议 + 支持资源场所 | 本地 + Advice API + OSM | ✅ |
 
 ---
 
