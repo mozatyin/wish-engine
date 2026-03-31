@@ -246,8 +246,31 @@ class VowSuppressor:
             self._suppressions[topic] = time.time() + duration * 3600
         return topic
 
-    def is_suppressed(self, cat: str) -> bool:
-        """Return True if this API category is currently blocked by an active vow."""
+    # Urgent physical attentions that override vow suppression for their category.
+    # "I'll never eat junk food again" is a vow — but if the user is genuinely
+    # hungry the next day, the restaurant recommendation must still fire.
+    _URGENCY_OVERRIDE: dict[str, frozenset[str]] = {
+        "food":   frozenset({"hungry", "starving", "famished"}),
+        "drink":  frozenset({"thirsty", "dehydrated"}),
+        "health": frozenset({"need_medicine", "headache", "panicking"}),
+        "crisis": frozenset({"panicking", "scared"}),
+    }
+
+    def is_suppressed(self, cat: str, current_attentions: list[str] | None = None) -> bool:
+        """Return True if this API category is currently blocked by an active vow.
+
+        Args:
+            cat:                API category string (e.g. "food", "drink").
+            current_attentions: Surface attentions detected right now.
+                                If an urgent physical need is present for this
+                                category, the suppression is bypassed.
+        """
+        # Urgency override: real physical need beats a prior vow
+        if current_attentions:
+            urgent = self._URGENCY_OVERRIDE.get(cat, frozenset())
+            if urgent & set(current_attentions):
+                return False
+
         now = time.time()
         expired = [t for t, exp in self._suppressions.items() if exp < now]
         for t in expired:

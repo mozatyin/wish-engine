@@ -269,8 +269,11 @@ def generate_trisoul_stars(
             if len(star_map.meteors) >= max_meteors:
                 break
 
-            # Cross-layer suppression: skip if a Deep vow suppresses this category
-            if vow_suppressor and vow_suppressor.is_suppressed(action.get("cat", "")):
+            # Cross-layer suppression: skip if a Deep vow suppresses this category.
+            # Pass current surface attentions so urgent physical needs override the vow.
+            if vow_suppressor and vow_suppressor.is_suppressed(
+                action.get("cat", ""), current_attentions=surface_attentions
+            ):
                 continue
 
             data = _call_api(action, lat, lng)

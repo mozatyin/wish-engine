@@ -91,78 +91,252 @@ ATTENTION_TO_PLACES: dict[str, dict] = {
 }
 
 
+import re as _re
+
+# Words that negate the meaning of whatever follows (within ~3 words)
+_NEGATION_WORDS = frozenset({
+    "not", "no", "never", "don't", "dont", "doesn't", "doesnt",
+    "didn't", "didnt", "won't", "wont", "isn't", "isnt",
+    "aren't", "arent", "wasn't", "wasnt", "haven't", "havent",
+    "neither", "nor", "without",
+})
+
+
+def _is_negated_at(text: str, match_start: int) -> bool:
+    """Return True if the word at match_start is preceded by a negation (within 3 words).
+
+    Phrases (multi-word keywords) are NOT passed here — they already encode their
+    own meaning precisely ("haven't eaten" is not negated by context).
+    """
+    before = text[max(0, match_start - 40):match_start].strip()
+    preceding = before.split()[-3:]
+    return any(w in _NEGATION_WORDS for w in preceding)
+
+
 def detect_surface_attention(recent_texts: list[str]) -> list[str]:
     """Detect what's on the user's mind from their recent messages.
 
     Returns list of attention keys (e.g., ["hungry", "anxious", "lonely"]).
-    Zero LLM — keyword detection from actual words they said.
+    Zero LLM — keyword + phrase detection.
+
+    Single keywords are checked for negation ("I'm not hungry" → no match).
+    Multi-word phrases are never negation-filtered (they encode their own context).
     """
     combined = " ".join(recent_texts).lower()
-    attentions = []
+    attentions: list[str] = []
 
-    # Direct statements (what they literally said)
-    keyword_map = {
-        "hungry": ["hungry", "starving", "饿", "没吃", "food", "eat", "جائع"],
-        "thirsty": ["thirsty", "渴", "drink", "water"],
-        "tired": ["tired", "exhausted", "drained", "burnt out", "burnout", "no energy", "depleted", "累", "疲", "متعب", "can't move"],
-        "cold": ["cold", "freezing", "冷"],
-        "hot": ["hot", "burning", "热", "حر"],
-        "anxious": ["anxious", "worried", "nervous", "can't breathe", "panic", "restless", "uneasy", "on edge", "焦虑", "紧张", "قلق"],
-        "sad": ["sad", "crying", "tears", "depressed", "numb", "hopeless", "feel low", "feeling low", "lost all hope", "breaking down", "down lately", "伤心", "哭", "难过", "حزين"],
-        "angry": ["angry", "furious", "rage", "hate", "damn", "生气", "愤怒", "غاضب"],
-        "lonely": ["lonely", "alone", "nobody", "no one", "isolated", "disconnected", "no friends", "feel invisible", "孤独", "一个人", "وحيد"],
-        "scared": ["scared", "afraid", "terrified", "害怕", "恐惧", "خائف"],
-        "panicking": ["panic attack", "can't breathe", "help me", "恐慌发作"],
-        "grieving": ["died", "dead", "funeral", "loss", "去世", "死", "失去", "وفاة"],
-        "guilty": ["guilty", "fault", "wrong", "sorry", "shouldn't", "内疚", "对不起"],
-        "need_money": ["money", "i'm broke", "im broke", "flat broke", "can't afford", "debt", "钱", "穷", "مال"],
-        "need_medicine": ["medicine", "sick", "ill", "pain", "药", "生病", "مريض"],
-        "need_wifi": ["wifi", "internet", "上网", "إنترنت"],
-        "need_quiet": ["quiet", "silence", "peace", "安静", "هدوء"],
-        "need_exercise": ["exercise", "gym", "run", "workout", "运动", "锻炼", "رياضة"],
-        "need_pray": ["pray", "prayer", "mosque", "church", "temple", "祈祷", "صلاة", "مسجد"],
-        "need_meaning": ["meaning", "purpose", "why am i", "意义", "目的"],
-        "need_talk": ["talk to someone", "need someone", "想说话", "need to talk", "confused about my", "don't know what to do", "need advice", "don't know who to talk"],
-        "want_friends": ["friends", "meet people", "交朋友", "认识人"],
-        "want_art": ["art", "gallery", "exhibition", "画", "展览"],
-        "want_read": ["book", "read", "library", "书", "读", "图书馆"],
-        "want_music": ["music", "concert", "sing", "音乐", "唱"],
-        "want_work": ["work", "productive", "focus", "deadline", "工作", "写代码"],
-        "want_learn": ["learn", "study", "course", "学", "课"],
-        # Context-aware
-        "bored":       ["bored", "boring", "nothing to do", "kill time", "无聊", "ممل"],
-        "morning":     ["good morning", "this morning", "just woke up", "早上好", "刚起床", "صباح الخير"],
-        "evening":     ["tonight", "this evening", "after work", "winding down", "晚上了", "مساء"],
-        "weekend":     ["weekend", "saturday", "sunday", "周末", "星期六", "星期天", "نهاية الأسبوع"],
-        "new_place":   ["new here", "just moved", "just arrived", "visiting", "tourist", "刚来", "陌生的地方", "وصلت"],
-        "insomnia":    ["can't sleep", "insomnia", "wide awake", "lying awake", "失眠", "睡不着", "أرق"],
-        # Self-improvement
-        "confidence":  ["not confident", "insecure", "worthless", "can't do it", "nobody likes", "feel useless", "i'm a failure", "not good enough", "hate myself", "没信心", "不自信", "لا أستطيع"],
-        "reflection":  ["reflecting on", "looking back", "in hindsight", "i wonder why", "i've been reflecting", "回想起来", "反思"],
-        # Missing life needs
-        "celebrating": ["celebrating", "birthday", "anniversary", "promotion", "good news", "庆祝", "生日", "升职", "احتفال"],
-        "homesick":    ["homesick", "miss home", "miss my family", "far from home", "想家", "思乡", "أشتاق للبيت"],
-        "headache":    ["headache", "migraine", "head hurts", "头疼", "头痛", "صداع"],
-        "overwhelmed": ["overwhelmed", "too much", "can't handle", "falling apart", "can't cope", "can't take it", "stuck and", "不知所措", "崩溃了", "مرهق"],
-        "want_outdoor":["outdoors", "nature", "fresh air", "hike", "hiking", "户外", "大自然", "الطبيعة"],
-        "want_create": ["want to create", "creative", "make something", "draw", "paint", "craft", "创作", "画画", "أبدع"],
-        # Relationship / emotional pain (from real data)
-        "heartbreak":        ["broke up", "break up", "my ex", "she left", "he left", "want her back", "want him back", "want them back", "want my person back", "my heart is broken", "heartbreak", "heartbroken", "失恋", "分手", "قلبي"],
-        "missing_someone":   ["miss him", "miss her", "miss them", "missing him", "missing her", "missing someone", "think about him", "think about her", "think about them", "can't stop thinking about", "thinking of you", "想他", "想她", "想你", "想某人"],
-        "relationship_pain": ["controlling", "won't let me", "won't allow me", "trapped", "toxic relationship", "confused in my relationship", "relationship problems", "relationship issues", "he controls", "she controls", "abusive", "can't leave", "stuck with", "affection", "caring about", "doesn't care", "مشكلة في العلاقة"],
+    # Map attention → signal patterns.
+    # Single words: subject to negation filtering ("hungry", "sad").
+    # Phrases (contains space): exact phrase match, no negation filter.
+    keyword_map: dict[str, list[str]] = {
+        # ── Survival ─────────────────────────────────────────────────────────
+        "hungry": [
+            # Direct
+            "hungry", "starving", "famished", "جائع", "饿",
+            # Indirect phrases — the real-data gap
+            "haven't eaten", "havent eaten", "didn't eat", "didnt eat",
+            "nothing to eat", "no food", "skipped breakfast", "skipped lunch",
+            "skipped dinner", "skipped meals", "skip meals",
+            "stomach is growling", "stomach is empty", "running out of food",
+            "haven't had anything", "nothing left to eat",
+            "没吃东西", "没饭吃",
+        ],
+        "thirsty": [
+            "thirsty", "dehydrated", "渴",
+            "nothing to drink", "no water", "dying for a drink",
+        ],
+        "tired": [
+            "tired", "exhausted", "drained", "burnt out", "burnout",
+            "no energy", "depleted", "累", "疲", "متعب",
+            "can't keep my eyes open", "running on empty", "barely function",
+            "haven't slept", "havent slept", "running on fumes",
+        ],
+        "cold": ["cold", "freezing", "冷", "chilly", "shivering"],
+        "hot":  ["hot", "boiling", "sweltering", "热", "حر", "burning up"],
+
+        # ── Emotional states ─────────────────────────────────────────────────
+        "anxious": [
+            "anxious", "worried", "nervous", "panic", "restless",
+            "uneasy", "on edge", "焦虑", "紧张", "قلق",
+            # Indirect phrases
+            "can't breathe", "heart is racing", "can't calm down",
+            "stomach in knots", "palms sweating", "can't stop worrying",
+            "dreading", "filled with dread", "terrified of",
+        ],
+        "sad": [
+            "sad", "crying", "tears", "depressed", "numb", "hopeless",
+            "feel low", "feeling low", "lost all hope", "breaking down",
+            "down lately", "伤心", "哭", "难过", "حزين",
+            # Indirect phrases
+            "can't get out of bed", "lost interest in", "nothing matters",
+            "what's the point", "don't see the point", "feel empty inside",
+            "don't want to get up",
+        ],
+        "angry": [
+            "angry", "furious", "rage", "infuriated", "argument", "生气", "愤怒", "غاضب",
+            # Indirect phrases — real data gap
+            "just argued", "just had an argument", "got into a fight",
+            "had a fight", "got into it with", "got into an argument",
+            "so frustrated", "exasperated", "can't believe they",
+            "this is ridiculous", "blew up at", "lost my temper",
+            "heated argument", "big fight",
+        ],
+        "lonely": [
+            "lonely", "alone", "nobody", "no one", "isolated",
+            "disconnected", "no friends", "feel invisible", "孤独", "一个人", "وحيد",
+            # Indirect phrases
+            "eating alone", "nobody to talk to", "all by myself",
+            "spending the evening alone", "nobody cares", "no one around",
+        ],
+        "scared": [
+            "scared", "afraid", "terrified", "fearful", "害怕", "恐惧", "خائف",
+            "freaking out", "something is wrong",
+        ],
+        "panicking": [
+            "panic attack", "can't breathe", "help me", "恐慌发作",
+            "heart is pounding", "shaking uncontrollably",
+        ],
+        "grieving": [
+            "died", "dead", "funeral", "passed away", "they're gone",
+            "lost them", "loss", "去世", "死", "失去", "وفاة",
+            "can't believe they're gone",
+        ],
+        "guilty": [
+            "guilty", "fault", "shouldn't", "内疚", "对不起",
+            # Indirect phrases
+            "feel like a burden", "burden to everyone", "let everyone down",
+            "all my fault", "i ruined", "i messed up", "i hurt them",
+        ],
+
+        # ── Practical needs ───────────────────────────────────────────────────
+        "need_money": [
+            "i'm broke", "im broke", "flat broke", "can't afford", "debt",
+            "out of cash", "no money", "can't pay", "钱", "穷", "مال",
+        ],
+        "need_medicine": [
+            "medicine", "sick", "ill", "药", "生病", "مريض",
+            "need a doctor", "need to see a doctor", "feel awful physically",
+        ],
+        "need_wifi":  ["wifi", "internet", "上网", "إنترنت", "no signal", "no connection"],
+        "need_quiet": ["quiet", "silence", "peace", "安静", "هدوء", "need some quiet", "need silence"],
+        "need_exercise": [
+            "exercise", "gym", "workout", "运动", "锻炼", "رياضة",
+            "need to move", "need to get moving", "body feels stiff",
+        ],
+        "need_pray": [
+            "pray", "prayer", "mosque", "church", "temple",
+            "祈祷", "صلاة", "مسجد", "time for prayer", "it's prayer time",
+        ],
+        "need_meaning": [
+            "meaning", "purpose", "why am i", "意义", "目的",
+            "what's the point of living", "feel like nothing matters",
+        ],
+        "need_talk": [
+            "talk to someone", "need someone", "想说话", "need to talk",
+            "confused about my", "don't know what to do",
+            "need advice", "don't know who to talk",
+            "someone to talk to", "no one to talk to",
+        ],
+
+        # ── Social ───────────────────────────────────────────────────────────
+        "want_friends": ["friends", "meet people", "交朋友", "认识人", "make new friends", "make friends", "meet friends"],
+
+        # ── Creative & learning ───────────────────────────────────────────────
+        "want_art":    ["gallery", "exhibition", "画", "展览", "art museum"],
+        "want_read":   ["library", "书", "图书馆", "want to read", "good book"],
+        "want_music":  ["music", "concert", "音乐", "live music", "gig tonight"],
+        "want_work":   ["productive", "focus", "deadline", "工作", "写代码", "need to work", "need to get work done"],
+        "want_learn":  ["study", "course", "学", "想学", "want to learn", "learn something new"],
+
+        # ── Context-aware ─────────────────────────────────────────────────────
+        "bored":     ["bored", "boring", "nothing to do", "kill time", "无聊", "ممل"],
+        "morning":   ["good morning", "this morning", "just woke up", "早上好", "刚起床", "صباح الخير"],
+        "evening":   ["tonight", "this evening", "after work", "winding down", "晚上了", "مساء"],
+        "weekend":   ["weekend", "saturday", "sunday", "周末", "星期六", "星期天", "نهاية الأسبوع"],
+        "new_place": ["new here", "just moved", "just arrived", "visiting", "tourist", "刚来", "陌生的地方", "وصلت"],
+        "insomnia":  [
+            "can't sleep", "insomnia", "wide awake", "lying awake", "失眠", "睡不着", "أرق",
+            "been up all night", "up all night", "staring at the ceiling",
+            "stared at the ceiling", "counting sheep",
+            "3am", "4am", "wide awake at", "awake since", "couldn't sleep",
+        ],
+
+        # ── Self-improvement ──────────────────────────────────────────────────
+        "confidence": [
+            "not confident", "insecure", "worthless", "can't do it",
+            "nobody likes", "feel useless", "i'm a failure", "not good enough",
+            "hate myself", "没信心", "不自信", "لا أستطيع",
+        ],
+        "reflection": [
+            "reflecting on", "looking back", "in hindsight",
+            "i wonder why", "i've been reflecting", "回想起来", "反思",
+        ],
+
+        # ── Life events ───────────────────────────────────────────────────────
+        "celebrating": [
+            "celebrating", "birthday", "anniversary", "promotion", "good news",
+            "庆祝", "生日", "升职", "احتفال", "just got promoted", "just got the job",
+        ],
+        "homesick": [
+            "homesick", "miss home", "miss my family", "far from home",
+            "想家", "思乡", "أشتاق للبيت", "wish i was home",
+        ],
+        "headache": [
+            "headache", "migraine", "头疼", "头痛", "صداع",
+            # Real data gap: indirect phrases
+            "head is killing me", "head hurts", "head is pounding",
+            "splitting headache", "throbbing in my head",
+            "my head won't stop",
+        ],
+        "overwhelmed": [
+            "overwhelmed", "can't handle", "falling apart", "can't cope",
+            "can't take it", "不知所措", "崩溃了", "مرهق",
+            # Indirect phrases
+            "drowning in", "too much on my plate", "plate is full",
+            "losing track of everything", "can't keep up",
+        ],
+        "want_outdoor": [
+            "outdoors", "nature", "fresh air", "hike", "hiking", "户外", "大自然", "الطبيعة",
+        ],
+        "want_create": [
+            "want to create", "creative", "make something", "draw", "paint", "craft",
+            "创作", "画画", "أبدع",
+        ],
+
+        # ── Relationship / emotional pain ─────────────────────────────────────
+        "heartbreak": [
+            "broke up", "break up", "my ex", "she left", "he left",
+            "want her back", "want him back", "want them back", "want my person back",
+            "my heart is broken", "heartbreak", "heartbroken", "失恋", "分手",
+        ],
+        "missing_someone": [
+            "miss him", "miss her", "miss them", "missing him", "missing her",
+            "missing someone", "think about him", "think about her",
+            "can't stop thinking about", "thinking of you", "想他", "想她", "想你",
+        ],
+        "relationship_pain": [
+            "controlling", "won't let me", "won't allow me", "toxic relationship",
+            "relationship problems", "relationship issues", "he controls", "she controls",
+            "abusive", "can't leave", "mixed signals", "blowing hot and cold",
+            "on and off again", "push and pull", "emotional manipulation",
+            "مشكلة في العلاقة",
+        ],
     }
 
-    import re
     for attention, keywords in keyword_map.items():
         for kw in keywords:
-            # For CJK/Arabic: substring match (word boundaries don't work)
+            # CJK/Arabic: substring match (no word boundaries)
             if any(ord(c) > 127 for c in kw):
                 if kw in combined:
                     attentions.append(attention)
                     break
             else:
-                # For Latin: word boundary match to avoid "weather" matching "eat"
-                if re.search(r'\b' + re.escape(kw) + r'\b', combined):
+                m = _re.search(r'\b' + _re.escape(kw) + r'\b', combined)
+                if m:
+                    # Negation filter: only for single-word keywords.
+                    # Phrases encode their own meaning ("can't breathe" is already specific).
+                    if ' ' not in kw and _is_negated_at(combined, m.start()):
+                        continue
                     attentions.append(attention)
                     break
 
