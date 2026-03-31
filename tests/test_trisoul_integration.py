@@ -248,3 +248,77 @@ class TestAllThreeTogether:
         assert sup.is_suppressed("food") is True
         # Narrative has been updated 3 times
         assert narrative._session_count == 3
+
+
+# ── Why Text Prefix ───────────────────────────────────────────────────────────
+
+class TestWhyPrefix:
+    """Meteors must always tell the user WHY this recommendation connects to what they said.
+    First principle: "你说饿了 → Corner Cafe现在还开着" — not just "Corner Cafe".
+    """
+
+    def test_hungry_why_contains_attention_prefix(self):
+        """Meteor why text must start with '你说饿了' for hungry attention."""
+        def fake_api(*args, **kwargs):
+            return {"title": "Corner Cafe", "description": "Corner Cafe", "category": "cafe",
+                    "_lat": 25.2, "_lng": 55.3, "_opening_hours": ""}
+
+        with patch("wish_engine.trisoul_stars._call_api", side_effect=fake_api):
+            star_map = generate_trisoul_stars(
+                recent_texts=["I'm so hungry"],
+                lat=LAT, lng=LNG,
+            )
+
+        assert len(star_map.meteors) >= 1
+        food_meteor = star_map.meteors[0]
+        assert "你说饿了" in food_meteor.why
+
+    def test_anxious_why_contains_attention_prefix(self):
+        """Anxious meteor must explain 你感到焦虑 context."""
+        def fake_api(*args, **kwargs):
+            return {"title": "Central Park", "category": "park",
+                    "_lat": 25.2, "_lng": 55.3, "_opening_hours": ""}
+
+        with patch("wish_engine.trisoul_stars._call_api", side_effect=fake_api):
+            star_map = generate_trisoul_stars(
+                recent_texts=["I feel so anxious I can't think straight"],
+                lat=LAT, lng=LNG,
+            )
+
+        assert len(star_map.meteors) >= 1
+        assert any("你感到焦虑" in m.why for m in star_map.meteors)
+
+    def test_lonely_why_contains_attention_prefix(self):
+        """Lonely meteor must reference 你感到孤独."""
+        def fake_api(*args, **kwargs):
+            return {"title": "Coffee House", "category": "cafe",
+                    "_lat": 25.2, "_lng": 55.3, "_opening_hours": ""}
+
+        with patch("wish_engine.trisoul_stars._call_api", side_effect=fake_api):
+            star_map = generate_trisoul_stars(
+                recent_texts=["I feel so lonely, no one is around"],
+                lat=LAT, lng=LNG,
+            )
+
+        assert len(star_map.meteors) >= 1
+        assert any("你感到孤独" in m.why for m in star_map.meteors)
+
+    def test_why_prefix_followed_by_recommendation(self):
+        """Why text must have format: 'prefix → recommendation content'."""
+        def fake_api(*args, **kwargs):
+            return {"title": "Green Park", "category": "park",
+                    "_lat": 25.2, "_lng": 55.3, "_opening_hours": ""}
+
+        with patch("wish_engine.trisoul_stars._call_api", side_effect=fake_api):
+            star_map = generate_trisoul_stars(
+                recent_texts=["I'm so angry at everything"],
+                lat=LAT, lng=LNG,
+            )
+
+        assert len(star_map.meteors) >= 1
+        why = star_map.meteors[0].why
+        # Must have "→" separator between context and recommendation
+        assert "→" in why
+        # Recommendation content must follow the separator
+        parts = why.split("→", 1)
+        assert len(parts[1].strip()) > 0

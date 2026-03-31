@@ -104,6 +104,57 @@ class TriSoulStarMap:
         return " | ".join(parts) + f" — {self.total} lights in your sky"
 
 
+# ── Attention → "Why This" Prefix ────────────────────────────────────────────
+# When a meteor fires, prepend "你说X → " so the user always sees WHY this recommendation
+# connects to what they just expressed. Without this, a poem just appears with no context.
+_ATTENTION_WHY_PREFIX: dict[str, str] = {
+    "hungry":           "你说饿了",
+    "thirsty":          "你需要喝点什么",
+    "tired":            "你说很累了",
+    "cold":             "你说很冷",
+    "hot":              "你说很热",
+    "sad":              "你心情很低落",
+    "angry":            "你感到愤怒",
+    "anxious":          "你感到焦虑",
+    "lonely":           "你感到孤独",
+    "scared":           "你感到害怕",
+    "panicking":        "你在恐慌",
+    "grieving":         "你在悲痛中",
+    "guilty":           "你感到内疚",
+    "headache":         "你头很疼",
+    "insomnia":         "你无法入睡",
+    "overwhelmed":      "你感到不堪重负",
+    "heartbreak":       "你的心碎了",
+    "missing_someone":  "你很想念某人",
+    "relationship_pain":"你的感情让你很痛苦",
+    "need_medicine":    "你需要药物",
+    "need_money":       "你在财务上遇到了困难",
+    "need_wifi":        "你需要网络",
+    "need_quiet":       "你需要安静",
+    "need_talk":        "你需要倾诉",
+    "need_pray":        "你想要祈祷",
+    "need_exercise":    "你想运动",
+    "want_read":        "你想读点什么",
+    "want_learn":       "你想学习新东西",
+    "want_art":         "你想感受艺术",
+    "want_music":       "你想听音乐",
+    "want_work":        "你需要一个工作的地方",
+    "want_friends":     "你想认识新朋友",
+    "want_outdoor":     "你想出去走走",
+    "want_create":      "你想创作",
+    "bored":            "你感到无聊",
+    "celebrating":      "你在庆祝",
+    "homesick":         "你想家了",
+    "confidence":       "你需要一些鼓励",
+    "reflection":       "你想反思",
+    "new_place":        "你到了一个新地方",
+    "morning":          "早安",
+    "evening":          "晚上好",
+    "weekend":          "周末到了",
+    "need_meaning":     "你在寻找生命的意义",
+}
+
+
 # ── API Caller ───────────────────────────────────────────────────────────────
 
 def _call_api(action: dict, lat: float, lng: float) -> dict | None:
@@ -280,10 +331,13 @@ def generate_trisoul_stars(
             if not data:
                 continue
 
-            # Build display text
+            # Build display text — always prefix with "你说X → " so user sees WHY
             why = _format_why(action.get("template", ""), data)
             if not why:
                 continue
+            prefix = _ATTENTION_WHY_PREFIX.get(attention, "")
+            if prefix:
+                why = f"{prefix} → {why}"
 
             # Dedup by content
             dedup_key = why[:40]

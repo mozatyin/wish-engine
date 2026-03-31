@@ -1,12 +1,16 @@
 """OpenStreetMap Overpass API -- free, global place search. No API key needed.
 
 Queries the Overpass API to find real places near any coordinates.
-Returns actual place names, categories, and coordinates.
+Returns actual place names, categories, and coordinates — sorted nearest-first,
+open places ranked before closed ones.
 """
 
 from __future__ import annotations
 
 import json
+import math
+import re
+from datetime import datetime
 from typing import Any
 from urllib.request import urlopen, Request
 from urllib.parse import quote
@@ -14,6 +18,68 @@ from urllib.error import URLError
 
 
 OVERPASS_URL = "https://overpass-api.de/api/interpreter"
+
+
+def _haversine_m(lat1: float, lng1: float, lat2: float, lng2: float) -> float:
+    """Straight-line distance in metres between two GPS coordinates."""
+    dlat = (lat2 - lat1) * 111_000
+    dlng = (lng2 - lng1) * 111_000 * math.cos(math.radians(lat1))
+    return math.sqrt(dlat ** 2 + dlng ** 2)
+
+
+def is_open_now(opening_hours: str | None) -> bool | None:
+    """Check whether a place is currently open based on its OSM opening_hours string.
+
+    Returns:
+        True   — place is open right now
+        False  — place is closed right now
+        None   — cannot determine (missing or unparseable hours string)
+
+    Handles the most common OSM formats:
+        "24/7"                   → always open
+        "Mo-Su 09:00-23:00"      → every day within hours
+        "09:00-23:00"            → any day within hours
+        "Mo-Fr 08:00-20:00"      → weekdays only (partial day-of-week support)
+    """
+    if not opening_hours:
+        return None
+    oh = opening_hours.strip().lower()
+
+    if oh == "24/7":
+        return True
+
+    now = datetime.now()
+    current_hour = now.hour + now.minute / 60.0
+
+    # Day-of-week check (partial — only "Mo-Fr" vs "Sa,Su" distinction)
+    weekday = now.weekday()  # 0=Mon … 6=Sun
+    is_weekend = weekday >= 5
+
+    if "mo-fr" in oh and is_weekend:
+        return False
+    if ("sa" in oh or "su" in oh) and not is_weekend:
+        # Only open on weekends — rough heuristic
+        pass  # let hour check decide; don't return False outright
+
+    # Find ALL HH:MM-HH:MM time ranges — handles lunch breaks like "09:00-13:00,15:00-19:00"
+    ranges = re.findall(r'(\d{1,2}):(\d{2})\s*[-–]\s*(\d{1,2}):(\d{2})', oh)
+    if not ranges:
+        return None
+
+    for (oh1, om1, ch1, cm1) in ranges:
+        open_h  = int(oh1) + int(om1) / 60.0
+        close_h = int(ch1) + int(cm1) / 60.0
+
+        if close_h == 0.0:      # "23:00-00:00" means closes at midnight
+            close_h = 24.0
+        if close_h < open_h:    # overnight span e.g. "22:00-03:00"
+            if current_hour >= open_h or current_hour < close_h:
+                return True
+        else:
+            if open_h <= current_hour < close_h:
+                return True
+
+    return False  # Checked all ranges — not open in any of them
 
 
 def nearby_places(
@@ -71,16 +137,20 @@ def nearby_places(
 
             category = tags.get("amenity") or tags.get("leisure") or tags.get("shop") or "place"
 
+            place_lat = element.get("lat")
+            place_lng = element.get("lon")
+            dist = _haversine_m(lat, lng, place_lat, place_lng) if (place_lat and place_lng) else None
             places.append({
                 "name": name,
                 "category": category,
-                "lat": element.get("lat"),
-                "lng": element.get("lng"),
+                "lat": place_lat,
+                "lng": place_lng,
                 "osm_tags": tags,
                 "address": tags.get("addr:street", ""),
                 "opening_hours": tags.get("opening_hours", ""),
                 "website": tags.get("website", ""),
                 "phone": tags.get("phone", ""),
+                "_distance_m": dist,
             })
 
         return places
@@ -149,7 +219,9 @@ def _osm_to_personality(place: dict) -> dict[str, Any]:
         "action_url": place.get("website"),
         "_lat": place.get("lat"),
         "_lng": place.get("lng"),
+        "_distance_m": place.get("_distance_m"),
         "_opening_hours": place.get("opening_hours"),
+        "_is_open": is_open_now(place.get("opening_hours")),
         "_phone": place.get("phone"),
     }
 
@@ -161,6 +233,21 @@ def search_and_enrich(
     place_types: list[str] | None = None,
     max_results: int = 15,
 ) -> list[dict[str, Any]]:
-    """Search OSM and return personality-compatible place dicts."""
+    """Search OSM and return personality-compatible place dicts.
+
+    Results are sorted: open-now first, then by distance (nearest first).
+    Unknown opening hours are treated as potentially open (ranked after confirmed open).
+    Confirmed-closed places rank last.
+    """
     raw = nearby_places(lat, lng, radius_m, place_types, max_results)
-    return [_osm_to_personality(p) for p in raw]
+    enriched = [_osm_to_personality(p) for p in raw]
+
+    def _sort_key(place: dict) -> tuple:
+        is_open = place.get("_is_open")
+        # open=True → 0, unknown=None → 1, closed=False → 2
+        open_rank = 0 if is_open is True else (1 if is_open is None else 2)
+        dist = place.get("_distance_m") or float("inf")
+        return (open_rank, dist)
+
+    enriched.sort(key=_sort_key)
+    return enriched

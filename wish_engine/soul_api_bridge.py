@@ -39,8 +39,8 @@ SOUL_API_MAP: dict[str, list[dict]] = {
         {"api": "wish_engine.apis.cocktail_api", "fn": "random_cocktail", "params": {}, "template": "试试: {name} — {instructions:.60}", "star": "meteor", "cat": "drink"},
     ],
     "need_money": [
-        {"api": "wish_engine.apis.currency_api", "fn": "get_rates", "params": {"base": "USD"}, "template": "当前汇率: 1 USD = {EUR} EUR / {CNY} CNY", "star": "meteor", "cat": "finance"},
-        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich", "params": {"place_types": ["bank", "atm"]}, "template": "最近的: {title}", "star": "meteor", "cat": "finance"},
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich", "params": {"place_types": ["bank", "atm"]}, "template": "最近的: {title} — 可以取款或咨询", "star": "meteor", "cat": "finance"},
+        {"api": "wish_engine.apis.advice_api", "fn": "get_advice", "params": {}, "template": "💭 {result}", "star": "meteor", "cat": "wisdom"},
     ],
     "need_medicine": [
         {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich", "params": {"place_types": ["pharmacy", "hospital"]}, "template": "最近的: {title} — {description}", "star": "meteor", "cat": "health"},
@@ -144,10 +144,8 @@ SOUL_API_MAP: dict[str, list[dict]] = {
 
     # ═══ FUN / BOREDOM ═══
     "bored": [
-        {"api": "wish_engine.apis.bored_api", "fn": "get_activity", "params": {}, "template": "💡 试试: {activity} ({type})", "star": "meteor", "cat": "fun"},
-        {"api": "wish_engine.apis.joke_api", "fn": "get_joke", "params": {}, "template": "😂 {joke}", "star": "meteor", "cat": "fun"},
-        {"api": "wish_engine.apis.micro_apis", "fn": "random_trivia", "params": {}, "template": "🧠 {category}: {question}", "star": "meteor", "cat": "fun"},
-        {"api": "wish_engine.apis.iss_api", "fn": "iss_location", "params": {}, "template": "🛸 国际空间站现在在 {lat:.1f}, {lng:.1f} 上空", "star": "meteor", "cat": "wonder"},
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich", "params": {"place_types": ["museum", "gallery", "park", "arts_centre", "cinema"]}, "template": "✨ {title} — 现在就可以去", "star": "meteor", "cat": "explore"},
+        {"api": "wish_engine.apis.bored_api", "fn": "get_activity", "params": {}, "template": "💡 或者试试: {activity} ({type})", "star": "meteor", "cat": "fun"},
     ],
 
     # ═══ SELF-IMPROVEMENT ═══
@@ -185,8 +183,8 @@ SOUL_API_MAP: dict[str, list[dict]] = {
 
     # ═══ HEALTH AWARE ═══
     "insomnia": [
-        {"api": "wish_engine.apis.health_apis", "fn": "sleep_times", "params": {"wake_time_hour": 7}, "template": "😴 最佳入睡时间: {result[0]}", "star": "meteor", "cat": "sleep"},
-        {"api": "wish_engine.apis.wellness_apis", "fn": "breathing_exercise", "params": {"technique": "478"}, "template": "4-7-8 助眠呼吸: 吸4-屏7-呼8", "star": "meteor", "cat": "sleep"},
+        {"api": "wish_engine.apis.wellness_apis", "fn": "breathing_exercise", "params": {"technique": "478"}, "template": "4-7-8 助眠呼吸，现在就试: 吸4秒—屏7秒—呼8秒，重复3次", "star": "meteor", "cat": "sleep"},
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich", "params": {"place_types": ["pharmacy"]}, "template": "{title} — 可能有助眠产品", "star": "meteor", "cat": "health"},
     ],
 
     # ═══ TEMPERATURE / ENVIRONMENT ═══
