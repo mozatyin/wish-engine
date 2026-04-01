@@ -215,7 +215,7 @@ SOUL_API_MAP: dict[str, list[dict]] = {
         {"api": "wish_engine.apis.music_api", "fn": "search_playlists",
          "params": {"query": "morning energy", "limit": 1}, "template": "☀️ 早安歌单: {name}", "star": "meteor", "cat": "music"},
         {"api": "wish_engine.apis.iss_api", "fn": "people_in_space",
-         "params": {}, "template": "🚀 此刻太空中有 {count} 人: {names}", "star": "meteor", "cat": "wonder"},
+         "params": {}, "template": "🚀 {name} 正在太空中 ({craft})", "star": "meteor", "cat": "wonder"},
     ],
     "evening": [
         {"api": "wish_engine.apis.open_meteo_api", "fn": "get_weather", "params": {}, "template": "🌙 现在{temperature_c}°C。适合出去走走", "star": "meteor", "cat": "weather"},

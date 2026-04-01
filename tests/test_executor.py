@@ -180,6 +180,14 @@ class TestCallAction:
         assert _call_action({**_action(), "fn": "search"}, lat=None, lng=None) is None
 
     @patch("wish_engine.executor.importlib.import_module")
+    def test_returns_none_when_api_returns_empty_string(self, mock_import):
+        mock_mod = MagicMock()
+        mock_mod.random_fact.return_value = ""
+        mock_import.return_value = mock_mod
+
+        assert _call_action({**_action(), "fn": "random_fact"}, lat=None, lng=None) is None
+
+    @patch("wish_engine.executor.importlib.import_module")
     def test_injects_lat_lng_for_location_api(self, mock_import):
         captured = {}
 

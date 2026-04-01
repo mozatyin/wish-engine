@@ -144,7 +144,7 @@ def _call_action(
 
         if raw is None:
             return None
-        if isinstance(raw, list) and len(raw) == 0:
+        if isinstance(raw, (list, str)) and len(raw) == 0:
             return None
 
         return {
