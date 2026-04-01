@@ -321,6 +321,383 @@ def detect_surface_attention(recent_texts: list[str]) -> list[str]:
             "on and off again", "push and pull", "emotional manipulation",
             "مشكلة في العلاقة",
         ],
+
+        # ── CRITICAL: Life-safety ─────────────────────────────────────────────
+        "suicidal_ideation": [
+            # Direct
+            "suicidal", "suicide", "kill myself", "end my life", "end it all",
+            "want to die", "don't want to live", "better off dead",
+            "no reason to live", "can't go on", "self harm", "self-harm",
+            "hurt myself", "自杀", "不想活", "活不下去", "死了算了",
+            # Indirect phrases
+            "thinking about ending things", "thinking about ending it",
+            "nobody would miss me", "world would be better without me",
+            "can't see a way out", "just want it to stop",
+            "tired of living", "tired of being alive",
+            "what's the point of living", "make it stop",
+            # Arabic
+            "أريد أن أموت", "انتحار", "أقتل نفسي",
+        ],
+        "domestic_violence": [
+            # Direct
+            "he hit me", "she hit me", "they hit me",
+            "he beats me", "she beats me", "being abused",
+            "domestic violence", "domestic abuse",
+            "he threatened me", "she threatened me",
+            "afraid of my partner", "afraid of my husband", "afraid of my wife",
+            "家暴", "打我", "暴力",
+            # Indirect phrases
+            "scared to go home", "can't leave him", "can't leave her",
+            "he controls all my money", "she controls all my money",
+            "not allowed to see my friends", "not allowed to leave",
+            "he checks my phone", "she checks my phone",
+            "walking on eggshells", "next time he'll hurt me",
+            "hiding bruises", "called me worthless",
+            # Arabic
+            "يضربني", "العنف الأسري",
+        ],
+        "addiction_crisis": [
+            # Direct
+            "withdrawal", "detox", "addicted", "addiction",
+            "can't stop drinking", "can't stop using",
+            "relapsed", "relapse", "overdose",
+            "drug problem", "alcohol problem",
+            "依赖", "成瘾", "戒断", "复发",
+            # Indirect phrases
+            "been drinking every day", "using every day",
+            "need a drink to function", "need it just to get through",
+            "been hiding how much i drink", "been hiding how much i use",
+            "my family doesn't know how bad it is",
+            "drinking is out of control", "using is out of control",
+            "can't stop even though i want to",
+            "morning drink", "drinking since morning",
+        ],
+        "homelessness": [
+            # Direct
+            "homeless", "no place to sleep", "no place to stay",
+            "sleeping rough", "sleeping on the street",
+            "evicted", "got evicted", "being evicted",
+            "no shelter", "lost my home", "无家可归", "流浪",
+            # Indirect phrases
+            "don't have anywhere to sleep tonight",
+            "don't have anywhere to go tonight",
+            "got kicked out", "thrown out of my apartment",
+            "car is my home now", "sleeping in my car",
+            "couch surfing", "staying on a friend's couch",
+            "can't afford rent anymore", "can't make rent",
+            "landlord changed the locks",
+        ],
+
+        # ── Mental health clinical ────────────────────────────────────────────
+        "need_therapy": [
+            # Direct
+            "therapist", "therapy", "counseling", "counsellor",
+            "psychiatrist", "psychologist", "mental health help",
+            "心理咨询", "治疗师", "心理医生",
+            # Indirect phrases
+            "need to talk to a professional", "need professional help",
+            "where do i find a therapist", "how do i find a therapist",
+            "can't afford therapy", "looking for a counselor",
+            "thinking about starting therapy", "should i see a therapist",
+        ],
+        "trauma_ptsd": [
+            # Direct
+            "trauma", "traumatized", "ptsd", "flashbacks", "flashback",
+            "triggered", "nightmare", "nightmares", "创伤", "闪回",
+            # Indirect phrases
+            "can't stop reliving it", "keeps coming back to me",
+            "can't get it out of my head", "intrusive thoughts",
+            "something happened to me that i can't talk about",
+            "can't stop thinking about what happened",
+            "body won't calm down when i think about it",
+            "startle at everything", "always on high alert",
+            "don't feel safe even at home",
+        ],
+        "eating_disorder": [
+            # Direct
+            "eating disorder", "anorexia", "bulimia", "binge eating",
+            "purging", "restricting food", "进食障碍",
+            # Indirect phrases
+            "scared to eat", "afraid of food", "hate my body",
+            "can't stop eating and then making myself sick",
+            "counting every calorie obsessively",
+            "haven't eaten in days because of fear",
+            "throwing up after eating", "laxatives after eating",
+            "my relationship with food is destroying me",
+        ],
+        "postpartum": [
+            # Direct
+            "postpartum", "postnatal", "after having my baby", "after giving birth",
+            "new mom", "new mother", "产后", "产后抑郁",
+            # Indirect phrases
+            "can't bond with my baby", "feel nothing for my baby",
+            "since having the baby i can't stop crying",
+            "everyone says i should be happy but i'm not",
+            "scared i'm going to hurt my baby",
+            "postpartum depression", "baby blues that won't go away",
+            "feel like my baby deserves a better mom",
+        ],
+
+        # ── Financial ────────────────────────────────────────────────────────
+        "debt_crisis": [
+            # Direct
+            "eviction notice",
+            "can't pay rent", "behind on rent", "missed rent",
+            "can't pay my bills", "debt collector", "debt collectors",
+            "bankruptcy", "bankrupt", "can't make ends meet",
+            "债务", "欠债", "欠款", "无法还款",
+            # Indirect phrases
+            "about to lose my home", "about to be evicted",
+            "can't pay my mortgage", "behind on my mortgage",
+            "bailiffs coming", "court summons for debt",
+            "three months behind on rent", "rent is due and i have nothing",
+            "disconnected my electricity", "utilities cut off",
+            "can't afford food and rent both",
+        ],
+        "job_loss": [
+            # Direct
+            "fired", "got fired", "laid off", "got laid off",
+            "made redundant", "lost my job", "unemployment",
+            "被解雇", "失业", "裁员",
+            # Indirect phrases
+            "just lost my job", "lost my job today",
+            "company is closing", "company went under",
+            "position was eliminated", "contract wasn't renewed",
+            "let go from my job", "terminated",
+            "first time unemployed", "don't know how i'll pay bills now",
+        ],
+
+        # ── Career ────────────────────────────────────────────────────────────
+        "job_seeking": [
+            # Direct
+            "job hunting", "job search", "looking for work", "looking for a job",
+            "applying for jobs", "job applications", "求职", "找工作",
+            # Indirect phrases
+            "can't find a job", "sending out resumes", "sending out cvs",
+            "haven't heard back from any applications",
+            "been unemployed for months",
+            "need a job desperately", "where to find job listings",
+        ],
+        "career_change": [
+            # Direct
+            "career change", "change careers", "switching careers",
+            "new career", "different field", "转行",
+            # Indirect phrases
+            "hate my job but don't know what else to do",
+            "stuck in the wrong career",
+            "thinking about changing what i do",
+            "want to do something completely different",
+            "don't know what i'm meant to do with my life",
+            "should i quit my job", "thinking of leaving my career",
+        ],
+
+        # ── Housing ────────────────────────────────────────────────────────────
+        "need_housing": [
+            # Direct
+            "looking for an apartment", "looking for a flat", "apartment hunting",
+            "flat hunting", "need to find housing", "house hunting",
+            "找房", "租房", "找公寓",
+            # Indirect phrases
+            "where do i find cheap housing", "affordable housing",
+            "need to move", "need a new place to live",
+            "landlord won't renew my lease",
+            "where can i find a room to rent",
+        ],
+
+        # ── Family ────────────────────────────────────────────────────────────
+        "parenting_stress": [
+            # Direct
+            "parenting stress", "overwhelmed as a parent",
+            "育儿压力",
+            # Indirect phrases
+            "my kids are driving me insane",
+            "don't know how to handle my child",
+            "screaming all the time at my kids", "losing patience with my kids",
+            "feel like a terrible parent", "terrible mother", "terrible father",
+            "my toddler won't stop", "can't cope with the kids",
+            "haven't slept since the baby came",
+        ],
+        "need_childcare": [
+            # Direct
+            "childcare", "daycare", "nursery", "babysitter",
+            "after school care", "托儿所", "托育",
+            # Indirect phrases
+            "can't find childcare", "can't afford daycare",
+            "need someone to watch my kids",
+            "where do i find a babysitter",
+            "kids have nowhere to go while i work",
+        ],
+        "family_conflict": [
+            # Direct
+            "family conflict", "family fight", "family argument",
+            "fighting with my parents", "fighting with my siblings",
+            "家庭矛盾", "家庭冲突",
+            # Indirect phrases
+            "my parents don't talk to me",
+            "cut off from my family",
+            "estranged from my family",
+            "huge argument with my dad", "huge argument with my mom",
+            "family is falling apart", "my family is toxic",
+        ],
+        "elder_care": [
+            # Direct
+            "elderly parent", "aging parent", "my parent has dementia",
+            "caring for my elderly", "caregiver burnout",
+            "养老", "照顾老人",
+            # Indirect phrases
+            "mom can't live alone anymore",
+            "dad can't take care of himself",
+            "don't know how to get help for my aging parent",
+            "can't afford a nursing home",
+            "how do i find care for my elderly parent",
+        ],
+        "divorce": [
+            # Direct
+            "divorce", "divorcing", "going through a divorce",
+            "separated", "separation", "离婚",
+            # Indirect phrases
+            "husband and i are splitting up", "wife and i are splitting up",
+            "marriage is over", "filing for divorce",
+            "can't afford a divorce lawyer",
+            "custody battle", "custody dispute",
+            "co-parenting is a nightmare",
+        ],
+
+        # ── Legal ─────────────────────────────────────────────────────────────
+        "legal_trouble": [
+            # Direct
+            "arrested", "arrest", "in trouble with the law",
+            "facing charges", "criminal charges", "court date",
+            "need a lawyer", "can't afford a lawyer",
+            "法律问题", "被捕", "法庭",
+            # Indirect phrases
+            "police showed up at my door",
+            "subpoena", "got a subpoena",
+            "being sued", "lawsuit against me",
+            "don't know my legal rights",
+            "need free legal help", "where to find legal aid",
+        ],
+        "immigration_stress": [
+            # Direct
+            "visa expired", "undocumented", "deportation",
+            "asylum", "asylum seeker", "refugee", "immigration",
+            "签证", "移民", "难民", "庇护",
+            # Indirect phrases
+            "scared of being deported",
+            "don't have papers", "no papers",
+            "immigration appointment",
+            "my visa is running out",
+            "don't know if i can stay",
+            "immigration lawyer",
+        ],
+
+        # ── Health ────────────────────────────────────────────────────────────
+        "chronic_pain": [
+            # Direct
+            "chronic pain", "fibromyalgia", "chronic illness",
+            "pain every day", "constant pain", "慢性疼痛",
+            # Indirect phrases
+            "been in pain for months", "pain that won't go away",
+            "doctors can't figure out what's wrong",
+            "pain is affecting my life",
+            "can't do normal things because of pain",
+            "pain management", "pain clinic",
+        ],
+        "need_dental": [
+            # Direct
+            "toothache", "tooth pain", "dental", "dentist",
+            "tooth is killing me", "broken tooth", "牙疼", "牙医",
+            # Indirect phrases
+            "can't afford a dentist", "tooth hurts so bad",
+            "my tooth is infected", "dental emergency",
+            "where to find a free dentist",
+        ],
+        "disability_access": [
+            # Direct
+            "disability", "disabled", "wheelchair", "mobility aid",
+            "accessibility", "accessibility needs", "残疾", "无障碍",
+            # Indirect phrases
+            "can't access because of my disability",
+            "need accessible venue",
+            "disability benefits",
+            "where to find disability support",
+        ],
+        "pregnancy": [
+            # Direct
+            "pregnant", "pregnancy", "expecting a baby",
+            "prenatal", "antenatal", "怀孕", "孕妇",
+            # Indirect phrases
+            "just found out i'm pregnant",
+            "need prenatal care", "where to go for pregnancy care",
+            "first trimester", "morning sickness",
+            "midwife", "obstetrician",
+        ],
+
+        # ── Practical ─────────────────────────────────────────────────────────
+        "need_vet": [
+            # Direct
+            "vet", "veterinarian", "veterinary",
+            "my dog is sick", "my cat is sick", "my pet is sick",
+            "pet emergency", "兽医", "宠物生病",
+            # Indirect phrases
+            "where is the nearest vet",
+            "my pet needs a doctor", "my animal is injured",
+            "can't afford a vet",
+        ],
+        "home_emergency": [
+            # Direct
+            "gas leak", "smell gas", "flooded", "flooding",
+            "locked out", "locked out of my house",
+            "electrical problem", "power outage", "smoke alarm",
+            "煤气泄漏", "漏水", "停电",
+            # Indirect phrases
+            "something is wrong with the pipes",
+            "no heating in winter", "boiler is broken",
+            "can't get into my apartment",
+            "emergency plumber", "emergency electrician",
+        ],
+        "need_translation": [
+            # Direct
+            "translator", "translation", "interpret",
+            "interpreter", "翻译", "مترجم",
+            # Indirect phrases
+            "don't speak the language",
+            "can't understand what they're saying",
+            "need help communicating",
+            "language barrier",
+            "need someone who speaks",
+        ],
+        "food_insecurity": [
+            # Direct
+            "food bank", "food pantry", "food stamps", "snap", "food assistance",
+            "food voucher", "free food", "食物援助", "食物银行",
+            # Indirect phrases
+            "can't afford groceries", "run out of food",
+            "children haven't eaten", "kids haven't eaten",
+            "don't have money for food",
+            "where to get free food",
+            "no food in the house",
+        ],
+        "need_clothes": [
+            # Direct
+            "clothes bank", "clothing donation", "charity clothes",
+            "free clothing", "can't afford clothes",
+            "旧衣服", "捐赠衣物",
+            # Indirect phrases
+            "need warm clothes", "don't have a winter coat",
+            "children need clothes", "kids need school clothes",
+            "where to find free clothing",
+        ],
+        "tech_help": [
+            # Direct
+            "computer help", "tech support", "it help",
+            "laptop broken", "laptop is broken", "phone broken", "internet issue",
+            "电脑坏了", "手机坏了",
+            # Indirect phrases
+            "can't figure out how to", "don't know how to use",
+            "keep getting error", "where to get tech help for free",
+            "library computer help",
+        ],
     }
 
     for attention, keywords in keyword_map.items():
@@ -386,6 +763,68 @@ _TRIGGER_PHRASES: dict[str, list[str]] = {
     "confidence":       ["hate myself", "feel useless", "worthless", "not good enough"],
     "want_outdoor":     ["fresh air", "need to get outside", "go for a walk"],
     "panicking":        ["panic attack", "heart is pounding"],
+    "suicidal_ideation":  ["thinking about ending things", "nobody would miss me",
+                           "world would be better without me", "want to die",
+                           "tired of being alive", "can't see a way out",
+                           "自杀", "不想活"],
+    "domestic_violence":  ["scared to go home", "walking on eggshells",
+                           "he hit me", "she hit me", "hiding bruises",
+                           "can't leave him", "can't leave her", "家暴"],
+    "addiction_crisis":   ["drinking is out of control", "can't stop even though i want to",
+                           "relapsed", "been drinking every day", "overdose"],
+    "homelessness":       ["sleeping in my car", "don't have anywhere to sleep tonight",
+                           "got kicked out", "sleeping rough", "evicted", "homeless"],
+    "need_therapy":       ["need to talk to a professional", "where do i find a therapist",
+                           "thinking about starting therapy"],
+    "trauma_ptsd":        ["can't stop reliving it", "intrusive thoughts",
+                           "keeps coming back to me", "flashbacks", "always on high alert"],
+    "eating_disorder":    ["throwing up after eating", "scared to eat",
+                           "my relationship with food is destroying me", "purging"],
+    "postpartum":         ["can't bond with my baby", "since having the baby i can't stop crying",
+                           "postpartum depression", "everyone says i should be happy but"],
+    "debt_crisis":        ["about to be evicted", "rent is due and i have nothing",
+                           "can't pay rent", "utilities cut off", "bankruptcy"],
+    "job_loss":           ["just lost my job", "got fired", "got laid off",
+                           "made redundant", "position was eliminated"],
+    "job_seeking":        ["can't find a job", "sending out resumes",
+                           "haven't heard back from any applications", "job hunting"],
+    "career_change":      ["stuck in the wrong career", "hate my job but don't know what else",
+                           "thinking of leaving my career", "career change"],
+    "need_housing":       ["apartment hunting", "need to find housing",
+                           "looking for an apartment", "affordable housing"],
+    "parenting_stress":   ["feel like a terrible parent", "losing patience with my kids",
+                           "screaming all the time at my kids", "can't cope with the kids"],
+    "need_childcare":     ["can't find childcare", "kids have nowhere to go while i work"],
+    "family_conflict":    ["estranged from my family", "huge argument with my dad",
+                           "family is falling apart", "cut off from my family"],
+    "elder_care":         ["mom can't live alone anymore", "dad can't take care of himself",
+                           "can't afford a nursing home"],
+    "divorce":            ["going through a divorce", "marriage is over",
+                           "custody battle", "filing for divorce"],
+    "legal_trouble":      ["being sued", "need free legal help", "facing charges",
+                           "can't afford a lawyer", "arrested"],
+    "immigration_stress": ["scared of being deported", "visa expired",
+                           "don't have papers", "my visa is running out"],
+    "chronic_pain":       ["pain that won't go away", "been in pain for months",
+                           "chronic pain", "doctors can't figure out what's wrong"],
+    "need_dental":        ["tooth is killing me", "my tooth is infected",
+                           "can't afford a dentist", "dental emergency"],
+    "disability_access":  ["can't access because of my disability",
+                           "disability benefits", "need accessible venue"],
+    "pregnancy":          ["just found out i'm pregnant", "need prenatal care",
+                           "first trimester", "morning sickness"],
+    "need_vet":           ["my dog is sick", "my cat is sick", "pet emergency",
+                           "where is the nearest vet"],
+    "home_emergency":     ["gas leak", "smell gas", "locked out of my house",
+                           "boiler is broken", "no heating in winter"],
+    "need_translation":   ["language barrier", "don't speak the language",
+                           "need help communicating"],
+    "food_insecurity":    ["no food in the house", "can't afford groceries",
+                           "children haven't eaten", "where to get free food", "food bank"],
+    "need_clothes":       ["don't have a winter coat", "need warm clothes",
+                           "where to find free clothing"],
+    "tech_help":          ["laptop broken", "keep getting error",
+                           "where to get tech help for free"],
 }
 
 

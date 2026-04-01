@@ -248,6 +248,250 @@ SOUL_API_MAP: dict[str, list[dict]] = {
         {"api": "wish_engine.apis.advice_api", "fn": "get_advice", "params": {}, "template": "💭 {result}", "star": "meteor", "cat": "wisdom"},
         {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich", "params": {"place_types": ["community_centre", "library"]}, "template": "{title} — 可以找到支持的地方", "star": "meteor", "cat": "safety"},
     ],
+
+    # ═══ CRITICAL: LIFE SAFETY — crisis API always first ═══
+
+    "suicidal_ideation": [
+        {"api": "wish_engine.apis.crisis_apis", "fn": "get_crisis_resources",
+         "params": {"crisis_type": "suicide"}, "template": "{primary_name}: {primary_number} — {description}", "star": "meteor", "cat": "crisis"},
+        {"api": "wish_engine.apis.wellness_apis", "fn": "breathing_exercise",
+         "params": {"technique": "478"}, "template": "先深呼吸: 吸4秒 — 屏7秒 — 呼8秒", "star": "meteor", "cat": "crisis"},
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["social_facility", "clinic"]}, "template": "{title} — 可以去找人说话", "star": "meteor", "cat": "crisis"},
+    ],
+
+    "domestic_violence": [
+        {"api": "wish_engine.apis.crisis_apis", "fn": "get_crisis_resources",
+         "params": {"crisis_type": "domestic_violence"}, "template": "{primary_name}: {primary_number} — 保密，24小时", "star": "meteor", "cat": "crisis"},
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["social_facility"]}, "template": "{title} — 安全的庇护所", "star": "meteor", "cat": "safety"},
+    ],
+
+    "addiction_crisis": [
+        {"api": "wish_engine.apis.crisis_apis", "fn": "get_crisis_resources",
+         "params": {"crisis_type": "addiction"}, "template": "{primary_name}: {primary_number}", "star": "meteor", "cat": "crisis"},
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["social_facility", "clinic"]}, "template": "{title} — 戒断支持中心", "star": "meteor", "cat": "health"},
+    ],
+
+    "homelessness": [
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["social_facility"]}, "template": "{title} — 庇护所 / 收容所", "star": "meteor", "cat": "shelter"},
+        {"api": "wish_engine.apis.advice_api", "fn": "get_advice",
+         "params": {}, "template": "💭 {result}", "star": "meteor", "cat": "wisdom"},
+    ],
+
+    # ═══ MENTAL HEALTH CLINICAL ═══
+
+    "need_therapy": [
+        {"api": "wish_engine.apis.crisis_apis", "fn": "get_crisis_resources",
+         "params": {"crisis_type": "mental_health"}, "template": "{primary_name}: {primary_number}", "star": "meteor", "cat": "mental_health"},
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["clinic", "social_facility"]}, "template": "{title} — 心理健康诊所", "star": "meteor", "cat": "mental_health"},
+    ],
+
+    "trauma_ptsd": [
+        {"api": "wish_engine.apis.crisis_apis", "fn": "get_crisis_resources",
+         "params": {"crisis_type": "mental_health"}, "template": "{primary_name}: {primary_number}", "star": "meteor", "cat": "mental_health"},
+        {"api": "wish_engine.apis.wellness_apis", "fn": "breathing_exercise",
+         "params": {"technique": "box"}, "template": "盒式呼吸: 让身体慢下来 — 吸4-屏4-呼4-屏4", "star": "meteor", "cat": "calm"},
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["clinic", "social_facility"]}, "template": "{title} — 创伤治疗师", "star": "meteor", "cat": "mental_health"},
+    ],
+
+    "eating_disorder": [
+        {"api": "wish_engine.apis.crisis_apis", "fn": "get_crisis_resources",
+         "params": {"crisis_type": "mental_health"}, "template": "{primary_name}: {primary_number}", "star": "meteor", "cat": "mental_health"},
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["clinic", "social_facility"]}, "template": "{title} — 饮食失调支持诊所", "star": "meteor", "cat": "health"},
+    ],
+
+    "postpartum": [
+        {"api": "wish_engine.apis.crisis_apis", "fn": "get_crisis_resources",
+         "params": {"crisis_type": "mental_health"}, "template": "{primary_name}: {primary_number}", "star": "meteor", "cat": "mental_health"},
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["clinic", "community_centre"]}, "template": "{title} — 产后支持服务", "star": "meteor", "cat": "health"},
+        {"api": "wish_engine.apis.social_apis", "fn": "random_compliment",
+         "params": {}, "template": "💛 {result}", "star": "meteor", "cat": "confidence"},
+    ],
+
+    # ═══ FINANCIAL ═══
+
+    "debt_crisis": [
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["social_facility"]}, "template": "{title} — 债务援助和住房支持", "star": "meteor", "cat": "finance"},
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["bank"]}, "template": "{title} — 银行顾问", "star": "meteor", "cat": "finance"},
+        {"api": "wish_engine.apis.advice_api", "fn": "get_advice",
+         "params": {}, "template": "💭 {result}", "star": "meteor", "cat": "wisdom"},
+    ],
+
+    "job_loss": [
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["employment_agency", "social_facility"]}, "template": "{title} — 就业援助服务", "star": "meteor", "cat": "career"},
+        {"api": "wish_engine.apis.affirmations_api", "fn": "get_affirmation",
+         "params": {}, "template": "💪 {result}", "star": "meteor", "cat": "confidence"},
+    ],
+
+    # ═══ CAREER ═══
+
+    "job_seeking": [
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["employment_agency", "library"]}, "template": "{title} — 就业中心 / 简历帮助", "star": "star", "cat": "career"},
+        {"api": "wish_engine.apis.knowledge_apis", "fn": "random_wikipedia",
+         "params": {}, "template": "📚 {title} — {extract:.80}", "star": "star", "cat": "learning"},
+    ],
+
+    "career_change": [
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["employment_agency", "community_centre"]}, "template": "{title} — 职业咨询", "star": "star", "cat": "career"},
+        {"api": "wish_engine.apis.affirmations_api", "fn": "get_affirmation",
+         "params": {}, "template": "💡 {result}", "star": "star", "cat": "confidence"},
+        {"api": "wish_engine.apis.wellness_apis", "fn": "daily_challenge",
+         "params": {}, "template": "🎯 今日行动: {result}", "star": "star", "cat": "growth"},
+    ],
+
+    # ═══ HOUSING ═══
+
+    "need_housing": [
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["social_facility"]}, "template": "{title} — 住房援助服务", "star": "meteor", "cat": "housing"},
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["community_centre"]}, "template": "{title} — 社区中心可能有租房资源", "star": "meteor", "cat": "housing"},
+    ],
+
+    # ═══ FAMILY ═══
+
+    "parenting_stress": [
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["social_facility", "community_centre"]}, "template": "{title} — 家长支持服务", "star": "meteor", "cat": "family"},
+        {"api": "wish_engine.apis.wellness_apis", "fn": "breathing_exercise",
+         "params": {"technique": "box"}, "template": "📦 60秒盒式呼吸 — 先让自己平静", "star": "meteor", "cat": "calm"},
+        {"api": "wish_engine.apis.social_apis", "fn": "random_compliment",
+         "params": {}, "template": "💛 {result}", "star": "meteor", "cat": "confidence"},
+    ],
+
+    "need_childcare": [
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["childcare", "social_facility"]}, "template": "{title} — 托儿所 / 儿童照看服务", "star": "meteor", "cat": "family"},
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["community_centre"]}, "template": "{title} — 社区儿童活动", "star": "meteor", "cat": "family"},
+    ],
+
+    "family_conflict": [
+        {"api": "wish_engine.apis.social_apis", "fn": "conflict_prompt",
+         "params": {}, "template": "💭 {result}", "star": "meteor", "cat": "reflection"},
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["social_facility", "community_centre"]}, "template": "{title} — 家庭调解服务", "star": "meteor", "cat": "family"},
+        {"api": "wish_engine.apis.spiritual_apis", "fn": "daily_wisdom",
+         "params": {}, "template": "🌿 {text} — {source}", "star": "meteor", "cat": "wisdom"},
+    ],
+
+    "elder_care": [
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["social_facility"]}, "template": "{title} — 老年护理服务", "star": "meteor", "cat": "family"},
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["community_centre"]}, "template": "{title} — 社区老年服务", "star": "meteor", "cat": "family"},
+    ],
+
+    "divorce": [
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["social_facility"]}, "template": "{title} — 法律援助 / 家庭法律服务", "star": "meteor", "cat": "legal"},
+        {"api": "wish_engine.apis.wellness_apis", "fn": "breathing_exercise",
+         "params": {"technique": "box"}, "template": "深呼吸: 离婚是漫长的路，一步一步走", "star": "meteor", "cat": "calm"},
+        {"api": "wish_engine.apis.advice_api", "fn": "get_advice",
+         "params": {}, "template": "💭 {result}", "star": "meteor", "cat": "wisdom"},
+    ],
+
+    # ═══ LEGAL ═══
+
+    "legal_trouble": [
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["social_facility"]}, "template": "{title} — 法律援助服务", "star": "meteor", "cat": "legal"},
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["community_centre"]}, "template": "{title} — 社区法律诊所", "star": "meteor", "cat": "legal"},
+    ],
+
+    "immigration_stress": [
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["social_facility", "community_centre"]}, "template": "{title} — 移民援助服务", "star": "meteor", "cat": "legal"},
+        {"api": "wish_engine.apis.wellness_apis", "fn": "breathing_exercise",
+         "params": {"technique": "478"}, "template": "深呼吸: 慢慢来，一件事一件事处理", "star": "meteor", "cat": "calm"},
+    ],
+
+    # ═══ HEALTH ═══
+
+    "chronic_pain": [
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["clinic", "social_facility"]}, "template": "{title} — 疼痛管理诊所", "star": "meteor", "cat": "health"},
+        {"api": "wish_engine.apis.wellness_apis", "fn": "breathing_exercise",
+         "params": {"technique": "box"}, "template": "盒式呼吸: 有助于疼痛感知 — 吸4-屏4-呼4-屏4", "star": "meteor", "cat": "health"},
+        {"api": "wish_engine.apis.exercise_api", "fn": "search_exercises",
+         "params": {"term": "stretching"}, "template": "🧘 轻柔拉伸: {name}", "star": "star", "cat": "health"},
+    ],
+
+    "need_dental": [
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["dentist"]}, "template": "🦷 最近的牙科诊所: {title} — {description}", "star": "meteor", "cat": "health"},
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["social_facility"]}, "template": "{title} — 可能提供免费牙科援助", "star": "meteor", "cat": "health"},
+    ],
+
+    "disability_access": [
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["social_facility", "community_centre"]}, "template": "{title} — 残疾人支持服务", "star": "meteor", "cat": "access"},
+        {"api": "wish_engine.apis.advice_api", "fn": "get_advice",
+         "params": {}, "template": "💭 {result}", "star": "meteor", "cat": "wisdom"},
+    ],
+
+    "pregnancy": [
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["clinic", "hospital"]}, "template": "{title} — 产前护理诊所", "star": "meteor", "cat": "health"},
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["social_facility"]}, "template": "{title} — 孕妇支持服务", "star": "meteor", "cat": "health"},
+    ],
+
+    # ═══ PRACTICAL ═══
+
+    "need_vet": [
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["veterinary"]}, "template": "🐾 最近的兽医: {title} — {description}", "star": "meteor", "cat": "pet"},
+    ],
+
+    "home_emergency": [
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["social_facility", "community_centre"]}, "template": "{title} — 紧急援助", "star": "meteor", "cat": "safety"},
+        {"api": "wish_engine.apis.advice_api", "fn": "get_advice",
+         "params": {}, "template": "⚠️ 如是煤气泄漏: 立刻离开，拨打紧急服务 (119/999/911)", "star": "meteor", "cat": "safety"},
+    ],
+
+    "need_translation": [
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["community_centre", "social_facility"]}, "template": "{title} — 语言援助服务", "star": "meteor", "cat": "language"},
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["library"]}, "template": "{title} — 图书馆通常提供翻译服务", "star": "meteor", "cat": "language"},
+    ],
+
+    "food_insecurity": [
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["social_facility"]}, "template": "🍱 {title} — 食物银行 / 免费餐", "star": "meteor", "cat": "food"},
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["community_centre"]}, "template": "{title} — 社区餐食项目", "star": "meteor", "cat": "food"},
+    ],
+
+    "need_clothes": [
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["social_facility"]}, "template": "👗 {title} — 衣物援助", "star": "meteor", "cat": "clothing"},
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["community_centre"]}, "template": "{title} — 社区衣物交换", "star": "meteor", "cat": "clothing"},
+    ],
+
+    "tech_help": [
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["library"]}, "template": "{title} — 图书馆提供免费电脑和技术帮助", "star": "star", "cat": "utility"},
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["community_centre"]}, "template": "{title} — 社区科技帮助班", "star": "star", "cat": "utility"},
+    ],
 }
 
 

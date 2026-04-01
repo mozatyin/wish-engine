@@ -153,6 +153,45 @@ _ATTENTION_WHY_PREFIX: dict[str, str] = {
     "evening":          "晚上好",
     "weekend":          "周末到了",
     "need_meaning":     "你在寻找生命的意义",
+    # Critical / life-safety
+    "suicidal_ideation":  "你说了让我担心的话",
+    "domestic_violence":  "你的安全比什么都重要",
+    "addiction_crisis":   "你在为依赖问题挣扎",
+    "homelessness":       "你现在没有地方住",
+    # Mental health clinical
+    "need_therapy":       "你在寻找专业心理支持",
+    "trauma_ptsd":        "你带着很重的创伤",
+    "eating_disorder":    "你和食物的关系让你很痛苦",
+    "postpartum":         "生完孩子后你很不好受",
+    # Financial
+    "debt_crisis":        "你面临严重的财务危机",
+    "job_loss":           "你刚刚失去了工作",
+    # Career
+    "job_seeking":        "你在找工作",
+    "career_change":      "你想改变职业方向",
+    # Housing
+    "need_housing":       "你需要找住的地方",
+    # Family
+    "parenting_stress":   "你作为父母很疲惫",
+    "need_childcare":     "你需要帮忙照顾孩子",
+    "family_conflict":    "你在经历家庭冲突",
+    "elder_care":         "你在照顾年迈的家人",
+    "divorce":            "你在经历离婚",
+    # Legal
+    "legal_trouble":      "你遇到了法律问题",
+    "immigration_stress": "你为移民问题焦虑",
+    # Health
+    "chronic_pain":       "你在忍受慢性疼痛",
+    "need_dental":        "你牙很疼",
+    "disability_access":  "你需要无障碍支持",
+    "pregnancy":          "你怀孕了",
+    # Practical
+    "need_vet":           "你的宠物需要医疗帮助",
+    "home_emergency":     "家里出现紧急情况",
+    "need_translation":   "你需要语言帮助",
+    "food_insecurity":    "你需要食物帮助",
+    "need_clothes":       "你需要衣物帮助",
+    "tech_help":          "你需要技术帮助",
 }
 
 
@@ -247,6 +286,31 @@ _COMPOUND_NEEDS: list[tuple[frozenset, dict]] = [
         "why_prefix": "你头疼，需要药",
         "why_suffix": "最近的药店",
     }),
+    (frozenset({"homelessness", "hungry"}), {
+        "place_types": ["social_facility"],
+        "why_prefix": "你既无家可归又需要食物",
+        "why_suffix": "这里可能提供住所和餐食",
+    }),
+    (frozenset({"suicidal_ideation", "lonely"}), {
+        "place_types": ["social_facility", "clinic"],
+        "why_prefix": "你感到孤独，又有很痛苦的想法",
+        "why_suffix": "这里有人可以倾听你 — 不是一个人",
+    }),
+    (frozenset({"debt_crisis", "job_loss"}), {
+        "place_types": ["social_facility", "employment_agency"],
+        "why_prefix": "你失去了工作，又面临债务危机",
+        "why_suffix": "这里提供就业和财务援助",
+    }),
+    (frozenset({"parenting_stress", "overwhelmed"}), {
+        "place_types": ["community_centre"],
+        "why_prefix": "你作为父母不堪重负",
+        "why_suffix": "社区中心有家长支持和儿童活动",
+    }),
+    (frozenset({"domestic_violence", "scared"}), {
+        "place_types": ["social_facility"],
+        "why_prefix": "你很害怕，需要安全的地方",
+        "why_suffix": "这里是安全庇护所",
+    }),
 ]
 
 
@@ -273,6 +337,36 @@ _ATTENTION_FALLBACK_TEXT: dict[str, str] = {
     "need_medicine":"搜索附近的「药店」或「医院」",
     "need_money":   "联系银行客服，或者找家人帮忙",
     "need_talk":    "心理援助热线：随时都可以拨打",
+    "suicidal_ideation":   "如果你有轻生的想法，请现在拨打危机热线 — 美国: 988，中国: 400-161-9995，全球: iasp.info",
+    "domestic_violence":   "如果你处于危险中: 美国 1-800-799-7233，中国 12338，阿联酋 800-988。可以悄悄发短信",
+    "addiction_crisis":    "你可以联系戒断支持热线 — 美国: 1-800-662-4357 (SAMHSA)，24小时，免费，保密",
+    "homelessness":        "搜索附近的「收容所」或「庇护所」，或者拨打当地紧急社会服务电话",
+    "need_therapy":        "寻找心理咨询师: 美国 NAMI 1-800-950-6264，或搜索「社区心理健康中心」",
+    "trauma_ptsd":         "创伤治疗需要专业帮助 — 搜索你附近的「创伤知情咨询师」",
+    "eating_disorder":     "你不需要独自面对这些 — 搜索「饮食失调支持」或联系心理健康热线",
+    "postpartum":          "产后抑郁很常见，不是你的错 — 告诉你的医生，或拨打心理援助热线",
+    "debt_crisis":         "联系非营利债务援助机构，很多提供免费咨询。不要慌，有出路",
+    "job_loss":            "去最近的就业中心登记，或者去图书馆用电脑找工作网站",
+    "job_seeking":         "图书馆有免费电脑和求职帮助，社区中心也有就业咨询",
+    "career_change":       "很多社区学院和就业中心提供免费职业咨询和转型资源",
+    "need_housing":        "搜索「保障性住房」、「廉租房」或「住房援助服务」",
+    "parenting_stress":    "家长支持热线和育儿资源: 搜索「家庭支持中心」或「家长热线」",
+    "need_childcare":      "搜索「托儿所」、「政府补贴托育」或联系当地社区中心",
+    "family_conflict":     "家庭调解服务可以帮助 — 搜索「家庭调解」或「家庭咨询」",
+    "elder_care":          "搜索「老年护理服务」、「养老院」或联系当地民政部门",
+    "divorce":             "搜索免费「法律援助」或「家庭法律服务中心」",
+    "legal_trouble":       "法律援助热线可以提供免费建议 — 搜索「免费法律援助」",
+    "immigration_stress":  "移民援助机构提供免费帮助 — 搜索「移民法律援助」",
+    "chronic_pain":        "疼痛管理诊所和物理治疗可能有帮助 — 问你的医生转介",
+    "need_dental":         "搜索「免费牙科诊所」、「社区牙科」或牙学院实习诊所",
+    "disability_access":   "搜索「残疾人服务」或联系当地残联获取支持资源",
+    "pregnancy":           "搜索最近的「产前护理门诊」或「妇幼保健院」",
+    "need_vet":            "搜索「紧急动物医院」或「24小时兽医」",
+    "home_emergency":      "煤气泄漏: 立刻离开，拨119/999/911。水管: 关闭总阀门再打急修",
+    "need_translation":    "图书馆和社区中心通常有语言援助服务，或拨打当地社会服务热线",
+    "food_insecurity":     "搜索「食物银行」、「社区食堂」或当地社会服务机构获取免费食物",
+    "need_clothes":        "搜索「衣物援助」、「慈善商店」或当地救助站",
+    "tech_help":           "图书馆提供免费电脑帮助 — 去前台告诉他们你需要技术支持",
 }
 
 
