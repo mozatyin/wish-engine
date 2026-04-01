@@ -176,6 +176,8 @@ SOUL_API_MAP: dict[str, list[dict]] = {
 
     # ═══ LOCATION AWARE ═══
     "new_place": [
+        {"api": "wish_engine.apis.teleport_api", "fn": "get_urban_area",
+         "params": {"city_name": "Dubai"}, "template": "🌆 {name}: {highlights}", "star": "meteor", "cat": "explore"},
         {"api": "wish_engine.apis.wikipedia_api", "fn": "get_summary", "params": {}, "template": "📍 关于这个地方: {extract:.100}", "star": "meteor", "cat": "explore"},
         {"api": "wish_engine.apis.holidays_api", "fn": "get_next_holiday", "params": {}, "template": "🎊 下一个假期: {name} ({date})", "star": "star", "cat": "culture"},
         {"api": "wish_engine.apis.countries_api", "fn": "get_country", "params": {}, "template": "🌍 {name} — 语言: {languages}, 货币: {currencies}", "star": "star", "cat": "culture"},
@@ -327,6 +329,8 @@ SOUL_API_MAP: dict[str, list[dict]] = {
     ],
 
     "job_loss": [
+        {"api": "wish_engine.apis.jobs_api", "fn": "search_jobs",
+         "params": {}, "template": "💼 现有职位: {title} @ {company}", "star": "meteor", "cat": "career"},
         {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
          "params": {"place_types": ["employment_agency", "social_facility"]}, "template": "{title} — 就业援助服务", "star": "meteor", "cat": "career"},
         {"api": "wish_engine.apis.affirmations_api", "fn": "get_affirmation",
@@ -336,19 +340,23 @@ SOUL_API_MAP: dict[str, list[dict]] = {
     # ═══ CAREER ═══
 
     "job_seeking": [
+        {"api": "wish_engine.apis.jobs_api", "fn": "search_jobs",
+         "params": {}, "template": "💼 实时职位: {title} @ {company} — {location}", "star": "star", "cat": "career"},
+        {"api": "wish_engine.apis.jobs_api", "fn": "remoteok_jobs",
+         "params": {"max_results": 3}, "template": "🌐 远程机会: {title} @ {company}", "star": "star", "cat": "career"},
         {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
          "params": {"place_types": ["employment_agency", "library"]}, "template": "{title} — 就业中心 / 简历帮助", "star": "star", "cat": "career"},
-        {"api": "wish_engine.apis.knowledge_apis", "fn": "random_wikipedia",
-         "params": {}, "template": "📚 {title} — {extract:.80}", "star": "star", "cat": "learning"},
     ],
 
     "career_change": [
+        {"api": "wish_engine.apis.jobs_api", "fn": "search_jobs",
+         "params": {}, "template": "💼 新方向: {title} @ {company} — {location}", "star": "star", "cat": "career"},
+        {"api": "wish_engine.apis.teleport_api", "fn": "get_urban_area",
+         "params": {"city_name": "London"}, "template": "🌆 城市对比: {name} — {highlights}", "star": "star", "cat": "career"},
         {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
          "params": {"place_types": ["employment_agency", "community_centre"]}, "template": "{title} — 职业咨询", "star": "star", "cat": "career"},
         {"api": "wish_engine.apis.affirmations_api", "fn": "get_affirmation",
          "params": {}, "template": "💡 {result}", "star": "star", "cat": "confidence"},
-        {"api": "wish_engine.apis.wellness_apis", "fn": "daily_challenge",
-         "params": {}, "template": "🎯 今日行动: {result}", "star": "star", "cat": "growth"},
     ],
 
     # ═══ HOUSING ═══
@@ -413,6 +421,10 @@ SOUL_API_MAP: dict[str, list[dict]] = {
     ],
 
     "immigration_stress": [
+        {"api": "wish_engine.apis.translation_api", "fn": "get_translation_resources",
+         "params": {"target_lang": "en"}, "template": "🌐 {app}: {description}", "star": "meteor", "cat": "language"},
+        {"api": "wish_engine.apis.jobs_api", "fn": "arbeitnow_jobs",
+         "params": {"visa_sponsorship": True, "max_results": 3}, "template": "💼 签证担保职位: {title} @ {company} ({location})", "star": "star", "cat": "career"},
         {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
          "params": {"place_types": ["social_facility", "community_centre"]}, "template": "{title} — 移民援助服务", "star": "meteor", "cat": "legal"},
         {"api": "wish_engine.apis.wellness_apis", "fn": "breathing_exercise",
@@ -466,6 +478,8 @@ SOUL_API_MAP: dict[str, list[dict]] = {
     ],
 
     "need_translation": [
+        {"api": "wish_engine.apis.translation_api", "fn": "get_translation_resources",
+         "params": {"target_lang": "en"}, "template": "🌐 {app}: {description}", "star": "meteor", "cat": "language"},
         {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
          "params": {"place_types": ["community_centre", "social_facility"]}, "template": "{title} — 语言援助服务", "star": "meteor", "cat": "language"},
         {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
