@@ -147,7 +147,7 @@ def _from_quotable_random(tags: str = "philosophy|wisdom") -> dict | None:
     }
 
 
-def _from_quotable_author(author_slugs: list[str]) -> dict | None:
+def _from_quotable_author(author_slugs: list[str], tradition_fallback: str = "Wisdom") -> dict | None:
     """
     GET https://api.quotable.io/random?author=slug1|slug2|...
     Returns one random quote from those authors.
@@ -162,7 +162,7 @@ def _from_quotable_author(author_slugs: list[str]) -> dict | None:
     return {
         "author":    data["author"],
         "text":      data["content"],
-        "tradition": _AUTHOR_TRADITION.get(slug, "Wisdom"),
+        "tradition": _AUTHOR_TRADITION.get(slug, tradition_fallback),
         "_source":   "quotable",
         "_id":       data.get("_id"),
     }
@@ -241,11 +241,15 @@ def get_quote(tradition: Optional[str] = None) -> dict:
     if tradition:
         slugs = _TRADITION_AUTHORS.get(tradition, [])
         if slugs:
-            q = _from_quotable_author(slugs)
+            q = _from_quotable_author(slugs, tradition_fallback=tradition)
             if q:
                 return {k: v for k, v in q.items() if not k.startswith("_")}
+        # Tradition requested but API failed — go straight to static to guarantee correctness
+        pool = [s for s in _STATIC_QUOTES if s["tradition"] == tradition]
+        if pool:
+            return dict(random.choice(pool))
 
-    # 2. Try generic philosophy/wisdom tag on quotable.io
+    # 2. Try generic philosophy/wisdom tag on quotable.io (no tradition filter)
     q = _from_quotable_random("philosophy|wisdom|religion|spirituality")
     if q:
         return {k: v for k, v in q.items() if not k.startswith("_")}
@@ -256,10 +260,7 @@ def get_quote(tradition: Optional[str] = None) -> dict:
         return {k: v for k, v in q.items() if not k.startswith("_")}
 
     # 4. Static embedded fallback
-    pool = [s for s in _STATIC_QUOTES if not tradition or s["tradition"] == tradition]
-    if not pool:
-        pool = _STATIC_QUOTES
-    return dict(random.choice(pool))
+    return dict(random.choice(_STATIC_QUOTES))
 
 
 def get_quotes_by_tradition(tradition: str, limit: int = 5) -> list[dict]:

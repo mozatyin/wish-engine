@@ -11,7 +11,17 @@ Safety: crisis users excluded, distress>0.6 delayed.
 
 from __future__ import annotations
 
+import re
+
 from wish_engine.models import AgentProfile, WishType
+
+# Common stopwords to ignore in semantic alignment
+_STOPWORDS: frozenset[str] = frozenset({
+    "i", "a", "an", "the", "is", "it", "to", "of", "and", "or", "in",
+    "my", "me", "we", "you", "he", "she", "they", "have", "has", "do",
+    "did", "can", "will", "want", "need", "feel", "be", "am", "are",
+    "was", "were", "been", "for", "on", "at", "by", "as", "this", "that",
+})
 
 
 # ── Compatibility tables (zero LLM, lookup only) ────────────────────────────
@@ -111,6 +121,23 @@ _WISH_DIMENSION_WEIGHTS: dict[WishType, dict[str, float]] = {
 
 
 # ── Score components ─────────────────────────────────────────────────────────
+
+
+def _text_alignment(text_a: str, text_b: str) -> float:
+    """Keyword Jaccard similarity between two wish-text summaries.
+
+    Tokenizes, removes stopwords, computes |intersection| / |union|.
+    Returns 0.0 for empty inputs.
+    """
+    def _tokens(text: str) -> set[str]:
+        return {t for t in re.split(r"[^a-zA-Z]+", text.lower()) if t and t not in _STOPWORDS}
+
+    a_tokens = _tokens(text_a)
+    b_tokens = _tokens(text_b)
+    if not a_tokens or not b_tokens:
+        return 0.0
+    union = a_tokens | b_tokens
+    return len(a_tokens & b_tokens) / len(union)
 
 
 def _wish_alignment(
@@ -292,7 +319,7 @@ class L3MatchScore:
 
     __slots__ = (
         "total", "wish_alignment", "soul_compatibility",
-        "emotional_safety", "availability", "novelty",
+        "emotional_safety", "availability", "novelty", "text_alignment",
     )
 
     def __init__(
@@ -302,12 +329,14 @@ class L3MatchScore:
         emotional_safety: float,
         availability: float,
         novelty: float,
+        text_alignment: float = 0.0,
     ):
         self.wish_alignment = wish_alignment
         self.soul_compatibility = soul_compatibility
         self.emotional_safety = emotional_safety
         self.availability = availability
         self.novelty = novelty
+        self.text_alignment = text_alignment
         self.total = (
             W_WISH * wish_alignment
             + W_SOUL * soul_compatibility
@@ -323,6 +352,7 @@ class L3MatchScore:
             "emotional_safety": round(self.emotional_safety, 3),
             "availability": round(self.availability, 3),
             "novelty": round(self.novelty, 3),
+            "text_alignment": round(self.text_alignment, 3),
             "total": round(self.total, 3),
         }
 
@@ -410,6 +440,7 @@ class L3Matcher:
         es = _emotional_safety(a, b)
         av = _availability(a, b)
         nv = _novelty(a, b, past_matches)
+        ta = _text_alignment(a.wish_text, b.wish_text)
 
         return L3MatchScore(
             wish_alignment=wa,
@@ -417,6 +448,7 @@ class L3Matcher:
             emotional_safety=es,
             availability=av,
             novelty=nv,
+            text_alignment=ta,
         )
 
     def rank_candidates(

@@ -44,6 +44,8 @@ Zero LLM for matching. 1× Haiku only for match_reason text (post-mutual).
 
 from __future__ import annotations
 
+import json
+import sqlite3
 import time
 import uuid
 from enum import Enum
@@ -225,10 +227,72 @@ class Marketplace:
     MAX_RESPONSES_PER_NEED = 10
     MATCH_EXPIRY_HOURS = 72
 
-    def __init__(self):
+    def __init__(self, db_path: str | None = None):
         self._agents: dict[str, AgentRecord] = {}
         self._requests: dict[str, Request] = {}
         self._matches: dict[str, Match] = {}
+        self._db: sqlite3.Connection | None = None
+        if db_path:
+            self._db = sqlite3.connect(db_path)
+            self._db_init()
+            self._load_from_db()
+
+    def _db_init(self) -> None:
+        assert self._db
+        self._db.executescript("""
+            CREATE TABLE IF NOT EXISTS agents (
+                agent_id TEXT PRIMARY KEY, data TEXT NOT NULL
+            );
+            CREATE TABLE IF NOT EXISTS requests (
+                request_id TEXT PRIMARY KEY, data TEXT NOT NULL
+            );
+            CREATE TABLE IF NOT EXISTS matches (
+                match_id TEXT PRIMARY KEY, data TEXT NOT NULL
+            );
+        """)
+        self._db.commit()
+
+    def _load_from_db(self) -> None:
+        assert self._db
+        for (data,) in self._db.execute("SELECT data FROM agents"):
+            rec = AgentRecord(**json.loads(data))
+            self._agents[rec.agent_id] = rec
+        for (data,) in self._db.execute("SELECT data FROM requests"):
+            req = Request(**json.loads(data))
+            self._requests[req.request_id] = req
+        for (data,) in self._db.execute("SELECT data FROM matches"):
+            m = Match(**json.loads(data))
+            self._matches[m.match_id] = m
+
+    def _save_agent(self, record: AgentRecord) -> None:
+        if self._db:
+            self._db.execute(
+                "INSERT OR REPLACE INTO agents (agent_id, data) VALUES (?, ?)",
+                (record.agent_id, record.model_dump_json()),
+            )
+            self._db.commit()
+
+    def _save_request(self, req: Request) -> None:
+        if self._db:
+            self._db.execute(
+                "INSERT OR REPLACE INTO requests (request_id, data) VALUES (?, ?)",
+                (req.request_id, req.model_dump_json()),
+            )
+            self._db.commit()
+
+    def _save_match(self, match: Match) -> None:
+        if self._db:
+            self._db.execute(
+                "INSERT OR REPLACE INTO matches (match_id, data) VALUES (?, ?)",
+                (match.match_id, match.model_dump_json()),
+            )
+            self._db.commit()
+
+    def close(self) -> None:
+        """Close the SQLite connection."""
+        if self._db:
+            self._db.close()
+            self._db = None
 
     # ── Agent registration ───────────────────────────────────────────────
 
@@ -238,6 +302,7 @@ class Marketplace:
             return self._agents[agent_id]
         record = AgentRecord(agent_id=agent_id, language=language)
         self._agents[agent_id] = record
+        self._save_agent(record)
         return record
 
     def _check_agent(self, agent_id: str) -> AgentRecord:
@@ -278,6 +343,8 @@ class Marketplace:
         )
         self._requests[req.request_id] = req
         record.total_requests += 1
+        self._save_request(req)
+        self._save_agent(record)
         return req
 
     # ── Posting responses ────────────────────────────────────────────────
@@ -317,6 +384,8 @@ class Marketplace:
         )
         self._requests[resp.request_id] = resp
         record.total_responses += 1
+        self._save_request(resp)
+        self._save_agent(record)
         return resp
 
     # ── Match creation ───────────────────────────────────────────────────
@@ -350,11 +419,15 @@ class Marketplace:
                 need.state = RequestState.MATCHED
                 resp.state = RequestState.MATCHED
                 new_matches.append(match)
+                self._save_match(match)
+                self._save_request(need)
+                self._save_request(resp)
 
                 # Update records
                 for aid in (need.agent_id, resp.agent_id):
                     if aid in self._agents:
                         self._agents[aid].total_matches += 1
+                        self._save_agent(self._agents[aid])
 
         return new_matches
 
@@ -379,6 +452,8 @@ class Marketplace:
                 match.state = MatchState.B_DECLINED
             if agent_id in self._agents:
                 self._agents[agent_id].declined_count += 1
+                self._save_agent(self._agents[agent_id])
+            self._save_match(match)
             return match
 
         if agent_id == match.agent_a_id:
@@ -394,6 +469,7 @@ class Marketplace:
                 match.state = MatchState.MUTUAL
                 match.verified_at = time.time()
 
+        self._save_match(match)
         return match
 
     # ── Queries ──────────────────────────────────────────────────────────
@@ -447,12 +523,14 @@ class Marketplace:
         if record and record.trust_level == AgentTrustLevel.PROBATION:
             if record.total_matches >= 3 and record.declined_count <= 1:
                 record.trust_level = AgentTrustLevel.TRUSTED
+                self._save_agent(record)
 
     def suspend_agent(self, agent_id: str) -> None:
         """Suspend agent for abnormal behavior."""
         record = self._agents.get(agent_id)
         if record:
             record.trust_level = AgentTrustLevel.SUSPENDED
+            self._save_agent(record)
 
     # ── Expiry ───────────────────────────────────────────────────────────
 
@@ -466,4 +544,5 @@ class Marketplace:
                 if now - match.created_at > cutoff:
                     match.state = MatchState.EXPIRED
                     expired += 1
+                    self._save_match(match)
         return expired

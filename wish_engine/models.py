@@ -214,6 +214,9 @@ class AgentProfile(BaseModel):
     # Language for same-language matching
     language: str = "en"
 
+    # Optional wish text for semantic alignment (never raw conversation — summary only)
+    wish_text: str = ""
+
 
 class NegotiationState(str, Enum):
     PROPOSED = "proposed"

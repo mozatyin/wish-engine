@@ -101,6 +101,7 @@ SOUL_API_MAP: dict[str, list[dict]] = {
     "want_music": [
         {"api": "wish_engine.apis.radio_api", "fn": "search_stations", "params": {}, "template": "📻 {name} ({country}) — 正在播放", "star": "star", "cat": "music"},
         {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich", "params": {"place_types": ["theatre", "cinema"]}, "template": "🎵 {title} — 可能有演出", "star": "star", "cat": "music"},
+        {"api": "wish_engine.apis.events_free", "fn": "discover_events_free", "params": {}, "template": "🎶 {name} — 可能有演出", "star": "meteor", "cat": "music"},
     ],
     "want_work": [
         {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich", "params": {"place_types": ["cafe", "library"]}, "template": "💻 {title} — 安静、有WiFi", "star": "star", "cat": "work"},
@@ -146,6 +147,7 @@ SOUL_API_MAP: dict[str, list[dict]] = {
     "bored": [
         {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich", "params": {"place_types": ["museum", "gallery", "park", "arts_centre", "cinema"]}, "template": "✨ {title} — 现在就可以去", "star": "meteor", "cat": "explore"},
         {"api": "wish_engine.apis.bored_api", "fn": "get_activity", "params": {}, "template": "💡 或者试试: {activity} ({type})", "star": "meteor", "cat": "fun"},
+        {"api": "wish_engine.apis.events_free", "fn": "discover_events_free", "params": {}, "template": "🎪 {name} — 今晚可能有活动", "star": "meteor", "cat": "events"},
     ],
 
     # ═══ SELF-IMPROVEMENT ═══
@@ -172,6 +174,7 @@ SOUL_API_MAP: dict[str, list[dict]] = {
     "weekend": [
         {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich", "params": {"place_types": ["museum", "gallery", "park", "arts_centre"]}, "template": "🎉 周末探索: {title}", "star": "meteor", "cat": "explore"},
         {"api": "wish_engine.apis.bored_api", "fn": "get_activity", "params": {}, "template": "💡 周末活动: {activity}", "star": "meteor", "cat": "explore"},
+        {"api": "wish_engine.apis.events_free", "fn": "discover_events_free", "params": {}, "template": "🎭 {name} — 周末活动", "star": "meteor", "cat": "events"},
     ],
 
     # ═══ LOCATION AWARE ═══
@@ -335,6 +338,8 @@ SOUL_API_MAP: dict[str, list[dict]] = {
          "params": {"place_types": ["employment_agency", "social_facility"]}, "template": "{title} — 就业援助服务", "star": "meteor", "cat": "career"},
         {"api": "wish_engine.apis.affirmations_api", "fn": "get_affirmation",
          "params": {}, "template": "💪 {result}", "star": "meteor", "cat": "confidence"},
+        {"api": "wish_engine.apis.adzuna_api", "fn": "search_jobs",
+         "params": {"query": "remote"}, "template": "💼 {title} @ {company} — {location}", "star": "meteor", "cat": "jobs"},
     ],
 
     # ═══ CAREER ═══
@@ -346,6 +351,8 @@ SOUL_API_MAP: dict[str, list[dict]] = {
          "params": {"max_results": 3}, "template": "🌐 远程机会: {title} @ {company}", "star": "star", "cat": "career"},
         {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
          "params": {"place_types": ["employment_agency", "library"]}, "template": "{title} — 就业中心 / 简历帮助", "star": "star", "cat": "career"},
+        {"api": "wish_engine.apis.adzuna_api", "fn": "search_jobs",
+         "params": {"query": "software"}, "template": "🔍 {title} @ {company} — {location}", "star": "star", "cat": "jobs"},
     ],
 
     "career_change": [
@@ -357,6 +364,8 @@ SOUL_API_MAP: dict[str, list[dict]] = {
          "params": {"place_types": ["employment_agency", "community_centre"]}, "template": "{title} — 职业咨询", "star": "star", "cat": "career"},
         {"api": "wish_engine.apis.affirmations_api", "fn": "get_affirmation",
          "params": {}, "template": "💡 {result}", "star": "star", "cat": "confidence"},
+        {"api": "wish_engine.apis.adzuna_api", "fn": "search_jobs",
+         "params": {"query": "career change"}, "template": "🔄 {title} @ {company} — {location}", "star": "star", "cat": "jobs"},
     ],
 
     # ═══ HOUSING ═══
@@ -429,6 +438,8 @@ SOUL_API_MAP: dict[str, list[dict]] = {
          "params": {"place_types": ["social_facility", "community_centre"]}, "template": "{title} — 移民援助服务", "star": "meteor", "cat": "legal"},
         {"api": "wish_engine.apis.wellness_apis", "fn": "breathing_exercise",
          "params": {"technique": "478"}, "template": "深呼吸: 慢慢来，一件事一件事处理", "star": "meteor", "cat": "calm"},
+        {"api": "wish_engine.apis.adzuna_api", "fn": "search_visa_jobs",
+         "params": {}, "template": "🌍 {title} @ {company} — 签证担保 ({location})", "star": "star", "cat": "jobs"},
     ],
 
     # ═══ HEALTH ═══
