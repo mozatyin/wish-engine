@@ -331,6 +331,29 @@ SOUL_API_MAP: dict[str, list[dict]] = {
          "params": {}, "template": "💭 {result}", "star": "meteor", "cat": "wisdom"},
     ],
 
+    "want_save_money": [
+        {"api": "wish_engine.apis.budget_calculator", "fn": "fifty_thirty_twenty",
+         "params": {"income": 3000}, "template": "💰 50/30/20: 必要{needs:.0f} / 想要{wants:.0f} / 储蓄{savings:.0f}", "star": "star", "cat": "finance"},
+        {"api": "wish_engine.apis.budget_calculator", "fn": "emergency_fund_target",
+         "params": {"monthly_expenses": 2000}, "template": "🏦 紧急备用金目标: {result:.0f}", "star": "star", "cat": "finance"},
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["bank"]}, "template": "{title} — 咨询储蓄账户", "star": "star", "cat": "finance"},
+    ],
+
+    "budget_help": [
+        {"api": "wish_engine.apis.budget_calculator", "fn": "fifty_thirty_twenty",
+         "params": {"income": 3000}, "template": "📊 预算建议: 必要{needs:.0f} / 想要{wants:.0f} / 储蓄{savings:.0f}", "star": "star", "cat": "finance"},
+        {"api": "wish_engine.apis.advice_api", "fn": "get_advice",
+         "params": {}, "template": "💭 {result}", "star": "meteor", "cat": "wisdom"},
+    ],
+
+    "exchange_money": [
+        {"api": "wish_engine.apis.currency_api", "fn": "get_rates",
+         "params": {"base": "USD"}, "template": "💱 1 USD = {EUR:.4f} EUR / {GBP:.4f} GBP / {CNY:.4f} CNY", "star": "meteor", "cat": "finance"},
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["bank", "atm"]}, "template": "{title} — 换汇服务", "star": "meteor", "cat": "finance"},
+    ],
+
     "job_loss": [
         {"api": "wish_engine.apis.jobs_api", "fn": "search_jobs",
          "params": {}, "template": "💼 现有职位: {title} @ {company}", "star": "meteor", "cat": "career"},
@@ -404,6 +427,15 @@ SOUL_API_MAP: dict[str, list[dict]] = {
          "params": {}, "template": "🌿 {text} — {source}", "star": "meteor", "cat": "wisdom"},
     ],
 
+    "friend_conflict": [
+        {"api": "wish_engine.apis.social_apis", "fn": "conflict_prompt",
+         "params": {}, "template": "💭 朋友之间: {result}", "star": "meteor", "cat": "reflection"},
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["cafe", "park"]}, "template": "{title} — 找个安静的地方，先冷静下来", "star": "meteor", "cat": "place"},
+        {"api": "wish_engine.apis.advice_api", "fn": "get_advice",
+         "params": {}, "template": "💭 {result}", "star": "meteor", "cat": "wisdom"},
+    ],
+
     "elder_care": [
         {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
          "params": {"place_types": ["social_facility"]}, "template": "{title} — 老年护理服务", "star": "meteor", "cat": "family"},
@@ -474,11 +506,52 @@ SOUL_API_MAP: dict[str, list[dict]] = {
          "params": {"place_types": ["social_facility"]}, "template": "{title} — 孕妇支持服务", "star": "meteor", "cat": "health"},
     ],
 
+    # ═══ NUTRITION / WEIGHT ═══
+
+    "want_lose_weight": [
+        {"api": "wish_engine.apis.food_nutrition_api", "fn": "get_nutrition_summary",
+         "params": {"query": "salad"}, "template": "🥗 {name}: {calories:.0f}卡/100g，蛋白质{protein:.1f}g", "star": "star", "cat": "health"},
+        {"api": "wish_engine.apis.health_apis", "fn": "calorie_budget",
+         "params": {"weight_kg": 75, "height_cm": 170, "age": 30, "sex": "male", "activity": "sedentary"},
+         "template": "📊 你的每日热量预算约 {tdee:.0f} 卡，减脂目标 {deficit_500:.0f} 卡", "star": "star", "cat": "health"},
+        {"api": "wish_engine.apis.exercise_api", "fn": "search_exercises",
+         "params": {"term": "cardio"}, "template": "🏃 有氧运动: {name}", "star": "star", "cat": "exercise"},
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["gym", "fitness_centre", "swimming_pool"]}, "template": "{title} — 开始行动", "star": "star", "cat": "exercise"},
+    ],
+
+    "ate_too_much": [
+        {"api": "wish_engine.apis.wellness_apis", "fn": "breathing_exercise",
+         "params": {"technique": "478"}, "template": "🌬️ 饭后深呼吸: 吸4-屏7-呼8，帮助消化", "star": "meteor", "cat": "health"},
+        {"api": "wish_engine.apis.exercise_api", "fn": "search_exercises",
+         "params": {"term": "walking"}, "template": "🚶 饭后散步: {name} — 促进消化", "star": "meteor", "cat": "exercise"},
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["park", "garden"]}, "template": "{title} — 出去散个步", "star": "meteor", "cat": "place"},
+    ],
+
+    "want_eat_healthy": [
+        {"api": "wish_engine.apis.food_nutrition_api", "fn": "search_food",
+         "params": {"query": "vegetables", "max_results": 3}, "template": "🥦 {name}: 每100g {calories:.0f}卡路里", "star": "star", "cat": "health"},
+        {"api": "wish_engine.apis.meal_api", "fn": "random_meal",
+         "params": {}, "template": "🍽️ 今天试试: {name} ({area})", "star": "star", "cat": "food"},
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["supermarket"]}, "template": "{title} — 买新鲜食材", "star": "star", "cat": "food"},
+    ],
+
     # ═══ PRACTICAL ═══
 
     "need_vet": [
         {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
          "params": {"place_types": ["veterinary"]}, "template": "🐾 最近的兽医: {title} — {description}", "star": "meteor", "cat": "pet"},
+    ],
+
+    "want_pet": [
+        {"api": "wish_engine.apis.dog_api", "fn": "random_dog_image",
+         "params": {}, "template": "🐕 先看看这只狗狗", "star": "meteor", "cat": "healing"},
+        {"api": "wish_engine.apis.cat_api", "fn": "random_cat_image",
+         "params": {}, "template": "🐱 或者这只猫咪？", "star": "meteor", "cat": "healing"},
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["veterinary", "community_centre"]}, "template": "{title} — 可以了解宠物领养", "star": "star", "cat": "pet"},
     ],
 
     "home_emergency": [
@@ -516,6 +589,29 @@ SOUL_API_MAP: dict[str, list[dict]] = {
          "params": {"place_types": ["library"]}, "template": "{title} — 图书馆提供免费电脑和技术帮助", "star": "star", "cat": "utility"},
         {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
          "params": {"place_types": ["community_centre"]}, "template": "{title} — 社区科技帮助班", "star": "star", "cat": "utility"},
+    ],
+
+    # ═══ TRANSIT ═══
+
+    "need_transit": [
+        {"api": "wish_engine.apis.free_transit_api", "fn": "find_nearest_stops",
+         "params": {}, "template": "🚌 附近站点: {name} ({type}) — 距{distance_m:.0f}米", "star": "meteor", "cat": "transit"},
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["bus_stop", "subway_entrance", "train_station"]}, "template": "🚉 {title} — 最近的公共交通", "star": "meteor", "cat": "transit"},
+    ],
+
+    "missed_bus": [
+        {"api": "wish_engine.apis.free_transit_api", "fn": "find_nearest_stops",
+         "params": {}, "template": "🚌 下一个最近站点: {name} — 距{distance_m:.0f}米", "star": "meteor", "cat": "transit"},
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["cafe", "library"]}, "template": "{title} — 等下班车的好地方", "star": "meteor", "cat": "place"},
+    ],
+
+    "want_navigate": [
+        {"api": "wish_engine.apis.free_transit_api", "fn": "route_summary",
+         "params": {"mode": "foot-walking"}, "template": "🗺️ 步行路线: 约{duration_min:.0f}分钟 / {distance_km:.1f}公里", "star": "meteor", "cat": "transit"},
+        {"api": "wish_engine.apis.free_transit_api", "fn": "find_nearest_stops",
+         "params": {}, "template": "🚌 最近站点: {name} ({type})", "star": "meteor", "cat": "transit"},
     ],
 }
 

@@ -88,6 +88,19 @@ ATTENTION_TO_PLACES: dict[str, dict] = {
     "heartbreak":        {"osm": ["park", "garden", "cafe"], "why": "心里不好受 — {place}可以坐下来，慢慢想清楚"},
     "missing_someone":   {"osm": ["park", "garden", "cafe"], "why": "想念一个人 — {place}安静，适合思念"},
     "relationship_pain": {"osm": ["community_centre", "library", "place_of_worship"], "why": "关系里不容易 — {place}可以是你的安全空间"},
+
+    # New additions
+    "friend_conflict":   {"osm": ["cafe", "park"], "why": "朋友闹矛盾 — {place}冷静一下"},
+    "want_pet":          {"osm": ["veterinary", "community_centre"], "why": "想养宠物 — {place}可以了解领养"},
+    "want_save_money":   {"osm": ["bank"], "why": "想省钱 — {place}可以咨询储蓄账户"},
+    "budget_help":       {"osm": ["bank", "library"], "why": "需要预算帮助 — {place}有理财资源"},
+    "exchange_money":    {"osm": ["bank", "atm"], "why": "需要换汇 — {place}提供外汇服务"},
+    "want_lose_weight":  {"osm": ["gym", "fitness_centre", "swimming_pool"], "why": "想减肥 — {place}是好的开始"},
+    "ate_too_much":      {"osm": ["park", "garden"], "why": "吃太多了 — {place}去散个步"},
+    "want_eat_healthy":  {"osm": ["supermarket"], "why": "想吃健康 — {place}买新鲜食材"},
+    "need_transit":      {"osm": ["bus_stop", "subway_entrance", "train_station"], "why": "需要交通 — {place}离你最近"},
+    "missed_bus":        {"osm": ["cafe", "library"], "why": "错过公交了 — {place}等下一班"},
+    "want_navigate":     {"osm": ["bus_stop", "train_station"], "why": "想导航 — {place}是最近的交通站"},
 }
 
 
@@ -698,6 +711,86 @@ def detect_surface_attention(recent_texts: list[str]) -> list[str]:
             "keep getting error", "where to get tech help for free",
             "library computer help",
         ],
+
+        # ── Relationships ─────────────────────────────────────────────────────
+        "friend_conflict": [
+            "friend and i had a fight", "fight with a friend",
+            "argument with my friend", "argued with my friend",
+            "friend and i aren't talking", "falling out with a friend",
+            "friend betrayed me", "best friend hurt me",
+            "friend problem", "friend drama",
+            "falling out with my best friend",
+            "朋友吵架", "朋友矛盾", "跟朋友闹翻",
+        ],
+        "want_pet": [
+            "want a pet", "want a dog", "want a cat",
+            "thinking of getting a pet", "thinking of getting a dog",
+            "thinking of getting a cat", "adopting a dog", "adopting a cat",
+            "pet adoption", "adopt a dog", "adopt a cat",
+            "miss having a pet", "lonely without a pet",
+            "想养宠物", "想养狗", "想养猫",
+        ],
+
+        # ── Finance (non-crisis) ──────────────────────────────────────────────
+        "want_save_money": [
+            "want to save money", "trying to save", "need to save up",
+            "save more money", "start saving", "how to save",
+            "build an emergency fund", "how to budget", "financial goals",
+            "节省", "存钱", "攒钱",
+        ],
+        "budget_help": [
+            "help with budget", "need a budget", "budgeting tips",
+            "can't manage my money", "where does my money go",
+            "overspending", "spending too much", "money management",
+            "预算", "理财",
+        ],
+        "exchange_money": [
+            "exchange rate", "exchange money", "convert currency",
+            "transfer money abroad", "send money home",
+            "wire transfer", "how much is the dollar",
+            "换汇", "汇率", "汇款", "外汇",
+        ],
+
+        # ── Nutrition / weight ────────────────────────────────────────────────
+        "want_lose_weight": [
+            "want to lose weight", "trying to lose weight",
+            "lose some weight", "slim down", "lose fat", "weight loss",
+            "overweight", "too heavy", "diet plan",
+            "减肥", "减重", "想瘦",
+        ],
+        "ate_too_much": [
+            "ate too much", "overate", "ate way too much",
+            "so full", "stuffed", "feel bloated", "food coma",
+            "can't stop eating", "吃太多了", "吃撑了",
+        ],
+        "want_eat_healthy": [
+            "eat healthy", "eat healthier", "eating healthy",
+            "want to eat better", "clean eating", "healthy diet",
+            "eat more vegetables", "nutritious food", "balanced diet",
+            "健康饮食", "吃健康", "营养",
+        ],
+
+        # ── Transit ───────────────────────────────────────────────────────────
+        "need_transit": [
+            "nearest bus stop", "nearest subway", "nearest train station",
+            "public transport", "how do i get to", "how to get there",
+            "take the bus", "take the subway", "take the train",
+            "bus timetable", "train schedule",
+            "怎么去", "公交", "地铁", "公共交通", "坐什么车",
+        ],
+        "missed_bus": [
+            "missed the bus", "missed my bus", "bus just left",
+            "missed the train", "missed my train",
+            "just missed the bus", "just missed my train",
+            "错过了公交", "错过了地铁", "没赶上",
+        ],
+        "want_navigate": [
+            "how do i get to", "directions to", "navigate to",
+            "how far is", "walking distance to", "i'm lost",
+            "i am lost", "lost my way", "help me get to",
+            "route to", "path to",
+            "怎么走", "路线", "导航", "我迷路了",
+        ],
     }
 
     for attention, keywords in keyword_map.items():
@@ -825,6 +918,24 @@ _TRIGGER_PHRASES: dict[str, list[str]] = {
                            "where to find free clothing"],
     "tech_help":          ["laptop broken", "keep getting error",
                            "where to get tech help for free"],
+    "friend_conflict":    ["argument with my friend", "friend betrayed me",
+                           "friend and i had a fight", "falling out with a friend"],
+    "want_pet":           ["want a dog", "want a cat", "thinking of getting a pet",
+                           "adopt a dog", "adopt a cat"],
+    "want_save_money":    ["want to save money", "start saving",
+                           "build an emergency fund", "need to save up"],
+    "budget_help":        ["where does my money go", "can't manage my money",
+                           "help with budget", "overspending"],
+    "exchange_money":     ["exchange rate", "send money home",
+                           "换汇", "transfer money abroad"],
+    "want_lose_weight":   ["want to lose weight", "trying to lose weight",
+                           "减肥", "weight loss"],
+    "ate_too_much":       ["ate too much", "overate", "so full", "feel bloated", "吃太多了"],
+    "want_eat_healthy":   ["eat healthy", "eat healthier", "clean eating", "healthy diet"],
+    "need_transit":       ["nearest bus stop", "public transport",
+                           "how do i get to", "怎么去"],
+    "missed_bus":         ["missed the bus", "missed the train", "bus just left"],
+    "want_navigate":      ["how do i get to", "directions to", "i'm lost", "find my way"],
 }
 
 
