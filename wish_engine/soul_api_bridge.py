@@ -44,6 +44,10 @@ SOUL_API_MAP: dict[str, list[dict]] = {
     ],
     "need_medicine": [
         {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich", "params": {"place_types": ["pharmacy", "hospital"]}, "template": "最近的: {title} — {description}", "star": "meteor", "cat": "health"},
+        {"api": "wish_engine.apis.wellness_apis", "fn": "breathing_exercise",
+         "params": {"technique": "478"}, "template": "🌬️ 先深呼吸放松: 吸4-屏7-呼8，有助缓解不适", "star": "meteor", "cat": "health"},
+        {"api": "wish_engine.apis.advice_api", "fn": "get_advice",
+         "params": {}, "template": "💭 {result}", "star": "meteor", "cat": "wisdom"},
     ],
 
     # ═══ EMOTIONAL NEEDS ═══
@@ -56,6 +60,8 @@ SOUL_API_MAP: dict[str, list[dict]] = {
         {"api": "wish_engine.apis.dog_api", "fn": "random_dog_image", "params": {}, "template": "🐕 看看这只狗狗", "star": "meteor", "cat": "healing"},
         {"api": "wish_engine.apis.poetry_api", "fn": "random_poem", "params": {}, "template": "📜 {title} by {author}\n{lines[0]}\n{lines[1]}", "star": "meteor", "cat": "poetry"},
         {"api": "wish_engine.apis.advice_api", "fn": "get_advice", "params": {}, "template": "💭 {result}", "star": "meteor", "cat": "wisdom"},
+        {"api": "wish_engine.apis.joke_api", "fn": "get_joke",
+         "params": {}, "template": "😄 笑一个: {joke}", "star": "meteor", "cat": "healing"},
     ],
     "angry": [
         {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich", "params": {"place_types": ["gym", "fitness_centre"]}, "template": "{title} — 把怒气转化为力量", "star": "meteor", "cat": "exercise"},
@@ -65,6 +71,8 @@ SOUL_API_MAP: dict[str, list[dict]] = {
         {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich", "params": {"place_types": ["cafe", "community_centre"]}, "template": "{title} — 有人的地方，不需要说话，但不是一个人", "star": "meteor", "cat": "social"},
         {"api": "wish_engine.apis.social_apis", "fn": "conversation_starter", "params": {"context": "general"}, "template": "💬 如果想开口: {result}", "star": "meteor", "cat": "social"},
         {"api": "wish_engine.apis.cat_api", "fn": "random_cat_image", "params": {}, "template": "🐱 猫咪陪你", "star": "meteor", "cat": "healing"},
+        {"api": "wish_engine.apis.joke_api", "fn": "get_joke",
+         "params": {}, "template": "😄 {joke}", "star": "meteor", "cat": "healing"},
     ],
     "scared": [
         {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich", "params": {"place_types": ["library", "cafe", "place_of_worship"]}, "template": "{title} — 安全的、有人的地方", "star": "meteor", "cat": "safety"},
@@ -88,6 +96,8 @@ SOUL_API_MAP: dict[str, list[dict]] = {
         {"api": "wish_engine.apis.google_books_api", "fn": "search_books", "params": {}, "template": "📚 {title} by {authors[0]} — ⭐{rating}", "star": "star", "cat": "books"},
         {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich", "params": {"place_types": ["library", "bookshop"]}, "template": "📖 {title} — 去翻翻看", "star": "star", "cat": "place"},
         {"api": "wish_engine.apis.knowledge_apis", "fn": "search_books_gutenberg", "params": {}, "template": "📕 免费电子书: {title} — {authors[0]}", "star": "star", "cat": "books"},
+        {"api": "wish_engine.apis.open_library_api", "fn": "search_books",
+         "params": {"query": "classic literature", "max_results": 3}, "template": "📚 {title} by {authors[0]} ({year}) — {description:.60}", "star": "star", "cat": "books"},
     ],
     "want_learn": [
         {"api": "wish_engine.apis.knowledge_apis", "fn": "random_wikipedia", "params": {}, "template": "🌐 今日知识: {title} — {extract:.100}", "star": "star", "cat": "learning"},
@@ -102,6 +112,8 @@ SOUL_API_MAP: dict[str, list[dict]] = {
         {"api": "wish_engine.apis.radio_api", "fn": "search_stations", "params": {}, "template": "📻 {name} ({country}) — 正在播放", "star": "star", "cat": "music"},
         {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich", "params": {"place_types": ["theatre", "cinema"]}, "template": "🎵 {title} — 可能有演出", "star": "star", "cat": "music"},
         {"api": "wish_engine.apis.events_free", "fn": "discover_events_free", "params": {}, "template": "🎶 {name} — 可能有演出", "star": "meteor", "cat": "music"},
+        {"api": "wish_engine.apis.music_api", "fn": "search_playlists",
+         "params": {"query": "chill", "limit": 3}, "template": "🎵 Spotify: {name} — {tracks} 首", "star": "star", "cat": "music"},
     ],
     "want_work": [
         {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich", "params": {"place_types": ["cafe", "library"]}, "template": "💻 {title} — 安静、有WiFi", "star": "star", "cat": "work"},
@@ -111,6 +123,8 @@ SOUL_API_MAP: dict[str, list[dict]] = {
         {"api": "wish_engine.apis.exercise_api", "fn": "search_exercises", "params": {"term": "yoga"}, "template": "🧘 试试: {name}", "star": "star", "cat": "exercise"},
         {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich", "params": {"place_types": ["gym", "fitness_centre", "swimming_pool", "park"]}, "template": "🏃 {title} — 动起来", "star": "star", "cat": "exercise"},
         {"api": "wish_engine.apis.health_apis", "fn": "estimate_calories", "params": {"activity": "running", "weight_kg": 70, "minutes": 30}, "template": "跑步30分钟 ≈ 消耗{result}卡路里", "star": "star", "cat": "exercise"},
+        {"api": "wish_engine.apis.air_quality_api", "fn": "get_air_quality",
+         "params": {}, "template": "🌬️ 户外锻炼前: AQI {aqi}，{dominant_pollutant}", "star": "meteor", "cat": "health"},
     ],
 
     # ═══ SPIRITUAL NEEDS ═══
@@ -123,6 +137,8 @@ SOUL_API_MAP: dict[str, list[dict]] = {
         {"api": "wish_engine.apis.spiritual_apis", "fn": "daily_wisdom", "params": {}, "template": "🌿 {tradition}: {text} — {source}", "star": "earth", "cat": "meaning"},
         {"api": "wish_engine.apis.bible_api", "fn": "random_verse", "params": {}, "template": "✝️ {reference}: {text:.100}", "star": "earth", "cat": "meaning"},
         {"api": "wish_engine.apis.philosophy_quotes", "fn": "get_quote", "params": {}, "template": "🏛️ {tradition}: {text} — {author}", "star": "earth", "cat": "meaning"},
+        {"api": "wish_engine.apis.tarot_api", "fn": "draw_cards",
+         "params": {"count": 1}, "template": "🔮 {result[0][name]}: {result[0][meaning_up]}", "star": "earth", "cat": "meaning"},
     ],
 
     # ═══ SOCIAL NEEDS ═══
@@ -138,9 +154,17 @@ SOUL_API_MAP: dict[str, list[dict]] = {
     # ═══ PRACTICAL NEEDS ═══
     "need_wifi": [
         {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich", "params": {"place_types": ["cafe", "library"]}, "template": "📶 {title} — 通常有免费WiFi", "star": "meteor", "cat": "utility"},
+        {"api": "wish_engine.apis.knowledge_apis", "fn": "random_wikipedia",
+         "params": {}, "template": "📖 离线也能读: {title} — {extract:.80}", "star": "meteor", "cat": "learning"},
+        {"api": "wish_engine.apis.productivity_apis", "fn": "pomodoro_schedule",
+         "params": {"total_hours": 1}, "template": "🍅 先做离线任务: 专注{len(result)}个番茄钟", "star": "meteor", "cat": "work"},
     ],
     "need_quiet": [
         {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich", "params": {"place_types": ["library", "park", "garden"]}, "template": "🤫 {title} — 附近最安静的地方", "star": "meteor", "cat": "quiet"},
+        {"api": "wish_engine.apis.wellness_apis", "fn": "breathing_exercise",
+         "params": {"technique": "478"}, "template": "🌬️ 先用呼吸找到内心的安静: 吸4-屏7-呼8", "star": "meteor", "cat": "calm"},
+        {"api": "wish_engine.apis.spiritual_apis", "fn": "mindfulness_reminder",
+         "params": {}, "template": "🔔 {result}", "star": "meteor", "cat": "mindfulness"},
     ],
 
     # ═══ FUN / BOREDOM ═══
@@ -148,6 +172,8 @@ SOUL_API_MAP: dict[str, list[dict]] = {
         {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich", "params": {"place_types": ["museum", "gallery", "park", "arts_centre", "cinema"]}, "template": "✨ {title} — 现在就可以去", "star": "meteor", "cat": "explore"},
         {"api": "wish_engine.apis.bored_api", "fn": "get_activity", "params": {}, "template": "💡 或者试试: {activity} ({type})", "star": "meteor", "cat": "fun"},
         {"api": "wish_engine.apis.events_free", "fn": "discover_events_free", "params": {}, "template": "🎪 {name} — 今晚可能有活动", "star": "meteor", "cat": "events"},
+        {"api": "wish_engine.apis.joke_api", "fn": "get_joke",
+         "params": {}, "template": "😄 无聊？来个笑话: {joke}", "star": "meteor", "cat": "fun"},
     ],
 
     # ═══ SELF-IMPROVEMENT ═══
@@ -159,6 +185,8 @@ SOUL_API_MAP: dict[str, list[dict]] = {
     "reflection": [
         {"api": "wish_engine.apis.wellness_apis", "fn": "gratitude_prompt", "params": {}, "template": "🙏 {result}", "star": "star", "cat": "reflection"},
         {"api": "wish_engine.apis.productivity_apis", "fn": "weekly_reflection", "params": {}, "template": "📝 本周反思: {result[0]}", "star": "star", "cat": "reflection"},
+        {"api": "wish_engine.apis.tarot_api", "fn": "draw_cards",
+         "params": {"count": 1}, "template": "🔮 {result[0][name]}: {result[0][meaning_up]}", "star": "star", "cat": "reflection"},
     ],
 
     # ═══ TIME/WEATHER AWARE ═══
@@ -166,6 +194,8 @@ SOUL_API_MAP: dict[str, list[dict]] = {
         {"api": "wish_engine.apis.open_meteo_api", "fn": "get_weather", "params": {}, "template": "🌤️ 早安。现在{temperature_c}°C，{condition}", "star": "meteor", "cat": "weather"},
         {"api": "wish_engine.apis.sunrise_sunset_api", "fn": "get_sun_times", "params": {}, "template": "🌅 日出: {sunrise}", "star": "meteor", "cat": "time"},
         {"api": "wish_engine.apis.affirmations_api", "fn": "get_affirmation", "params": {}, "template": "☀️ 今日肯定: {result}", "star": "meteor", "cat": "morning"},
+        {"api": "wish_engine.apis.music_api", "fn": "search_playlists",
+         "params": {"query": "morning energy", "limit": 1}, "template": "☀️ 早安歌单: {name}", "star": "meteor", "cat": "music"},
     ],
     "evening": [
         {"api": "wish_engine.apis.open_meteo_api", "fn": "get_weather", "params": {}, "template": "🌙 现在{temperature_c}°C。适合出去走走", "star": "meteor", "cat": "weather"},
@@ -220,6 +250,8 @@ SOUL_API_MAP: dict[str, list[dict]] = {
     "headache": [
         {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich", "params": {"place_types": ["pharmacy"]}, "template": "💊 最近的药店: {title}", "star": "meteor", "cat": "health"},
         {"api": "wish_engine.apis.wellness_apis", "fn": "breathing_exercise", "params": {"technique": "478"}, "template": "🌬️ 深呼吸缓解头疼: 吸4-屏7-呼8", "star": "meteor", "cat": "health"},
+        {"api": "wish_engine.apis.air_quality_api", "fn": "get_air_quality",
+         "params": {}, "template": "🌫️ 空气质量 AQI {aqi}，可能是诱因之一", "star": "meteor", "cat": "health"},
     ],
     "overwhelmed": [
         {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich", "params": {"place_types": ["park", "garden"]}, "template": "{title} — 离开屏幕，去外面走走", "star": "meteor", "cat": "calm"},
@@ -230,6 +262,8 @@ SOUL_API_MAP: dict[str, list[dict]] = {
         {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich", "params": {"place_types": ["park", "garden"]}, "template": "🌿 {title} — 去户外走走", "star": "meteor", "cat": "nature"},
         {"api": "wish_engine.apis.open_meteo_api", "fn": "get_weather", "params": {}, "template": "🌤️ 现在{temperature_c}°C，{condition}", "star": "meteor", "cat": "weather"},
         {"api": "wish_engine.apis.exercise_api", "fn": "search_exercises", "params": {"term": "walking"}, "template": "🏃 {name} — 户外运动", "star": "star", "cat": "exercise"},
+        {"api": "wish_engine.apis.air_quality_api", "fn": "get_air_quality",
+         "params": {}, "template": "🌿 当前空气质量 AQI: {aqi} — {dominant_pollutant}", "star": "meteor", "cat": "health"},
     ],
     "want_create": [
         {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich", "params": {"place_types": ["arts_centre", "library"]}, "template": "🎨 {title} — 有创作空间", "star": "star", "cat": "art"},
@@ -543,6 +577,10 @@ SOUL_API_MAP: dict[str, list[dict]] = {
     "need_vet": [
         {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
          "params": {"place_types": ["veterinary"]}, "template": "🐾 最近的兽医: {title} — {description}", "star": "meteor", "cat": "pet"},
+        {"api": "wish_engine.apis.wellness_apis", "fn": "breathing_exercise",
+         "params": {"technique": "box"}, "template": "🐾 先深呼吸保持冷静: 你的宠物感受到你的状态", "star": "meteor", "cat": "calm"},
+        {"api": "wish_engine.apis.advice_api", "fn": "get_advice",
+         "params": {}, "template": "💭 {result}", "star": "meteor", "cat": "wisdom"},
     ],
 
     "want_pet": [
@@ -612,6 +650,95 @@ SOUL_API_MAP: dict[str, list[dict]] = {
          "params": {"mode": "foot-walking"}, "template": "🗺️ 步行路线: 约{duration_min:.0f}分钟 / {distance_km:.1f}公里", "star": "meteor", "cat": "transit"},
         {"api": "wish_engine.apis.free_transit_api", "fn": "find_nearest_stops",
          "params": {}, "template": "🚌 最近站点: {name} ({type})", "star": "meteor", "cat": "transit"},
+    ],
+
+    # ═══ MOTIVATION ═══
+
+    "procrastinating": [
+        {"api": "wish_engine.apis.productivity_apis", "fn": "pomodoro_schedule",
+         "params": {"total_hours": 1}, "template": "🍅 不用全部做完。先做25分钟: {result[0]}", "star": "meteor", "cat": "work"},
+        {"api": "wish_engine.apis.joke_api", "fn": "get_joke",
+         "params": {}, "template": "😄 先笑一个再说: {joke}", "star": "meteor", "cat": "fun"},
+        {"api": "wish_engine.apis.affirmations_api", "fn": "get_affirmation",
+         "params": {}, "template": "💪 {result}", "star": "meteor", "cat": "confidence"},
+        {"api": "wish_engine.apis.bored_api", "fn": "get_activity",
+         "params": {}, "template": "💡 或者先做件小事热身: {activity}", "star": "meteor", "cat": "fun"},
+    ],
+
+    # ═══ ROMANCE ═══
+
+    "want_romance": [
+        {"api": "wish_engine.apis.social_apis", "fn": "ice_breaker",
+         "params": {}, "template": "💬 破冰开场: {result}", "star": "meteor", "cat": "social"},
+        {"api": "wish_engine.apis.philosophy_quotes", "fn": "get_quote",
+         "params": {"tradition": "Sufi"}, "template": "💝 {author}: {text}", "star": "star", "cat": "meaning"},
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["restaurant", "cafe", "arts_centre"]}, "template": "🌹 {title} — 约会好去处", "star": "star", "cat": "social"},
+        {"api": "wish_engine.apis.meal_api", "fn": "random_meal",
+         "params": {}, "template": "🍽️ 亲手做一道: {name} ({area}) — 比任何餐厅都动人", "star": "star", "cat": "food"},
+    ],
+
+    # ═══ SLEEP ═══
+
+    "poor_sleep": [
+        {"api": "wish_engine.apis.health_apis", "fn": "sleep_times",
+         "params": {"wake_time_hour": 7}, "template": "😴 睡眠周期: 最佳入睡时间 {result[0]} 或 {result[1]}", "star": "meteor", "cat": "sleep"},
+        {"api": "wish_engine.apis.wellness_apis", "fn": "breathing_exercise",
+         "params": {"technique": "478"}, "template": "🌙 助眠呼吸: 吸4-屏7-呼8，重复4次", "star": "meteor", "cat": "sleep"},
+        {"api": "wish_engine.apis.spiritual_apis", "fn": "mindfulness_reminder",
+         "params": {}, "template": "🔔 睡前正念: {result}", "star": "meteor", "cat": "sleep"},
+        {"api": "wish_engine.apis.open_meteo_api", "fn": "get_weather",
+         "params": {}, "template": "🌡️ 室温参考: 现在{temperature_c}°C — 理想睡眠温度16-19°C", "star": "meteor", "cat": "health"},
+    ],
+
+    # ═══ ENTERTAINMENT ═══
+
+    "entertainment": [
+        {"api": "wish_engine.apis.joke_api", "fn": "get_joke",
+         "params": {}, "template": "😄 {joke}", "star": "meteor", "cat": "fun"},
+        {"api": "wish_engine.apis.bored_api", "fn": "get_activity",
+         "params": {}, "template": "💡 试试: {activity} ({type})", "star": "meteor", "cat": "fun"},
+        {"api": "wish_engine.apis.knowledge_apis", "fn": "today_in_history",
+         "params": {}, "template": "📅 历史上的今天 ({year}): {text:.80}", "star": "meteor", "cat": "learning"},
+        {"api": "wish_engine.apis.cocktail_api", "fn": "random_cocktail",
+         "params": {}, "template": "🍹 今晚来一杯: {name} — {instructions:.60}", "star": "meteor", "cat": "drink"},
+    ],
+
+    # ═══ TRAVEL ═══
+
+    "want_travel": [
+        {"api": "wish_engine.apis.teleport_api", "fn": "get_urban_area",
+         "params": {"city_name": "Barcelona"}, "template": "🌆 {name}: {highlights}", "star": "star", "cat": "travel"},
+        {"api": "wish_engine.apis.countries_api", "fn": "get_country",
+         "params": {}, "template": "🌍 {name} — 语言: {languages} | 货币: {currencies}", "star": "star", "cat": "travel"},
+        {"api": "wish_engine.apis.holidays_api", "fn": "get_next_holiday",
+         "params": {}, "template": "🎊 下一个假期: {name} ({date}) — 出行好时机", "star": "star", "cat": "travel"},
+        {"api": "wish_engine.apis.open_meteo_api", "fn": "get_weather",
+         "params": {}, "template": "🌤️ 当地天气: {temperature_c}°C，{condition}", "star": "meteor", "cat": "weather"},
+    ],
+
+    # ═══ INVESTING ═══
+
+    "want_invest": [
+        {"api": "wish_engine.apis.currency_api", "fn": "get_rates",
+         "params": {"base": "USD"}, "template": "📈 实时汇率: 1 USD = {EUR:.4f} EUR / {GBP:.4f} GBP / {CNY:.4f} CNY", "star": "star", "cat": "finance"},
+        {"api": "wish_engine.apis.knowledge_apis", "fn": "random_wikipedia",
+         "params": {}, "template": "📖 了解一个概念: {title} — {extract:.100}", "star": "star", "cat": "learning"},
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["bank"]}, "template": "{title} — 咨询理财顾问", "star": "star", "cat": "finance"},
+        {"api": "wish_engine.apis.philosophy_quotes", "fn": "get_quote",
+         "params": {"tradition": "Philosophy"}, "template": "💭 {author}: {text}", "star": "star", "cat": "wisdom"},
+    ],
+
+    # ═══ VOLUNTEERING ═══
+
+    "want_volunteer": [
+        {"api": "wish_engine.apis.osm_api", "fn": "search_and_enrich",
+         "params": {"place_types": ["social_facility", "community_centre"]}, "template": "🤝 {title} — 可能需要志愿者", "star": "star", "cat": "community"},
+        {"api": "wish_engine.apis.spiritual_apis", "fn": "daily_wisdom",
+         "params": {}, "template": "🌿 {tradition}: {text} — {source}", "star": "star", "cat": "wisdom"},
+        {"api": "wish_engine.apis.philosophy_quotes", "fn": "get_quote",
+         "params": {}, "template": "💭 {author}: {text}", "star": "star", "cat": "meaning"},
     ],
 }
 

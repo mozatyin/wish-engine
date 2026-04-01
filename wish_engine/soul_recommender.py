@@ -101,6 +101,13 @@ ATTENTION_TO_PLACES: dict[str, dict] = {
     "need_transit":      {"osm": ["bus_stop", "subway_entrance", "train_station"], "why": "需要交通 — {place}离你最近"},
     "missed_bus":        {"osm": ["cafe", "library"], "why": "错过公交了 — {place}等下一班"},
     "want_navigate":     {"osm": ["bus_stop", "train_station"], "why": "想导航 — {place}是最近的交通站"},
+    "procrastinating":   {"osm": ["cafe", "library", "park"], "why": "拖延症发作 — {place}换个环境试试"},
+    "want_romance":      {"osm": ["restaurant", "cafe", "arts_centre"], "why": "想约会 — {place}是好地方"},
+    "poor_sleep":        {"osm": ["pharmacy", "park"], "why": "睡眠差 — {place}可能有帮助"},
+    "entertainment":     {"osm": ["cinema", "museum", "arts_centre"], "why": "找乐子 — {place}现在可以去"},
+    "want_travel":       {"osm": ["museum", "community_centre"], "why": "想旅行 — 先去{place}感受一下不同文化"},
+    "want_invest":       {"osm": ["bank"], "why": "想投资 — {place}有理财顾问"},
+    "want_volunteer":    {"osm": ["social_facility", "community_centre"], "why": "想做义工 — {place}需要帮手"},
 }
 
 
@@ -791,6 +798,109 @@ def detect_surface_attention(recent_texts: list[str]) -> list[str]:
             "route to", "path to",
             "怎么走", "路线", "导航", "我迷路了",
         ],
+
+        # ── Motivation ────────────────────────────────────────────────────────
+        "procrastinating": [
+            # Direct
+            "procrastinating", "procrastinate", "can't start", "can't begin",
+            "keep putting it off", "putting it off", "avoiding it",
+            "just can't make myself", "can't get started",
+            "拖延", "拖着不做", "开始不了",
+            # Indirect
+            "been meaning to do it but", "keep saying i'll do it tomorrow",
+            "need to do X but keep doing Y", "wasting time instead of",
+            "scrolling instead of working", "distracted from",
+            "haven't started yet", "still haven't done it",
+        ],
+
+        # ── Romance ───────────────────────────────────────────────────────────
+        "want_romance": [
+            # Direct
+            "want to date", "looking for love", "want a relationship",
+            "want a girlfriend", "want a boyfriend", "want a partner",
+            "dating", "meet someone special", "find love",
+            "想恋爱", "想找对象", "想约会", "找对象",
+            # Indirect
+            "feeling single", "so single", "everyone around me is in a couple",
+            "haven't been on a date in", "miss being in a relationship",
+            "want to fall in love", "ready for a relationship",
+            "looking to meet someone", "where do i meet people",
+        ],
+
+        # ── Sleep quality ─────────────────────────────────────────────────────
+        "poor_sleep": [
+            # Direct
+            "bad sleep", "poor sleep", "sleep quality", "restless sleep",
+            "keep waking up", "wake up at night", "don't feel rested",
+            "sleep poorly", "bad night's sleep",
+            "睡眠差", "睡眠质量差", "总是醒来",
+            # Indirect
+            "tired even after sleeping", "wake up exhausted",
+            "can't get deep sleep", "sleep is broken",
+            "never feel fully rested", "groggy every morning",
+            "dream too much", "nightmares every night",
+            "didn't sleep well last night",
+        ],
+
+        # ── Entertainment ─────────────────────────────────────────────────────
+        "entertainment": [
+            # Direct
+            "want to watch a movie", "watch something", "looking for a show",
+            "what to watch", "what to listen to", "need entertainment",
+            "want to watch netflix", "want to watch youtube",
+            "想看电影", "找个节目看", "想找乐子",
+            # Indirect
+            "nothing good to watch", "any show recommendations",
+            "show to binge", "binge watch", "movie night",
+            "recommend something to watch", "something funny to watch",
+            "good podcast", "something to listen to",
+            "staying in tonight", "cozy night in",
+        ],
+
+        # ── Travel ────────────────────────────────────────────────────────────
+        "want_travel": [
+            # Direct
+            "want to travel", "planning a trip", "want to go somewhere",
+            "book a trip", "travel plans", "where should i go",
+            "want to visit", "thinking of going to",
+            "想旅行", "想出去玩", "计划旅游", "想去哪儿",
+            # Indirect
+            "need a vacation", "need a getaway", "need to get away",
+            "itching to travel", "haven't been on holiday",
+            "where to go for holiday", "dream destination",
+            "saving for a trip", "bucket list country",
+            "thinking of going abroad",
+        ],
+
+        # ── Investing ─────────────────────────────────────────────────────────
+        "want_invest": [
+            # Direct
+            "want to invest", "start investing", "stock market",
+            "mutual funds", "etf", "index fund", "cryptocurrency",
+            "portfolio", "investing basics",
+            "想投资", "想理财", "股票", "基金", "加密货币",
+            # Indirect
+            "money sitting in savings doing nothing",
+            "how do i make my money work for me",
+            "where should i put my money",
+            "want to grow my savings", "passive income",
+            "how to start investing with little money",
+            "scared to invest but want to",
+        ],
+
+        # ── Volunteering ─────────────────────────────────────────────────────
+        "want_volunteer": [
+            # Direct
+            "volunteer", "volunteering", "give back", "help my community",
+            "do good", "charity work", "want to help others",
+            "做义工", "志愿者", "公益", "回报社会",
+            # Indirect
+            "want to make a difference", "want to help people",
+            "feel useless", "want to contribute",
+            "something more meaningful", "where can i volunteer",
+            "how do i find volunteering opportunities",
+            "give back to the community",
+        ],
     }
 
     for attention, keywords in keyword_map.items():
@@ -936,6 +1046,20 @@ _TRIGGER_PHRASES: dict[str, list[str]] = {
                            "how do i get to", "怎么去"],
     "missed_bus":         ["missed the bus", "missed the train", "bus just left"],
     "want_navigate":      ["how do i get to", "directions to", "i'm lost", "find my way"],
+    "procrastinating":    ["keep putting it off", "can't get started", "haven't started yet",
+                           "been meaning to do it", "拖延"],
+    "want_romance":       ["looking for love", "want a relationship", "so single",
+                           "miss being in a relationship", "想恋爱"],
+    "poor_sleep":         ["tired even after sleeping", "wake up exhausted",
+                           "bad sleep", "never feel fully rested", "睡眠差"],
+    "entertainment":      ["what to watch", "nothing good to watch", "movie night",
+                           "binge watch", "staying in tonight"],
+    "want_travel":        ["want to travel", "planning a trip", "need a vacation",
+                           "dream destination", "想旅行"],
+    "want_invest":        ["want to invest", "start investing", "how to make my money work",
+                           "passive income", "想投资"],
+    "want_volunteer":     ["want to volunteer", "want to give back", "want to help others",
+                           "make a difference", "做义工"],
 }
 
 
