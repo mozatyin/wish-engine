@@ -401,7 +401,7 @@ def _call_haiku(prompt: str, api_key: str) -> dict[str, Any]:
         base_url="https://openrouter.ai/api",
     )
     response = client.messages.create(
-        model="anthropic/claude-haiku-4-5-20251001",
+        model=os.environ.get("ANTHROPIC_MODEL", os.environ.get("ANTHROPIC_MODEL", "claude-sonnet-4-6").split("[")[0]).split("[")[0],
         max_tokens=128,
         messages=[{"role": "user", "content": prompt}],
     )

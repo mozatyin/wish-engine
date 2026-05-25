@@ -219,7 +219,7 @@ def _call_sonnet(prompt: str, api_key: str, prefill: str = "") -> dict[str, Any]
         messages.append({"role": "assistant", "content": prefill})
 
     response = client.messages.create(
-        model="anthropic/claude-sonnet-4",
+        model=os.environ.get("ANTHROPIC_MODEL", "claude-sonnet-4-6").split("[")[0],
         max_tokens=512,
         messages=messages,
     )

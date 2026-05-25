@@ -117,7 +117,7 @@ def _generate_via_haiku(
     try:
         client = anthropic.Anthropic(api_key=api_key, base_url="https://openrouter.ai/api")
         response = client.messages.create(
-            model="anthropic/claude-haiku-4-5-20251001",
+            model=os.environ.get("ANTHROPIC_MODEL", os.environ.get("ANTHROPIC_MODEL", "claude-sonnet-4-6").split("[")[0]).split("[")[0],
             max_tokens=60,
             messages=[{"role": "user", "content": prompt}],
         )
